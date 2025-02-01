@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/Lab-1/cmake/build",
+  "command": "/usr/bin/g++ -I/home/logan/University/CMP-5010-Computer-Graphics/Lab-1/includes -g -std=gnu++17 -o CMakeFiles/Lab-1.dir/src/main.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/Lab-1/src/main.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/Lab-1/src/main.cpp",
+  "output": "CMakeFiles/Lab-1.dir/src/main.cpp.o"
+}
+]

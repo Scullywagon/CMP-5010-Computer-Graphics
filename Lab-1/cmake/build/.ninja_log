@@ -1,0 +1,9 @@
+# ninja log v6
+0	260	1738418996690964895	CMakeFiles/Lab-1.dir/src/main.cpp.o	4138d625aea35e47
+260	304	1738418996950964467	/home/logan/University/CMP-5010-Computer-Graphics/Lab-1/output/Lab-1	cfe25d2db5798411
+2	267	1738419115547435116	CMakeFiles/Lab-1.dir/src/main.cpp.o	4138d625aea35e47
+267	308	1738419115810768012	/home/logan/University/CMP-5010-Computer-Graphics/Lab-1/output/Lab-1	cfe25d2db5798411
+1	257	1738419171317342290	CMakeFiles/Lab-1.dir/src/main.cpp.o	4138d625aea35e47
+258	296	1738419171574008528	/home/logan/University/CMP-5010-Computer-Graphics/Lab-1/output/Lab-1	cfe25d2db5798411
+2	353	1738419666356476395	CMakeFiles/Lab-1.dir/src/main.cpp.o	4138d625aea35e47
+353	396	1738419666706475715	/home/logan/University/CMP-5010-Computer-Graphics/Lab-1/output/Lab-1	cfe25d2db5798411

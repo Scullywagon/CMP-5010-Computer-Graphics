@@ -1,0 +1,22 @@
+
+    {
+        "cmake.pinnedCommands": [
+            "workbench.action.tasks.configureTaskRunner",
+            "workbench.action.tasks.runTask"
+        ],
+        // Set the build directory to be inside the cmake/ folder
+        "cmake.buildDirectory": "${workspaceFolder}/cmake/build",
+    
+        // Force output directory for executables, libraries, and archives
+        "cmake.configureSettings": {
+            "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${workspaceFolder}/output",
+            "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${workspaceFolder}/output",
+            "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${workspaceFolder}/output"
+        },
+    
+        // Use Ninja as the generator (or change to another generator like "Unix Makefiles")
+        "cmake.generator": "Ninja",
+    
+        // Automatically configure the project when opening it
+        "cmake.configureOnOpen": true
+    }
