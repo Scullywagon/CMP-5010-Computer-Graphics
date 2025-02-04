@@ -27,6 +27,7 @@ bool Shader::load(const std::string name, const char* vertexFilename, const char
 	GLint success = 0;
 	
 	//here we create a vertex shader and set the shader source
+	
 	m_vertexShader = loadShader(vertexFilename, GL_VERTEX_SHADER);
 	
 	//next compile the vertex shader

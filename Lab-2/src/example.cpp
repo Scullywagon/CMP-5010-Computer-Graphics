@@ -2,15 +2,15 @@
 using namespace std;
 
 //--- OpenGL ---
-#include "GL\glew.h"
-#include "GL\wglew.h"
+#include "GL/glew.h"
+//#include "wglew.h"
 #pragma comment(lib, "glew32.lib")
 //--------------
 
-#include "GL\freeglut.h"
+#include "freeglut.h"
 
 //Shader.h has been created using common glsl structure
-#include "shaders/Shader.h"   // include shader header file, this is not part of OpenGL
+#include "Shader.h"   // include shader header file, this is not part of OpenGL
 
 unsigned int m_vaoID;		//Vertex Array Object (VAO), identifier
 unsigned int m_vboID[3];	// three VBOs
@@ -156,4 +156,5 @@ int main(int argc, char **argv)
 
 	return 0;
 }
+
 

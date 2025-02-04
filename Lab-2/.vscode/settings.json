@@ -18,5 +18,9 @@
         "cmake.generator": "Ninja",
     
         // Automatically configure the project when opening it
-        "cmake.configureOnOpen": true
+        "cmake.configureOnOpen": true,
+        "files.associations": {
+            "ios": "cpp",
+            "*.tcc": "cpp"
+        }
     }
