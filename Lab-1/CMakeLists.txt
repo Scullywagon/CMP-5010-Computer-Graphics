@@ -9,9 +9,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find packages for GLEW, GLFW3, and OpenGL
-#find_package(OpenGL REQUIRED)
-#find_package(GLEW REQUIRED)
-#find_package(glfw3 REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(glfw3 REQUIRED)
 
 # Set output directories for executables and libraries
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/output)
@@ -28,4 +28,4 @@ file(GLOB_RECURSE SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp)
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Link the required libraries (GLEW, GLFW3, OpenGL)
-#target_link_libraries(execute GLEW glfw OpenGL::GL)
+target_link_libraries(execute GLEW glfw OpenGL::GL)
