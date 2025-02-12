@@ -1,22 +1,26 @@
 #include <iostream>
-#include <GL/glew.h>
-#include <GL/freeglut.h>
-
-#include "Shader.h"
-
 using namespace std;
+//--- OpenGL ---
+#include "GL/glew.h"
+#include "GL/glfw.h"
 
-// variables
-int screenWidth = 1920;
-int screenHeight = 1080;
+//Shader.h has been created using common glsl structure
+#include "Shader.h"   // include shader header file, this is not part of OpenGL
 
 unsigned int m_vaoID;		//Vertex Array Object (VAO), identifier
 unsigned int m_vboID[3];	// three VBOs
-const int numOfVerts = 3; // number of verticies per shape
+
+const int numOfVerts = 3;
 
 Shader* myShader;  ///shader object 
 
- //OPENGL FUNCTION PROTOTYPES
+#include <iostream>
+using namespace std;
+
+//Variables for the dimensions of the window in pixels.
+int screenWidth=480, screenHeight=480;
+
+//OPENGL FUNCTION PROTOTYPES
 void display();				//called in winmain to draw everything to the screen
 void init();				//called in winmain when the program starts.
 void createGeometry();      //used to create Vertex Array Objects
@@ -147,3 +151,5 @@ int main(int argc, char **argv)
 
 	return 0;
 }
+
+

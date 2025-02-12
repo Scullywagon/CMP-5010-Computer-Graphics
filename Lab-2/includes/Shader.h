@@ -1,18 +1,18 @@
 #pragma once
 
 #include <string>
-#include "glew.h"
+#include <GL/glew.h>
 
 // GLSL wrapper
 class Shader
 {
 public:
-	Shader(void);
-	~Shader(void);
+    Shader(void);
+    ~Shader(void);
 
 private:
-	Shader(const Shader&);
-	Shader& operator=(const Shader&);
+    Shader(const Shader&);
+    Shader& operator=(const Shader&);
 
 private:
 	std::string m_name;

@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/Lab-2/cmake/build",
-  "command": "/usr/local/bin/g++-14 -I/Users/logan/University/CMP-5010-Computer-Graphics/Lab-2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/Lab-2.dir/src/example.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/Lab-2/src/example.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/Lab-2/src/example.cpp",
-  "output": "CMakeFiles/Lab-2.dir/src/example.cpp.o"
-}
-]

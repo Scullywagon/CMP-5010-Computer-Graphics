@@ -12,8 +12,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(glfw3 REQUIRED)
+find_package(GLUT REQUIRED)
 
-# Set output directories for executables and libraries
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/output)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/output)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/output)
@@ -28,5 +28,5 @@ file(GLOB_RECURSE SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp)
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Link the required libraries (GLEW, GLFW3, OpenGL)
-target_link_libraries(${PROJECT_NAME} OpenGL::GL GLEW::GLEW glfw)
+target_link_libraries(${PROJECT_NAME} OpenGL::GL GLEW::GLEW glfw GLUT::GLUT)
 
