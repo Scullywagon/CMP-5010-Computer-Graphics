@@ -12,7 +12,7 @@ int screenHeight = 1080;
 
 unsigned int m_vaoID;		//Vertex Array Object (VAO), identifier
 unsigned int m_vboID[3];	// three VBOs
-const int numOfVerts = 3; // number of verticies per shape
+const int numOfVerts = 6; // number of verticies per shape
 
 Shader* myShader;  ///shader object 
 
@@ -49,9 +49,15 @@ void createGeometry()
 	vert[index++] = -0.25; vert[index++] = 0.0; vert[index++] =0.0;
 	vert[index++] = 0.0; vert[index++] = 0.5; vert[index++] =0.0;
 	vert[index++] = 0.25; vert[index++] = 0.0; vert[index++]= 0.0;
+	vert[index++] = -1.25; vert[index++] = 0.0; vert[index++] =0.0;
+	vert[index++] = 0.0; vert[index++] = 0.5; vert[index++] =0.0;
+	vert[index++] = -0.5; vert[index++] = 0.0; vert[index++]= 0.0;
 
 	
 	index = 0;
+	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0; //r,g,b values for each vertex
+	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0;
+	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0;
 	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0; //r,g,b values for each vertex
 	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0;
 	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0;

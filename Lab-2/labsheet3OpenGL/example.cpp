@@ -10,7 +10,7 @@ using namespace std;
 unsigned int m_vaoID;		//Vertex Array Object (VAO), identifier
 unsigned int m_vboID[3];	// three VBOs
 
-const int numOfVerts = 3;
+const int numOfVerts = 6;
 
 Shader* myShader;  ///shader object 
 
@@ -35,7 +35,7 @@ void display()
 	glUseProgram(myShader->handle());  // use the shader
 	
 		glBindVertexArray(m_vaoID);		// select first VAO
-		glDrawArrays(GL_TRIANGLES, 0, numOfVerts);	// draw first object
+		glDrawArrays(GL_LINES, 0, numOfVerts);	// draw first object
 
 		glBindVertexArray(0); //unbind the vertex array object
 	glUseProgram(0); //turn off the current shader
@@ -47,15 +47,21 @@ void createGeometry()
 {
 	// First simple object
 	float vert[numOfVerts * 3];	// vertex array
-	float col[numOfVerts * 3];	// color array
+  float col[numOfVerts * 3];	// color array
 
 	int index = 0;
 	vert[index++] = -0.25; vert[index++] = 0.0; vert[index++] =0.0;
 	vert[index++] = 0.0; vert[index++] = 0.5; vert[index++] =0.0;
 	vert[index++] = 0.25; vert[index++] = 0.0; vert[index++]= 0.0;
+	vert[index++] = -1.25; vert[index++] = 0.0; vert[index++] =0.0;
+	vert[index++] = 0.0; vert[index++] = 0.5; vert[index++] =0.0;
+	vert[index++] = -0.25; vert[index++] = 0.0; vert[index++]= 0.0;
 
 	
 	index = 0;
+	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0; //r,g,b values for each vertex
+	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0;
+	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0;
 	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0; //r,g,b values for each vertex
 	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0;
 	col[index++] = 1.0; col[index++] = 0.0; col[index++] = 0.0;
