@@ -1,4 +1,4 @@
-#version 430
+#version 330
 
 in  vec3 in_Position;  // Position coming in
 in  vec3 in_Color;     // colour coming in

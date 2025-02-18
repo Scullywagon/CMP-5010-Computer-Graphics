@@ -29,4 +29,3 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Link the required libraries (GLEW, GLFW3, OpenGL)
 target_link_libraries(${PROJECT_NAME} OpenGL::GL GLEW::GLEW glfw GLUT::GLUT)
-
