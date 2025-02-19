@@ -15,6 +15,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     string fragmentCode;
     ifstream vShaderFile;
     ifstream fShaderFile;
+    unsigned int ID;
 
     try 
     {
@@ -49,7 +50,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     glShaderSource(fragment, 1, &fShaderCode, NULL);
     glCompileShader(fragment);
 
-    unsigned int ID = glCreateProgram(); // create a shader program
+    ID = glCreateProgram(); // create a shader program
     glAttachShader(ID, vertex); // attach the vertex shader to the shader program
     glAttachShader(ID, fragment); // attach the fragment shader to the shader program
     glLinkProgram(ID); // link the shader program

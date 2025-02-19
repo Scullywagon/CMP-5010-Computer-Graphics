@@ -8,8 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/logan/University/CMP-5010-Computer-Graphics/Lab-2/src/Shader.cpp" "CMakeFiles/Lab-2.dir/src/Shader.cpp.o" "gcc" "CMakeFiles/Lab-2.dir/src/Shader.cpp.o.d"
-  "/Users/logan/University/CMP-5010-Computer-Graphics/Lab-2/src/example.cpp" "CMakeFiles/Lab-2.dir/src/example.cpp.o" "gcc" "CMakeFiles/Lab-2.dir/src/example.cpp.o.d"
+  "/home/logan/University/CMP-5010-Computer-Graphics/Lab-2/src/Shader.cpp" "CMakeFiles/Lab-2.dir/src/Shader.cpp.o" "gcc" "CMakeFiles/Lab-2.dir/src/Shader.cpp.o.d"
+  "/home/logan/University/CMP-5010-Computer-Graphics/Lab-2/src/example.cpp" "CMakeFiles/Lab-2.dir/src/example.cpp.o" "gcc" "CMakeFiles/Lab-2.dir/src/example.cpp.o.d"
+  "" "/home/logan/University/CMP-5010-Computer-Graphics/Lab-2/output/Lab-2" "gcc" "CMakeFiles/Lab-2.dir/link.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

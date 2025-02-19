@@ -1,11 +1,9 @@
-// Fragment Shader
+#version 330 core
+out vec4 FragColor;
+  
+in vec4 vertexColor; // the input variable from the vertex shader (same name and same type)  
 
-#version 430
-
-in  vec3 ex_Color;  //colour arriving from the vertex
-out vec4 out_Color; //colour for the pixel
-
-void main(void)
+void main()
 {
-	out_Color = vec4(ex_Color,1.0);
+    FragColor = vertexColor;
 } 
