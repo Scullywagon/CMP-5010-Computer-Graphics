@@ -1,0 +1,3 @@
+/home/logan/University/CMP-5010-Computer-Graphics/Lab-3/cmake/build/CMakeFiles/XX.dir
+/home/logan/University/CMP-5010-Computer-Graphics/Lab-3/cmake/build/CMakeFiles/edit_cache.dir
+/home/logan/University/CMP-5010-Computer-Graphics/Lab-3/cmake/build/CMakeFiles/rebuild_cache.dir

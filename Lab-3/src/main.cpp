@@ -121,7 +121,7 @@ int main()
     float vertices[] = {
         // first triangle
         0.5f,  0.5f, 0.0f,  // top right
-        0.5f, -0.5f, 0.0f,  // bottom right
+        1.0f, -0.0f, 0.0f,  // bottom right
         -0.5f,  0.5f, 0.0f,  // top left 
         // second triangle
         1.5f, -0.5f, 0.0f,  // bottom right

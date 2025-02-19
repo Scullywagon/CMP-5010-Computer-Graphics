@@ -48,38 +48,38 @@ int main()
         return -1;
     }
 
-    Shader ourShader("shaderFiles/vertexShader.vs", "shaderFiles/fragmentShader.fs");
+    Shader ourShader("vertShader.vs", "fragmentShader.fg");
 
     float vertices[] = {
-        -0.25, 0.0, 0.0,
-        0.0, 0.5, 0.0,
-        0.25, 0.0, 0.0
-    };
-    float colors[] = {
-        1.00, 0.0, 0.0,
-        1.0, 0.5, 0.0,
-        1.00, 0.0, 0.0
+        -0.25f, 0.0f, 0.0f,
+         0.0f,  0.5f, 0.0f,
+         0.25f, 0.0f, 0.0f
     };
 
-    unsigned int VBO, VAO;
+    float colors[] = {
+        1.0f, 0.0f, 0.0f,
+        1.0f, 0.5f, 0.0f,
+        1.0f, 0.0f, 0.0f
+    };
+
+    unsigned int VAO, VBO[2];
+
     glGenVertexArrays(1, &VAO);
+    glGenBuffers(2, VBO);
+
     glBindVertexArray(VAO);
 
-    glGenBuffers(2, &VBO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    // Vertex buffer
+    glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    // position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-    // color attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
 
-    // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
-    // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
-    // glBindVertexArray(0);
+    // Color buffer
+    glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(1);
 
 
     // render loop
@@ -109,7 +109,8 @@ int main()
     // optional: de-allocate all resources once they've outlived their purpose:
     // ------------------------------------------------------------------------
     glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &VBO[0]);
+    glDeleteBuffers(1, &VBO[1]);
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     // ------------------------------------------------------------------
