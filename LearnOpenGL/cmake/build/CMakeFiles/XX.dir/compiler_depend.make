@@ -250,6 +250,106 @@ CMakeFiles/XX.dir/src/Shader.cpp.o: /home/logan/University/CMP-5010-Computer-Gra
 
 CMakeFiles/XX.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/src/main.cpp \
   /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/Shader.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/common.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/common.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/exponential.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/geometric.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/_fixes.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/_vectorize.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_common.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_common.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_common_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_exponential.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_exponential.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_exponential_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_geometric.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_geometric.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_geometric_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_vector_relational.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_vector_relational.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_vector_relational_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x3.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x3.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x4.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x4.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x2.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x2.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x3.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x3.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x4.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x4.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x2.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x2.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x3.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x3.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x4.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x4.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x4_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec1.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec1.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/geometric.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat2x3.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat2x4.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat3x2.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat3x3.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat3x4.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat4x2.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat4x3.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat4x4.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/integer.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/matrix.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/platform.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/_fixes.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_integer.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_integer.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_integer_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_matrix.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_matrix.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_matrix_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_packing.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_packing.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_packing_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_trigonometric.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_trigonometric.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_trigonometric_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/precision.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/setup.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_float.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_half.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_half.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_int.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x2.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x2.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec2.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec2.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec3.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec3.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec4.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec4.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec4_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/exponential.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/fwd.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/glm.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/constants.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/constants.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/quaternion.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/quaternion.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/quaternion_simd.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/matrix_transform.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/matrix_transform.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/type_ptr.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/type_ptr.inl \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/integer.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat2x2.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/matrix.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/packing.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/trigonometric.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/vec2.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/vec3.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/vec4.hpp \
+  /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/vector_relational.hpp \
   /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/stb_image.h \
   /usr/include/GL/gl.h \
   /usr/include/GL/glew.h \
@@ -405,8 +505,11 @@ CMakeFiles/XX.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
   /usr/include/c++/14.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/14.2.1/bits/utility.h \
   /usr/include/c++/14.2.1/bits/version.h \
+  /usr/include/c++/14.2.1/cassert \
   /usr/include/c++/14.2.1/cctype \
   /usr/include/c++/14.2.1/cerrno \
+  /usr/include/c++/14.2.1/cfloat \
+  /usr/include/c++/14.2.1/climits \
   /usr/include/c++/14.2.1/clocale \
   /usr/include/c++/14.2.1/cmath \
   /usr/include/c++/14.2.1/concepts \
@@ -414,6 +517,7 @@ CMakeFiles/XX.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
   /usr/include/c++/14.2.1/cstdint \
   /usr/include/c++/14.2.1/cstdio \
   /usr/include/c++/14.2.1/cstdlib \
+  /usr/include/c++/14.2.1/cstring \
   /usr/include/c++/14.2.1/cwchar \
   /usr/include/c++/14.2.1/cwctype \
   /usr/include/c++/14.2.1/debug/assertions.h \
@@ -501,22 +605,205 @@ CMakeFiles/XX.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
   /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/adxintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxbf16intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxcomplexintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxfp16intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxint8intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxtileintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx2intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124fmapsintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124vnniwintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16vlintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bitalgintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bitalgvlintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bwintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512cdintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512dqintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512erintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fp16intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fp16vlintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmaintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmavlintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512pfintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmi2intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmi2vlintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmiintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmivlintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vlbwintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vldqintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vlintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnniintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnnivlintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vp2intersectintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vp2intersectvlintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vpopcntdqintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vpopcntdqvlintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxifmaintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxneconvertintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniint16intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniint8intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmi2intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmiintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cetintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cldemoteintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clflushoptintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clwbintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clzerointrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cmpccxaddintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/enqcmdintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/f16cintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fmaintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fxsrintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/gfniintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/hresetintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mm_malloc.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mmintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/movdirintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mwaitintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mwaitxintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pconfigintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pkuintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pmmintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/popcntintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/prfchiintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/prfchwintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/raointintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rdseedintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rtmintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/serializeintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sgxintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sha512intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/shaintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm3intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm4intrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/smmintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xmmintrin.h
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/uintrintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/usermsrintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/vaesintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/vpclmulqdqintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/waitpkgintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/wbnoinvdintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/wmmintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/x86gprintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xmmintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsavecintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsaveintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsaveoptintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsavesintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xtestintrin.h
 
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xtestintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsaveintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsavecintrin.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xmmintrin.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/x86gprintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/waitpkgintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/usermsrintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/smmintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sha512intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sgxintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/serializeintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rdseedintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/popcntintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mwaitintrin.h:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/hresetintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/gfniintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmiintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniint16intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxneconvertintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxifmaintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fmaintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vp2intersectintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vlbwintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmivlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/enqcmdintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmiintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmi2vlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512pfintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmavlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmaintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fp16vlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bwintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bitalgintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clwbintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124fmapsintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxtileintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vpopcntdqvlintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxint8intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxfp16intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxcomplexintrin.h:
 
 /usr/include/strings.h:
 
@@ -524,7 +811,11 @@ CMakeFiles/XX.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /usr/include/linux/limits.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/wbnoinvdintrin.h:
+
 /usr/include/limits.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tmmintrin.h:
 
 /usr/include/c++/14.2.1/tr1/riemann_zeta.tcc:
 
@@ -536,13 +827,17 @@ CMakeFiles/XX.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /usr/include/c++/14.2.1/tr1/legendre_function.tcc:
 
-/usr/include/c++/14.2.1/tr1/gamma.tcc:
-
 /usr/include/c++/14.2.1/tr1/beta_function.tcc:
 
 /usr/include/c++/14.2.1/tr1/bessel_function.tcc:
 
 /usr/include/c++/14.2.1/math.h:
+
+/usr/include/c++/14.2.1/cstring:
+
+/usr/include/c++/14.2.1/climits:
+
+/usr/include/c++/14.2.1/cassert:
 
 /usr/include/bits/posix2_lim.h:
 
@@ -552,15 +847,177 @@ CMakeFiles/XX.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /usr/include/bits/mathcalls-macros.h:
 
+/usr/include/bits/mathcalls-helper-functions.h:
+
+/usr/include/bits/uio_lim.h:
+
+/usr/include/bits/math-vector.h:
+
+/usr/include/bits/local_lim.h:
+
+/usr/include/bits/libm-simd-decl-stubs.h:
+
+/usr/include/bits/iscanonical.h:
+
+/usr/include/bits/fp-logb.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmi2intrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/vector_relational.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16vlintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/vec3.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/packing.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vlintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/matrix.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat2x2.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/integer.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/type_ptr.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm4intrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/matrix_transform.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/vpclmulqdqintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/quaternion.inl:
+
+/usr/include/c++/14.2.1/tr1/gamma.tcc:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/quaternion.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/constants.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vpopcntdqintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/glm.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/fxsrintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/fwd.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/exponential.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec4_simd.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec3.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x2.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vldqintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_int.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_half.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_half.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxbf16intrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/setup.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_trigonometric_simd.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_packing_simd.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_packing.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_matrix.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_integer_simd.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_integer.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/precision.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_matrix_simd.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/matrix.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/integer.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pconfigintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat4x4.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat4x2.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat3x4.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat3x2.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/platform.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat2x4.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat2x3.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/geometric.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec1.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x2.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x4.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnnivlintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x2.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x4.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x3.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x3.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_vector_relational_simd.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/raointintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_vector_relational.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_matrix.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_vector_relational.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_geometric_simd.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pkuintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_geometric.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat4x3.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_geometric.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_exponential_simd.inl:
+
 /usr/include/c++/14.2.1/bits/exception_defines.h:
 
 /usr/include/c++/14.2.1/bits/cxxabi_init_exception.h:
 
 /usr/include/bits/floatn.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx5124vnniwintrin.h:
+
 /usr/include/c++/14.2.1/bits/cpp_type_traits.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/constants.hpp:
+
 /usr/lib/libmvec.so.1:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec4.hpp:
 
 /usr/include/c++/14.2.1/bits/concept_check.h:
 
@@ -568,11 +1025,15 @@ CMakeFiles/XX.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /usr/lib/ld-linux-x86-64.so.2:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/mat3x3.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec1.hpp:
+
 /usr/include/c++/14.2.1/bits/codecvt.h:
 
-/usr/include/c++/14.2.1/bits/stl_iterator.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/pmmintrin.h:
 
-/usr/include/bits/iscanonical.h:
+/usr/include/c++/14.2.1/bits/stl_iterator.h:
 
 /usr/include/c++/14.2.1/bits/char_traits.h:
 
@@ -590,9 +1051,13 @@ CMakeFiles/XX.dir/src/main.cpp.o:
 
 /usr/include/c++/14.2.1/bits/stl_iterator_base_funcs.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx2intrin.h:
+
 /usr/include/c++/14.2.1/bit:
 
 /usr/include/c++/14.2.1/bits/memoryfwd.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_float.hpp:
 
 /usr/include/c++/14.2.1/bits/requires_hosted.h:
 
@@ -602,9 +1067,17 @@ CMakeFiles/XX.dir/src/main.cpp.o:
 
 /usr/include/bits/types/timer_t.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsaveoptintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cldemoteintrin.h:
+
 /usr/include/c++/14.2.1/bits/locale_facets.h:
 
 /usr/include/bits/types/struct_tm.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512dqintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec2.inl:
 
 /usr/include/bits/types/struct_timespec.h:
 
@@ -620,11 +1093,17 @@ CMakeFiles/XX.dir/src/main.cpp.o:
 
 /usr/include/bits/types/mbstate_t.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512erintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x3.hpp:
+
 /usr/include/bits/types/locale_t.h:
 
 /usr/include/c++/14.2.1/bits/version.h:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/prfchiintrin.h:
 
 /usr/include/bits/types/__mbstate_t.h:
 
@@ -636,13 +1115,21 @@ CMakeFiles/XX.dir/src/main.cpp.o:
 
 /usr/lib/libGLEW.so:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x2.hpp:
+
 /usr/include/bits/types/clock_t.h:
 
 /usr/include/bits/types/__fpos64_t.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_trigonometric.inl:
+
 /usr/lib/libX11.so.6:
 
 /usr/include/bits/time64.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cmpccxaddintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_trigonometric.hpp:
 
 /usr/include/bits/stdlib-float.h:
 
@@ -652,6 +1139,8 @@ CMakeFiles/XX.dir/src/main.cpp.o:
 
 /usr/include/c++/14.2.1/stdexcept:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/_vectorize.hpp:
+
 /usr/include/c++/14.2.1/bits/exception.h:
 
 /usr/include/bits/types/struct_timeval.h:
@@ -659,6 +1148,10 @@ CMakeFiles/XX.dir/src/main.cpp.o:
 /usr/include/c++/14.2.1/bits/basic_ios.h:
 
 /usr/include/bits/types/wint_t.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512cdintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x3.hpp:
 
 /usr/include/bits/types/error_t.h:
 
@@ -668,11 +1161,15 @@ CMakeFiles/XX.dir/src/main.cpp.o:
 
 /usr/include/c++/14.2.1/exception:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clflushoptintrin.h:
+
 /usr/include/c++/14.2.1/tr1/hypergeometric.tcc:
 
 /usr/include/c++/14.2.1/bits/fstream.tcc:
 
 /usr/include/asm-generic/errno-base.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/vaesintrin.h:
 
 /usr/include/asm-generic/bitsperlong.h:
 
@@ -692,9 +1189,15 @@ CMakeFiles/XX.dir/src/main.cpp.o:
 
 /usr/include/c++/14.2.1/bits/functexcept.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x4.hpp:
+
 /usr/include/bits/typesizes.h:
 
 /usr/lib/crti.o:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/trigonometric.hpp:
 
 CMakeFiles/XX.dir/src/Shader.cpp.o:
 
@@ -710,11 +1213,25 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/c++/14.2.1/bits/nested_exception.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fp16intrin.h:
+
 /usr/include/bits/errno.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/f16cintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x3.inl:
 
 /usr/lib/libm.so:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm3intrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/quaternion_simd.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x2.hpp:
+
 /usr/include/alloca.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/adxintrin.h:
 
 /usr/include/bits/wchar.h:
 
@@ -734,9 +1251,15 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/gthr.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/type_ptr.inl:
+
 /usr/lib/libc_nonshared.a:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/vec2.hpp:
+
 /usr/lib/libc.so.6:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/shaintrin.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/src/main.cpp:
 
@@ -750,11 +1273,17 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/libgcc.a:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tbmintrin.h:
+
 /usr/lib/crtn.o:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x2.hpp:
 
 /usr/include/bits/pthreadtypes.h:
 
 /usr/lib/libc.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/xsavesintrin.h:
 
 /usr/lib/libm.so.6:
 
@@ -766,15 +1295,19 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/linux/types.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/common.h:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtbeginS.o:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x4.inl:
 
 /usr/lib/libEGL.so.1:
 
 /usr/include/asm-generic/errno.h:
 
-/usr/include/bits/fp-logb.h:
-
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h:
 
 /usr/include/bits/types/struct_sched_param.h:
 
@@ -784,6 +1317,8 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/bits/endian.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/wmmintrin.h:
+
 /usr/include/c++/14.2.1/concepts:
 
 /usr/include/c++/14.2.1/bits/locale_facets.tcc:
@@ -792,13 +1327,27 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/bits/types/struct_FILE.h:
 
+/usr/include/c++/14.2.1/cfloat:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x4_simd.inl:
+
 /usr/include/c++/14.2.1/initializer_list:
 
 /usr/include/asm/types.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clzerointrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat.hpp:
+
 /usr/include/c++/14.2.1/ext/type_traits.h:
 
 /usr/include/c++/14.2.1/bits/basic_string.tcc:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vp2intersectvlintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat3x3.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/geometric.h:
 
 /usr/lib/libGLdispatch.so.0:
 
@@ -808,17 +1357,25 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/c++/14.2.1/cctype:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mwaitxintrin.h:
+
 /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/src/Shader.cpp:
 
 /usr/include/c++/14.2.1/debug/debug.h:
 
 /usr/include/c++/14.2.1/streambuf:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cetintrin.h:
+
 /usr/include/GL/glew.h:
 
 /usr/include/c++/14.2.1/bits/basic_ios.tcc:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/movdirintrin.h:
+
 /usr/include/bits/libc-header-start.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h:
 
 /usr/include/c++/14.2.1/typeinfo:
 
@@ -838,6 +1395,8 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/c++/14.2.1/bits/allocator.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_packing.hpp:
+
 /home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/Shader.h:
 
 /usr/include/bits/types/__sigset_t.h:
@@ -846,15 +1405,21 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/stdc-predef.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec2.hpp:
+
 /usr/include/c++/14.2.1/bits/cxxabi_forced.h:
 
 /usr/include/asm/bitsperlong.h:
 
 /usr/include/asm/posix_types_64.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/rtmintrin.h:
+
 /usr/include/bits/stdint-intn.h:
 
 /usr/include/bits/types/clockid_t.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_integer.inl:
 
 /usr/include/c++/14.2.1/string_view:
 
@@ -880,6 +1445,8 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/bits/pthreadtypes-arch.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fintrin.h:
+
 /usr/include/c++/14.2.1/bits/localefwd.h:
 
 /usr/include/gnu/stubs.h:
@@ -890,15 +1457,25 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/c++/14.2.1/bits/functional_hash.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxvnniint8intrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat4x4.inl:
+
 /usr/include/c++/14.2.1/bits/hash_bytes.h:
 
 /usr/include/c++/14.2.1/bits/invoke.h:
 
 /usr/include/c++/14.2.1/cstdint:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bitalgvlintrin.h:
+
 /usr/include/c++/14.2.1/bits/ios_base.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/immintrin.h:
+
 /usr/include/c++/14.2.1/bits/istream.tcc:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmi2intrin.h:
 
 /usr/include/c++/14.2.1/bits/locale_classes.h:
 
@@ -920,6 +1497,8 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/linux/errno.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec3.inl:
+
 /usr/include/c++/14.2.1/bits/ostream_insert.h:
 
 /usr/include/c++/14.2.1/bits/postypes.h:
@@ -928,11 +1507,9 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/c++/14.2.1/bits/stl_function.h:
 
-/usr/include/bits/uio_lim.h:
-
-/usr/include/bits/math-vector.h:
-
 /usr/include/c++/14.2.1/bits/refwrap.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_common.hpp:
 
 /usr/include/c++/14.2.1/bits/alloc_traits.h:
 
@@ -970,9 +1547,19 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/c++/14.2.1/clocale:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vnniintrin.h:
+
 /usr/include/c++/14.2.1/cstddef:
 
 /usr/include/c++/14.2.1/cstdio:
+
+/usr/include/GLFW/glfw3.h:
+
+/usr/include/c++/14.2.1/bits/stl_algobase.h:
+
+/usr/include/c++/14.2.1/cstdlib:
 
 /usr/include/c++/14.2.1/tr1/poly_laguerre.tcc:
 
@@ -990,7 +1577,11 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/pthread.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/gtc/matrix_transform.hpp:
+
 /usr/include/c++/14.2.1/ext/numeric_traits.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_mat2x4.inl:
 
 /usr/include/c++/14.2.1/fstream:
 
@@ -1003,6 +1594,10 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 /usr/include/c++/14.2.1/ios:
 
 /usr/include/c++/14.2.1/iosfwd:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/simd/exponential.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/_fixes.hpp:
 
 /usr/include/assert.h:
 
@@ -1017,6 +1612,8 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 /usr/include/features-time64.h:
 
 /usr/include/c++/14.2.1/pstl/pstl_config.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/vec4.hpp:
 
 /usr/include/c++/14.2.1/sstream:
 
@@ -1058,6 +1655,16 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/locale.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/prfchwintrin.h:
+
+/usr/include/bits/fp-fast.h:
+
+/usr/include/wctype.h:
+
+/usr/include/sched.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/uintrintrin.h:
+
 /usr/include/c++/14.2.1/bits/ostream.tcc:
 
 /usr/include/endian.h:
@@ -1070,28 +1677,22 @@ CMakeFiles/XX.dir/src/Shader.cpp.o:
 
 /usr/include/stdlib.h:
 
-/usr/include/sys/cdefs.h:
-
-/usr/include/c++/14.2.1/bits/stl_algobase.h:
-
-/usr/include/c++/14.2.1/cstdlib:
-
-/usr/include/GLFW/glfw3.h:
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/type_vec4.inl:
 
 /usr/include/sys/select.h:
 
 /usr/include/time.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/common.hpp:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdarg.h:
 
-/usr/include/wctype.h:
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_common.inl:
 
-/usr/include/sched.h:
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_common_simd.inl:
 
-/usr/include/bits/fp-fast.h:
+/usr/include/sys/cdefs.h:
 
-/usr/include/bits/libm-simd-decl-stubs.h:
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_exponential.hpp:
 
-/usr/include/bits/local_lim.h:
-
-/usr/include/bits/mathcalls-helper-functions.h:
+/home/logan/University/CMP-5010-Computer-Graphics/LearnOpenGL/includes/glm/detail/func_exponential.inl:
