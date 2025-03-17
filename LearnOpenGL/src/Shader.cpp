@@ -1,4 +1,11 @@
 #include "Shader.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <iostream>
+#include <sstream>
+#include <fstream>
+
 using namespace std;
 
 void checkCompileErrors(unsigned int shader, std::string type)
@@ -41,6 +48,8 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     ifstream vShaderFile;
     ifstream fShaderFile;
 
+    // the following opens the files individually
+    // converts both to string stream
     try 
     {
         vShaderFile.open(vertexPath);
@@ -72,10 +81,10 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     const char* vShaderCode = vertexCode.c_str(); // convert the strings into char arrays
     const char* fShaderCode = fragmentCode.c_str();
 
-
+    // Open GL creates shaders and returns ID's -- these can then be queried by the program
     unsigned int vertex, fragment; // inits vertex and fragment shader IDs
-                                   //
-    vertex = glCreateShader(GL_VERTEX_SHADER); // create the vertex shader
+
+    vertex = glCreateShader(GL_VERTEX_SHADER); // create the vertex shader and return its ID
     glShaderSource(vertex, 1, &vShaderCode, NULL); // attach the shader source code to the shader object
     glCompileShader(vertex); // compile the shader
     checkCompileErrors(vertex, "VERTEX");
@@ -100,6 +109,12 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
 void Shader::use()
 {
     glUseProgram(this->ID);
+}
+
+// mat$ is a 4x4 matrix -> used for 3D transformations
+void Shader::setMat4(const std::string &name,  const glm::mat4 &mat) const
+{
+    glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
 // The following functions set the values of the shader uniforms
