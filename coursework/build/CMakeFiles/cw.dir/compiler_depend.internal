@@ -842,6 +842,7 @@ CMakeFiles/cw.dir/src/main.cpp.o
  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/xsavesintrin.h
  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/xtestintrin.h
  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Camera.h
+ /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h
  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h
  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h
  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/common.hpp

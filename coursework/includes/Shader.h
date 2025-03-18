@@ -7,6 +7,9 @@
 #include <sstream>
 #include <string>
 
+#ifndef SHADER_H
+#define SHADER_H
+
 class Shader
 {
   public:
@@ -179,3 +182,5 @@ class Shader
         }
     }
 };
+
+#endif

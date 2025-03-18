@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include "Floor.h"
 #include "Skybox.h"
 #include "glm/detail/type_mat.hpp"
 #include <GL/glew.h>
@@ -119,6 +120,7 @@ int main()
     glEnable(GL_DEPTH_TEST);
 
     Skybox skybox;
+    Floor floor;
 
     while (!glfwWindowShouldClose(window))
     {
@@ -130,12 +132,15 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // Set the color of the window
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear the window
 
+        glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 projection = glm::perspective(
             camera.fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
-            1110.5f);
+            111.5f);
         glm::mat4 view = camera.GetViewMatrix();
 
+        floor.use(model, view, projection);
         skybox.use(view, projection);
+
 
         glfwSwapBuffers(window);
         glfwPollEvents();

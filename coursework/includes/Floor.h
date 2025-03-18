@@ -1,5 +1,4 @@
 #include "Shader.h"
-#define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 class Floor
@@ -7,41 +6,39 @@ class Floor
   public:
     unsigned int textureID;
     unsigned int floorVAO, floorVBO, floorEBO;
-    // Shader floorShader;
+    Shader floorShader;
 
     std::string texture = "";
 
-    float floorPositions[18] = {
-        -10.0f, 0.0f, -10.0f, 10.0f, 0.0f, -10.0f, 10.0f,  0.0f, 10.0f,
+    // Large square floor extending to the horizon
+    float vertices[20] = {
+        // Positions          // Texture Coordinates (repeat 5x)
+        -10.0f, 0.0f, -10.0f, 0.0f,   0.0f,   // Bottom-left
+        10.0f,  0.0f, -10.0f, 5.0f, 0.0f,   // Bottom-right
+        10.0f,  0.0f, 10.0f,  5.0f, 5.0f, // Top-right
+        -10.0f, 0.0f, 10.0f,  0.0f,   5.0f  // Top-left
+    };
 
-        -10.0f, 0.0f, -10.0f, 10.0f, 0.0f, 10.0f,  -10.0f, 0.0f, 10.0f};
+    // Indices for drawing two triangles forming the square
+    unsigned int indices[6] = {
+        0, 1, 2, // First triangle
+        0, 2, 3  // Second triangle
+    };
 
-    float floorNormals[18] = {
-        0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-
-        0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f};
-
-    float floorTexCoords[12] = {0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,
-
-                              0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f};
-
-    Floor()
+    Floor() : floorShader("shaders/floor.vs", "shaders/floor.fs")
     {
+        textureID = loadTexture("grass.jpg");
         glGenVertexArrays(1, &floorVAO);
         glGenBuffers(1, &floorVBO);
         glGenBuffers(1, &floorEBO);
 
         glBindVertexArray(floorVAO);
-
         glBindBuffer(GL_ARRAY_BUFFER, floorVBO);
-        glBufferData(GL_ARRAY_BUFFER,
-                     sizeof(floorPositions) + sizeof(floorTexCoords), NULL,
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices,
                      GL_STATIC_DRAW);
-
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(floorPositions),
-                        floorPositions);
-        glBufferSubData(GL_ARRAY_BUFFER, sizeof(floorPositions),
-                        sizeof(floorTexCoords), floorTexCoords);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, floorEBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
+                     GL_STATIC_DRAW);
 
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
                               (void *)0);
@@ -50,9 +47,21 @@ class Floor
         glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
                               (void *)(3 * sizeof(float)));
         glEnableVertexAttribArray(1);
-
         glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindVertexArray(0);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    }
+
+    void use(glm::mat4 model, glm::mat4 view, glm::mat4 projection)
+    {
+        floorShader.use();
+        floorShader.setMat4("model", model);
+        floorShader.setMat4("view", view);
+        floorShader.setMat4("projection", projection);
+
+        glBindVertexArray(floorVAO);
+        glBindTexture(GL_TEXTURE_2D, textureID);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
         glBindVertexArray(0);
     }
 
@@ -64,8 +73,8 @@ class Floor
         glBindTexture(GL_TEXTURE_2D, textureID);
 
         int with, height, nrChannels;
-        unsigned char *data = stbi_load(texture.c_str(), &with, &height,
-                                        &nrChannels, 0);
+        unsigned char *data =
+            stbi_load(texture.c_str(), &with, &height, &nrChannels, 0);
         if (data)
         {
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, with, height, 0, GL_RGB,
@@ -76,6 +85,16 @@ class Floor
         {
             std::cout << "Failed to load texture" << std::endl;
         }
-        // I need the tex params here
+        glGenerateMipmap(GL_TEXTURE_2D);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+                        GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+        stbi_image_free(data);
+
+        return textureID;
     }
 };

@@ -411,7 +411,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../geometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../trigonometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../matrix.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h \
   /usr/local/include/GL/glew.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
@@ -975,6 +975,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/sstream \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/stb_image.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h \
   /usr/local/include/GLFW/glfw3.h /usr/local/include/assimp/Importer.hpp \
   /usr/local/include/assimp/types.h /usr/local/include/assimp/defs.h \
   /usr/local/include/assimp/config.h /usr/local/include/assimp/vector2.h \
