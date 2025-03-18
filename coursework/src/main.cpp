@@ -1,16 +1,14 @@
 #include "Camera.h"
-#include "Shader.h"
+#include "Skybox.h"
 #include "glm/detail/type_mat.hpp"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 using namespace std;
 
@@ -23,6 +21,7 @@ int lastY = SCREEN_HEIGHT / 2;
 bool firstMouse = true;
 
 float deltaTime = 0.0f;
+float lastFrame = 0.0f;
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
@@ -86,8 +85,7 @@ void input_callback(GLFWwindow *window)
     }
 }
 
-
-int main() 
+int main()
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,
@@ -98,7 +96,7 @@ int main()
                    GLFW_OPENGL_CORE_PROFILE); // Set the OpenGL profile to core
 
     // Create windowed mode window and OpenGL context
-    GLFWwindow *window = glfwCreateWindow(K_SCREEN_WIDTH, K_SCREEN_HEIGHT,
+    GLFWwindow *window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT,
                                           "LearnOpenGL", NULL, NULL);
     if (window == NULL)
     {
@@ -119,4 +117,27 @@ int main()
 
     // depth testing for 3D renders
     glEnable(GL_DEPTH_TEST);
+
+    Skybox skybox;
+
+    while (!glfwWindowShouldClose(window))
+    {
+        float currentFrame = glfwGetTime();
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+        input_callback(window);
+
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // Set the color of the window
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear the window
+
+        glm::mat4 projection = glm::perspective(
+            camera.fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
+            1110.5f);
+        glm::mat4 view = camera.GetViewMatrix();
+
+        skybox.use(view, projection);
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
 }
