@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-class Camera
+class FreeCamera
 {
   public:
     glm::vec3 Position;
@@ -19,7 +19,7 @@ class Camera
 
     float fov; // in radians
 
-    Camera()
+    FreeCamera()
     {
         Position = glm::vec3(0.0f, 1.8f, 0.0f);
         Front = glm::vec3(0.0f, 0.0f, -1.0f);
@@ -62,19 +62,8 @@ class Camera
         {
             Position += Right * velocity;
         }
-        if (dir == UP)
-        {
-            Position += WorldUp * velocity;
-        }
-        if (dir == DOWN)
-        {
-            Position -= WorldUp * velocity;
-        }
 
-        if (Position.y <= (floorHeight+ 1.8f))
-        {
-            Position.y = floorHeight + 1.8f;
-        }
+        Position.y = floorHeight + 1.8f;
     }
 
     void ProcessMouseMovement(float xoffset, float yoffset)

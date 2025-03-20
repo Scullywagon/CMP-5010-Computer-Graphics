@@ -1,6 +1,7 @@
 CMakeFiles/cw.dir/src/main.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/src/main.cpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Camera.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/CameraValues.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/setup.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cassert \
@@ -411,6 +412,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../geometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../trigonometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../matrix.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/FreeCamera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h \
   /usr/local/include/GL/glew.h \

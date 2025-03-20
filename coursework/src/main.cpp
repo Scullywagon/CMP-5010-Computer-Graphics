@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include "FreeCamera.h"
 #include "Floor.h"
 #include "Skybox.h"
 #include "glm/detail/type_mat.hpp"
@@ -16,7 +17,8 @@ using namespace std;
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
-Camera camera;
+//Camera camera;
+FreeCamera camera;
 int lastX = SCREEN_WIDTH / 2;
 int lastY = SCREEN_HEIGHT / 2;
 bool firstMouse = true;
@@ -135,7 +137,7 @@ int main()
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 projection = glm::perspective(
             camera.fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
-            111.5f);
+            10000.0f);
         glm::mat4 view = camera.GetViewMatrix();
 
         floor.use(model, view, projection);
