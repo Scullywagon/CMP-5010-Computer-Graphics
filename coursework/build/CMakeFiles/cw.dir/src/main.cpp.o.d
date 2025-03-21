@@ -1,85 +1,29 @@
 CMakeFiles/cw.dir/src/main.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/src/main.cpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Camera.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/CameraValues.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/setup.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cassert \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/ParentCamera.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/glm.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_fixes.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cmath \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__assert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__config_site \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__verbose_abort \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__availability \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/assert.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/math.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/math.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/cdefs.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_symbol_aliasing.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_posix_availability.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/stdlib.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityVersions.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityInternal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/i386/_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_pthread/_pthread_types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/wait.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_pid_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_id_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/signal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/appleapiopts.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/signal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/i386/signal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/_mcontext.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/i386/_mcontext.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/machine/_structs.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/i386/_structs.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/i386/types.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int8_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int16_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int32_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int64_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int8_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int16_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int32_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int64_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_intptr_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_uintptr_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_pthread/_pthread_attr_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_sigaltstack.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_ucontext.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_sigset_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_size_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_uid_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/resource.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/stdint.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stdint.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/stdint.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uint8_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uint16_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uint32_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uint64_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_intmax_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uintmax_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_timeval.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/endian.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/i386/endian.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_endian.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/libkern/_OSByteOrder.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/libkern/i386/_OSByteOrder.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/alloca.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_ct_rune_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_rune_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_wchar_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_null.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/malloc/_malloc.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_dev_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_mode_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/promote.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/integral_constant.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_same.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__utility/declval.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cstddef \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/enable_if.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/integral_constant.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_integral.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/remove_cv.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/remove_const.h \
@@ -88,27 +32,11 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/__stddef_max_align_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/version \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../simd/platform.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/smmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/tmmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/pmmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/emmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/xmmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/mmintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/mm_malloc.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/popcntintrin.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/crc32intrin.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/precision.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric.inl \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_vectorize.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec1.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../fwd.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_int.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/limits \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/type_traits \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__functional/invoke.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/add_lvalue_reference.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_referenceable.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_same.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/apply_cv.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_const.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_volatile.h \
@@ -127,7 +55,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_reference_wrapper.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_void.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/nat.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__utility/declval.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__utility/forward.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/add_const.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/add_cv.h \
@@ -213,28 +140,67 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/remove_pointer.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/type_identity.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cstdint \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_float.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_vec.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_int.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec1.inl \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec2.inl \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec3.inl \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4.inl \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4_simd.inl \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cmath \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/math.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/math.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/promote.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/limits \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/stdint.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stdint.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/stdint.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uint8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uint16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uint32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uint64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/i386/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_pthread/_pthread_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_intptr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/i386/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int8_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int16_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int32_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_u_int64_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_uintptr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_intmax_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_uintmax_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__undef_macros \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric_simd.inl \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/glm.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/_fixes.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/stdlib.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/stdlib.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/wait.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_pid_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_id_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/signal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/appleapiopts.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/signal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/i386/signal.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/_mcontext.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/i386/_mcontext.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/machine/_structs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/mach/i386/_structs.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_pthread/_pthread_attr_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_sigaltstack.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_ucontext.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_sigset_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_size_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_uid_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/resource.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_timeval.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/endian.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/i386/endian.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_endian.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/libkern/_OSByteOrder.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/libkern/i386/_OSByteOrder.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/alloca.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_ct_rune_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_rune_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_wchar_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_null.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/malloc/_malloc.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_dev_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_mode_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/climits \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/limits.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/limits.h \
@@ -247,57 +213,87 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/float.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/float.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/float.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../vec2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_vec2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../vec3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_vec3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../vec4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_vec4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../mat2x2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat2x2.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cassert \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/assert.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/fwd.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_int.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/setup.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../simd/platform.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/smmintrin.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/tmmintrin.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/pmmintrin.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/emmintrin.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/xmmintrin.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/mmintrin.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/mm_malloc.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/popcntintrin.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/crc32intrin.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_float.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/precision.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vec2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec2.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vec3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec3.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vec4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4_simd.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat2x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../fwd.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x2.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_matrix.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/precision.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/setup.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../vec2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../vec3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../vec4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../mat2x2.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../mat2x3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat2x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x3.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x3.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../mat2x4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat2x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x4.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x4.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../mat3x2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat3x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x2.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x2.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../mat3x3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat3x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x3.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x3.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../mat3x4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat3x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x4.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x4.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../mat4x2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat4x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x2.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x2.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../mat4x3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat4x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x3.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x3.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../mat4x4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/type_mat4x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4_simd.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_matrix.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../geometric.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/func_geometric.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_exponential.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec1.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec1.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_exponential.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_vector_relational.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_vector_relational.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_vector_relational_simd.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_vectorize.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_exponential_simd.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../simd/exponential.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_common.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_fixes.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_common.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_common_simd.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../simd/common.h \
@@ -372,31 +368,35 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/enqcmdintrin.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/serializeintrin.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/tsxldtrkintrin.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_float.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric_simd.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../simd/geometric.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_matrix_simd.inl \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../simd/matrix.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../trigonometric.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/func_trigonometric.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../exponential.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/func_exponential.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../common.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/func_common.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../packing.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/func_packing.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat2x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat2x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat3x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat3x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat3x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/trigonometric.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric_simd.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/exponential.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/common.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/packing.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_packing.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_packing.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_half.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_half.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_packing_simd.inl \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../matrix.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/func_matrix.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../vector_relational.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/func_vector_relational.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../integer.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../detail/func_integer.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/geometric.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/matrix.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vector_relational.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/integer.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_integer.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_integer.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_integer_simd.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/../simd/integer.h \
@@ -412,8 +412,28 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../geometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../trigonometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../matrix.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/FreeCamera.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/type_ptr.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../gtc/quaternion.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat3x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/quaternion.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../exponential.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/quaternion_simd.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat2x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat2x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat2x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat3x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat3x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat4x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat4x3.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cstring \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_rsize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_errno_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_ssize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/strings.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/type_ptr.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h \
   /usr/local/include/GL/glew.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
@@ -505,13 +525,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__ranges/dangling.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__ranges/view_interface.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__ranges/empty.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cstring \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/string.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/string.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_rsize_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_errno_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_ssize_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/strings.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/move.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/iterator_operations.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/iter_swap.h \
@@ -960,23 +973,12 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__filesystem/u8path.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/type_ptr.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../gtc/quaternion.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat3x3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/quaternion.inl \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../exponential.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/quaternion_simd.inl \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat2x2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat2x3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat2x4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat3x2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat3x4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat4x2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../mat4x3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/type_ptr.inl \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/sstream \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Cube.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/stb_image.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h \
   /usr/local/include/GLFW/glfw3.h /usr/local/include/assimp/Importer.hpp \
   /usr/local/include/assimp/types.h /usr/local/include/assimp/defs.h \

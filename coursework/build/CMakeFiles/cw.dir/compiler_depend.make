@@ -841,41 +841,19 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/xsavesintrin.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/xtestintrin.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Camera.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Cube.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/ParentCamera.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/common.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_fixes.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_common.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_exponential.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_integer.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_matrix.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_packing.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_vector_relational.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/precision.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/setup.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_float.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_int.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec2.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec3.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/exponential.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/fwd.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/geometric.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/integer.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat2x2.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat2x3.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat2x4.hpp \
@@ -885,19 +863,15 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x2.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x3.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/matrix.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/packing.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/simd/common.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/simd/exponential.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/simd/geometric.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/simd/integer.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/simd/matrix.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/simd/platform.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/trigonometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vec2.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vec3.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vec4.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vector_relational.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_fixes.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_vectorize.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_common.hpp \
@@ -909,11 +883,13 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric_simd.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_integer.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_integer.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_integer_simd.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_matrix.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_matrix.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_matrix_simd.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_packing.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_packing.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_packing_simd.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric.hpp \
@@ -929,13 +905,21 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_half.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_int.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x2.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x2.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x3.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x3.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x4.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x4.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x2.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x2.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x3.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x3.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x4.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x4.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x2.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x2.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x3.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x3.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4.inl \
@@ -950,6 +934,9 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4_simd.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/exponential.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/fwd.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/geometric.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/glm.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/setup.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/exponential.hpp \
@@ -977,6 +964,23 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/quaternion_simd.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/type_ptr.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/type_ptr.inl \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/integer.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat2x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat2x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat2x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat3x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat3x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat3x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/matrix.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/packing.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/trigonometric.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vec2.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vec3.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vec4.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vector_relational.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/stb_image.h \
   /usr/local/include/GL/glew.h \
   /usr/local/include/GLFW/glfw3.h \
@@ -1048,15 +1052,25 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/stb_image.h:
 
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vector_relational.hpp:
+
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/type_ptr.inl:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/matrix_transform.hpp:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/matrix.hpp:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/constants.hpp:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/glm.hpp:
 
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/exponential.hpp:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4.hpp:
+
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec3.inl:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec3.hpp:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec1.inl:
 
@@ -1064,25 +1078,47 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4.inl:
 
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4.hpp:
+
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x2.inl:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x2.hpp:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x4.hpp:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x3.inl:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x2.inl:
 
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x2.hpp:
+
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x2.inl:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x2.hpp:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_int.hpp:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_half.hpp:
 
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_float.hpp:
+
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_vector_relational.inl:
 
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_vector_relational.hpp:
+
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric.inl:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric.hpp:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_packing_simd.inl:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_packing.inl:
 
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_matrix.hpp:
+
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_integer.inl:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric.hpp:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_exponential_simd.inl:
 
@@ -1092,9 +1128,9 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_common.inl:
 
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_vectorize.hpp:
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_common.hpp:
 
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vector_relational.hpp:
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_vectorize.hpp:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vec4.hpp:
 
@@ -1112,8 +1148,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/simd/common.h:
 
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/matrix.hpp:
-
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x3.hpp:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/mat4x2.hpp:
@@ -1126,41 +1160,13 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/geometric.hpp:
 
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/exponential.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec4.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_vec3.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x2.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x4.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x2.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x2.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_int.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_float.hpp:
-
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/setup.hpp:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/precision.hpp:
 
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_vector_relational.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_trigonometric.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_matrix.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric.hpp:
-
-/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_common.hpp:
-
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/common.hpp:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/ParentCamera.h:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/integer.hpp:
 
@@ -1443,6 +1449,8 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/signal.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/machine/limits.h:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/crc32intrin.h:
 
@@ -1783,6 +1791,8 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/tsxldtrkintrin.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_polymorphic.h:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__chrono/high_resolution_clock.h:
 
@@ -2599,6 +2609,8 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/remove_cvref.h:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_fixes.hpp:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Cube.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__ranges/empty.h:
 

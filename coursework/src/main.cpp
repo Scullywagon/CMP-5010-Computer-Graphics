@@ -1,6 +1,9 @@
 #include "Camera.h"
-#include "FreeCamera.h"
+#include "Light.h"
+#include "Cube.h"
 #include "Floor.h"
+#include "ParentCamera.h"
+#include "PersonCamera.h"
 #include "Skybox.h"
 #include "glm/detail/type_mat.hpp"
 #include <GL/glew.h>
@@ -17,8 +20,9 @@ using namespace std;
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
-//Camera camera;
-FreeCamera camera;
+ParentCamera *camera;
+Camera freeCamera;
+PersonCamera personCamera;
 int lastX = SCREEN_WIDTH / 2;
 int lastY = SCREEN_HEIGHT / 2;
 bool firstMouse = true;
@@ -52,7 +56,7 @@ void mouse_callback(GLFWwindow *window, double xposIn, double yposIn)
     lastX = xpos; // updates the last x position for the next frame
     lastY = ypos; // updates the last y position for the next frame
 
-    camera.ProcessMouseMovement(xoffset, yoffset);
+    camera->ProcessMouseMovement(xoffset, yoffset);
 }
 
 // handled by the glfw callback function
@@ -64,32 +68,50 @@ void input_callback(GLFWwindow *window)
     }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        camera.processInput(FORWARD, deltaTime);
+        camera->processInput(Camera::FORWARD, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
-        camera.processInput(BACKWARD, deltaTime);
+        camera->processInput(Camera::BACKWARD, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
     {
-        camera.processInput(LEFT, deltaTime);
+        camera->processInput(Camera::LEFT, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {
-        camera.processInput(RIGHT, deltaTime);
+        camera->processInput(Camera::RIGHT, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
     {
-        camera.processInput(UP, deltaTime);
+        camera->processInput(Camera::UP, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
     {
-        camera.processInput(DOWN, deltaTime);
+        camera->processInput(Camera::DOWN, deltaTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+    {
+        camera = &freeCamera;
+    }
+    if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+    {
+        camera = &personCamera;
+    }
+}
+
+void checkOpenGLError()
+{
+    GLenum err = glGetError();
+    if (err != GL_NO_ERROR)
+    {
+        std::cerr << "OpenGL Error: " << err << std::endl;
     }
 }
 
 int main()
 {
+    camera = &personCamera;
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,
                    3); // Set the major version of the OpenGL context to 3
@@ -123,6 +145,8 @@ int main()
 
     Skybox skybox;
     Floor floor;
+    Cube cube;
+    Light light;
 
     while (!glfwWindowShouldClose(window))
     {
@@ -136,13 +160,15 @@ int main()
 
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 projection = glm::perspective(
-            camera.fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
+            camera->fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
             10000.0f);
-        glm::mat4 view = camera.GetViewMatrix();
+        glm::mat4 view = camera->GetViewMatrix();
 
-        floor.use(model, view, projection);
+        floor.use(model, view, projection); 
         skybox.use(view, projection);
-
+        cube.use(model, view, projection, light.position, light.color);
+        light.use(view, projection);
+        void checkOpenGLError();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
