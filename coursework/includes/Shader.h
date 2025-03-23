@@ -43,32 +43,32 @@ class Shader
         const char *fShaderCode = fragmentCode.c_str();
 
         unsigned int vertex,
-            fragment; // holds the id of the vertex and fragment shaders
+            fragment;
 
-        vertex = glCreateShader(GL_VERTEX_SHADER); // create the vertex shader
+        vertex = glCreateShader(GL_VERTEX_SHADER); 
         glShaderSource(vertex, 1, &vShaderCode,
-                       NULL);    // attach the vertex shader to the source code
-        glCompileShader(vertex); // compile the vertex shader
+                       NULL);    
+        glCompileShader(vertex);
         checkCompileErrors(vertex, "VERTEX");
 
         fragment =
-            glCreateShader(GL_FRAGMENT_SHADER); // create the fragment shader
+            glCreateShader(GL_FRAGMENT_SHADER); 
         glShaderSource(fragment, 1, &fShaderCode,
-                       NULL); // attach the fragment shader to the source code
-        glCompileShader(fragment); // compile the fragment shader
+                       NULL); 
+        glCompileShader(fragment); 
         checkCompileErrors(fragment, "FRAGMENT");
 
-        ID = glCreateProgram();     // create the program
-        glAttachShader(ID, vertex); // attach the vertex shader to the program
+        ID = glCreateProgram();     
+        glAttachShader(ID, vertex); 
         glAttachShader(ID,
-                       fragment); // attach the fragment shader to the program
-        glLinkProgram(ID);        // link the program
+                       fragment);
+        glLinkProgram(ID);     
         checkCompileErrors(ID, "PROGRAM");
 
-        glDeleteShader(vertex);   // delete the vertex shader
-        glDeleteShader(fragment); // delete the fragment shader
+        glDeleteShader(vertex);  
+        glDeleteShader(fragment); 
     }
-    // To activate the shader
+
     void use()
     {
         glUseProgram(ID);

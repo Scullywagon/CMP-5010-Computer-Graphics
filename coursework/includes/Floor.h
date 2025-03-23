@@ -1,3 +1,4 @@
+#include "Mesh.h"
 #include "Shader.h"
 #include "stb_image.h"
 
@@ -5,62 +6,75 @@ class Floor
 {
   public:
     unsigned int textureID;
-    unsigned int floorVAO, floorVBO, floorEBO;
+    unsigned int VAO, positionVBO, normalVBO, texCoordVBO, EBO;
     Shader floorShader;
 
     std::string texture = "";
 
     float textureScale = 1000.0f;
     // Large square floor extending to the horizon
-    float vertices[20] = {
-        // Positions            // Texture Coordinates (repeat 50x)
-        -2500.0f, 0.0f, -2500.0f, 0.0f,     0.0f,     // Bottom-left
-        2500.0f,  0.0f, -2500.0f, textureScale, 0.0f,     // Bottom-right
-        2500.0f,  0.0f, 2500.0f,  textureScale, textureScale, // Top-right
-        -2500.0f, 0.0f, 2500.0f,  0.0f, textureScale  // Top-left
+    float positions[12] = {
+        -2500.0f, 0.0f, -2500.0f, // Bottom-left
+        2500.0f,  0.0f, -2500.0f, // Bottom-right
+        2500.0f,  0.0f, 2500.0f,  // Top-right
+        -2500.0f, 0.0f, 2500.0f   // Top-left
     };
 
-    unsigned int indices[6] = {
+    float normals[12] = {
+        0.0f, 1.0f, 0.0f, // Normal for bottom-left
+        0.0f, 1.0f, 0.0f, // Normal for bottom-right
+        0.0f, 1.0f, 0.0f, // Normal for top-right
+        0.0f, 1.0f, 0.0f  // Normal for top-left
+    };
+
+    float texCoords[12] = {
+        0.0f,         0.0f,         // Bottom-left
+        textureScale, 0.0f,         // Bottom-right
+        textureScale, textureScale, // Top-right
+        0.0f,         textureScale  // Top-left
+    };
+
+    unsigned int dd[6] = {
         0, 1, 2, // First triangle
         2, 3, 0  // Second triangle
     };
 
-    Floor() : floorShader("shaders/floor.vs", "shaders/floor.fs")
+    std::vector<vertex> vertices = {
+        {{-2500.0f, 10.0f, -2500.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
+        {{2500.0f, 10.0f, -2500.0f}, {0.0f, 1.0f, 0.0f}, {textureScale, 0.0f}},
+        {{2500.0f, 10.0f, 2500.0f}, {0.0f, 1.0f, 0.0f}, {textureScale, textureScale}},
+        {{-2500.0f, 10.0f, 2500.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, textureScale}}
+        };
+
+    // Create a vector of indices
+    std::vector<unsigned int> indices = {
+        0, 1, 2, // First triangle
+        2, 3, 0  // Second triangle
+    };
+
+    Floor() : floorShader("shaders/cube.vs", "shaders/cube.fs")
     {
         textureID = loadTexture("grass.jpg");
-        glGenVertexArrays(1, &floorVAO);
-        glGenBuffers(1, &floorVBO);
-        glGenBuffers(1, &floorEBO);
 
-        glBindVertexArray(floorVAO);
-        glBindBuffer(GL_ARRAY_BUFFER, floorVBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices,
-                     GL_STATIC_DRAW);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, floorEBO);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
-                     GL_STATIC_DRAW);
-
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
-                              (void *)0);
-        glEnableVertexAttribArray(0);
-
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
-                              (void *)(3 * sizeof(float)));
-        glEnableVertexAttribArray(1);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindVertexArray(0);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 
-    void use(glm::mat4 model, glm::mat4 view, glm::mat4 projection)
+    void use(glm::mat4 model, glm::mat4 view, glm::mat4 projection,
+             glm::vec3 lightPos, glm::vec3 lightColor, glm::vec3 cameraPos)
     {
         floorShader.use();
         floorShader.setMat4("model", model);
         floorShader.setMat4("view", view);
         floorShader.setMat4("projection", projection);
+        floorShader.setVec3("light.position", lightPos);
+        floorShader.setVec3("light.color", lightColor);
+        floorShader.setVec3("cameraPos", cameraPos);
 
-        glBindVertexArray(floorVAO);
+        glBindVertexArray(VAO);
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textureID);
+        floorShader.setInt("material.diffuse", 0);
+        // flloorShader.setVec3("material.specular")
+        floorShader.setFloat("material.shininess", 32.0f);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
     }

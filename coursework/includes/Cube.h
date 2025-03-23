@@ -101,24 +101,22 @@ class Cube
     }
 
     void use(glm::mat4 model, glm::mat4 view, glm::mat4 projection,
-             glm::vec3 lightPos, glm::vec3 lightColor)
+             glm::vec3 lightPos, glm::vec3 lightColor, glm::vec3 cameraPos)
     {
         cubeShader.use();
         cubeShader.setMat4("model", model);
         cubeShader.setMat4("view", view);
         cubeShader.setMat4("projection", projection);
-        cubeShader.setVec3("objectColor", glm::vec3(1.0f, 0.5f, 1.0f));
-        cubeShader.setVec3("lightColor", lightColor);
-        cubeShader.setVec3("lightPos", lightPos);
+        cubeShader.setVec3("light.color", lightColor);
+        cubeShader.setVec3("light.position", lightPos);
+        cubeShader.setVec3("cameraPos", cameraPos);
 
         // Bind texture
+        glBindVertexArray(VAO);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textureID);
-        cubeShader.setInt(
-            "texture1",
-            0); // Assuming your shader has a uniform sampler2D named "texture1"
-
-        glBindVertexArray(VAO);
+        cubeShader.setInt("material.diffuse", 0);
+        cubeShader.setFloat("material.shininess", 1032.0f);
         glDrawArrays(GL_TRIANGLES, 0, 36);
         glBindVertexArray(0);
     }

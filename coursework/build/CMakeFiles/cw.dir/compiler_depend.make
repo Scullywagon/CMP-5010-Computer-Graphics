@@ -844,6 +844,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Cube.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Mesh.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/ParentCamera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h \
@@ -1201,6 +1202,8 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/stdarg.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/serializeintrin.h:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Mesh.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/rdseedintrin.h:
 
