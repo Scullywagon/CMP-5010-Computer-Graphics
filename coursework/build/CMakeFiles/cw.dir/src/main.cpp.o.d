@@ -434,6 +434,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/strings.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/type_ptr.inl \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Cube.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Mesh.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h \
   /usr/local/include/GL/glew.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
@@ -978,7 +979,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/stb_image.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Mesh.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h \
   /usr/local/include/GLFW/glfw3.h /usr/local/include/assimp/Importer.hpp \

@@ -1,3 +1,4 @@
+#include "Mesh.h"
 #include "Shader.h"
 #include "stb_image.h"
 #include <glm/glm.hpp>
@@ -6,98 +7,143 @@
 class Cube
 {
   public:
-    unsigned int VAO, VBO, textureID;
+    unsigned int textureID;
     Shader cubeShader;
+
+    Mesh *mesh;
+    texture tex;
 
     // Vertices for each face of the cube (Position, Normal, and Texture
     // Coordinates)
-    float vertices[288] = {
-        // Front face (2 triangles)
-        -5.0f, -5.0f, -5.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, // Bottom-left
-        5.0f, -5.0f, -5.0f, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f,  // Bottom-right
-        5.0f, 5.0f, -5.0f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f,   // Top-right
+    float size = 10.0f;                  // Size of the cube
+    glm::vec3 center = glm::vec3(0.0f, 5.0f, 0.0f); // Center of the cube
 
-        -5.0f, -5.0f, -5.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, // Bottom-left
-        5.0f, 5.0f, -5.0f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f,   // Top-right
-        -5.0f, 5.0f, -5.0f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f,  // Top-left
-
-        // Back face (2 triangles)
-        -5.0f, -5.0f, 5.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // Bottom-left
-        5.0f, -5.0f, 5.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f,  // Bottom-right
-        5.0f, 5.0f, 5.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,   // Top-right
-
-        -5.0f, -5.0f, 5.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // Bottom-left
-        5.0f, 5.0f, 5.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,   // Top-right
-        -5.0f, 5.0f, 5.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,  // Top-left
-
-        // Left face (2 triangles)
-        -5.0f, 5.0f, 5.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f,   // Top-left
-        -5.0f, 5.0f, -5.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f,  // Bottom-left
-        -5.0f, -5.0f, -5.0f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // Bottom-right
-
-        -5.0f, -5.0f, -5.0f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // Bottom-right
-        -5.0f, -5.0f, 5.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f,  // Top-right
-        -5.0f, 5.0f, 5.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f,   // Top-left
-
-        // Right face (2 triangles)
-        5.0f, 5.0f, 5.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,   // Top-left
-        5.0f, 5.0f, -5.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,  // Bottom-left
-        5.0f, -5.0f, -5.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // Bottom-right
-
-        5.0f, -5.0f, -5.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // Bottom-right
-        5.0f, -5.0f, 5.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f,  // Top-right
-        5.0f, 5.0f, 5.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,   // Top-left
-
-        // Bottom face (2 triangles)
-        -5.0f, -5.0f, -5.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, // Bottom-left
-        5.0f, -5.0f, -5.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f,  // Bottom-right
-        5.0f, -5.0f, 5.0f, 0.0f, -1.0f, 0.0f, 1.0f, 1.0f,   // Top-right
-
-        -5.0f, -5.0f, -5.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, // Bottom-left
-        5.0f, -5.0f, 5.0f, 0.0f, -1.0f, 0.0f, 1.0f, 1.0f,   // Top-right
-        -5.0f, -5.0f, 5.0f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f,  // Top-left
-
-        // Top face (2 triangles)
-        -5.0f, 5.0f, -5.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, // Bottom-left
-        5.0f, 5.0f, -5.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,  // Bottom-right
-        5.0f, 5.0f, 5.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,   // Top-right
-
-        -5.0f, 5.0f, -5.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, // Bottom-left
-        5.0f, 5.0f, 5.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,   // Top-right
-        -5.0f, 5.0f, 5.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f   // Top-left
+    // Define the normals for the cube faces (one for each face)
+    std::vector<glm::vec3> normals = {
+        glm::vec3(0.0f, 0.0f, -1.0f), // Front
+        glm::vec3(0.0f, 0.0f, 1.0f),  // Back
+        glm::vec3(-1.0f, 0.0f, 0.0f), // Left
+        glm::vec3(1.0f, 0.0f, 0.0f),  // Right
+        glm::vec3(0.0f, -1.0f, 0.0f), // Bottom
+        glm::vec3(0.0f, 1.0f, 0.0f)   // Top
     };
+
+    // Define the texture coordinates for the cube (each face has 4 corners)
+    std::vector<glm::vec2> texCoords = {
+        glm::vec2(0.0f, 0.0f), // Bottom-left
+        glm::vec2(1.0f, 0.0f), // Bottom-right
+        glm::vec2(1.0f, 1.0f), // Top-right
+        glm::vec2(0.0f, 1.0f)  // Top-left
+    };
+
+    // Define the 12 triangles (2 per face)
+    std::vector<unsigned int> indices = {
+        // Front face
+        0, 1, 2, 0, 2, 3,
+        // Back face
+        4, 5, 6, 4, 6, 7,
+        // Left face
+        8, 9, 10, 8, 10, 11,
+        // Right face
+        12, 13, 14, 12, 14, 15,
+        // Bottom face
+        16, 17, 18, 16, 18, 19,
+        // Top face
+        20, 21, 22, 20, 22, 23};
 
     Cube() : cubeShader("shaders/cube.vs", "shaders/cube.fs")
     {
-        // Generate and bind VAO, VBO
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBO);
-
-        glBindVertexArray(VAO);
-
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices,
-                     GL_STATIC_DRAW);
-
-        // Set up vertex attributes
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
-                              (void *)0); // Positions
-        glEnableVertexAttribArray(0);
-
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
-                              (void *)(3 * sizeof(float))); // Normals
-        glEnableVertexAttribArray(1);
-
-        glVertexAttribPointer(
-            2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
-            (void *)(6 * sizeof(float))); // Texture Coordinates
-        glEnableVertexAttribArray(2);
-
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindVertexArray(0);
-
-        // Load texture
         textureID = loadTexture("grass.jpg");
+        tex.id = textureID;
+        tex.type = "texture_diffuse";
+        tex.path = "grass.jpg";
+
+        std::vector<vertex> vertices = {
+            // Front face (normal = -Z)
+            {glm::vec3(center.x - size / 2, center.y - size / 2,
+                       center.z - size / 2),
+             normals[0], glm::vec2(0.0f, 0.0f)}, // Bottom-left-front
+            {glm::vec3(center.x + size / 2, center.y - size / 2,
+                       center.z - size / 2),
+             normals[0], glm::vec2(1.0f, 0.0f)}, // Bottom-right-front
+            {glm::vec3(center.x + size / 2, center.y + size / 2,
+                       center.z - size / 2),
+             normals[0], glm::vec2(1.0f, 1.0f)}, // Top-right-front
+            {glm::vec3(center.x - size / 2, center.y + size / 2,
+                       center.z - size / 2),
+             normals[0], glm::vec2(0.0f, 1.0f)}, // Top-left-front
+
+            // Back face (normal = +Z)
+            {glm::vec3(center.x - size / 2, center.y - size / 2,
+                       center.z + size / 2),
+             normals[1], glm::vec2(0.0f, 0.0f)}, // Bottom-left-back
+            {glm::vec3(center.x + size / 2, center.y - size / 2,
+                       center.z + size / 2),
+             normals[1], glm::vec2(1.0f, 0.0f)}, // Bottom-right-back
+            {glm::vec3(center.x + size / 2, center.y + size / 2,
+                       center.z + size / 2),
+             normals[1], glm::vec2(1.0f, 1.0f)}, // Top-right-back
+            {glm::vec3(center.x - size / 2, center.y + size / 2,
+                       center.z + size / 2),
+             normals[1], glm::vec2(0.0f, 1.0f)}, // Top-left-back
+
+            // Left face (normal = -X)
+            {glm::vec3(center.x - size / 2, center.y - size / 2,
+                       center.z - size / 2),
+             normals[2], glm::vec2(0.0f, 0.0f)}, // Bottom-left-left
+            {glm::vec3(center.x - size / 2, center.y - size / 2,
+                       center.z + size / 2),
+             normals[2], glm::vec2(1.0f, 0.0f)}, // Bottom-right-left
+            {glm::vec3(center.x - size / 2, center.y + size / 2,
+                       center.z + size / 2),
+             normals[2], glm::vec2(1.0f, 1.0f)}, // Top-right-left
+            {glm::vec3(center.x - size / 2, center.y + size / 2,
+                       center.z - size / 2),
+             normals[2], glm::vec2(0.0f, 1.0f)}, // Top-left-left
+
+            // Right face (normal = +X)
+            {glm::vec3(center.x + size / 2, center.y - size / 2,
+                       center.z - size / 2),
+             normals[3], glm::vec2(0.0f, 0.0f)}, // Bottom-left-right
+            {glm::vec3(center.x + size / 2, center.y - size / 2,
+                       center.z + size / 2),
+             normals[3], glm::vec2(1.0f, 0.0f)}, // Bottom-right-right
+            {glm::vec3(center.x + size / 2, center.y + size / 2,
+                       center.z + size / 2),
+             normals[3], glm::vec2(1.0f, 1.0f)}, // Top-right-right
+            {glm::vec3(center.x + size / 2, center.y + size / 2,
+                       center.z - size / 2),
+             normals[3], glm::vec2(0.0f, 1.0f)}, // Top-left-right
+
+            // Bottom face (normal = -Y)
+            {glm::vec3(center.x - size / 2, center.y - size / 2,
+                       center.z - size / 2),
+             normals[4], glm::vec2(0.0f, 0.0f)}, // Bottom-left-bottom
+            {glm::vec3(center.x + size / 2, center.y - size / 2,
+                       center.z - size / 2),
+             normals[4], glm::vec2(1.0f, 0.0f)}, // Bottom-right-bottom
+            {glm::vec3(center.x + size / 2, center.y - size / 2,
+                       center.z + size / 2),
+             normals[4], glm::vec2(1.0f, 1.0f)}, // Top-right-bottom
+            {glm::vec3(center.x - size / 2, center.y - size / 2,
+                       center.z + size / 2),
+             normals[4], glm::vec2(0.0f, 1.0f)}, // Top-left-bottom
+
+            // Top face (normal = +Y)
+            {glm::vec3(center.x - size / 2, center.y + size / 2,
+                       center.z - size / 2),
+             normals[5], glm::vec2(0.0f, 0.0f)}, // Bottom-left-top
+            {glm::vec3(center.x + size / 2, center.y + size / 2,
+                       center.z - size / 2),
+             normals[5], glm::vec2(1.0f, 0.0f)}, // Bottom-right-top
+            {glm::vec3(center.x + size / 2, center.y + size / 2,
+                       center.z + size / 2),
+             normals[5], glm::vec2(1.0f, 1.0f)}, // Top-right-top
+            {glm::vec3(center.x - size / 2, center.y + size / 2,
+                       center.z + size / 2),
+             normals[5], glm::vec2(0.0f, 1.0f)} // Top-left-top
+        };
+        mesh = new Mesh(vertices, indices, tex);
     }
 
     void use(glm::mat4 model, glm::mat4 view, glm::mat4 projection,
@@ -111,14 +157,7 @@ class Cube
         cubeShader.setVec3("light.position", lightPos);
         cubeShader.setVec3("cameraPos", cameraPos);
 
-        // Bind texture
-        glBindVertexArray(VAO);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, textureID);
-        cubeShader.setInt("material.diffuse", 0);
-        cubeShader.setFloat("material.shininess", 1032.0f);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-        glBindVertexArray(0);
+        mesh->draw(cubeShader);
     }
 
   private:

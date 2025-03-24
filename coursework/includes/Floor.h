@@ -6,44 +6,20 @@ class Floor
 {
   public:
     unsigned int textureID;
-    unsigned int VAO, positionVBO, normalVBO, texCoordVBO, EBO;
     Shader floorShader;
+    Mesh *mesh;
 
-    std::string texture = "";
+    texture tex;
 
     float textureScale = 1000.0f;
+    float floorSize = 2500.0f;
     // Large square floor extending to the horizon
-    float positions[12] = {
-        -2500.0f, 0.0f, -2500.0f, // Bottom-left
-        2500.0f,  0.0f, -2500.0f, // Bottom-right
-        2500.0f,  0.0f, 2500.0f,  // Top-right
-        -2500.0f, 0.0f, 2500.0f   // Top-left
-    };
-
-    float normals[12] = {
-        0.0f, 1.0f, 0.0f, // Normal for bottom-left
-        0.0f, 1.0f, 0.0f, // Normal for bottom-right
-        0.0f, 1.0f, 0.0f, // Normal for top-right
-        0.0f, 1.0f, 0.0f  // Normal for top-left
-    };
-
-    float texCoords[12] = {
-        0.0f,         0.0f,         // Bottom-left
-        textureScale, 0.0f,         // Bottom-right
-        textureScale, textureScale, // Top-right
-        0.0f,         textureScale  // Top-left
-    };
-
-    unsigned int dd[6] = {
-        0, 1, 2, // First triangle
-        2, 3, 0  // Second triangle
-    };
 
     std::vector<vertex> vertices = {
-        {{-2500.0f, 10.0f, -2500.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
-        {{2500.0f, 10.0f, -2500.0f}, {0.0f, 1.0f, 0.0f}, {textureScale, 0.0f}},
-        {{2500.0f, 10.0f, 2500.0f}, {0.0f, 1.0f, 0.0f}, {textureScale, textureScale}},
-        {{-2500.0f, 10.0f, 2500.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, textureScale}}
+        {{-floorSize, 0.0f, -floorSize}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
+        {{floorSize, 0.0f, -floorSize}, {0.0f, 1.0f, 0.0f}, {textureScale, 0.0f}},
+        {{floorSize, 0.0f, floorSize}, {0.0f, 1.0f, 0.0f}, {textureScale, textureScale}},
+        {{-floorSize, 0.0f, floorSize}, {0.0f, 1.0f, 0.0f}, {0.0f, textureScale}}
         };
 
     // Create a vector of indices
@@ -56,6 +32,11 @@ class Floor
     {
         textureID = loadTexture("grass.jpg");
 
+        tex.id = textureID;
+        tex.type = "texture_diffuse";
+        tex.path = "grass.jpg";
+
+        mesh = new Mesh(vertices, indices, tex);
     }
 
     void use(glm::mat4 model, glm::mat4 view, glm::mat4 projection,
@@ -69,14 +50,7 @@ class Floor
         floorShader.setVec3("light.color", lightColor);
         floorShader.setVec3("cameraPos", cameraPos);
 
-        glBindVertexArray(VAO);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, textureID);
-        floorShader.setInt("material.diffuse", 0);
-        // flloorShader.setVec3("material.specular")
-        floorShader.setFloat("material.shininess", 32.0f);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        glBindVertexArray(0);
+        mesh->draw(floorShader);
     }
 
   private:

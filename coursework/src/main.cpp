@@ -33,59 +33,7 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
-///////////
 
-std::vector<vertex> vertices = {
-    // Position              // Normal             // TexCoords
-    {{-2500.0f, 10.0f, -2500.0f},
-     {0.0f, 1.0f, 0.0f},
-     {0.0f, 0.0f}}, // Bottom-left
-    {{2500.0f, 10.0f, -2500.0f},
-     {0.0f, 1.0f, 0.0f},
-     {1.0f, 0.0f}}, // Bottom-right
-    {{2500.0f, 10.0f, 2500.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 1.0f}}, // Top-right
-    {{-2500.0f, 10.0f, 2500.0f}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f}} // Top-left
-};
-
-// Create a vector of indices
-std::vector<unsigned int> indices = {
-    0, 1, 2, // First triangle
-    2, 3, 0  // Second triangle
-};
-
-unsigned int loadTexture(std::string texture)
-{
-    unsigned int textureID;
-    glGenTextures(1, &textureID);
-    glBindTexture(GL_TEXTURE_2D, textureID);
-
-    int with, height, nrChannels;
-    unsigned char *data =
-        stbi_load(texture.c_str(), &with, &height, &nrChannels, 0);
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, with, height, 0, GL_RGB,
-                     GL_UNSIGNED_BYTE, data);
-        stbi_image_free(data);
-    }
-    else
-    {
-        std::cout << "Failed to load texture" << std::endl;
-    }
-    glGenerateMipmap(GL_TEXTURE_2D);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                    GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-    stbi_image_free(data);
-
-    return textureID;
-}
-
-////////////
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
@@ -205,12 +153,6 @@ int main()
     Light light;
 
     Shader shader("shaders/cube.vs", "shaders/cube.fs");
-    unsigned int textureID = loadTexture("grass.jpg");
-    texture tex;
-    tex.id = textureID;
-    tex.type = "texture_diffuse";
-    tex.path = "grass.jpg";
-    Mesh mesh(vertices, indices, tex);
 
     while (!glfwWindowShouldClose(window))
     {
@@ -234,13 +176,6 @@ int main()
         skybox.use(view, projection);
         cube.use(model, view, projection, light.position, lightCol,
                  camera->Position);
-        shader.use();
-        shader.setMat4("model", model);
-        shader.setMat4("view", view);
-        shader.setMat4("projection", projection);
-        shader.setVec3("light.position", light.position);
-        shader.setVec3("light.color", lightCol);
-        mesh.draw(shader);
 
         void checkOpenGLError();
 
