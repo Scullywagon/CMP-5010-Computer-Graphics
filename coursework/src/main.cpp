@@ -154,8 +154,18 @@ int main()
                {0.6f, 0.6f, 0.6f},
                {0.7f, 0.7f, 0.7f},
                {0.7f, 0.7f, 0.7f}};
+    /*
+    Light light = {{50.0f, 50.0f, 50.f},
+                   {0.0f, 0.0f, 0.0f},
+                   {1.0f, 0.0f, 0.0f},
+                   {1.0f, 0.0f, 0.0f},
+                   1.0f,
+                   0.0002f,
+                   0.00016f};
+    */
 
     Model mod("maple_tree/maple_tree.obj");
+    mod.scale(0.2f);
     Shader shader("shaders/world.vs.glsl", "shaders/world.fs.glsl");
 
     while (!glfwWindowShouldClose(window))
@@ -186,8 +196,20 @@ int main()
         shader.setVec3("sunSpecular", sun.specular);
         shader.setVec3("cameraPos", camera->Position);
 
+        /*
+        shader.setVec3("lights[0].position", light.position);
+        shader.setVec3("lights[0].ambient", light.ambient);
+        shader.setVec3("lights[0].diffuse", light.diffuse);
+        shader.setVec3("lights[0].specular", light.specular);
+        shader.setFloat("lights[0].constant", light.constant);
+        shader.setFloat("lights[0].linear", light.linear);
+        shader.setFloat("lights[0].quadratic", light.quadratic);
+        shader.setInt("numLights", 1);
+        */
+
         floor.use(shader);
         mod.Draw(shader);
+        shader.setMat4("model", model);
 
         void checkOpenGLError();
 
