@@ -1,31 +1,78 @@
 #version 330 core
 out vec4 FragColor;
 
+vec3 calculateSunlight(vec3 texColor, vec3 norm);
+
 in vec3 FragPos; 
 in vec3 Normal; 
 in vec2 TexCoords; 
 
-uniform vec3 lightPos;  
-uniform vec3 lightColor;  
-uniform vec3 objectColor;  
+struct TexturedMaterial 
+{
+    sampler2D diffuse;
+    sampler2D normal;
+  //  sampler2D specular;
+   // sampler2D height;
+};
 
-uniform sampler2D texture1; 
+struct UntexturedMaterial 
+{
+    sampler2D diffuse;
+    vec3 specular;
+    float shininess;
+};
+
+struct Light 
+{
+    vec3 position;
+
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+
+    float constant;
+    float linear;
+    float quadratic;
+};
+
+uniform vec3 sunDir;
+uniform vec3 sunAmbient;
+uniform vec3 sunDiffuse;
+uniform vec3 sunSpecular;
+
+uniform vec3 cameraPos;
+
+uniform bool isTextured = false;
+uniform UntexturedMaterial material;
+
+uniform Light lights[24];
+uniform int numLights;
 
 void main()
 {
-    vec3 texColor = texture(texture1, TexCoords).rgb; 
+    vec3 norm = normalize(Normal);
+    vec3 texColor = texture(material.diffuse, TexCoords).rgb;
 
-    // Ambient lighting
-    float ambientStrength = 0.3;
-    vec3 ambient = ambientStrength * lightColor * texColor;
 
-    // Diffuse lighting
-    vec3 norm = normalize(Normal); 
-    vec3 lightDir = normalize(lightPos - FragPos); 
-    float diff = max(dot(norm, lightDir), 0.0); 
-    vec3 diffuse = diff * lightColor * texColor; // Apply texture to diffuse lighting
+    vec3 result = calculateSunlight(texColor, norm);
+    FragColor = vec4(result, 1.0);
+}
 
-    // Final result
-    vec3 finalColor = ambient + diffuse;
-    FragColor = vec4(finalColor, 1.0); // Ensure alpha is explicitly set to 1.0
+vec3 calculateSunlight(vec3 texColor, vec3 norm)
+{
+    vec3 ambient = sunAmbient * texColor;
+
+    // diffuse for sun
+    vec3 lightDir = normalize(-sunDir);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = sunDiffuse * diff * texColor;
+
+    // specular for sun
+    vec3 viewDir = normalize(cameraPos - FragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+    vec3 specular = sunSpecular * spec * texColor;
+
+    vec3 result = specular + diffuse + ambient;
+    return result;
 }

@@ -979,9 +979,8 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/stb_image.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h \
-  /usr/local/include/GLFW/glfw3.h /usr/local/include/assimp/Importer.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Model.h \
+  /usr/local/include/assimp/Importer.hpp \
   /usr/local/include/assimp/types.h /usr/local/include/assimp/defs.h \
   /usr/local/include/assimp/config.h /usr/local/include/assimp/vector2.h \
   /usr/local/include/assimp/vector3.h /usr/local/include/assimp/color4.h \
@@ -995,7 +994,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /usr/local/include/assimp/matrix4x4.inl \
   /usr/local/include/assimp/MathFunctions.h \
   /usr/local/include/assimp/quaternion.inl \
-  /usr/local/include/assimp/postprocess.h \
   /usr/local/include/assimp/scene.h /usr/local/include/assimp/texture.h \
   /usr/local/include/assimp/./Compiler/pushpack1.h \
   /usr/local/include/assimp/./Compiler/poppack1.h \
@@ -1004,4 +1002,10 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /usr/local/include/assimp/light.h /usr/local/include/assimp/camera.h \
   /usr/local/include/assimp/material.h \
   /usr/local/include/assimp/material.inl \
-  /usr/local/include/assimp/anim.h /usr/local/include/assimp/metadata.h
+  /usr/local/include/assimp/anim.h /usr/local/include/assimp/metadata.h \
+  /usr/local/include/assimp/postprocess.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/map \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h \
+  /usr/local/include/GLFW/glfw3.h

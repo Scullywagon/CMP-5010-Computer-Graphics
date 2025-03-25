@@ -3,6 +3,7 @@
 #include "Floor.h"
 #include "Light.h"
 #include "Mesh.h"
+#include "Model.h"
 #include "ParentCamera.h"
 #include "PersonCamera.h"
 #include "Skybox.h"
@@ -32,7 +33,6 @@ bool firstMouse = true;
 
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
-
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
@@ -150,9 +150,13 @@ int main()
     Skybox skybox;
     Floor floor;
     Cube cube;
-    Light light;
+    Sun sun = {{0.6f, -0.6f, 0.4f},
+               {0.6f, 0.6f, 0.6f},
+               {0.7f, 0.7f, 0.7f},
+               {0.7f, 0.7f, 0.7f}};
 
-    Shader shader("shaders/cube.vs", "shaders/cube.fs");
+    Model mod("maple_tree/maple_tree.obj");
+    Shader shader("shaders/world.vs.glsl", "shaders/world.fs.glsl");
 
     while (!glfwWindowShouldClose(window))
     {
@@ -162,7 +166,7 @@ int main()
         input_callback(window);
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // Set the color of the window
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear the window
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 projection = glm::perspective(
@@ -170,12 +174,20 @@ int main()
             10000.0f);
         glm::mat4 view = camera->GetViewMatrix();
 
-        glm::vec3 lightCol = light.getColor();
-        floor.use(model, view, projection, light.position, lightCol,
-                  camera->Position);
         skybox.use(view, projection);
-        cube.use(model, view, projection, light.position, lightCol,
-                 camera->Position);
+
+        shader.use();
+        shader.setMat4("projection", projection);
+        shader.setMat4("view", view);
+        shader.setMat4("model", model);
+        shader.setVec3("sunDir", sun.direction);
+        shader.setVec3("sunAmbient", sun.ambient);
+        shader.setVec3("sunDiffuse", sun.diffuse);
+        shader.setVec3("sunSpecular", sun.specular);
+        shader.setVec3("cameraPos", camera->Position);
+
+        floor.use(shader);
+        mod.Draw(shader);
 
         void checkOpenGLError();
 

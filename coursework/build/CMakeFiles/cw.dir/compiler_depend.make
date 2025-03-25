@@ -415,6 +415,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__thread/poll_with_backoff.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__thread/timed_backoff_policy.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__threading_support \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tuple \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/add_const.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/add_cv.h \
@@ -592,6 +593,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/locale \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/locale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/math.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/memory \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/mutex \
@@ -845,6 +847,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Mesh.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Model.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/ParentCamera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h \
@@ -1237,9 +1240,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/float.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/malloc/_malloc.h:
-
-/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/f16cintrin.h:
+/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/enqcmdintrin.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/clwbintrin.h:
 
@@ -1799,6 +1800,8 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__chrono/high_resolution_clock.h:
 
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_aggregate.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_types/_wctype_t.h:
@@ -1808,6 +1811,8 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__functional/operations.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/avx512ifmavlintrin.h:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Model.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/has_virtual_destructor.h:
 
@@ -1888,6 +1893,8 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__ranges/subrange.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__ranges/size.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/map:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__ranges/enable_view.h:
 
@@ -2092,8 +2099,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__functional/perfect_forward.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__functional/not_fn.h:
-
-/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/enqcmdintrin.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/tuple:
 
@@ -2954,6 +2959,10 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/iter_swap.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sched.h:
+
+/Library/Developer/CommandLineTools/usr/lib/clang/14.0.3/include/f16cintrin.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/malloc/_malloc.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/ranges_replace.h:
 

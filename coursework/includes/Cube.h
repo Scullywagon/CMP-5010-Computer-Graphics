@@ -11,7 +11,7 @@ class Cube
     Shader cubeShader;
 
     Mesh *mesh;
-    texture tex;
+    Texture tex;
 
     // Vertices for each face of the cube (Position, Normal, and Texture
     // Coordinates)
@@ -51,6 +51,8 @@ class Cube
         // Top face
         20, 21, 22, 20, 22, 23};
 
+    std::vector<Texture> textures;
+
     Cube() : cubeShader("shaders/cube.vs", "shaders/cube.fs")
     {
         textureID = loadTexture("grass.jpg");
@@ -58,7 +60,9 @@ class Cube
         tex.type = "texture_diffuse";
         tex.path = "grass.jpg";
 
-        std::vector<vertex> vertices = {
+        textures.push_back(tex);
+
+        std::vector<Vertex> vertices = {
             // Front face (normal = -Z)
             {glm::vec3(center.x - size / 2, center.y - size / 2,
                        center.z - size / 2),
@@ -143,7 +147,7 @@ class Cube
                        center.z + size / 2),
              normals[5], glm::vec2(0.0f, 1.0f)} // Top-left-top
         };
-        mesh = new Mesh(vertices, indices, tex);
+        mesh = new Mesh(vertices, indices, textures);
     }
 
     void use(glm::mat4 model, glm::mat4 view, glm::mat4 projection,
@@ -157,7 +161,7 @@ class Cube
         cubeShader.setVec3("light.position", lightPos);
         cubeShader.setVec3("cameraPos", cameraPos);
 
-        mesh->draw(cubeShader);
+        mesh->Draw(cubeShader);
     }
 
   private:

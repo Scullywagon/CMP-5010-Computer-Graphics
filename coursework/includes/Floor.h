@@ -6,16 +6,17 @@ class Floor
 {
   public:
     unsigned int textureID;
-    Shader floorShader;
     Mesh *mesh;
 
-    texture tex;
+    Texture tex;
 
     float textureScale = 1000.0f;
     float floorSize = 2500.0f;
     // Large square floor extending to the horizon
 
-    std::vector<vertex> vertices = {
+    std::vector<Texture> textures;
+
+    std::vector<Vertex> vertices = {
         {{-floorSize, 0.0f, -floorSize}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
         {{floorSize, 0.0f, -floorSize}, {0.0f, 1.0f, 0.0f}, {textureScale, 0.0f}},
         {{floorSize, 0.0f, floorSize}, {0.0f, 1.0f, 0.0f}, {textureScale, textureScale}},
@@ -28,7 +29,7 @@ class Floor
         2, 3, 0  // Second triangle
     };
 
-    Floor() : floorShader("shaders/cube.vs", "shaders/cube.fs")
+    Floor()
     {
         textureID = loadTexture("grass.jpg");
 
@@ -36,21 +37,14 @@ class Floor
         tex.type = "texture_diffuse";
         tex.path = "grass.jpg";
 
-        mesh = new Mesh(vertices, indices, tex);
+        textures.push_back(tex);
+
+        mesh = new Mesh(vertices, indices, textures);
     }
 
-    void use(glm::mat4 model, glm::mat4 view, glm::mat4 projection,
-             glm::vec3 lightPos, glm::vec3 lightColor, glm::vec3 cameraPos)
+    void use(Shader &shader)
     {
-        floorShader.use();
-        floorShader.setMat4("model", model);
-        floorShader.setMat4("view", view);
-        floorShader.setMat4("projection", projection);
-        floorShader.setVec3("light.position", lightPos);
-        floorShader.setVec3("light.color", lightColor);
-        floorShader.setVec3("cameraPos", cameraPos);
-
-        mesh->draw(floorShader);
+        mesh->Draw(shader);
     }
 
   private:
