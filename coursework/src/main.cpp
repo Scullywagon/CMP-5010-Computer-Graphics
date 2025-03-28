@@ -1,5 +1,6 @@
 #include "Camera.h"
 #include "Cube.h"
+#include "FerrisWheel.h"
 #include "Floor.h"
 #include "Light.h"
 #include "Mesh.h"
@@ -156,25 +157,10 @@ int main()
                {0.5f, 0.5f, 0.5f},
                {0.8f, 0.8f, 0.8f},
                {0.6f, 0.6f, 0.6f}};
-    /*
-    Light light = {{50.0f, 50.0f, 50.f},
-                   {0.0f, 0.0f, 0.0f},
-                   {1.0f, 0.0f, 0.0f},
-                   {1.0f, 0.0f, 0.0f},
-                   1.0f,
-                   0.0002f,
-                   0.00016f};
-    */
 
-    Model mod("assets/wheel2/wheel2.obj");
-    mod.translate(glm::vec3(0.0f, 12.7f, 0.0f));
-    Model mod2("assets/Cart/1.obj");
-    glm::vec3 pos = glm::vec3(0.0f, 2.7f, 0.0f);
-    mod2.translate(pos);
+    FerrisWheel ferrisWheel;
+
     Shader shader("shaders/world.vs.glsl", "shaders/world.fs.glsl");
-
-    glm::vec3 center(0.0f, 12.7f, 0.0f);
-    glm::vec3 initialOffset(0.0f, 10.0f, 0.0f); // Radius = 10.0f
 
     glm::mat4 rotationMatrix = glm::mat4(1.0f);
     while (!glfwWindowShouldClose(window))
@@ -206,9 +192,17 @@ int main()
         shader.setVec3("cameraPos", camera->Position);
 
         floor.use(shader);
+
+        ferrisWheel.draw(shader, model);
+        ferrisWheel.rotate(deltaTime);
+        /*
         mod.Draw(shader);
         shader.setMat4("model", model);
         mod2.Draw(shader);
+        shader.setMat4("model", model);
+        mod3.Draw(shader);
+        shader.setMat4("model", model);
+        base.Draw(shader);
         shader.setMat4("model", model);
 
         mod.rotate(0.1f, glm::vec3(1.0f, 0.0f, 0.0f));
@@ -218,11 +212,18 @@ int main()
 
         glm::vec3 newPos =
             glm::vec3(rotationMatrix * glm::vec4(initialOffset, 1.0f)) + center;
+        glm::vec3 newPos2 =
+            glm::vec3(rotationMatrix * glm::vec4(initialOffset2, 1.0f)) +
+            center;
 
         glm::vec3 tans = newPos - pos;
+        glm::vec3 tans2 = newPos2 - pos2;
         pos = newPos;
+        pos2 = newPos2;
 
         mod2.translate(tans);
+        mod3.translate(tans2);
+         */
 
         checkOpenGLError();
 

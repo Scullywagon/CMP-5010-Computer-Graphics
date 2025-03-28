@@ -77,10 +77,12 @@ class Mesh
             if (name == "texture_diffuse")
             {
                 shader.setInt(materialName + ".diffuse", i);
+                shader.setFloat(materialName + ".shininess", 300.0f);
             }
             else if (name == "texture_normal")
             {
                 shader.setInt(materialName + ".normal", i);
+                shader.setFloat(materialName + ".shininess", 400.0f);
             }
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }

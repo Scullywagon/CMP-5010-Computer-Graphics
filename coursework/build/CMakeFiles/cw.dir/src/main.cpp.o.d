@@ -395,9 +395,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/stl_bvector.h \
  /usr/include/c++/14.2.1/bits/vector.tcc \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/stb_image.h \
- /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
- /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
- /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Mesh.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/FerrisWheel.h \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Model.h \
  /usr/include/assimp/Importer.hpp /usr/include/assimp/types.h \
  /usr/include/assimp/defs.h /usr/include/assimp/config.h \
@@ -433,6 +431,10 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/stl_tree.h \
  /usr/include/c++/14.2.1/bits/stl_map.h \
  /usr/include/c++/14.2.1/bits/stl_multimap.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Mesh.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Model.h \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/ParentCamera.h \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h \
