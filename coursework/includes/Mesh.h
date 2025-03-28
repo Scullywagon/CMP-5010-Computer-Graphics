@@ -63,6 +63,12 @@ class Mesh
     // render the mesh
     void Draw(Shader &shader)
     {
+        string materialName = "material";
+        if (textures.size() > 1)
+        {
+            shader.setBool("isTextured", true);
+            materialName = "material2";
+        }
         for (unsigned int i = 0; i < textures.size(); i++)
         {
             glActiveTexture(GL_TEXTURE0 + i);
@@ -70,11 +76,11 @@ class Mesh
             string name = textures[i].type;
             if (name == "texture_diffuse")
             {
-                shader.setInt("material.diffuse", i);
+                shader.setInt(materialName + ".diffuse", i);
             }
             else if (name == "texture_normal")
             {
-                shader.setInt("material.normal", i);
+                shader.setInt(materialName + ".normal", i);
             }
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
@@ -88,6 +94,7 @@ class Mesh
         // always good practice to set everything back to defaults once
         // configured.
         glActiveTexture(GL_TEXTURE0);
+        shader.setBool("isTextured", false);
     }
 
   private:

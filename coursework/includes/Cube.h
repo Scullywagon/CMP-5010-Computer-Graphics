@@ -1,8 +1,8 @@
 #include "Mesh.h"
 #include "Shader.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 #include "stb_image.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 
 class Cube
 {
@@ -15,7 +15,7 @@ class Cube
 
     // Vertices for each face of the cube (Position, Normal, and Texture
     // Coordinates)
-    float size = 10.0f;                  // Size of the cube
+    float size = 10.0f;                             // Size of the cube
     glm::vec3 center = glm::vec3(0.0f, 5.0f, 0.0f); // Center of the cube
 
     // Define the normals for the cube faces (one for each face)

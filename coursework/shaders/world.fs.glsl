@@ -43,6 +43,7 @@ uniform vec3 cameraPos;
 
 uniform bool isTextured = false;
 uniform UntexturedMaterial material;
+uniform TexturedMaterial material2;
 
 uniform Light lights[24];
 uniform int numLights;
@@ -52,9 +53,18 @@ vec3 calculateGeneralLight(Light l, vec3 texColor, vec3 norm);
 
 void main()
 {
-    vec3 norm = normalize(Normal);
-    vec3 texColor = texture(material.diffuse, TexCoords).rgb;
-
+    vec3 texColor;
+    vec3 norm;
+    if (isTextured)
+    {
+        norm = normalize(texture(material2.normal, TexCoords).rgb * 2.0 - 1.0);
+        texColor = texture(material2.diffuse, TexCoords).rgb;
+    }
+    else
+    {
+        norm = normalize(Normal);
+        texColor = texture(material.diffuse, TexCoords).rgb;
+    }
 
     vec3 result = calculateSunlight(texColor, norm);
 

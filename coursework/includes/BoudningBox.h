@@ -1,8 +1,8 @@
 #ifndef BOUNDINGBOX_H
 #define BOUNDINGBOX_H
 
+#include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
-#include <glm/glm.hpp>
 
 class BoundingBox
 {
@@ -10,10 +10,13 @@ class BoundingBox
     glm::vec3 min;
     glm::vec3 max;
 
+    // generates the box from those values
     BoundingBox(glm::vec3 min, glm::vec3 max) : min(min), max(max)
     {
     }
 
+    // if its colliding then return false
+    // for the camera this will likely result in a normal calulation
     bool isColliding(BoundingBox &other)
     {
         if (max.x < other.min.x || min.x > other.max.x)

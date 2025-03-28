@@ -1,12 +1,13 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "stb_image.h"
 #include <assimp/Importer.hpp>
+#include <assimp/material.h>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <stb_image.h>
 
 #include "Mesh.h"
 #include "Shader.h"
@@ -25,14 +26,12 @@ unsigned int TextureFromFile(const char *path, const string &directory,
 class Model
 {
   public:
-    // model data
-    vector<Texture>
-        textures_loaded; // stores all the textures loaded so far, optimization
-                         // to make sure textures aren't loaded more than once.
+    vector<Texture> textures_loaded;
     vector<Mesh> meshes;
     string directory;
     bool gammaCorrection;
 
+    // for the rotaion and scaling of the model
     glm::mat4 modelMatrix = glm::mat4(1.0f);
 
     // constructor, expects a filepath to a 3D model.
@@ -45,14 +44,24 @@ class Model
     void Draw(Shader &shader)
     {
         shader.setMat4("model", modelMatrix);
-        //for (unsigned int i = 0; i < meshes.size(); i++)
-         //   meshes[i].Draw(shader);
-        meshes[1].Draw(shader);
+        for (unsigned int i = 0; i < meshes.size(); i++)
+            meshes[i].Draw(shader);
     }
 
+    // no clue if this is good
     void scale(float i)
     {
         modelMatrix = glm::scale(modelMatrix, glm::vec3(i, i, i));
+    }
+
+    void rotate(float angle, glm::vec3 axis)
+    {
+        modelMatrix = glm::rotate(modelMatrix, glm::radians(angle), axis);
+    }
+
+    void translate(glm::vec3 translation)
+    {
+        modelMatrix = glm::translate(modelMatrix, translation);
     }
 
   private:
@@ -187,7 +196,7 @@ class Model
                         specularMaps.end());
         // 3. normal maps
         std::vector<Texture> normalMaps = loadMaterialTextures(
-            material, aiTextureType_HEIGHT, "texture_normal");
+            material, aiTextureType_NORMALS, "texture_normal");
         textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
         // 4. height maps
         std::vector<Texture> heightMaps = loadMaterialTextures(
@@ -209,8 +218,8 @@ class Model
         {
             aiString str;
             mat->GetTexture(type, i, &str);
-            // check if texture was loaded before and if so, continue to next
-            // iteration: skip loading a new texture
+            std::cout << "Texture path: " << str.C_Str() << std::endl;
+
             bool skip = false;
             for (unsigned int j = 0; j < textures_loaded.size(); j++)
             {

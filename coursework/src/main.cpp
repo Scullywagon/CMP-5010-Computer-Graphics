@@ -13,6 +13,7 @@
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
+#include <cmath>
 #include <filesystem>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -24,9 +25,9 @@ using namespace std;
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
-ParentCamera *camera;
 Camera freeCamera;
 PersonCamera personCamera;
+ParentCamera *camera = &personCamera;
 int lastX = SCREEN_WIDTH / 2;
 int lastY = SCREEN_HEIGHT / 2;
 bool firstMouse = true;
@@ -123,6 +124,7 @@ int main()
                    3); // Set the minor version of the OpenGL context to 3
     glfwWindowHint(GLFW_OPENGL_PROFILE,
                    GLFW_OPENGL_CORE_PROFILE); // Set the OpenGL profile to core
+    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
 
     // Create windowed mode window and OpenGL context
     GLFWwindow *window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT,
@@ -150,10 +152,10 @@ int main()
     Skybox skybox;
     Floor floor;
     Cube cube;
-    Sun sun = {{0.6f, -0.6f, 0.4f},
-               {0.6f, 0.6f, 0.6f},
-               {0.7f, 0.7f, 0.7f},
-               {0.7f, 0.7f, 0.7f}};
+    Sun sun = {{-0.6f, -0.6f, 0.4f},
+               {0.5f, 0.5f, 0.5f},
+               {0.8f, 0.8f, 0.8f},
+               {0.6f, 0.6f, 0.6f}};
     /*
     Light light = {{50.0f, 50.0f, 50.f},
                    {0.0f, 0.0f, 0.0f},
@@ -164,10 +166,17 @@ int main()
                    0.00016f};
     */
 
-    Model mod("maple_tree/maple_tree.obj");
-    mod.scale(0.2f);
+    Model mod("assets/wheel2/wheel2.obj");
+    mod.translate(glm::vec3(0.0f, 12.7f, 0.0f));
+    Model mod2("assets/Cart/1.obj");
+    glm::vec3 pos = glm::vec3(0.0f, 2.7f, 0.0f);
+    mod2.translate(pos);
     Shader shader("shaders/world.vs.glsl", "shaders/world.fs.glsl");
 
+    glm::vec3 center(0.0f, 12.7f, 0.0f);
+    glm::vec3 initialOffset(0.0f, 10.0f, 0.0f); // Radius = 10.0f
+
+    glm::mat4 rotationMatrix = glm::mat4(1.0f);
     while (!glfwWindowShouldClose(window))
     {
         float currentFrame = glfwGetTime();
@@ -196,12 +205,26 @@ int main()
         shader.setVec3("sunSpecular", sun.specular);
         shader.setVec3("cameraPos", camera->Position);
 
-
         floor.use(shader);
         mod.Draw(shader);
         shader.setMat4("model", model);
+        mod2.Draw(shader);
+        shader.setMat4("model", model);
 
-        void checkOpenGLError();
+        mod.rotate(0.1f, glm::vec3(1.0f, 0.0f, 0.0f));
+
+        rotationMatrix = glm::rotate(rotationMatrix, glm::radians(0.1f),
+                                     glm::vec3(1.0f, 0.0f, 0.0f));
+
+        glm::vec3 newPos =
+            glm::vec3(rotationMatrix * glm::vec4(initialOffset, 1.0f)) + center;
+
+        glm::vec3 tans = newPos - pos;
+        pos = newPos;
+
+        mod2.translate(tans);
+
+        checkOpenGLError();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

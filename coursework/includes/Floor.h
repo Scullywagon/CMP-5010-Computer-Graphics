@@ -18,10 +18,15 @@ class Floor
 
     std::vector<Vertex> vertices = {
         {{-floorSize, 0.0f, -floorSize}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}},
-        {{floorSize, 0.0f, -floorSize}, {0.0f, 1.0f, 0.0f}, {textureScale, 0.0f}},
-        {{floorSize, 0.0f, floorSize}, {0.0f, 1.0f, 0.0f}, {textureScale, textureScale}},
-        {{-floorSize, 0.0f, floorSize}, {0.0f, 1.0f, 0.0f}, {0.0f, textureScale}}
-        };
+        {{floorSize, 0.0f, -floorSize},
+         {0.0f, 1.0f, 0.0f},
+         {textureScale, 0.0f}},
+        {{floorSize, 0.0f, floorSize},
+         {0.0f, 1.0f, 0.0f},
+         {textureScale, textureScale}},
+        {{-floorSize, 0.0f, floorSize},
+         {0.0f, 1.0f, 0.0f},
+         {0.0f, textureScale}}};
 
     // Create a vector of indices
     std::vector<unsigned int> indices = {
@@ -61,7 +66,6 @@ class Floor
         {
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, with, height, 0, GL_RGB,
                          GL_UNSIGNED_BYTE, data);
-            stbi_image_free(data);
         }
         else
         {

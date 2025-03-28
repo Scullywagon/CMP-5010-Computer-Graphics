@@ -1,0 +1,15 @@
+
+newmtl T_Car_02
+Tr 1.0
+Tf 1.0 1.0 1.0
+illum 2
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.04 0.04 0.04  # Default specular reflectance for dielectrics
+Ke 0 0 0
+Ns 0  # Specular exponent not needed for PBR
+
+# Texture maps
+map_Kd T_Car_02.png
+norm normalMap1.png      # Normal map
+

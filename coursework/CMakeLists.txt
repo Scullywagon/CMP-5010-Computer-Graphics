@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find packages for GLEW, GLFW3, and OpenGL
 find_package(OpenGL REQUIRED)
 find_package(assimp REQUIRED)
-set(GLEW_ROOT_DIR "/usr/local/Cellar/glew")
+#set(GLEW_ROOT_DIR "/usr/local/Cellar/glew")
 find_package(GLEW REQUIRED)
 find_package(glfw3 REQUIRED)
 
