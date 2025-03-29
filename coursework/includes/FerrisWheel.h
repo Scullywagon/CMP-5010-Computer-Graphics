@@ -54,13 +54,16 @@ struct FerrisWheel
         stand.scale(2.0f);
         wheel.scale(2.0f);
         stand.translate(glm::vec3(1.35f, 0.0f, 0.0f));
-        wheel.translate(glm::vec3(0.0f, 12.5f, 0.0f));
-        carts.push_back(
-            Cart(glm::vec3(0.0f, 2.7f, 0.05f), glm::vec3(0.0f, -9.8f, 0.0f)));
-        carts.push_back(
-            Cart(glm::vec3(0.0f, 22.3f, 0.05f), glm::vec3(0.0f, 9.8f, 0.0f)));
+        wheel.translate(glm::vec3(0.0f, 12.48f, 0.0f));
+        carts = {
+            Cart(glm::vec3(0.0f, 2.8818f, 0.045f),
+                 glm::vec3(0.0f, -9.79f, -0.045f)),
+            Cart(glm::vec3(0.0f, 22.47f, -0.05f),
+                 glm::vec3(0.0f, 9.79f, -0.05f)),
 
-        center = glm::vec3(0.0f, 12.5f, 0.0f);
+        };
+
+        center = glm::vec3(0.0f, 12.48f, -0.05f);
     }
 
     void rotate(float deltaTime)
