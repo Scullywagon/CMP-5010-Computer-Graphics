@@ -44,7 +44,7 @@ struct FerrisWheel
     glm::vec3 center;
     glm::mat4 rotationMatrix = glm::mat4(1.0f);
 
-    float speed = 10.1f; // effectively this will be angle * deltaTime (if time
+    float speed = 20.1f; // effectively this will be angle * deltaTime (if time
                          // is 1 then this will be the angle)
 
     FerrisWheel()
@@ -56,14 +56,16 @@ struct FerrisWheel
         stand.translate(glm::vec3(1.35f, 0.0f, 0.0f));
         wheel.translate(glm::vec3(0.0f, 12.48f, 0.0f));
         carts = {
-            Cart(glm::vec3(0.0f, 2.8818f, 0.045f),
-                 glm::vec3(0.0f, -9.79f, -0.045f)),
-            Cart(glm::vec3(0.0f, 22.47f, -0.05f),
-                 glm::vec3(0.0f, 9.79f, -0.05f)),
+            Cart(glm::vec3(0.0f, 2.5958f, 0.045f), // 2.6558f
+                 glm::vec3(0.0f, -9.8242f, 0.045f)),
+            Cart(glm::vec3(0.0f, 22.303f, -0.0504f),
+                 glm::vec3(0.0f, 9.823f, -0.0504f)),
+            Cart(glm::vec3(0.0f, 3.9378f, -4.8579f),
+                 glm::vec3(0.0f, -8.5422f, -4.8579f)),
 
         };
 
-        center = glm::vec3(0.0f, 12.48f, -0.05f);
+        center = glm::vec3(0.0f, 12.48f, 0.0f);
     }
 
     void rotate(float deltaTime)
