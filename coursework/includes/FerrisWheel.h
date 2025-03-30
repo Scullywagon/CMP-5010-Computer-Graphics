@@ -9,12 +9,13 @@
 class FerrisWheelCam : public ParentCamera
 {
   public:
+    glm::vec3 Position;
     const float SPEED = 0.0f;
     const float FOV = 75.0f;
     FerrisWheelCam(glm::vec3 cartPosition)
     {
         // Initialize the base class members directly
-        Position = cartPosition + glm::vec3(0.2f, -1.0f, 0.2f);
+        Position = cartPosition + glm::vec3(1.0f, -0.5f, 0.5f);
         Front = glm::vec3(0.0f, 0.0f, -1.0f);
         Up = glm::vec3(0.0f, 1.0f, 0.0f);
         Right = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -90,26 +91,29 @@ struct Cart
         this->offSet = offset;
         cart.translate(position);
         camera = new FerrisWheelCam(position);
+        cart.scale(0.9);
     }
 
-    void updateCamera()
+    void updateCamera(glm::vec3 translation)
     {
-        camera->Position = position + glm::vec3(0.2f, -1.0f, 0.2f);
+        camera->Position += translation * 2.0f;
     }
 
     void rotate(glm::mat4 rotationMatrix, glm::vec3 center)
     {
+        cart.scale(1.11111111111f);
         glm::vec3 newPosition =
             glm::vec3(rotationMatrix * glm::vec4(offSet, 1.0f)) + center;
         glm::vec3 translation = newPosition - position;
         position = newPosition;
         cart.translate(translation);
+        updateCamera(translation);
+        cart.scale(0.9);
     }
 
     void draw(Shader &shader)
     {
         cart.Draw(shader);
-        updateCamera();
     }
 };
 

@@ -22,6 +22,9 @@ class PersonCamera : public ParentCamera
         MouseSensitivity = SENSITIVITY;
 
         fov = glm::radians(FOV);
+
+        boundingBox = new BoundingBox(Position - glm::vec3(0.5, 0.5, 0.5),
+                                      Position + glm::vec3(0.5, 0.5, 0.5));
     }
 
     glm::mat4 GetViewMatrix() override

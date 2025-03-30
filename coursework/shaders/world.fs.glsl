@@ -58,7 +58,8 @@ void main()
     float shininess;
     if (isTextured)
     {
-        norm = normalize(texture(material2.normal, TexCoords).rgb * 2.0 - 1.0);
+        //norm = normalize(texture(material2.normal, TexCoords).rgb * 2.0 - 1.0);
+        norm = normalize(Normal);
         texColor = texture(material2.diffuse, TexCoords).rgb;
         shininess = material2.shininess;
     }

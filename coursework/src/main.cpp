@@ -36,6 +36,8 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+bool willRotate = false;
+
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
@@ -104,6 +106,10 @@ void input_callback(GLFWwindow *window)
     {
         camera = &personCamera;
     }
+    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
+    {
+        willRotate = !willRotate;
+    }
 }
 
 void checkOpenGLError()
@@ -152,10 +158,9 @@ int main()
 
     Skybox skybox;
     Floor floor;
-    Cube cube;
-    Sun sun = {{-0.6f, -0.6f, 0.4f},
-               {0.5f, 0.5f, 0.5f},
-               {0.8f, 0.8f, 0.8f},
+    Sun sun = {{0.6f, -0.6f, 0.4f},
+               {0.4f, 0.4f, 0.4f},
+               {0.9f, 0.9f, 0.9f},
                {0.6f, 0.6f, 0.6f}};
 
     FerrisWheel ferrisWheel;
@@ -194,36 +199,13 @@ int main()
         floor.use(shader);
 
         ferrisWheel.draw(shader, model);
-        ferrisWheel.rotate(deltaTime);
-        /*
-        mod.Draw(shader);
-        shader.setMat4("model", model);
-        mod2.Draw(shader);
-        shader.setMat4("model", model);
-        mod3.Draw(shader);
-        shader.setMat4("model", model);
-        base.Draw(shader);
-        shader.setMat4("model", model);
 
-        mod.rotate(0.1f, glm::vec3(1.0f, 0.0f, 0.0f));
+        if (willRotate)
+        {
+            ferrisWheel.rotate(deltaTime);
+        }
 
-        rotationMatrix = glm::rotate(rotationMatrix, glm::radians(0.1f),
-                                     glm::vec3(1.0f, 0.0f, 0.0f));
-
-        glm::vec3 newPos =
-            glm::vec3(rotationMatrix * glm::vec4(initialOffset, 1.0f)) + center;
-        glm::vec3 newPos2 =
-            glm::vec3(rotationMatrix * glm::vec4(initialOffset2, 1.0f)) +
-            center;
-
-        glm::vec3 tans = newPos - pos;
-        glm::vec3 tans2 = newPos2 - pos2;
-        pos = newPos;
-        pos2 = newPos2;
-
-        mod2.translate(tans);
-        mod3.translate(tans2);
-         */
+        camera->boundingBox->isColliding(ferrisWheel.wheel->boundingBox);
 
         checkOpenGLError();
 

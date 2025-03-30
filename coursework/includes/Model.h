@@ -10,7 +10,9 @@
 #include <assimp/scene.h>
 
 #include "Mesh.h"
+#include "BoudningBox.h"
 #include "Shader.h"
+#include "BoudningBox.h"
 
 #include <fstream>
 #include <iostream>
@@ -30,6 +32,7 @@ class Model
     vector<Mesh> meshes;
     string directory;
     bool gammaCorrection;
+    BoundingBox *boundingBox;
 
     // for the rotaion and scaling of the model
     glm::mat4 modelMatrix = glm::mat4(1.0f);
@@ -38,6 +41,23 @@ class Model
     Model(string const &path, bool gamma = false) : gammaCorrection(gamma)
     {
         loadModel(path);
+        generateBoundingBox();
+    }
+
+    void generateBoundingBox()
+    {
+        glm::vec3 min(std::numeric_limits<float>::max());
+        glm::vec3 max(std::numeric_limits<float>::lowest());
+
+        for (const Mesh& mesh : meshes)
+        {
+            for (Vertex vertex : mesh.vertices)
+            {
+                min = glm::min(min, vertex.Position);
+                max = glm::max(max, vertex.Position);
+            }
+        }
+        boundingBox = new BoundingBox(min, max);
     }
 
     // draws the model, and thus all its meshes

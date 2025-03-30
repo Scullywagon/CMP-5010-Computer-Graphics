@@ -4,7 +4,7 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
-class BoundingBox
+struct BoundingBox
 {
   public:
     glm::vec3 min;
@@ -36,8 +36,10 @@ class BoundingBox
 
     void scale(float scale)
     {
-        min *= scale;
-        max *= scale;
+        glm::mat4 scaleMatrix =
+            glm::scale(glm::mat4(1.0f), glm::vec3(scale, scale, scale));
+        min = glm::vec3(scaleMatrix * glm::vec4(min, 1.0f));
+        max = glm::vec3(scaleMatrix * glm::vec4(max, 1.0f));
     }
 
     void translate(glm::vec3 translation)
