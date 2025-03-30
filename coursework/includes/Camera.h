@@ -1,4 +1,4 @@
-#include "BoudningBox.h"
+#include "BoundingBox.h"
 #include "ParentCamera.h"
 #include "glm/detail/func_trigonometric.hpp"
 #include "glm/glm.hpp"
@@ -9,10 +9,10 @@ class Camera : public ParentCamera
   public:
     const float SPEED = 14.5f;
     const float FOV = 50.0f;
-    Camera()
+    Camera(CollisionManager *collisionManager)
     {
         // Initialize the base class members directly
-        Position = glm::vec3(0.0f, 10.0f, 0.0f);
+        Position = glm::vec3(-50.0f, 10.0f, 0.0f);
         Front = glm::vec3(0.0f, 0.0f, -1.0f);
         Up = glm::vec3(0.0f, 1.0f, 0.0f);
         Right = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -28,6 +28,7 @@ class Camera : public ParentCamera
 
         boundingBox = new BoundingBox(Position - glm::vec3(0.5, 0.5, 0.5),
                                       Position + glm::vec3(0.5, 0.5, 0.5));
+        this->collisionManager = collisionManager;
     }
 
     glm::mat4 GetViewMatrix() override
@@ -38,35 +39,49 @@ class Camera : public ParentCamera
     void processInput(movement_dir dir, float deltaTime) override
     {
         float velocity = MovementSpeed * deltaTime;
+        BoundingBox old = *boundingBox;
+        glm::vec3 oldPos = Position;
 
         if (dir == FORWARD)
         {
             Position += Front * velocity;
+            boundingBox->translate(Front * velocity);
         }
         if (dir == BACKWARD)
         {
             Position -= Front * velocity;
+            boundingBox->translate(-Front * velocity);
         }
         if (dir == LEFT)
         {
             Position -= Right * velocity;
+            boundingBox->translate(-Right * velocity);
         }
         if (dir == RIGHT)
         {
             Position += Right * velocity;
+            boundingBox->translate(Right * velocity);
         }
         if (dir == UP)
         {
             Position += WorldUp * velocity;
+            boundingBox->translate(WorldUp * velocity);
         }
         if (dir == DOWN)
         {
             Position -= WorldUp * velocity;
+            boundingBox->translate(-WorldUp * velocity);
         }
 
         if (Position.y <= (floorHeight + 0.5f))
         {
             Position.y = floorHeight + 0.5f;
+        }
+
+        if (collisionManager->check())
+        {
+            *boundingBox = old;
+            Position = oldPos;
         }
     }
 

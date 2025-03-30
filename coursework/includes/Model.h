@@ -1,6 +1,7 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#include "CollisionManager.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "stb_image.h"
@@ -9,10 +10,10 @@
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 
+#include "BoundingBox.h"
+#include "CollisionManager.h"
 #include "Mesh.h"
-#include "BoudningBox.h"
 #include "Shader.h"
-#include "BoudningBox.h"
 
 #include <fstream>
 #include <iostream>
@@ -32,6 +33,8 @@ class Model
     vector<Mesh> meshes;
     string directory;
     bool gammaCorrection;
+
+    CollisionManager *collisionManager;
     BoundingBox *boundingBox;
 
     // for the rotaion and scaling of the model
@@ -49,7 +52,7 @@ class Model
         glm::vec3 min(std::numeric_limits<float>::max());
         glm::vec3 max(std::numeric_limits<float>::lowest());
 
-        for (const Mesh& mesh : meshes)
+        for (const Mesh &mesh : meshes)
         {
             for (Vertex vertex : mesh.vertices)
             {
@@ -72,16 +75,19 @@ class Model
     void scale(float i)
     {
         modelMatrix = glm::scale(modelMatrix, glm::vec3(i, i, i));
+        boundingBox->scale(i);
     }
 
     void rotate(float angle, glm::vec3 axis)
     {
         modelMatrix = glm::rotate(modelMatrix, glm::radians(angle), axis);
+        boundingBox->rotate(angle, axis);
     }
 
     void translate(glm::vec3 translation)
     {
         modelMatrix = glm::translate(modelMatrix, translation);
+        boundingBox->translate(translation);
     }
 
   private:

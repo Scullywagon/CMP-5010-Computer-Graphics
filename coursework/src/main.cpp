@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include "CollisionManager.h"
 #include "Cube.h"
 #include "FerrisWheel.h"
 #include "Floor.h"
@@ -26,8 +27,10 @@ using namespace std;
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
-Camera freeCamera;
-PersonCamera personCamera;
+CollisionManager *collisionManager = new CollisionManager();
+
+Camera freeCamera(collisionManager);
+PersonCamera personCamera(collisionManager);
 ParentCamera *camera = &personCamera;
 int lastX = SCREEN_WIDTH / 2;
 int lastY = SCREEN_HEIGHT / 2;
@@ -159,17 +162,18 @@ int main()
     Skybox skybox;
     Floor floor;
     Sun sun = {{0.6f, -0.6f, 0.4f},
-               {0.4f, 0.4f, 0.4f},
+               {0.2f, 0.2f, 0.2f},
                {0.9f, 0.9f, 0.9f},
                {0.6f, 0.6f, 0.6f}};
 
-    FerrisWheel ferrisWheel;
+    FerrisWheel ferrisWheel(collisionManager);
 
     Shader shader("shaders/world.vs.glsl", "shaders/world.fs.glsl");
-    glm::mat4 rotationMatrix = glm::mat4(1.0f);
-    camera = ferrisWheel.carts[0].camera;
+
+    collisionManager->listBounds();
     while (!glfwWindowShouldClose(window))
     {
+        collisionManager->player = camera->boundingBox;
         float currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
@@ -204,8 +208,6 @@ int main()
         {
             ferrisWheel.rotate(deltaTime);
         }
-
-        camera->boundingBox->isColliding(ferrisWheel.wheel->boundingBox);
 
         checkOpenGLError();
 

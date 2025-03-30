@@ -3,12 +3,15 @@
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include <iostream>
 
 struct BoundingBox
 {
   public:
     glm::vec3 min;
     glm::vec3 max;
+
+    float scaleVal = 1.0f;
 
     // generates the box from those values
     BoundingBox(glm::vec3 min, glm::vec3 max) : min(min), max(max)
@@ -40,12 +43,17 @@ struct BoundingBox
             glm::scale(glm::mat4(1.0f), glm::vec3(scale, scale, scale));
         min = glm::vec3(scaleMatrix * glm::vec4(min, 1.0f));
         max = glm::vec3(scaleMatrix * glm::vec4(max, 1.0f));
+        scaleVal *= scale;
+        std::cout << scaleVal << std::endl;
     }
 
     void translate(glm::vec3 translation)
     {
-        min += translation;
-        max += translation;
+        glm::vec3 scaledTranslation = translation * scaleVal;
+        std::cout << min.x << ", " << min.y << ", " << min.z << std::endl;
+        min += scaledTranslation;
+        max += scaledTranslation;
+        std::cout << min.x << ", " << min.y << ", " << min.z << std::endl;
     }
 
     void rotate(float degrees, glm::vec3 axis)

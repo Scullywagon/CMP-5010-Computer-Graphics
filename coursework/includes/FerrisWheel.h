@@ -101,7 +101,7 @@ struct Cart
 
     void rotate(glm::mat4 rotationMatrix, glm::vec3 center)
     {
-        cart.scale(1.11111111111f);
+        cart.scale(1.11111111111f); // puts it back at 2.0
         glm::vec3 newPosition =
             glm::vec3(rotationMatrix * glm::vec4(offSet, 1.0f)) + center;
         glm::vec3 translation = newPosition - position;
@@ -123,16 +123,19 @@ struct FerrisWheel
     Model wheel;
     vector<Cart> carts;
 
+    CollisionManager *collisionManager;
+
     glm::vec3 center;
     glm::mat4 rotationMatrix = glm::mat4(1.0f);
 
     float speed = 20.1f; // effectively this will be angle * deltaTime (if
                          // time is 1 then this will be the angle)
 
-    FerrisWheel()
+    FerrisWheel(CollisionManager *collisionManager)
         : stand(Model("assets/base/base.obj")),
           wheel(Model("assets/wheel2/wheel2.obj"))
     {
+        this->collisionManager = collisionManager;
         stand.scale(2.0f);
         wheel.scale(2.0f);
         stand.translate(glm::vec3(1.35f, 0.0f, 0.0f));
@@ -162,10 +165,15 @@ struct FerrisWheel
                  glm::vec3(0.0f, -4.8154f, 8.5311)),
             Cart(glm::vec3(0.0f, 4.082, 4.9735),
                  glm::vec3(0.0f, -8.398f, 4.9735)),
-
         };
-
         center = glm::vec3(0.0f, 12.48f, 0.0f);
+
+        // collisionManager->boundingBoxes.push_back(stand.boundingBox);
+        //  collisionManager->boundingBoxes.push_back(wheel.boundingBox);
+        for (auto &cart : carts)
+        {
+            collisionManager->boundingBoxes.push_back(cart.cart.boundingBox);
+        }
     }
 
     void rotate(float deltaTime)

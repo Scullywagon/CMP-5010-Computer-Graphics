@@ -1,7 +1,8 @@
 #ifndef PARENTCAMERA_H
 #define PARENTCAMERA_H
 
-#include "BoudningBox.h"
+#include "BoundingBox.h"
+#include "CollisionManager.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -20,6 +21,7 @@ class ParentCamera
     };
 
     BoundingBox *boundingBox;
+    CollisionManager *collisionManager;
 
     const float YAW = -90.0f; // 90 aligns with the x-axis
     const float PITCH = 0.0f;
