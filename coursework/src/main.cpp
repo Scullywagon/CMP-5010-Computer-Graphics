@@ -161,8 +161,8 @@ int main()
     FerrisWheel ferrisWheel;
 
     Shader shader("shaders/world.vs.glsl", "shaders/world.fs.glsl");
-
     glm::mat4 rotationMatrix = glm::mat4(1.0f);
+    camera = ferrisWheel.carts[0].camera;
     while (!glfwWindowShouldClose(window))
     {
         float currentFrame = glfwGetTime();

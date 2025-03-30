@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
-  "/Users/logan/University/CMP-5010-Computer-Graphics/coursework/output/cw"
-  "/Users/logan/University/CMP-5010-Computer-Graphics/coursework/output/cw.pdb"
+  "CMakeFiles/cw.dir/link.d"
+  "/home/logan/University/CMP-5010-Computer-Graphics/coursework/output/cw"
+  "/home/logan/University/CMP-5010-Computer-Graphics/coursework/output/cw.pdb"
   "CMakeFiles/cw.dir/src/main.cpp.o"
   "CMakeFiles/cw.dir/src/main.cpp.o.d"
 )

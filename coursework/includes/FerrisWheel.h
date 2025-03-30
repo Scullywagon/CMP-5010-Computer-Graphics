@@ -2,14 +2,85 @@
 #define FERRISWHEEL_H
 
 #include "Model.h"
+#include "ParentCamera.h"
 #include "glm/detail/type_vec.hpp"
 #include <vector>
+
+class FerrisWheelCam : public ParentCamera
+{
+  public:
+    const float SPEED = 0.0f;
+    const float FOV = 75.0f;
+    FerrisWheelCam(glm::vec3 cartPosition)
+    {
+        // Initialize the base class members directly
+        Position = cartPosition + glm::vec3(0.2f, -1.0f, 0.2f);
+        Front = glm::vec3(0.0f, 0.0f, -1.0f);
+        Up = glm::vec3(0.0f, 1.0f, 0.0f);
+        Right = glm::vec3(1.0f, 0.0f, 0.0f);
+        WorldUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
+        Yaw = YAW;
+        Pitch = PITCH;
+
+        MovementSpeed = SPEED;
+        MouseSensitivity = SENSITIVITY;
+
+        fov = glm::radians(FOV);
+    }
+
+    glm::mat4 GetViewMatrix() override
+    {
+        return glm::lookAt(Position, Position + Front, Up);
+    }
+
+    void processInput(movement_dir dir, float deltaTime) override
+    {
+    }
+
+    void ProcessMouseMovement(float xoffset, float yoffset) override
+    {
+        // change in mouse position combined with sensitivity
+        xoffset *= MouseSensitivity;
+        yoffset *= MouseSensitivity;
+
+        // update camera yaw and pitch
+        Yaw += xoffset;
+        Pitch += yoffset;
+
+        // ensure the pitch is constrained to avoid flipping
+        if (CONSTRAIN_PITCH)
+        {
+            if (Pitch > 89.0f)
+                Pitch = 89.0f;
+            if (Pitch < -77.0f)
+                Pitch = -77.0f;
+        }
+
+        updateCameraVectors();
+    }
+
+  private:
+    void updateCameraVectors()
+    {
+        glm::vec3 front;
+        front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
+        front.y = sin(glm::radians(Pitch));
+        front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
+        Front = glm::normalize(front);
+
+        Right = glm::normalize(glm::cross(Front, WorldUp));
+        Up = glm::normalize(glm::cross(Right, Front));
+    }
+};
 
 struct Cart
 {
     Model cart;
     glm::vec3 position;
     glm::vec3 offSet;
+
+    FerrisWheelCam *camera;
 
     Cart(glm::vec3 position, glm::vec3 offset)
         : cart(Model("assets/Cart/1.obj"))
@@ -18,6 +89,12 @@ struct Cart
         this->position = position;
         this->offSet = offset;
         cart.translate(position);
+        camera = new FerrisWheelCam(position);
+    }
+
+    void updateCamera()
+    {
+        camera->Position = position + glm::vec3(0.2f, -1.0f, 0.2f);
     }
 
     void rotate(glm::mat4 rotationMatrix, glm::vec3 center)
@@ -32,6 +109,7 @@ struct Cart
     void draw(Shader &shader)
     {
         cart.Draw(shader);
+        updateCamera();
     }
 };
 
@@ -44,8 +122,8 @@ struct FerrisWheel
     glm::vec3 center;
     glm::mat4 rotationMatrix = glm::mat4(1.0f);
 
-    float speed = 20.1f; // effectively this will be angle * deltaTime (if time
-                         // is 1 then this will be the angle)
+    float speed = 20.1f; // effectively this will be angle * deltaTime (if
+                         // time is 1 then this will be the angle)
 
     FerrisWheel()
         : stand(Model("assets/base/base.obj")),
