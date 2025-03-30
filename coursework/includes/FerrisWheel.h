@@ -58,8 +58,6 @@ struct FerrisWheel
         carts = {
             Cart(glm::vec3(0.0f, 2.5958f, 0.045f), // 2.6558f
                  glm::vec3(0.0f, -9.8242f, 0.045f)),
-            Cart(glm::vec3(0.0f, 22.303f, -0.0504f),
-                 glm::vec3(0.0f, 9.823f, -0.0504f)),
             Cart(glm::vec3(0.0f, 3.9378f, -4.8579f),
                  glm::vec3(0.0f, -8.5422f, -4.8579f)),
             Cart(glm::vec3(0.0f, 7.4953, -8.4636f), // 6
@@ -70,6 +68,18 @@ struct FerrisWheel
                  glm::vec3(0.0f, 4.799f, -8.5838)),
             Cart(glm::vec3(0.0f, 20.932, -5.0262),
                  glm::vec3(0.0f, 8.452f, -5.0262)),
+            Cart(glm::vec3(0.0f, 22.303f, -0.0504f),
+                 glm::vec3(0.0f, 9.823f, -0.0504)),
+            Cart(glm::vec3(0.0f, 21.077f, 4.7812f),
+                 glm::vec3(0.0f, 8.597f, 4.7812f)),
+            Cart(glm::vec3(0.0f, 17.519f, 8.459f),
+                 glm::vec3(0.0f, 5.039f, 8.459f)),
+            Cart(glm::vec3(0.0f, 12.639f, 9.8051f),
+                 glm::vec3(0.0f, 0.159f, 9.8051f)),
+            Cart(glm::vec3(0.0f, 7.6646, 8.5311),
+                 glm::vec3(0.0f, -4.8154f, 8.5311)),
+            Cart(glm::vec3(0.0f, 4.082, 4.9735),
+                 glm::vec3(0.0f, -8.398f, 4.9735)),
 
         };
 
