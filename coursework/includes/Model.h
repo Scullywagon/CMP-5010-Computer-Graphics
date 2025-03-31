@@ -41,9 +41,10 @@ class Model
     glm::mat4 modelMatrix = glm::mat4(1.0f);
 
     // constructor, expects a filepath to a 3D model.
-    Model(string const &path, bool gamma = false) : gammaCorrection(gamma)
+    Model(string const &path, float scale, bool gamma = false)
+        : gammaCorrection(gamma)
     {
-        loadModel(path);
+        loadModel(path, scale);
         generateBoundingBox();
     }
 
@@ -93,7 +94,7 @@ class Model
   private:
     // loads a model with supported ASSIMP extensions from file and stores the
     // resulting meshes in the meshes vector.
-    void loadModel(string const &path)
+    void loadModel(string const &path, float scale)
     {
         // read file via ASSIMP
         Assimp::Importer importer;
@@ -111,13 +112,13 @@ class Model
         directory = path.substr(0, path.find_last_of('/'));
 
         // process ASSIMP's root node recursively
-        processNode(scene->mRootNode, scene);
+        processNode(scene->mRootNode, scene, scale);
     }
 
     // processes a node in a recursive fashion. Processes each individual mesh
     // located at the node and repeats this process on its children nodes (if
     // any).
-    void processNode(aiNode *node, const aiScene *scene)
+    void processNode(aiNode *node, const aiScene *scene, float scale)
     {
         // process each mesh located at the current node
         for (unsigned int i = 0; i < node->mNumMeshes; i++)
@@ -126,17 +127,17 @@ class Model
             // in the scene. the scene contains all the data, node is just to
             // keep stuff organized (like relations between nodes).
             aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
-            meshes.push_back(processMesh(mesh, scene));
+            meshes.push_back(processMesh(mesh, scene, scale));
         }
         // after we've processed all of the meshes (if any) we then recursively
         // process each of the children nodes
         for (unsigned int i = 0; i < node->mNumChildren; i++)
         {
-            processNode(node->mChildren[i], scene);
+            processNode(node->mChildren[i], scene, scale);
         }
     }
 
-    Mesh processMesh(aiMesh *mesh, const aiScene *scene)
+    Mesh processMesh(aiMesh *mesh, const aiScene *scene, float scale)
     {
         // data to fill
         vector<Vertex> vertices;
@@ -152,9 +153,9 @@ class Model
                               // convert to glm's vec3 class so we transfer the
                               // data to this placeholder glm::vec3 first.
             // positions
-            vector.x = mesh->mVertices[i].x;
-            vector.y = mesh->mVertices[i].y;
-            vector.z = mesh->mVertices[i].z;
+            vector.x = mesh->mVertices[i].x * scale;
+            vector.y = mesh->mVertices[i].y * scale;
+            vector.z = mesh->mVertices[i].z * scale;
             vertex.Position = vector;
             // normals
             if (mesh->HasNormals())

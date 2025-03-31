@@ -84,14 +84,14 @@ struct Cart
     FerrisWheelCam *camera;
 
     Cart(glm::vec3 position, glm::vec3 offset)
-        : cart(Model("assets/Cart/1.obj"))
+        : cart(Model("assets/Cart/1.obj", 1.8f))
     {
-        cart.scale(2.0f);
+        // cart.scale(1.8);
         this->position = position;
         this->offSet = offset;
         cart.translate(position);
         camera = new FerrisWheelCam(position);
-        cart.scale(0.9);
+        // cart.scale(2.0f);
     }
 
     void updateCamera(glm::vec3 translation)
@@ -101,14 +101,14 @@ struct Cart
 
     void rotate(glm::mat4 rotationMatrix, glm::vec3 center)
     {
-        cart.scale(1.11111111111f); // puts it back at 2.0
+        // cart.scale(1.11111111111f); // puts it back at 2.0
         glm::vec3 newPosition =
             glm::vec3(rotationMatrix * glm::vec4(offSet, 1.0f)) + center;
         glm::vec3 translation = newPosition - position;
         position = newPosition;
         cart.translate(translation);
         updateCamera(translation);
-        cart.scale(0.9);
+        // cart.scale(0.9);
     }
 
     void draw(Shader &shader)
@@ -132,41 +132,40 @@ struct FerrisWheel
                          // time is 1 then this will be the angle)
 
     FerrisWheel(CollisionManager *collisionManager)
-        : stand(Model("assets/base/base.obj")),
-          wheel(Model("assets/wheel2/wheel2.obj"))
+        : stand(Model("assets/base/base.obj", 2.0f)),
+          wheel(Model("assets/wheel2/wheel2.obj", 2.0f))
     {
         this->collisionManager = collisionManager;
-        stand.scale(2.0f);
-        wheel.scale(2.0f);
-        stand.translate(glm::vec3(1.35f, 0.0f, 0.0f));
-        wheel.translate(glm::vec3(0.0f, 12.48f, 0.0f));
+
+        stand.translate(glm::vec3(1.35f * 2.0f, 0.0f, 0.0f));
+        wheel.translate(glm::vec3(0.0f, 12.48f * 2.0f, 0.0f));
         carts = {
-            Cart(glm::vec3(0.0f, 2.5958f, 0.045f), // 2.6558f
-                 glm::vec3(0.0f, -9.8242f, 0.045f)),
-            Cart(glm::vec3(0.0f, 3.9378f, -4.8579f),
-                 glm::vec3(0.0f, -8.5422f, -4.8579f)),
-            Cart(glm::vec3(0.0f, 7.4953, -8.4636f), // 6
-                 glm::vec3(0.0f, -4.9847f, -8.4636f)),
-            Cart(glm::vec3(0.0f, 12.399f, -9.8097f),
-                 glm::vec3(0.0f, -0.081f, -9.8097f)),
-            Cart(glm::vec3(0.0f, 17.279, -8.5838),
-                 glm::vec3(0.0f, 4.799f, -8.5838)),
-            Cart(glm::vec3(0.0f, 20.932, -5.0262),
-                 glm::vec3(0.0f, 8.452f, -5.0262)),
-            Cart(glm::vec3(0.0f, 22.303f, -0.0504f),
-                 glm::vec3(0.0f, 9.823f, -0.0504)),
-            Cart(glm::vec3(0.0f, 21.077f, 4.7812f),
-                 glm::vec3(0.0f, 8.597f, 4.7812f)),
-            Cart(glm::vec3(0.0f, 17.519f, 8.459f),
-                 glm::vec3(0.0f, 5.039f, 8.459f)),
-            Cart(glm::vec3(0.0f, 12.639f, 9.8051f),
-                 glm::vec3(0.0f, 0.159f, 9.8051f)),
-            Cart(glm::vec3(0.0f, 7.6646, 8.5311),
-                 glm::vec3(0.0f, -4.8154f, 8.5311)),
-            Cart(glm::vec3(0.0f, 4.082, 4.9735),
-                 glm::vec3(0.0f, -8.398f, 4.9735)),
+            Cart(glm::vec3(0.0f, 2.5958f * 2.0f, 0.045f * 2.0f),
+                 glm::vec3(0.0f, -9.8242f * 2.0f, 0.045f * 2.0f)),
+            Cart(glm::vec3(0.0f, 3.9378f * 2.0f, -4.8579f * 2.0f),
+                 glm::vec3(0.0f, -8.5422f * 2.0f, -4.8579f * 2.0f)),
+            Cart(glm::vec3(0.0f, 7.4953f * 2.0f, -8.4636f * 2.0f),
+                 glm::vec3(0.0f, -4.9847f * 2.0f, -8.4636f * 2.0f)),
+            Cart(glm::vec3(0.0f, 12.399f * 2.0f, -9.8097f * 2.0f),
+                 glm::vec3(0.0f, -0.081f * 2.0f, -9.8097f * 2.0f)),
+            Cart(glm::vec3(0.0f, 17.279f * 2.0f, -8.5838f * 2.0f),
+                 glm::vec3(0.0f, 4.799f * 2.0f, -8.5838f * 2.0f)),
+            Cart(glm::vec3(0.0f, 20.932f * 2.0f, -5.0262f * 2.0f),
+                 glm::vec3(0.0f, 8.452f * 2.0f, -5.0262f * 2.0f)),
+            Cart(glm::vec3(0.0f, 22.303f * 2.0f, -0.0504f * 2.0f),
+                 glm::vec3(0.0f, 9.823f * 2.0f, -0.0504f * 2.0f)),
+            Cart(glm::vec3(0.0f, 21.077f * 2.0f, 4.7812f * 2.0f),
+                 glm::vec3(0.0f, 8.597f * 2.0f, 4.7812f * 2.0f)),
+            Cart(glm::vec3(0.0f, 17.519f * 2.0f, 8.459f * 2.0f),
+                 glm::vec3(0.0f, 5.039f * 2.0f, 8.459f * 2.0f)),
+            Cart(glm::vec3(0.0f, 12.639f * 2.0f, 9.8051f * 2.0f),
+                 glm::vec3(0.0f, 0.159f * 2.0f, 9.8051f * 2.0f)),
+            Cart(glm::vec3(0.0f, 7.6646f * 2.0f, 8.5311f * 2.0f),
+                 glm::vec3(0.0f, -4.8154f * 2.0f, 8.5311f * 2.0f)),
+            Cart(glm::vec3(0.0f, 4.082f * 2.0f, 4.9735f * 2.0f),
+                 glm::vec3(0.0f, -8.398f * 2.0f, 4.9735f * 2.0f)),
         };
-        center = glm::vec3(0.0f, 12.48f, 0.0f);
+        center = glm::vec3(0.0f, 12.48f * 2.0f, 0.0f);
 
         // collisionManager->boundingBoxes.push_back(stand.boundingBox);
         //  collisionManager->boundingBoxes.push_back(wheel.boundingBox);

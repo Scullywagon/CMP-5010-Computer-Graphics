@@ -18,17 +18,20 @@ class CollisionManager
         }
     }
 
-    bool check()
+    void collidePlayer(BoundingBox *a)
+    {
+    }
+
+    void check()
     {
         for (auto &a : boundingBoxes)
         {
             if (checkCollision(a))
             {
                 std::cout << "Collision Detected" << std::endl;
-                return true;
+                collidePlayer(a);
             }
         }
-        return false;
     }
 
   private:

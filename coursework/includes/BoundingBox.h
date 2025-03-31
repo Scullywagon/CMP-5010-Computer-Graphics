@@ -44,16 +44,13 @@ struct BoundingBox
         min = glm::vec3(scaleMatrix * glm::vec4(min, 1.0f));
         max = glm::vec3(scaleMatrix * glm::vec4(max, 1.0f));
         scaleVal *= scale;
-        std::cout << scaleVal << std::endl;
     }
 
     void translate(glm::vec3 translation)
     {
         glm::vec3 scaledTranslation = translation * scaleVal;
-        std::cout << min.x << ", " << min.y << ", " << min.z << std::endl;
         min += scaledTranslation;
         max += scaledTranslation;
-        std::cout << min.x << ", " << min.y << ", " << min.z << std::endl;
     }
 
     void rotate(float degrees, glm::vec3 axis)

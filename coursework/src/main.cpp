@@ -209,6 +209,8 @@ int main()
             ferrisWheel.rotate(deltaTime);
         }
 
+        collisionManager->check();
+
         checkOpenGLError();
 
         glfwSwapBuffers(window);

@@ -1,3 +1,6 @@
+#ifndef PERSONCAMERA_H
+#define PERSONCAMERA_H
+
 #include "CollisionManager.h"
 #include "ParentCamera.h"
 #include "glm/detail/func_trigonometric.hpp"
@@ -10,7 +13,7 @@ class PersonCamera : public ParentCamera
     PersonCamera(CollisionManager *collisionManager)
     {
         // Initialize the base class members directly
-        Position = glm::vec3(0.0f, 1.8f, 0.0f);
+        Position = glm::vec3(10.0f, 1.8f, 10.0f);
         Front = glm::vec3(0.0f, 0.0f, -1.0f);
         Up = glm::vec3(0.0f, 1.0f, 0.0f);
         Right = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -60,12 +63,6 @@ class PersonCamera : public ParentCamera
         }
 
         Position.y = floorHeight + 1.8f;
-
-        if (collisionManager->check())
-        {
-            // *boundingBox = old;
-            // Position = oldPos;
-        }
     }
 
     void ProcessMouseMovement(float xoffset, float yoffset) override
@@ -100,3 +97,5 @@ class PersonCamera : public ParentCamera
         Up = glm::normalize(glm::cross(Right, Front));
     }
 };
+
+#endif

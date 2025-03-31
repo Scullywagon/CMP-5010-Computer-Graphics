@@ -1,3 +1,6 @@
+#ifndef CAMERA_H
+#define CAMERA_H
+
 #include "BoundingBox.h"
 #include "ParentCamera.h"
 #include "glm/detail/func_trigonometric.hpp"
@@ -39,8 +42,6 @@ class Camera : public ParentCamera
     void processInput(movement_dir dir, float deltaTime) override
     {
         float velocity = MovementSpeed * deltaTime;
-        BoundingBox old = *boundingBox;
-        glm::vec3 oldPos = Position;
 
         if (dir == FORWARD)
         {
@@ -76,12 +77,6 @@ class Camera : public ParentCamera
         if (Position.y <= (floorHeight + 0.5f))
         {
             Position.y = floorHeight + 0.5f;
-        }
-
-        if (collisionManager->check())
-        {
-            *boundingBox = old;
-            Position = oldPos;
         }
     }
 
@@ -120,3 +115,5 @@ class Camera : public ParentCamera
         Up = glm::normalize(glm::cross(Right, Front));
     }
 };
+
+#endif
