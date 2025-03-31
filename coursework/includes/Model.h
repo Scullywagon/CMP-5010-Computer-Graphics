@@ -1,7 +1,6 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "CollisionManager.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "stb_image.h"
@@ -11,7 +10,6 @@
 #include <assimp/scene.h>
 
 #include "BoundingBox.h"
-#include "CollisionManager.h"
 #include "Mesh.h"
 #include "Shader.h"
 
@@ -34,7 +32,6 @@ class Model
     string directory;
     bool gammaCorrection;
 
-    CollisionManager *collisionManager;
     BoundingBox *boundingBox;
 
     // for the rotaion and scaling of the model

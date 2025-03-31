@@ -1,3 +1,6 @@
+#ifndef SHADER_H
+#define SHADER_H
+
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
@@ -6,9 +9,6 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-
-#ifndef SHADER_H
-#define SHADER_H
 
 class Shader
 {
@@ -22,6 +22,8 @@ class Shader
         std::string fragmentCode;
         std::ifstream vShaderFile;
         std::ifstream fShaderFile;
+
+        std::cout << "Vertex path: " << vertexPath << std::endl;
 
         try
         {

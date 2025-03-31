@@ -374,12 +374,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/ostream.tcc /usr/include/c++/14.2.1/istream \
  /usr/include/c++/14.2.1/bits/istream.tcc \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/ParentCamera.h \
- /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/CollisionManager.h \
- /usr/include/c++/14.2.1/vector \
- /usr/include/c++/14.2.1/bits/stl_uninitialized.h \
- /usr/include/c++/14.2.1/bits/stl_vector.h \
- /usr/include/c++/14.2.1/bits/stl_bvector.h \
- /usr/include/c++/14.2.1/bits/vector.tcc \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/type_ptr.hpp \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../gtc/quaternion.hpp \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/../gtc/quaternion.inl \
@@ -388,6 +382,19 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
  /usr/include/strings.h \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/type_ptr.inl \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/CollisionManager.h \
+ /usr/include/c++/14.2.1/algorithm \
+ /usr/include/c++/14.2.1/bits/stl_algo.h \
+ /usr/include/c++/14.2.1/bits/algorithmfwd.h \
+ /usr/include/c++/14.2.1/bits/stl_heap.h \
+ /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
+ /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
+ /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/14.2.1/pstl/execution_defs.h \
+ /usr/include/c++/14.2.1/vector \
+ /usr/include/c++/14.2.1/bits/stl_uninitialized.h \
+ /usr/include/c++/14.2.1/bits/stl_vector.h \
+ /usr/include/c++/14.2.1/bits/stl_bvector.h \
+ /usr/include/c++/14.2.1/bits/vector.tcc \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Cube.h \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Mesh.h \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h \
@@ -407,14 +414,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
  /usr/include/assimp/matrix4x4.h /usr/include/assimp/quaternion.h \
  /usr/include/assimp/vector2.inl /usr/include/assimp/vector3.inl \
  /usr/include/assimp/color4.inl /usr/include/assimp/matrix3x3.inl \
- /usr/include/c++/14.2.1/algorithm \
- /usr/include/c++/14.2.1/bits/stl_algo.h \
- /usr/include/c++/14.2.1/bits/algorithmfwd.h \
- /usr/include/c++/14.2.1/bits/stl_heap.h \
- /usr/include/c++/14.2.1/bits/uniform_int_dist.h \
- /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
- /usr/include/c++/14.2.1/pstl/glue_algorithm_defs.h \
- /usr/include/c++/14.2.1/pstl/execution_defs.h \
  /usr/include/assimp/matrix4x4.inl /usr/include/assimp/MathFunctions.h \
  /usr/include/assimp/quaternion.inl /usr/include/assimp/material.h \
  /usr/include/assimp/Compiler/pushpack1.h \
@@ -440,6 +439,13 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Model.h \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/ParentCamera.h \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/CollisionManager.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Scene.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Camera.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/FerrisWheel.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h \
  /usr/include/c++/14.2.1/math.h /usr/include/GLFW/glfw3.h \
  /usr/include/c++/14.2.1/filesystem /usr/include/c++/14.2.1/bits/fs_fwd.h \
@@ -462,4 +468,5 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/bits/allocated_ptr.h \
  /usr/include/c++/14.2.1/bits/unique_ptr.h \
  /usr/include/c++/14.2.1/bits/fs_dir.h \
- /usr/include/c++/14.2.1/bits/fs_ops.h
+ /usr/include/c++/14.2.1/bits/fs_ops.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h

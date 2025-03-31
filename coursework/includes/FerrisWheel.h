@@ -15,7 +15,7 @@ class FerrisWheelCam : public ParentCamera
     FerrisWheelCam(glm::vec3 cartPosition)
     {
         // Initialize the base class members directly
-        Position = cartPosition + glm::vec3(1.0f, -0.5f, 0.5f);
+        Position = cartPosition + glm::vec3(1.0f, -2.5f, 1.0f);
         Front = glm::vec3(0.0f, 0.0f, -1.0f);
         Up = glm::vec3(0.0f, 1.0f, 0.0f);
         Right = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -28,6 +28,10 @@ class FerrisWheelCam : public ParentCamera
         MouseSensitivity = SENSITIVITY;
 
         fov = glm::radians(FOV);
+
+        boundingBox =
+            new BoundingBox(Position - glm::vec3(999.5, 999.5, 999.5),
+                            Position + glm::vec3(999.5, 999.5, 999.5));
     }
 
     glm::mat4 GetViewMatrix() override
@@ -36,6 +40,9 @@ class FerrisWheelCam : public ParentCamera
     }
 
     void processInput(movement_dir dir, float deltaTime) override
+    {
+    }
+    void move() override
     {
     }
 
@@ -86,29 +93,25 @@ struct Cart
     Cart(glm::vec3 position, glm::vec3 offset)
         : cart(Model("assets/Cart/1.obj", 1.8f))
     {
-        // cart.scale(1.8);
         this->position = position;
         this->offSet = offset;
         cart.translate(position);
         camera = new FerrisWheelCam(position);
-        // cart.scale(2.0f);
     }
 
     void updateCamera(glm::vec3 translation)
     {
-        camera->Position += translation * 2.0f;
+        camera->Position += translation;
     }
 
     void rotate(glm::mat4 rotationMatrix, glm::vec3 center)
     {
-        // cart.scale(1.11111111111f); // puts it back at 2.0
         glm::vec3 newPosition =
             glm::vec3(rotationMatrix * glm::vec4(offSet, 1.0f)) + center;
         glm::vec3 translation = newPosition - position;
         position = newPosition;
         cart.translate(translation);
         updateCamera(translation);
-        // cart.scale(0.9);
     }
 
     void draw(Shader &shader)
@@ -123,19 +126,16 @@ struct FerrisWheel
     Model wheel;
     vector<Cart> carts;
 
-    CollisionManager *collisionManager;
-
     glm::vec3 center;
     glm::mat4 rotationMatrix = glm::mat4(1.0f);
 
     float speed = 20.1f; // effectively this will be angle * deltaTime (if
                          // time is 1 then this will be the angle)
 
-    FerrisWheel(CollisionManager *collisionManager)
+    FerrisWheel()
         : stand(Model("assets/base/base.obj", 2.0f)),
           wheel(Model("assets/wheel2/wheel2.obj", 2.0f))
     {
-        this->collisionManager = collisionManager;
 
         stand.translate(glm::vec3(1.35f * 2.0f, 0.0f, 0.0f));
         wheel.translate(glm::vec3(0.0f, 12.48f * 2.0f, 0.0f));
@@ -166,13 +166,6 @@ struct FerrisWheel
                  glm::vec3(0.0f, -8.398f * 2.0f, 4.9735f * 2.0f)),
         };
         center = glm::vec3(0.0f, 12.48f * 2.0f, 0.0f);
-
-        // collisionManager->boundingBoxes.push_back(stand.boundingBox);
-        //  collisionManager->boundingBoxes.push_back(wheel.boundingBox);
-        for (auto &cart : carts)
-        {
-            collisionManager->boundingBoxes.push_back(cart.cart.boundingBox);
-        }
     }
 
     void rotate(float deltaTime)

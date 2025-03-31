@@ -1,3 +1,6 @@
+#ifndef SKYBOX_H
+#define SKYBOX_H
+
 #include "Shader.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -31,6 +34,11 @@ class Skybox
 
     Skybox() : skyboxShader("shaders/skybox.vs", "shaders/skybox.fs")
     {
+        for (float f : skyboxVertices)
+        {
+            f *= 100.0f;
+            f -= 50000.0f;
+        }
         textureID = loadCubemap(textures);
         glGenVertexArrays(1, &skyboxVAO);
         glGenBuffers(1, &skyboxVBO);
@@ -104,3 +112,5 @@ class Skybox
         return textureID;
     }
 };
+
+#endif

@@ -1,7 +1,10 @@
+#ifndef LIGHT_H
+#define LIGHT_H
+
 #include "Shader.h"
 #include <glm/gtc/type_ptr.hpp>
 
-struct Sun 
+struct Sun
 {
     glm::vec3 direction;
     glm::vec3 ambient;
@@ -21,3 +24,5 @@ struct Light
     float linear;
     float quadratic;
 };
+
+#endif

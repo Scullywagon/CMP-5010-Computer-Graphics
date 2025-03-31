@@ -1,3 +1,6 @@
+#ifndef FLOOR_H
+#define FLOOR_H
+
 #include "Mesh.h"
 #include "Shader.h"
 #include "stb_image.h"
@@ -84,3 +87,5 @@ class Floor
         return textureID;
     }
 };
+
+#endif

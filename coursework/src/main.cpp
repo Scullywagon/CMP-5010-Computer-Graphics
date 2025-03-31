@@ -8,6 +8,7 @@
 #include "Model.h"
 #include "ParentCamera.h"
 #include "PersonCamera.h"
+#include "Scene.h"
 #include "Skybox.h"
 #include "glm/detail/type_mat.hpp"
 #include <GL/glew.h>
@@ -27,19 +28,17 @@ using namespace std;
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 
-CollisionManager *collisionManager = new CollisionManager();
-
-Camera freeCamera(collisionManager);
-PersonCamera personCamera(collisionManager);
-ParentCamera *camera = &personCamera;
 int lastX = SCREEN_WIDTH / 2;
 int lastY = SCREEN_HEIGHT / 2;
 bool firstMouse = true;
 
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
+float currentFrame = 0.0f;
 
 bool willRotate = false;
+
+Scene *scene;
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
@@ -67,7 +66,7 @@ void mouse_callback(GLFWwindow *window, double xposIn, double yposIn)
     lastX = xpos; // updates the last x position for the next frame
     lastY = ypos; // updates the last y position for the next frame
 
-    camera->ProcessMouseMovement(xoffset, yoffset);
+    scene->camera->ProcessMouseMovement(xoffset, yoffset);
 }
 
 // handled by the glfw callback function
@@ -79,39 +78,35 @@ void input_callback(GLFWwindow *window)
     }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        camera->processInput(Camera::FORWARD, deltaTime);
+        scene->camera->processInput(Camera::FORWARD, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
-        camera->processInput(Camera::BACKWARD, deltaTime);
+        scene->camera->processInput(Camera::BACKWARD, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
     {
-        camera->processInput(Camera::LEFT, deltaTime);
+        scene->camera->processInput(Camera::LEFT, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {
-        camera->processInput(Camera::RIGHT, deltaTime);
+        scene->camera->processInput(Camera::RIGHT, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
     {
-        camera->processInput(Camera::UP, deltaTime);
+        scene->camera->processInput(Camera::UP, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
     {
-        camera->processInput(Camera::DOWN, deltaTime);
+        scene->camera->processInput(Camera::DOWN, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
     {
-        camera = &freeCamera;
-    }
-    if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
-    {
-        camera = &personCamera;
+        scene->changeCamera(currentFrame);
     }
     if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
     {
-        willRotate = !willRotate;
+        scene->activateRotation();
     }
 }
 
@@ -126,7 +121,6 @@ void checkOpenGLError()
 
 int main()
 {
-    camera = &personCamera;
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,
                    3); // Set the major version of the OpenGL context to 3
@@ -145,6 +139,7 @@ int main()
         glfwTerminate();
         return -1;
     }
+
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetCursorPosCallback(window, mouse_callback);
@@ -159,22 +154,11 @@ int main()
     // depth testing for 3D renders
     glEnable(GL_DEPTH_TEST);
 
-    Skybox skybox;
-    Floor floor;
-    Sun sun = {{0.6f, -0.6f, 0.4f},
-               {0.2f, 0.2f, 0.2f},
-               {0.9f, 0.9f, 0.9f},
-               {0.6f, 0.6f, 0.6f}};
+    scene = new Scene(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    FerrisWheel ferrisWheel(collisionManager);
-
-    Shader shader("shaders/world.vs.glsl", "shaders/world.fs.glsl");
-
-    collisionManager->listBounds();
     while (!glfwWindowShouldClose(window))
     {
-        collisionManager->player = camera->boundingBox;
-        float currentFrame = glfwGetTime();
+        currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
         input_callback(window);
@@ -182,35 +166,7 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // Set the color of the window
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glm::mat4 model = glm::mat4(1.0f);
-        glm::mat4 projection = glm::perspective(
-            camera->fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
-            10000.0f);
-        glm::mat4 view = camera->GetViewMatrix();
-
-        skybox.use(view, projection);
-
-        shader.use();
-        shader.setMat4("projection", projection);
-        shader.setMat4("view", view);
-        shader.setMat4("model", model);
-        shader.setVec3("sunDir", sun.direction);
-        shader.setVec3("sunAmbient", sun.ambient);
-        shader.setVec3("sunDiffuse", sun.diffuse);
-        shader.setVec3("sunSpecular", sun.specular);
-        shader.setVec3("cameraPos", camera->Position);
-
-        floor.use(shader);
-
-        ferrisWheel.draw(shader, model);
-
-        if (willRotate)
-        {
-            ferrisWheel.rotate(deltaTime);
-        }
-
-        collisionManager->check();
-
+        scene->use(deltaTime);
         checkOpenGLError();
 
         glfwSwapBuffers(window);

@@ -2,7 +2,6 @@
 #define PARENTCAMERA_H
 
 #include "BoundingBox.h"
-#include "CollisionManager.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -21,7 +20,6 @@ class ParentCamera
     };
 
     BoundingBox *boundingBox;
-    CollisionManager *collisionManager;
 
     const float YAW = -90.0f; // 90 aligns with the x-axis
     const float PITCH = 0.0f;
@@ -44,8 +42,11 @@ class ParentCamera
 
     float fov; // in radians
 
+    glm::vec3 translation = glm::vec3(0.0f);
+
     virtual void processInput(movement_dir dir, float deltaTime) = 0;
     virtual void ProcessMouseMovement(float xoffset, float yoffset) = 0;
+    virtual void move() = 0;
     virtual glm::mat4 GetViewMatrix() = 0;
 
   private:

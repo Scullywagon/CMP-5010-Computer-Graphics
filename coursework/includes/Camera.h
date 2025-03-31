@@ -12,7 +12,7 @@ class Camera : public ParentCamera
   public:
     const float SPEED = 14.5f;
     const float FOV = 50.0f;
-    Camera(CollisionManager *collisionManager)
+    Camera()
     {
         // Initialize the base class members directly
         Position = glm::vec3(-50.0f, 10.0f, 0.0f);
@@ -31,7 +31,6 @@ class Camera : public ParentCamera
 
         boundingBox = new BoundingBox(Position - glm::vec3(0.5, 0.5, 0.5),
                                       Position + glm::vec3(0.5, 0.5, 0.5));
-        this->collisionManager = collisionManager;
     }
 
     glm::mat4 GetViewMatrix() override
@@ -45,39 +44,43 @@ class Camera : public ParentCamera
 
         if (dir == FORWARD)
         {
-            Position += Front * velocity;
-            boundingBox->translate(Front * velocity);
+            this->translation += Front * velocity;
         }
         if (dir == BACKWARD)
         {
-            Position -= Front * velocity;
-            boundingBox->translate(-Front * velocity);
+            this->translation += -Front * velocity;
         }
         if (dir == LEFT)
         {
-            Position -= Right * velocity;
-            boundingBox->translate(-Right * velocity);
+            this->translation += -Right * velocity;
         }
         if (dir == RIGHT)
         {
-            Position += Right * velocity;
-            boundingBox->translate(Right * velocity);
+            this->translation += Right * velocity;
         }
         if (dir == UP)
         {
-            Position += WorldUp * velocity;
-            boundingBox->translate(WorldUp * velocity);
+            this->translation += WorldUp * velocity;
         }
         if (dir == DOWN)
         {
-            Position -= WorldUp * velocity;
-            boundingBox->translate(-WorldUp * velocity);
+            this->translation += -WorldUp * velocity;
         }
+    }
+
+    void move() override
+    {
+        this->Position += translation;
+        boundingBox->translate(translation);
+        float transY = 0.0f;
 
         if (Position.y <= (floorHeight + 0.5f))
         {
+            transY = floorHeight + 0.5f - Position.y;
             Position.y = floorHeight + 0.5f;
         }
+        boundingBox->translate(glm::vec3(0.0f, transY, 0.0f));
+        translation = glm::vec3(0.0f);
     }
 
     void ProcessMouseMovement(float xoffset, float yoffset) override

@@ -10,7 +10,7 @@
 class PersonCamera : public ParentCamera
 {
   public:
-    PersonCamera(CollisionManager *collisionManager)
+    PersonCamera()
     {
         // Initialize the base class members directly
         Position = glm::vec3(10.0f, 1.8f, 10.0f);
@@ -29,7 +29,6 @@ class PersonCamera : public ParentCamera
 
         boundingBox = new BoundingBox(Position - glm::vec3(0.5, 0.5, 0.5),
                                       Position + glm::vec3(0.5, 0.5, 0.5));
-        this->collisionManager = collisionManager;
     }
 
     glm::mat4 GetViewMatrix() override
@@ -43,26 +42,29 @@ class PersonCamera : public ParentCamera
 
         if (dir == FORWARD)
         {
-            Position += Front * velocity;
-            boundingBox->translate(Front * velocity);
+            this->translation += Front * velocity;
         }
         if (dir == BACKWARD)
         {
-            Position -= Front * velocity;
-            boundingBox->translate(-Front * velocity);
+            this->translation += -Front * velocity;
         }
         if (dir == LEFT)
         {
-            Position -= Right * velocity;
-            boundingBox->translate(-Right * velocity);
+            this->translation += -Right * velocity;
         }
         if (dir == RIGHT)
         {
-            Position += Right * velocity;
-            boundingBox->translate(Right * velocity);
+            this->translation += Right * velocity;
         }
+    }
 
-        Position.y = floorHeight + 1.8f;
+    void move() override
+    {
+        translation.y = 0.0f;
+        this->Position += translation;
+        boundingBox->translate(translation);
+
+        translation = glm::vec3(0.0f);
     }
 
     void ProcessMouseMovement(float xoffset, float yoffset) override

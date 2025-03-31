@@ -45,6 +45,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
   /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Model.h \
   /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/ParentCamera.h \
   /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Scene.h \
   /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h \
   /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Skybox.h \
   /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/common.hpp \
@@ -649,7 +650,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h:
 
-/usr/include/bits/types/time_t.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h:
 
 /usr/include/bits/types/struct_timeval.h:
 
@@ -682,12 +683,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 /usr/include/features.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/fwd.hpp:
-
-/usr/include/bits/types/struct_itimerspec.h:
-
-/usr/include/bits/sched.h:
-
-/usr/include/bits/struct_rwlock.h:
 
 /usr/include/bits/struct_mutex.h:
 
@@ -861,6 +856,8 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/matrix.hpp:
 
+/usr/include/bits/types/struct_itimerspec.h:
+
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/matrix_transform.inl:
 
 /usr/include/c++/14.2.1/bits/cpp_type_traits.h:
@@ -879,7 +876,13 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/constants.inl:
 
-/home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric.inl:
+/home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/constants.hpp:
+
+/usr/include/c++/14.2.1/bits/node_handle.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16intrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clwbintrin.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_common.inl:
 
@@ -921,6 +924,12 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /usr/include/c++/14.2.1/bits/new_allocator.h:
 
+/usr/include/bits/sched.h:
+
+/usr/include/bits/struct_rwlock.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Scene.h:
+
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avxintrin.h:
@@ -932,14 +941,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/tsxldtrkintrin.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_vector_relational_simd.inl:
-
-/home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/constants.hpp:
-
-/usr/include/c++/14.2.1/bits/node_handle.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bf16intrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/clwbintrin.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vldqintrin.h:
 
@@ -1119,6 +1120,8 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 
 /usr/include/bits/endian.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_geometric.inl:
+
 /usr/lib/libXdmcp.so.6:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/matrix_transform.hpp:
@@ -1132,6 +1135,10 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x4_simd.inl:
+
+/usr/include/c++/14.2.1/bits/erase_if.h:
+
+/usr/lib/libGLdispatch.so.0:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/_vectorize.hpp:
 
@@ -1237,8 +1244,6 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 
 /usr/include/libintl.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h:
-
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x3.hpp:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x3.inl:
@@ -1315,6 +1320,8 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat2x4.inl:
 
+/usr/include/bits/types/time_t.h:
+
 /usr/include/bits/types/timer_t.h:
 
 /usr/include/bits/types/wint_t.h:
@@ -1376,10 +1383,6 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 /usr/include/c++/14.2.1/bits/cxxabi_init_exception.h:
 
 /usr/include/c++/14.2.1/bits/enable_special_members.h:
-
-/usr/lib/libGLdispatch.so.0:
-
-/usr/include/c++/14.2.1/bits/erase_if.h:
 
 /usr/include/c++/14.2.1/bits/stl_tree.h:
 
