@@ -350,6 +350,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
   /usr/include/c++/14.2.1/bits/stl_map.h \
   /usr/include/c++/14.2.1/bits/stl_multimap.h \
   /usr/include/c++/14.2.1/bits/stl_pair.h \
+  /usr/include/c++/14.2.1/bits/stl_relops.h \
   /usr/include/c++/14.2.1/bits/stl_tempbuf.h \
   /usr/include/c++/14.2.1/bits/stl_tree.h \
   /usr/include/c++/14.2.1/bits/stl_uninitialized.h \
@@ -434,6 +435,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
   /usr/include/c++/14.2.1/type_traits \
   /usr/include/c++/14.2.1/typeinfo \
   /usr/include/c++/14.2.1/unordered_set \
+  /usr/include/c++/14.2.1/utility \
   /usr/include/c++/14.2.1/vector \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
   /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
@@ -652,6 +654,10 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lwpintrin.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/usermsrintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h:
+
 /usr/include/bits/types/struct_timeval.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/func_common.hpp:
@@ -842,6 +848,10 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /usr/lib/libstdc++.so:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h:
+
+/usr/include/c++/14.2.1/bits/uniform_int_dist.h:
+
 /usr/include/locale.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/vector_relational.hpp:
@@ -1016,8 +1026,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/float.h:
 
-/usr/lib/librt.a:
-
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Shader.h:
 
 /usr/include/asm-generic/types.h:
@@ -1053,10 +1061,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graph
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/sm3intrin.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat4x3.hpp:
-
-/usr/include/assimp/quaternion.inl:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/libgcc.a:
 
 /usr/lib/libGL.so.1:
 
@@ -1248,10 +1252,6 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x3.inl:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/usermsrintrin.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/keylockerintrin.h:
-
 /home/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/detail/type_mat3x4.inl:
 
 /usr/include/c++/14.2.1/bits/codecvt.h:
@@ -1371,6 +1371,10 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 /usr/include/c++/14.2.1/bits/basic_ios.tcc:
 
 /usr/include/c++/14.2.1/bits/basic_string.h:
+
+/usr/lib/librt.a:
+
+/usr/include/c++/14.2.1/bits/stl_relops.h:
 
 /usr/include/bits/byteswap.h:
 
@@ -1632,6 +1636,14 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/emmintrin.h:
 
+/usr/include/assimp/quaternion.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/libgcc.a:
+
+/usr/include/c++/14.2.1/utility:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmavlintrin.h:
+
 /usr/include/c++/14.2.1/bits/uses_allocator_args.h:
 
 /usr/include/c++/14.2.1/x86_64-pc-linux-gnu/bits/basic_file.h:
@@ -1718,8 +1730,6 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmaintrin.h:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512ifmavlintrin.h:
-
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512pfintrin.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmi2vlintrin.h:
@@ -1755,7 +1765,3 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 /usr/include/c++/14.2.1/bits/exception_ptr.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/ia32intrin.h:
-
-/usr/include/c++/14.2.1/bits/uniform_int_dist.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/limits.h:

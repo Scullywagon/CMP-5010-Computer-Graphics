@@ -5,82 +5,164 @@
 #include "ParentCamera.h"
 #include <algorithm>
 #include <iostream>
+#include <map>
+#include <utility>
 #include <vector>
 
 class CollisionManager
 {
   public:
+    // bounding box and Xmin,Xmax, Ymin,Ymax
+    std::vector<BoundingBox *> items;
+
     ParentCamera *player;
 
-    std::vector<BoundingBox *> bbMinX;
-    std::vector<BoundingBox *> bbMaxX;
-    std::vector<BoundingBox *> bbMinY;
-    std::vector<BoundingBox *> bbMaxY;
-
-    float playerIndexMinX;
-    float playerIndexMaxX;
-    float playerIndexMinY;
-    float playerIndexMaxY;
+    std::vector<BoundingBox *>
+        boundingBoxesX; // sorted with two for min and max
+    std::vector<BoundingBox *>
+        boundingBoxesY; // sorted with two for min and max
 
     void add(BoundingBox *a)
     {
-        bbMinX.push_back(a);
-        bbMaxX.push_back(a);
-        bbMinY.push_back(a);
-        bbMaxY.push_back(a);
-    }
-
-    void sortBound()
-    {
-        auto updateIndex = [](std::vector<BoundingBox *> &vec,
-                              BoundingBox *playerBB) -> int
-        {
-            return std::distance(vec.begin(),
-                                 std::find(vec.begin(), vec.end(), playerBB));
-        };
-
-        std::sort(bbMinX.begin(), bbMinX.end(),
-                  [](const BoundingBox *a, const BoundingBox *b)
-                  { return a->min.x < b->min.x; });
-
-        std::sort(bbMaxX.begin(), bbMaxX.end(),
-                  [](const BoundingBox *a, const BoundingBox *b)
-                  { return a->max.x < b->max.x; });
-
-        std::sort(bbMinY.begin(), bbMinY.end(),
-                  [](const BoundingBox *a, const BoundingBox *b)
-                  { return a->min.y < b->min.y; });
-
-        std::sort(bbMaxY.begin(), bbMaxY.end(),
-                  [](const BoundingBox *a, const BoundingBox *b)
-                  { return a->max.y < b->max.y; });
-
-        // Update player index after sorting
-        playerIndexMinX = updateIndex(bbMinX, player->boundingBox);
-        playerIndexMaxX = updateIndex(bbMaxX, player->boundingBox);
-        playerIndexMinY = updateIndex(bbMinY, player->boundingBox);
-        playerIndexMaxY = updateIndex(bbMaxY, player->boundingBox);
     }
 
     void addPlayer(ParentCamera *player)
     {
-        // Add player bounding box to lists
-        bbMinX.push_back(player->boundingBox);
-        bbMaxX.push_back(player->boundingBox);
-        bbMinY.push_back(player->boundingBox);
-        bbMaxY.push_back(player->boundingBox);
-
-        // Sort the bounding box lists
-        sortBound();
+        this->player = player;
     }
 
-    void changePlayer(ParentCamera *camera)
+    void init()
     {
-        bbMinX.erase(bbMinX.begin() + playerIndexMinX);
-        bbMaxX.erase(bbMaxX.begin() + playerIndexMaxX);
-        bbMinY.erase(bbMinY.begin() + playerIndexMinY);
-        bbMaxY.erase(bbMaxY.begin() + playerIndexMaxY);
-        addPlayer(camera);
+        for (auto &item : items)
+        {
+            if (boundingBoxesX.size() == 0)
+            {
+                boundingBoxesX.push_back(item);
+                boundingBoxesX.push_back(item);
+                boundingBoxesY.push_back(item);
+                boundingBoxesY.push_back(item);
+                boundingBoxesX[0]->xmin = 0;
+                boundingBoxesX[1]->xmax = 1;
+                boundingBoxesY[0]->ymin = 0;
+                boundingBoxesY[1]->ymax = 1;
+                continue;
+            }
+            if (item->sorted == false)
+            {
+                insert(item);
+            }
+        }
+    }
+
+    void sortItems()
+    {
+        for (auto &item : items)
+        {
+            if (item->sorted == false)
+            {
+                boundingBoxesX.erase(boundingBoxesX.begin() + item->xmin);
+                boundingBoxesX.erase(boundingBoxesX.begin() + item->xmax);
+                boundingBoxesY.erase(boundingBoxesY.begin() + item->ymin);
+                boundingBoxesY.erase(boundingBoxesY.begin() + item->ymax);
+                insert(item);
+            }
+        }
+        if (player->boundingBox->sorted == false)
+        {
+            boundingBoxesX.erase(boundingBoxesX.begin() +
+                                 player->boundingBox->xmin);
+            boundingBoxesX.erase(boundingBoxesX.begin() +
+                                 player->boundingBox->xmax);
+            boundingBoxesY.erase(boundingBoxesY.begin() +
+                                 player->boundingBox->ymin);
+            boundingBoxesY.erase(boundingBoxesY.begin() +
+                                 player->boundingBox->ymax);
+            insert(player->boundingBox);
+        }
+    }
+
+    void insert(BoundingBox *item)
+    {
+        bool minIn = false, maxIn = false;
+        for (int i = 0; i < boundingBoxesX.size(); i++)
+        {
+            if (item->min.x < boundingBoxesX[i]->min.x)
+            {
+                boundingBoxesX.insert(boundingBoxesX.begin() + i, item);
+                boundingBoxesX[i]->xmin = i;
+                boundingBoxesX[i + 1]->xmin = i + 1;
+                minIn = true;
+                continue;
+            }
+            if (item->max.x < boundingBoxesX[i]->max.x)
+            {
+                boundingBoxesX.insert(boundingBoxesX.begin() + i, item);
+                boundingBoxesX[i]->xmax = i;
+                boundingBoxesX[i + 1]->xmax = i + 1;
+                maxIn = true;
+                break;
+            }
+        }
+        if (!minIn)
+        {
+            boundingBoxesX.push_back(item);
+            boundingBoxesX.push_back(item);
+            item->xmin = boundingBoxesX.size() - 2;
+            item->xmax = boundingBoxesX.size() - 1;
+        }
+        else if (!maxIn)
+        {
+            boundingBoxesX.push_back(item);
+            item->xmax = boundingBoxesX.size() - 1;
+        }
+
+        minIn = false, maxIn = false;
+        for (int i = 0; i < boundingBoxesY.size(); i++)
+        {
+            if (item->min.y < boundingBoxesY[i]->min.y)
+            {
+                boundingBoxesY.insert(boundingBoxesY.begin() + i, item);
+                boundingBoxesY[i]->ymin = i;
+                boundingBoxesY[i + 1]->ymin = i + 1;
+                minIn = true;
+                continue;
+            }
+            if (item->max.y < boundingBoxesY[i]->max.y)
+            {
+                boundingBoxesY.insert(boundingBoxesY.begin() + i, item);
+                boundingBoxesY[i]->ymax = i;
+                boundingBoxesY[i + 1]->ymax = i + 1;
+                maxIn = true;
+                break;
+            }
+        }
+        if (!minIn)
+        {
+            boundingBoxesX.push_back(item);
+            boundingBoxesX.push_back(item);
+            item->ymin = boundingBoxesY.size() - 2;
+            item->ymax = boundingBoxesY.size() - 1;
+        }
+        else if (!maxIn)
+        {
+            boundingBoxesX.push_back(item);
+            item->ymax = boundingBoxesY.size() - 1;
+        }
+        item->sorted = true;
+    }
+
+    void changePlayer(ParentCamera *player)
+    {
+        boundingBoxesX.erase(boundingBoxesX.begin() +
+                             this->player->boundingBox->xmin);
+        boundingBoxesX.erase(boundingBoxesX.begin() +
+                             this->player->boundingBox->xmax);
+        boundingBoxesY.erase(boundingBoxesY.begin() +
+                             this->player->boundingBox->ymin);
+        boundingBoxesY.erase(boundingBoxesY.begin() +
+                             this->player->boundingBox->ymax);
+        this->player = player;
+        sortItems();
     }
 
     void collidePlayer(BoundingBox *a)
@@ -90,17 +172,22 @@ class CollisionManager
 
     void check()
     {
-        std::cout << "player min x: " << playerIndexMinX
-                  << " player max x: " << playerIndexMaxX << std::endl;
-        for (int i = playerIndexMinX; i < playerIndexMaxX; i++)
+        sortItems();
+        int Pmin = player->boundingBox->xmin, Pmax = player->boundingBox->xmax;
+        for (int i = Pmin + 1; i < Pmax; i++)
         {
-            checkCollision(bbMinX[i]);
-            checkCollision(bbMaxX[i]);
+            if (checkCollision(boundingBoxesX[i]))
+            {
+                collidePlayer(boundingBoxesX[i]);
+            }
         }
-        for (int i = playerIndexMinY; i < playerIndexMaxY; i++)
+        Pmin = player->boundingBox->ymin, Pmax = player->boundingBox->ymax;
+        for (int i = Pmin + 1; i < Pmax; i++)
         {
-            checkCollision(bbMinY[i]);
-            checkCollision(bbMaxY[i]);
+            if (checkCollision(boundingBoxesY[i]))
+            {
+                collidePlayer(boundingBoxesY[i]);
+            }
         }
     }
 
