@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "BoundingBox.h"
 #include "Shader.h"
 
 #include <string>
@@ -47,6 +48,8 @@ class Mesh
     vector<Texture> textures;
     unsigned int VAO;
 
+    vector<BoundingBox *> boundingBoxes;
+
     // constructor
     Mesh(vector<Vertex> vertices, vector<unsigned int> indices,
          vector<Texture> textures)
@@ -58,6 +61,19 @@ class Mesh
         // now that we have all the required data, set the vertex buffers and
         // its attribute pointers.
         setupMesh();
+
+        for (int i = 0; i < indices.size(); i += 3)
+        {
+            glm::vec3 p1 = vertices[indices[i]].Position;
+            glm::vec3 p2 = vertices[indices[i + 1]].Position;
+            glm::vec3 p3 = vertices[indices[i + 2]].Position;
+
+            // Initialize the min and max points for the triangle
+            glm::vec3 minPoint = glm::min(p1, glm::min(p2, p3));
+            glm::vec3 maxPoint = glm::max(p1, glm::max(p2, p3));
+            
+            boundingBoxes.push_back(new BoundingBox(minPoint, maxPoint));
+        }
     }
 
     // render the mesh

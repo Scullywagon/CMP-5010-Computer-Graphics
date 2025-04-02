@@ -16,11 +16,7 @@ struct BoundingBox
     float scaleVal = 1.0f;
 
     bool sorted = false;
-    // indexes
-    int xmin = 0;
-    int xmax = 0;
-    int ymin = 0;
-    int ymax = 0;
+    std::vector<BoundingBox *> subBoxes;
 
     // generates the box from those values
     BoundingBox(glm::vec3 min, glm::vec3 max) : min(min), max(max)
@@ -63,6 +59,11 @@ struct BoundingBox
         min += scaledTranslation;
         max += scaledTranslation;
         sorted = false;
+
+        for (BoundingBox *box : subBoxes)
+        {
+            box->translate(translation);
+        }
     }
 
     void rotate(float degrees, glm::vec3 axis)

@@ -23,8 +23,9 @@ class CollisionManager
     void add(BoundingBox *a)
     {
         std::pair<BoundingBox *, bool> min(a, false);
-        itemsX.push_back(min);
         std::pair<BoundingBox *, bool> max(a, true);
+
+        itemsX.push_back(min);
         itemsX.push_back(max);
         itemsZ.push_back(min); // Changed Y to Z
         itemsZ.push_back(max); // Changed Y to Z
@@ -80,12 +81,19 @@ class CollisionManager
         sortItems();
     }
 
-    void collidePlayer(BoundingBox *a)
+    void collidePlayer(std::vector<BoundingBox *> &subBoxes)
     {
-        player->translation = glm::vec3(0.0f);
+        for (BoundingBox *x : subBoxes)
+        {
+            if (player->boundingBox->isColliding(*x))
+            {
+                player->translation = player->translation + calcPushDirection(x);
+            }
+        }
     }
 
-    std::unordered_set<BoundingBox *> genSet(std::vector<std::pair<BoundingBox *, bool>> &items)
+    std::unordered_set<BoundingBox *>
+    genSet(std::vector<std::pair<BoundingBox *, bool>> &items)
     {
         std::unordered_set<BoundingBox *> set;
         for (int i = 0; i < items.size(); i++)
@@ -107,7 +115,8 @@ class CollisionManager
                         set.insert(items[i].first);
                         break;
                     }
-                    if (items[x].second == true)
+                    if (items[x].first == items[i].first &&
+                        items[x].second == true)
                     {
                         break;
                     }
@@ -121,15 +130,25 @@ class CollisionManager
     {
         sortItems();
         std::unordered_set<BoundingBox *> setX = genSet(itemsX);
-        std::unordered_set<BoundingBox *> setZ = genSet(itemsZ); // Changed Y to Z
+        std::unordered_set<BoundingBox *> setZ =
+            genSet(itemsZ); // Changed Y to Z
 
-        for (BoundingBox *a : setZ)
+        std::vector<BoundingBox *> subBoxes;
+
+        for (BoundingBox *a : setX)
         {
-            if (checkCollision(a))
+            if (setZ.find(a) != setZ.end())
             {
-                collidePlayer(a);
+                if (checkCollision(a))
+                {
+                    for (BoundingBox *x : a->subBoxes)
+                    {
+                        subBoxes.push_back(x);
+                    }
+                }
             }
         }
+        collidePlayer(subBoxes);
     }
 
   private:
@@ -147,6 +166,95 @@ class CollisionManager
                  translatedMin.y > a->max.y || // Y-axis
                  translatedMax.z < a->min.z ||
                  translatedMin.z > a->max.z); // Z-axis
+    }
+
+    ///////
+    /// CHANGE THESE LATER PLEASE
+    ///////
+
+    glm::vec3 calcOverlap(BoundingBox *bb)
+    {
+        glm::vec3 translatedMin =
+            player->boundingBox->min + player->translation;
+        glm::vec3 translatedMax =
+            player->boundingBox->max + player->translation;
+
+        // Calculate the overlap on each axis
+        glm::vec3 overlapMin = glm::max(translatedMin, bb->min);
+        glm::vec3 overlapMax = glm::min(translatedMax, bb->max);
+
+        // Compute the overlap vector (the difference between max and min
+        // overlap)
+        glm::vec3 overlap = overlapMax - overlapMin;
+
+        // If any overlap is negative or zero, there's no actual overlap
+        if (overlap.x <= 0 || overlap.y <= 0 || overlap.z <= 0)
+        {
+            // No overlap along any axis, return a zero vector
+            return glm::vec3(0.0f);
+        }
+
+        return overlap; // Return the overlap vector
+    }
+    glm::vec3 calcPushDirection(BoundingBox *bb)
+    {
+        // Get the overlap vector
+        glm::vec3 overlap = calcOverlap(bb);
+
+        // If there's no overlap, return a zero vector (no push required)
+        if (overlap == glm::vec3(0.0f))
+        {
+            return glm::vec3(0.0f);
+        }
+
+        glm::vec3 translatedMin =
+            player->boundingBox->min + player->translation;
+        glm::vec3 translatedMax =
+            player->boundingBox->max + player->translation;
+
+        // Calculate the push direction based on the overlap
+        glm::vec3 pushDirection(0.0f);
+
+        if (overlap.x > 0)
+        {
+            // If the overlap on the X axis is positive, resolve it
+            if (translatedMin.x < bb->min.x)
+            {
+                pushDirection.x = -overlap.x; // Move the player to the left
+            }
+            else
+            {
+                pushDirection.x = overlap.x; // Move the player to the right
+            }
+        }
+
+        if (overlap.y > 0)
+        {
+            // If the overlap on the Y axis is positive, resolve it
+            if (translatedMin.y < bb->min.y)
+            {
+                pushDirection.y = -overlap.y; // Move the player down
+            }
+            else
+            {
+                pushDirection.y = overlap.y; // Move the player up
+            }
+        }
+
+        if (overlap.z > 0)
+        {
+            // If the overlap on the Z axis is positive, resolve it
+            if (translatedMin.z < bb->min.z)
+            {
+                pushDirection.z = -overlap.z; // Move the player backward
+            }
+            else
+            {
+                pushDirection.z = overlap.z; // Move the player forward
+            }
+        }
+
+        return pushDirection; // Return the calculated push direction
     }
 };
 

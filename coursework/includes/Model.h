@@ -43,6 +43,13 @@ class Model
     {
         loadModel(path, scale);
         generateBoundingBox();
+        for (Mesh mesh : meshes)
+        {
+            for (BoundingBox *box : mesh.boundingBoxes)
+            {
+                boundingBox->subBoxes.push_back(box);
+            }
+        }
     }
 
     void generateBoundingBox()
