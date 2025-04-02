@@ -85,31 +85,49 @@ class CollisionManager
         player->translation = glm::vec3(0.0f);
     }
 
-    void check()
+    std::unordered_set<BoundingBox *> genSet(std::vector<std::pair<BoundingBox *, bool>> &items)
     {
-        sortItems();
-        for (int i = 0; i < itemsX.size(); i++)
+        std::unordered_set<BoundingBox *> set;
+        for (int i = 0; i < items.size(); i++)
         {
-            if (itemsX[i].first == player->boundingBox)
-                continue;
-
-            if (itemsX[i].second == false)
+            if (items[i].first == player->boundingBox)
             {
-                for (int x = i; x < itemsX.size(); x++)
+                if (items[i].second == true)
                 {
-                    if (itemsX[x].first == player->boundingBox)
+                    break;
+                }
+                continue;
+            }
+            if (items[i].second == false)
+            {
+                for (int x = i; x < items.size(); x++)
+                {
+                    if (items[x].first == player->boundingBox)
                     {
-                        if (checkCollision(itemsX[i].first))
-                        {
-                            collidePlayer(itemsX[i].first);
-                            break;
-                        }
+                        set.insert(items[i].first);
+                        break;
                     }
-                    if (itemsX[x].second == true)
+                    if (items[x].second == true)
                     {
                         break;
                     }
                 }
+            }
+        }
+        return set;
+    }
+
+    void check()
+    {
+        sortItems();
+        std::unordered_set<BoundingBox *> setX = genSet(itemsX);
+        std::unordered_set<BoundingBox *> setZ = genSet(itemsZ); // Changed Y to Z
+
+        for (BoundingBox *a : setZ)
+        {
+            if (checkCollision(a))
+            {
+                collidePlayer(a);
             }
         }
     }
