@@ -67,6 +67,7 @@ class Model
         shader.setMat4("model", modelMatrix);
         for (unsigned int i = 0; i < meshes.size(); i++)
             meshes[i].Draw(shader);
+        boundingBox->draw(shader.ID);
     }
 
     // no clue if this is good

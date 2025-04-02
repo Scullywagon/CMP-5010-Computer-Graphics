@@ -90,7 +90,7 @@ struct Scene
             collisionManager->add(cart.cart.boundingBox);
         }
         collisionManager->addPlayer(camera);
-        collisionManager->init();
+        collisionManager->sortItems();
     }
 
     void activateRotation()
