@@ -77,42 +77,48 @@ class Mesh
     }
 
     // render the mesh
-    void Draw(Shader &shader)
+    void Draw(Shader &shader, bool depthOnly = false)
     {
-        string materialName = "material";
-        if (textures.size() > 1)
+        if (!depthOnly)
         {
-            shader.setBool("isTextured", true);
-            materialName = "material2";
-        }
-        for (unsigned int i = 0; i < textures.size(); i++)
-        {
-            glActiveTexture(GL_TEXTURE0 + i);
-            string number;
-            string name = textures[i].type;
-            if (name == "texture_diffuse")
+            bool useTextures = !textures.empty();
+            shader.setBool("isTextured", useTextures);
+
+            std::string materialName =
+                (textures.size() > 1) ? "material2" : "material";
+
+            for (unsigned int i = 0; i < textures.size(); i++)
             {
-                shader.setInt(materialName + ".diffuse", i);
-                shader.setFloat(materialName + ".shininess", 3.0f);
+                glActiveTexture(GL_TEXTURE0 + i);
+
+                const std::string &type = textures[i].type;
+                GLuint texID = textures[i].id;
+
+                if (type == "texture_diffuse")
+                {
+                    shader.setInt(materialName + ".diffuse", i);
+                    shader.setFloat(materialName + ".shininess", 3.0f);
+                }
+                else if (type == "texture_normal")
+                {
+                    shader.setInt(materialName + ".normal", i);
+                    shader.setFloat(materialName + ".shininess", 4.0f);
+                }
+
+                glBindTexture(GL_TEXTURE_2D, texID);
             }
-            else if (name == "texture_normal")
-            {
-                shader.setInt(materialName + ".normal", i);
-                shader.setFloat(materialName + ".shininess", 4.0f);
-            }
-            glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }
 
-        // draw mesh
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()),
                        GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
 
-        // always good practice to set everything back to defaults once
-        // configured.
-        glActiveTexture(GL_TEXTURE0);
-        shader.setBool("isTextured", false);
+        if (!depthOnly)
+        {
+            glActiveTexture(GL_TEXTURE0);
+            shader.setBool("isTextured", false);
+        }
     }
 
   private:

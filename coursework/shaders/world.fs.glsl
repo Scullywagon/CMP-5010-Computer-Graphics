@@ -127,35 +127,29 @@ vec3 calculateGeneralLight(Light l, vec3 texColor, vec3 norm, float shininess)
     return result;
 }
 
-float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm)
+float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal)
 {
-    // perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
-    // transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5;
-    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
-    float closestDepth = texture(depthMap, projCoords.xy).r; 
-    // get depth of current fragment from light's perspective
+
+    // Discard if outside light's orthographic frustum
+    if (projCoords.z > 1.0)
+        return 0.0;
+
     float currentDepth = projCoords.z;
-    // calculate bias (based on depth map resolution and slope)
-    vec3 normal = normalize(norm);
-    float bias = max(0.5 * (1.0 - dot(normal, sunDir)), 0.001);
+    float bias = max(0.05 * (1.0 - dot(normalize(normal), normalize(sunDir))), 0.001);
 
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(depthMap, 0);
-    for(int x = -1; x <= 1; ++x)
+
+    for (int x = -1; x <= 1; ++x)
     {
-        for(int y = -1; y <= 1; ++y)
+        for (int y = -1; y <= 1; ++y)
         {
-            float pcfDepth = texture(depthMap, projCoords.xy + vec2(x, y) * texelSize).r; 
-            shadow += currentDepth - bias > pcfDepth  ? 1.0 : 0.0;        
-        }    
+            float sampleDepth = texture(depthMap, projCoords.xy + vec2(x, y) * texelSize).r;
+            shadow += (currentDepth - bias > sampleDepth) ? 1.0 : 0.0;
+        }
     }
-    shadow /= 9.0;
-    
-    // keep the shadow at 0.0 when outside the far_plane region of the light's frustum.
-    if(projCoords.z > 1.0)
-        shadow = 0.0;
-        
-    return shadow;
+
+    return shadow / 9.0;
 }

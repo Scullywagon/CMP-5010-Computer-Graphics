@@ -87,7 +87,6 @@ struct Scene
 
         worldShader();
         setupCollisions();
-        initQuad();
     }
 
     void setupCollisions()
@@ -111,11 +110,6 @@ struct Scene
     void worldShader()
     {
         shader.use();
-        shader.setInt("depthMap", 10);
-        glActiveTexture(GL_TEXTURE10); // Activate texture unit 10
-        glBindTexture(GL_TEXTURE_2D, shadowMap->depthMap);
-        shader.setMat4("lightSpaceMatrix", shadowMap->lightSpaceMatrix);
-        shader.setInt("depthMap", 0);
         shader.setMat4("projection", projection);
         shader.setMat4("view", view);
         shader.setMat4("model", model);
@@ -148,58 +142,37 @@ struct Scene
         1.0f,  1.0f,  0.0f, 1.0f, 1.0f  // top-right
     };
 
-    Shader *depthMapVisualizerShader;
-    unsigned int quadVAO, quadVBO;
-    // Create and bind VAO and VBO
-    void initQuad()
-    {
-        depthMapVisualizerShader =
-            new Shader("shaders/depthTest.vs", "shaders/depthTest.fs");
-        glGenVertexArrays(1, &quadVAO);
-        glGenBuffers(1, &quadVBO);
-        glBindVertexArray(quadVAO);
-        glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices,
-                     GL_STATIC_DRAW);
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
-                              (void *)0);
-        glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
-                              (void *)(3 * sizeof(float)));
-        glBindVertexArray(0);
-    }
     void use(float deltaTime)
     {
-        // view = shadowMap->lightView;
-        // projection = shadowMap->lightProjection;
-        view = camera->GetViewMatrix();
-        projection = glm::perspective(
-            camera->fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
-            10000.0f);
+        view = shadowMap->lightView;
+        projection = shadowMap->lightProjection;
+        // view = camera->GetViewMatrix();
+        // projection = glm::perspective(
+        //    camera->fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
+        //   10000.0f);
 
-        shadowMap->use();
-        floor.use(shadowMap->shader);
-        ferrisWheel->draw(shadowMap->shader, model);
+        shadowMap->bind();
+        glClear(GL_DEPTH_BUFFER_BIT);
 
-        depthMapVisualizerShader->use();
-        depthMapVisualizerShader->setInt(
-            "depthMap", 0); // Set the depth map as the shader's uniform
+        shadowMap->shader.use();
+        shadowMap->shader.setMat4("lightSpaceMatrix",
+                                  shadowMap->lightSpaceMatrix);
+        floor.use(shadowMap->shader, true);
+        ferrisWheel->draw(shadowMap->shader, model, true);
 
-        // Bind the depth map texture
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(
-            GL_TEXTURE_2D,
-            shadowMap
-                ->depthMap); // The depth map texture generated from shadowMap
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // Render the quad with the depth map texture
-        glBindVertexArray(quadVAO);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-        glBindVertexArray(0);
         skybox.use(view, projection);
 
         worldShader();
+        shader.setMat4("lightSpaceMatrix", shadowMap->lightSpaceMatrix);
+
+        glActiveTexture(GL_TEXTURE10);
+        glBindTexture(GL_TEXTURE_2D, shadowMap->depthMap);
+        shader.setInt("shadowMap", 10);
+
         floor.use(shader);
         ferrisWheel->draw(shader, model);
 

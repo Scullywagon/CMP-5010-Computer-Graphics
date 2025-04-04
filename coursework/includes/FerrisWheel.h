@@ -114,9 +114,9 @@ struct Cart
         updateCamera(translation);
     }
 
-    void draw(Shader &shader)
+    void draw(Shader &shader, bool depthOnly = false)
     {
-        cart.Draw(shader);
+        cart.Draw(shader, depthOnly);
     }
 };
 
@@ -182,15 +182,15 @@ struct FerrisWheel
         }
     }
 
-    void draw(Shader &shader, glm::mat4 model)
+    void draw(Shader &shader, glm::mat4 model, bool depthOnly = false)
     {
-        stand.Draw(shader);
+        stand.Draw(shader, depthOnly);
         shader.setMat4("model", model);
-        wheel.Draw(shader);
+        wheel.Draw(shader, depthOnly);
         shader.setMat4("model", model);
         for (auto &cart : carts)
         {
-            cart.draw(shader);
+            cart.draw(shader, depthOnly);
             shader.setMat4("model", model);
         }
     }

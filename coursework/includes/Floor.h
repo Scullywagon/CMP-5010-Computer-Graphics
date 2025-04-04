@@ -50,9 +50,9 @@ class Floor
         mesh = new Mesh(vertices, indices, textures);
     }
 
-    void use(Shader &shader)
+    void use(Shader &shader, bool depthOnly = false)
     {
-        mesh->Draw(shader);
+        mesh->Draw(shader, depthOnly);
     }
 
   private:
