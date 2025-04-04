@@ -10,10 +10,11 @@ class ShadowMap
     Shader shader;
     unsigned int depthMapFBO, depthMap;
     const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
-    glm::vec3 sunPos = glm::vec3(0.6f, -0.6f, 0.4f) * -500.0f;
+    //glm::vec3 sunPos = glm::vec3(0.6f, -0.6f, 0.4f) * -100.0f;
+    glm::vec3 sunPos = glm::vec3(0.0f, 10.0f, 0.0f); 
 
     glm::mat4 lightProjection =
-        glm::ortho(-1000.0f, 1000.0f, -10000.0f, 10000.0f, 0.0f, 10000.0f);
+        glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 0.1f, 1000.0f);
     glm::mat4 lightView =
         glm::lookAt(sunPos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
     glm::mat4 lightSpaceMatrix = lightProjection * lightView;

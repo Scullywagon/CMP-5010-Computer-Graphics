@@ -3,6 +3,7 @@
 
 #include "BoundingBox.h"
 #include "ParentCamera.h"
+#include "glm/detail/type_vec.hpp"
 #include <algorithm>
 #include <iostream>
 #include <locale>
@@ -83,13 +84,17 @@ class CollisionManager
 
     void collidePlayer(std::vector<BoundingBox *> &subBoxes)
     {
+        glm::vec3 totalCorrection(0.0f);
+
         for (BoundingBox *x : subBoxes)
         {
             if (player->boundingBox->isColliding(*x))
             {
-                player->translation = player->translation + calcPushDirection(x);
+                totalCorrection += calculateCorrection(x);
             }
         }
+
+        player->translation += totalCorrection;
     }
 
     std::unordered_set<BoundingBox *>
@@ -196,6 +201,7 @@ class CollisionManager
 
         return overlap; // Return the overlap vector
     }
+
     glm::vec3 calcPushDirection(BoundingBox *bb)
     {
         // Get the overlap vector
@@ -255,6 +261,33 @@ class CollisionManager
         }
 
         return pushDirection; // Return the calculated push direction
+    }
+
+    glm::vec3 calculateCorrection(BoundingBox *bb)
+    {
+        glm::vec3 correction(0.0f);
+        glm::vec3 boxCenter =
+            (bb->min + bb->max) / 2.0f; // Center of the bounding box
+        float xSign = (player->Position.x < boxCenter.x) ? -1.0f : 1.0f;
+        float ySign = (player->Position.y < boxCenter.y) ? -1.0f : 1.0f;
+        float zSign = (player->Position.z < boxCenter.z) ? -1.0f : 1.0f;
+
+        glm::vec3 overlap = calcOverlap(bb);
+
+        if (overlap.x <= overlap.y && overlap.x <= overlap.z)
+        {
+            correction.x = xSign * overlap.x;
+        }
+        else if (overlap.y <= overlap.x && overlap.y <= overlap.z)
+        {
+            correction.y = ySign * overlap.y;
+        }
+        else
+        {
+            correction.z = zSign * overlap.z;
+        }
+
+        return correction;
     }
 };
 

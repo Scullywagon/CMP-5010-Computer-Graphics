@@ -25,8 +25,8 @@
 
 using namespace std;
 
-const int SCREEN_WIDTH = 1920;
-const int SCREEN_HEIGHT = 1080;
+const int SCREEN_WIDTH = 25;
+const int SCREEN_HEIGHT = 16;
 
 int lastX = SCREEN_WIDTH / 2;
 int lastY = SCREEN_HEIGHT / 2;
@@ -133,6 +133,7 @@ int main()
     // Create windowed mode window and OpenGL context
     GLFWwindow *window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT,
                                           "LearnOpenGL", NULL, NULL);
+    glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     if (window == NULL)
     {
         cout << "Failed to create GLFW window" << endl;
@@ -158,6 +159,7 @@ int main()
 
     while (!glfwWindowShouldClose(window))
     {
+        glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
         currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;

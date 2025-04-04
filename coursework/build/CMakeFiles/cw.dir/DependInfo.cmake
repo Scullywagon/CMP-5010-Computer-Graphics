@@ -8,9 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/logan/University/CMP-5010-Computer-Graphics/coursework/src/Scene.cpp" "CMakeFiles/cw.dir/src/Scene.cpp.o" "gcc" "CMakeFiles/cw.dir/src/Scene.cpp.o.d"
-  "/home/logan/University/CMP-5010-Computer-Graphics/coursework/src/main.cpp" "CMakeFiles/cw.dir/src/main.cpp.o" "gcc" "CMakeFiles/cw.dir/src/main.cpp.o.d"
-  "" "/home/logan/University/CMP-5010-Computer-Graphics/coursework/output/cw" "gcc" "CMakeFiles/cw.dir/link.d"
+  "/Users/logan/University/CMP-5010-Computer-Graphics/coursework/src/Scene.cpp" "CMakeFiles/cw.dir/src/Scene.cpp.o" "gcc" "CMakeFiles/cw.dir/src/Scene.cpp.o.d"
+  "/Users/logan/University/CMP-5010-Computer-Graphics/coursework/src/main.cpp" "CMakeFiles/cw.dir/src/main.cpp.o" "gcc" "CMakeFiles/cw.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

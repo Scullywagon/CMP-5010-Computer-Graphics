@@ -48,10 +48,10 @@ struct Scene
 
     Skybox skybox;
     Floor floor;
-    Sun sun = {{0.6f, -0.6f, 0.4f},
+    Sun sun = {{0.0f, -1.0f, 0.0f},
                {0.5f, 0.5f, 0.5f},
-               {0.9f, 0.9f, 0.9f},
-               {0.6f, 0.6f, 0.6f}};
+               {0.5f, 0.5f, 0.5f},
+               {0.2f, 0.2f, 0.2f}};
 
     vector<ParentCamera *> cameras;
     ParentCamera *camera;
@@ -59,6 +59,8 @@ struct Scene
 
     bool enableRotation = false;
     Shader shader;
+    Shader depthShader =
+        Shader("shaders/depthTest.vs", "shaders/depthTest.fs");
 
     Scene(int SCREEN_WIDTH, int SCREEN_HEIGHT)
         : shader("shaders/world.vs.glsl", "shaders/world.fs.glsl")
@@ -67,7 +69,6 @@ struct Scene
         this->SCREEN_HEIGHT = SCREEN_HEIGHT;
 
         shadowMap = new ShadowMap(sun.direction);
-
         collisionManager = new CollisionManager();
         ferrisWheel = new FerrisWheel();
 
@@ -134,35 +135,30 @@ struct Scene
         cameraTicker = currentFrame;
     }
 
-    float quadVertices[20] = {
-        // positions        // texture coordinates
-        -1.0f, 1.0f,  0.0f, 0.0f, 1.0f, // top-left
-        -1.0f, -1.0f, 0.0f, 0.0f, 0.0f, // bottom-left
-        1.0f,  -1.0f, 0.0f, 1.0f, 0.0f, // bottom-right
-        1.0f,  1.0f,  0.0f, 1.0f, 1.0f  // top-right
-    };
 
     void use(float deltaTime)
     {
-        view = shadowMap->lightView;
-        projection = shadowMap->lightProjection;
-        // view = camera->GetViewMatrix();
-        // projection = glm::perspective(
-        //    camera->fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
-        //   10000.0f);
+        // view = shadowMap->lightView;
+        // projection = shadowMap->lightProjection;
+        view = camera->GetViewMatrix();
+        projection = glm::perspective(
+            camera->fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
+            10000.0f);
 
+        /*
         shadowMap->bind();
         glClear(GL_DEPTH_BUFFER_BIT);
 
         shadowMap->shader.use();
         shadowMap->shader.setMat4("lightSpaceMatrix",
                                   shadowMap->lightSpaceMatrix);
-        floor.use(shadowMap->shader, true);
+        //floor.use(shadowMap->shader, true);
         ferrisWheel->draw(shadowMap->shader, model, true);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        */
 
         skybox.use(view, projection);
 

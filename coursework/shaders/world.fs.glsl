@@ -53,7 +53,7 @@ uniform int numLights;
 
 vec3 calculateSunlight(vec3 texColor, vec3 norm, float shininess, float shadow);
 vec3 calculateGeneralLight(Light l, vec3 texColor, vec3 norm, float shininess);
-float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm);
+float ShadowCalculation(vec4 fragPosLightSpace);
 
 void main()
 {
@@ -74,7 +74,7 @@ void main()
         shininess = material.shininess;
     }
 
-    float shadow = ShadowCalculation(fragPosLightSpace, norm);
+    float shadow = ShadowCalculation(fragPosLightSpace);
     vec3 result = calculateSunlight(texColor, norm, shininess, shadow);
 
     for (int i = 0; i < numLights; i++)
@@ -100,7 +100,7 @@ vec3 calculateSunlight(vec3 texColor, vec3 norm, float shininess, float shadow)
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
     vec3 specular = sunSpecular * spec * texColor;
 
-    vec3 result = (specular + diffuse) * (ambient + (1.0 - shadow));
+    vec3 result = (ambient + (1.0 - shadow) * (diffuse + specular));
     return result;
 }
 
@@ -127,29 +127,22 @@ vec3 calculateGeneralLight(Light l, vec3 texColor, vec3 norm, float shininess)
     return result;
 }
 
-float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal)
+float ShadowCalculation(vec4 fragPosLightSpace)
 {
+    // Perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    // Transform to [0,1]
     projCoords = projCoords * 0.5 + 0.5;
 
-    // Discard if outside light's orthographic frustum
-    if (projCoords.z > 1.0)
-        return 0.0;
-
+    // Depth from shadow map
+    float closestDepth = texture(depthMap, projCoords.xy).r; 
     float currentDepth = projCoords.z;
-    float bias = max(0.05 * (1.0 - dot(normalize(normal), normalize(sunDir))), 0.001);
 
-    float shadow = 0.0;
-    vec2 texelSize = 1.0 / textureSize(depthMap, 0);
+    // Shadow bias to prevent acne
+    float bias = 0.5;
 
-    for (int x = -1; x <= 1; ++x)
-    {
-        for (int y = -1; y <= 1; ++y)
-        {
-            float sampleDepth = texture(depthMap, projCoords.xy + vec2(x, y) * texelSize).r;
-            shadow += (currentDepth - bias > sampleDepth) ? 1.0 : 0.0;
-        }
-    }
+    // Is fragment in shadow?
+    float shadow = currentDepth + bias > closestDepth ? 1.0 : 0.0;
 
-    return shadow / 9.0;
+    return shadow;
 }
