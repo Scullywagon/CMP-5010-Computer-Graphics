@@ -25,8 +25,8 @@
 
 using namespace std;
 
-const int SCREEN_WIDTH = 25;
-const int SCREEN_HEIGHT = 16;
+const int SCREEN_WIDTH = 1920;
+const int SCREEN_HEIGHT = 1080;
 
 int lastX = SCREEN_WIDTH / 2;
 int lastY = SCREEN_HEIGHT / 2;

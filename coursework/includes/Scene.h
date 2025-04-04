@@ -145,7 +145,6 @@ struct Scene
             camera->fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
             10000.0f);
 
-        /*
         shadowMap->bind();
         glClear(GL_DEPTH_BUFFER_BIT);
 
@@ -158,7 +157,6 @@ struct Scene
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        */
 
         skybox.use(view, projection);
 
