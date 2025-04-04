@@ -136,9 +136,9 @@ struct FerrisWheel
         : stand(Model("assets/base/base.obj", 2.0f)),
           wheel(Model("assets/wheel2/wheel2.obj", 2.0f))
     {
-
         stand.translate(glm::vec3(1.35f * 2.0f, 0.0f, 0.0f));
         wheel.translate(glm::vec3(0.0f, 12.48f * 2.0f, 0.0f));
+
         carts = {
             Cart(glm::vec3(0.0f, 2.5958f * 2.0f, 0.045f * 2.0f),
                  glm::vec3(0.0f, -9.8242f * 2.0f, 0.045f * 2.0f)),

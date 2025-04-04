@@ -1,3 +1,6 @@
+#ifndef CUBE_H
+#define CUBE_H
+
 #include "Mesh.h"
 #include "Shader.h"
 #include "glm/glm.hpp"
@@ -150,17 +153,12 @@ class Cube
         mesh = new Mesh(vertices, indices, textures);
     }
 
-    void use(glm::mat4 model, glm::mat4 view, glm::mat4 projection,
-             glm::vec3 lightPos, glm::vec3 lightColor, glm::vec3 cameraPos)
+    void use(Shader &shader)
     {
-        cubeShader.use();
-        cubeShader.setMat4("model", model);
-        cubeShader.setMat4("view", view);
-        cubeShader.setMat4("projection", projection);
-        cubeShader.setVec3("light.color", lightColor);
-        cubeShader.setVec3("light.position", lightPos);
-        cubeShader.setVec3("cameraPos", cameraPos);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, textureID);
 
+        // Set the shader uniforms
         mesh->Draw(cubeShader);
     }
 
@@ -197,3 +195,4 @@ class Cube
         return textureID;
     }
 };
+#endif

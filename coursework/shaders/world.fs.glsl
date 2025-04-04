@@ -5,6 +5,7 @@ out vec4 FragColor;
 in vec3 FragPos; 
 in vec3 Normal; 
 in vec2 TexCoords; 
+in vec4 fragPosLightSpace;
 
 struct TexturedMaterial 
 {
@@ -45,11 +46,14 @@ uniform bool isTextured = false;
 uniform UntexturedMaterial material;
 uniform TexturedMaterial material2;
 
+uniform sampler2D depthMap;
+
 uniform Light lights[24];
 uniform int numLights;
 
-vec3 calculateSunlight(vec3 texColor, vec3 norm, float shininess);
+vec3 calculateSunlight(vec3 texColor, vec3 norm, float shininess, float shadow);
 vec3 calculateGeneralLight(Light l, vec3 texColor, vec3 norm, float shininess);
+float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm);
 
 void main()
 {
@@ -70,7 +74,8 @@ void main()
         shininess = material.shininess;
     }
 
-    vec3 result = calculateSunlight(texColor, norm, shininess);
+    float shadow = ShadowCalculation(fragPosLightSpace, norm);
+    vec3 result = calculateSunlight(texColor, norm, shininess, shadow);
 
     for (int i = 0; i < numLights; i++)
     {
@@ -80,7 +85,7 @@ void main()
     FragColor = vec4(result, 1.0);
 }
 
-vec3 calculateSunlight(vec3 texColor, vec3 norm, float shininess)
+vec3 calculateSunlight(vec3 texColor, vec3 norm, float shininess, float shadow)
 {
     vec3 ambient = sunAmbient * texColor;
 
@@ -95,7 +100,7 @@ vec3 calculateSunlight(vec3 texColor, vec3 norm, float shininess)
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
     vec3 specular = sunSpecular * spec * texColor;
 
-    vec3 result = specular + diffuse + ambient;
+    vec3 result = (specular + diffuse) * (ambient + (1.0 - shadow));
     return result;
 }
 
@@ -120,4 +125,37 @@ vec3 calculateGeneralLight(Light l, vec3 texColor, vec3 norm, float shininess)
 
     vec3 result = ambient + diffuse + specular;
     return result;
+}
+
+float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm)
+{
+    // perform perspective divide
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    // transform to [0,1] range
+    projCoords = projCoords * 0.5 + 0.5;
+    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
+    float closestDepth = texture(depthMap, projCoords.xy).r; 
+    // get depth of current fragment from light's perspective
+    float currentDepth = projCoords.z;
+    // calculate bias (based on depth map resolution and slope)
+    vec3 normal = normalize(norm);
+    float bias = max(0.5 * (1.0 - dot(normal, sunDir)), 0.001);
+
+    float shadow = 0.0;
+    vec2 texelSize = 1.0 / textureSize(depthMap, 0);
+    for(int x = -1; x <= 1; ++x)
+    {
+        for(int y = -1; y <= 1; ++y)
+        {
+            float pcfDepth = texture(depthMap, projCoords.xy + vec2(x, y) * texelSize).r; 
+            shadow += currentDepth - bias > pcfDepth  ? 1.0 : 0.0;        
+        }    
+    }
+    shadow /= 9.0;
+    
+    // keep the shadow at 0.0 when outside the far_plane region of the light's frustum.
+    if(projCoords.z > 1.0)
+        shadow = 0.0;
+        
+    return shadow;
 }

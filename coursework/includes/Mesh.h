@@ -71,7 +71,7 @@ class Mesh
             // Initialize the min and max points for the triangle
             glm::vec3 minPoint = glm::min(p1, glm::min(p2, p3));
             glm::vec3 maxPoint = glm::max(p1, glm::max(p2, p3));
-            
+
             boundingBoxes.push_back(new BoundingBox(minPoint, maxPoint));
         }
     }
@@ -93,12 +93,12 @@ class Mesh
             if (name == "texture_diffuse")
             {
                 shader.setInt(materialName + ".diffuse", i);
-                shader.setFloat(materialName + ".shininess", 300.0f);
+                shader.setFloat(materialName + ".shininess", 3.0f);
             }
             else if (name == "texture_normal")
             {
                 shader.setInt(materialName + ".normal", i);
-                shader.setFloat(materialName + ".shininess", 400.0f);
+                shader.setFloat(materialName + ".shininess", 4.0f);
             }
             glBindTexture(GL_TEXTURE_2D, textures[i].id);
         }

@@ -250,7 +250,7 @@ class Model
         {
             aiString str;
             mat->GetTexture(type, i, &str);
-            std::cout << "Texture path: " << str.C_Str() << std::endl;
+            // std::cout << "Texture path: " << str.C_Str() << std::endl;
 
             bool skip = false;
             for (unsigned int j = 0; j < textures_loaded.size(); j++)
