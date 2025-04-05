@@ -90,11 +90,11 @@ class CollisionManager
         {
             if (player->boundingBox->isColliding(*x))
             {
-                totalCorrection += calculateCorrection(x);
+            player->translation += calculateCorrection(x);
             }
         }
 
-        player->translation += totalCorrection;
+        //player->translation += totalCorrection;
     }
 
     std::unordered_set<BoundingBox *>

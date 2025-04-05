@@ -87,7 +87,7 @@ class Model
     void rotate(float angle, glm::vec3 axis)
     {
         modelMatrix = glm::rotate(modelMatrix, glm::radians(angle), axis);
-        boundingBox->rotate(angle, axis);
+        //boundingBox->rotate(angle, axis);
     }
 
     void translate(glm::vec3 translation)
