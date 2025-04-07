@@ -79,34 +79,31 @@ class Mesh
     // render the mesh
     void Draw(Shader &shader, bool depthOnly = false)
     {
-        if (!depthOnly)
+        bool useTextures = !textures.empty();
+        shader.setBool("isTextured", useTextures);
+
+        std::string materialName =
+            (textures.size() > 1) ? "material2" : "material";
+
+        for (unsigned int i = 0; i < textures.size(); i++)
         {
-            bool useTextures = !textures.empty();
-            shader.setBool("isTextured", useTextures);
+            glActiveTexture(GL_TEXTURE0 + i);
 
-            std::string materialName =
-                (textures.size() > 1) ? "material2" : "material";
+            const std::string &type = textures[i].type;
+            GLuint texID = textures[i].id;
 
-            for (unsigned int i = 0; i < textures.size(); i++)
+            if (type == "texture_diffuse")
             {
-                glActiveTexture(GL_TEXTURE0 + i);
-
-                const std::string &type = textures[i].type;
-                GLuint texID = textures[i].id;
-
-                if (type == "texture_diffuse")
-                {
-                    shader.setInt(materialName + ".diffuse", i);
-                    shader.setFloat(materialName + ".shininess", 3.0f);
-                }
-                else if (type == "texture_normal")
-                {
-                    shader.setInt(materialName + ".normal", i);
-                    shader.setFloat(materialName + ".shininess", 4.0f);
-                }
-
-                glBindTexture(GL_TEXTURE_2D, texID);
+                shader.setInt(materialName + ".diffuse", i);
+                shader.setFloat(materialName + ".shininess", 3.0f);
             }
+            else if (type == "texture_normal")
+            {
+                shader.setInt(materialName + ".normal", i);
+                shader.setFloat(materialName + ".shininess", 4.0f);
+            }
+
+            glBindTexture(GL_TEXTURE_2D, texID);
         }
 
         glBindVertexArray(VAO);

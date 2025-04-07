@@ -59,8 +59,7 @@ struct Scene
 
     bool enableRotation = false;
     Shader shader;
-    Shader depthShader =
-        Shader("shaders/depthTest.vs", "shaders/depthTest.fs");
+    Shader depthShader = Shader("shaders/depthTest.vs", "shaders/depthTest.fs");
 
     Scene(int SCREEN_WIDTH, int SCREEN_HEIGHT)
         : shader("shaders/world.vs.glsl", "shaders/world.fs.glsl")
@@ -135,7 +134,6 @@ struct Scene
         cameraTicker = currentFrame;
     }
 
-
     void use(float deltaTime)
     {
         // view = shadowMap->lightView;
@@ -151,21 +149,21 @@ struct Scene
         shadowMap->shader.use();
         shadowMap->shader.setMat4("lightSpaceMatrix",
                                   shadowMap->lightSpaceMatrix);
-        //floor.use(shadowMap->shader, true);
+        // floor.use(shadowMap->shader, true);
         ferrisWheel->draw(shadowMap->shader, model, true);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        glCullFace(GL_BACK);
         skybox.use(view, projection);
-
         worldShader();
         shader.setMat4("lightSpaceMatrix", shadowMap->lightSpaceMatrix);
 
-        glActiveTexture(GL_TEXTURE10);
+        glActiveTexture(GL_TEXTURE9);
         glBindTexture(GL_TEXTURE_2D, shadowMap->depthMap);
-        shader.setInt("shadowMap", 10);
+        shader.setInt("depthMap", 9);
 
         floor.use(shader);
         ferrisWheel->draw(shader, model);

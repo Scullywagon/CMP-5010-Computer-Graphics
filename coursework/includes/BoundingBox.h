@@ -68,11 +68,13 @@ struct BoundingBox
 
     void rotate(float degrees, glm::vec3 axis)
     {
+        /*
         glm::mat4 rotation =
             glm::rotate(glm::mat4(1.0f), glm::radians(degrees), axis);
         min = glm::vec3(rotation * glm::vec4(min, 1.0f));
         max = glm::vec3(rotation * glm::vec4(max, 1.0f));
         sorted = false;
+        */
     }
     unsigned int VAO, VBO, EBO;
     void setupGL()

@@ -53,7 +53,7 @@ uniform int numLights;
 
 vec3 calculateSunlight(vec3 texColor, vec3 norm, float shininess, float shadow);
 vec3 calculateGeneralLight(Light l, vec3 texColor, vec3 norm, float shininess);
-float ShadowCalculation(vec4 fragPosLightSpace);
+float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm); 
 
 void main()
 {
@@ -74,7 +74,7 @@ void main()
         shininess = material.shininess;
     }
 
-    float shadow = ShadowCalculation(fragPosLightSpace);
+    float shadow = ShadowCalculation(fragPosLightSpace, norm);
     vec3 result = calculateSunlight(texColor, norm, shininess, shadow);
 
     for (int i = 0; i < numLights; i++)
@@ -127,7 +127,7 @@ vec3 calculateGeneralLight(Light l, vec3 texColor, vec3 norm, float shininess)
     return result;
 }
 
-float ShadowCalculation(vec4 fragPosLightSpace)
+float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm)
 {
     // Perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
@@ -139,10 +139,22 @@ float ShadowCalculation(vec4 fragPosLightSpace)
     float currentDepth = projCoords.z;
 
     // Shadow bias to prevent acne
-    float bias = 0.5;
+    //float bias = 0.01;
+    float bias = max(0.0005 * (1.0 - dot(norm, sunDir)), 0.0005);  
+ 
+    float shadow = 0.0;
+    vec2 texelSize = 1.0 / textureSize(depthMap, 0);
+    for(int x = -1; x <= 1; ++x)
+    {
+    for(int y = -1; y <= 1; ++y)
+    {
+            float pcfDepth = texture(depthMap, projCoords.xy + vec2(x, y) * texelSize).r; 
+            shadow += currentDepth - bias > pcfDepth ? 1.0 : 0.0;        
+        }
+    }
+    shadow /= 9.0;   // Is fragment in shadow?
 
-    // Is fragment in shadow?
-    float shadow = currentDepth + bias > closestDepth ? 1.0 : 0.0;
-
+    if (projCoords.z > 1)
+        shadow = 0.0;
     return shadow;
 }
