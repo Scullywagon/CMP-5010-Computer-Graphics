@@ -14,6 +14,7 @@
 #include "Shader.h"
 #include "ShadowMap.h"
 #include "Skybox.h"
+#include "Terrain.h"
 #include "glm/detail/type_mat.hpp"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -48,6 +49,7 @@ struct Scene
 
     Skybox skybox;
     Floor floor;
+    Terrain terrain;
     Sun sun = {{0.0f, -1.0f, 0.0f},
                {0.5f, 0.5f, 0.5f},
                {0.5f, 0.5f, 0.5f},
@@ -59,10 +61,10 @@ struct Scene
 
     bool enableRotation = false;
     Shader shader;
-    Shader depthShader = Shader("shaders/depthTest.vs", "shaders/depthTest.fs");
 
     Scene(int SCREEN_WIDTH, int SCREEN_HEIGHT)
-        : shader("shaders/world.vs.glsl", "shaders/world.fs.glsl")
+        : shader("shaders/world.vs.glsl", "shaders/world.fs.glsl"),
+          terrain(Terrain(shader))
     {
         this->SCREEN_WIDTH = SCREEN_WIDTH;
         this->SCREEN_HEIGHT = SCREEN_HEIGHT;
@@ -70,8 +72,6 @@ struct Scene
         shadowMap = new ShadowMap(sun.direction);
         collisionManager = new CollisionManager();
         ferrisWheel = new FerrisWheel();
-
-        Model mo("assets/terrain/RaisedForrest/RaisedForrest.obj", 1);
 
         cameras.push_back(new Camera());
         cameras.push_back(new PersonCamera());
@@ -169,6 +169,8 @@ struct Scene
 
         floor.use(shader);
         ferrisWheel->draw(shader, model);
+
+        terrain.draw(shader);
 
         if (enableRotation == true)
         {

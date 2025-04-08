@@ -77,6 +77,14 @@ class Model
         boundingBox->draw(shader.ID);
     }
 
+    void DrawInstanced(Shader &shader, int instanceCount)
+    {
+        shader.setMat4("model", modelMatrix);
+        for (unsigned int i = 0; i < meshes.size(); i++)
+            meshes[i].drawInstanced(shader, instanceCount);
+        boundingBox->draw(shader.ID);
+    }
+
     // no clue if this is good
     void scale(float i)
     {
@@ -87,7 +95,7 @@ class Model
     void rotate(float angle, glm::vec3 axis)
     {
         modelMatrix = glm::rotate(modelMatrix, glm::radians(angle), axis);
-        //boundingBox->rotate(angle, axis);
+        // boundingBox->rotate(angle, axis);
     }
 
     void translate(glm::vec3 translation)

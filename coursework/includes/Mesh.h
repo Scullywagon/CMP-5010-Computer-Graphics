@@ -118,6 +118,47 @@ class Mesh
         }
     }
 
+    void drawInstanced(Shader &shader, int instanceCount)
+    {
+        shader.setBool("isInstanced", true);
+        bool useTextures = !textures.empty();
+        shader.setBool("isTextured", useTextures);
+
+        std::string materialName =
+            (textures.size() > 1) ? "material2" : "material";
+
+        for (unsigned int i = 0; i < textures.size(); i++)
+        {
+            glActiveTexture(GL_TEXTURE0 + i);
+
+            const std::string &type = textures[i].type;
+            GLuint texID = textures[i].id;
+
+            if (type == "texture_diffuse")
+            {
+                shader.setInt(materialName + ".diffuse", i);
+                shader.setFloat(materialName + ".shininess", 3.0f);
+            }
+            else if (type == "texture_normal")
+            {
+                shader.setInt(materialName + ".normal", i);
+                shader.setFloat(materialName + ".shininess", 4.0f);
+            }
+
+            glBindTexture(GL_TEXTURE_2D, texID);
+        }
+
+        glBindVertexArray(VAO);
+        glDrawElementsInstanced(GL_TRIANGLES,
+                                static_cast<unsigned int>(indices.size()),
+                                GL_UNSIGNED_INT, 0, instanceCount);
+        glBindVertexArray(0);
+
+        glActiveTexture(GL_TEXTURE0);
+        shader.setBool("isTextured", false);
+        shader.setBool("isInstanced", false);
+    }
+
   private:
     // render data
     unsigned int VBO, EBO;

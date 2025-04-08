@@ -14,9 +14,17 @@ uniform mat4 projection;
 uniform vec3 cameraPos;
 uniform mat4 lightSpaceMatrix; 
 
+uniform vec3 offsets[1000];
+uniform bool isInstanced = false;
+
 void main()
 {
-    FragPos = vec3(model * vec4(aPos, 1.0)); // Get the world-space position of the vertex
+    vec3 pos = aPos;
+    if (isInstanced) {
+        vec3 offset = offsets[gl_InstanceID];
+        pos += offset;
+    }
+    FragPos = vec3(model * vec4(pos, 1.0)); // Get the world-space position of the vertex
     Normal = mat3(transpose(inverse(model))) * aNormal;
     TexCoords = vec2(aTexCoords.x, aTexCoords.y);
     fragPosLightSpace = lightSpaceMatrix * vec4(FragPos, 1.0); 
