@@ -71,6 +71,8 @@ struct Scene
         collisionManager = new CollisionManager();
         ferrisWheel = new FerrisWheel();
 
+        Model mo("assets/terrain/RaisedForrest/RaisedForrest.obj", 1);
+
         cameras.push_back(new Camera());
         cameras.push_back(new PersonCamera());
         for (Cart &cart : ferrisWheel->carts)
