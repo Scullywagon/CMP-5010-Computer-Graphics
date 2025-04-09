@@ -11,7 +11,7 @@ class ShadowMap
     unsigned int depthMapFBO, depthMap;
     const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
     glm::vec3 sunPos = glm::vec3(0.2f, -0.8f, 0.2f) * -1000.0f;
-    //glm::vec3 sunPos = glm::vec3(0.0f, 10.0f, 0.0f); 
+    // glm::vec3 sunPos = glm::vec3(0.0f, 10.0f, 0.0f);
 
     glm::mat4 lightProjection =
         glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, 0.01f, 2000.0f);
@@ -22,7 +22,7 @@ class ShadowMap
     ShadowMap(glm::vec3 lightDir)
         : shader("shaders/Shadow.vs.glsl", "shaders/Shadow.fs.glsl")
     {
-        //sunPos = lightDir * -1000.0f;
+        // sunPos = lightDir * -1000.0f;
         glGenFramebuffers(1, &depthMapFBO);
         glGenTextures(1, &depthMap);
 

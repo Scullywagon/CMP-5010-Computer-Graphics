@@ -73,7 +73,7 @@ void main()
         shininess = material.shininess;
     }
 
-    if (texColor.a < 0.1)
+    if (texColor.a < 0.01)
     {
         discard;
     }

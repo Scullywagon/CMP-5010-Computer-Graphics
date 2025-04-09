@@ -25,8 +25,8 @@
 
 using namespace std;
 
-const int SCREEN_WIDTH = 1920;
-const int SCREEN_HEIGHT = 1080;
+int SCREEN_WIDTH = 1920;
+int SCREEN_HEIGHT = 1080;
 
 int lastX = SCREEN_WIDTH / 2;
 int lastY = SCREEN_HEIGHT / 2;
@@ -154,6 +154,8 @@ int main()
 
     // depth testing for 3D renders
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     scene = new Scene(SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -170,6 +172,9 @@ int main()
 
         scene->use(deltaTime);
         checkOpenGLError();
+        glfwGetFramebufferSize(window, &SCREEN_WIDTH, &SCREEN_HEIGHT);
+        scene->SCREEN_HEIGHT = SCREEN_HEIGHT;
+        scene->SCREEN_WIDTH = SCREEN_WIDTH;
 
         glfwSwapBuffers(window);
         glfwPollEvents();

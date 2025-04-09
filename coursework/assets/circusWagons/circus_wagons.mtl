@@ -1,0 +1,91 @@
+# MTL file - created by a modified js OBJExporter
+
+newmtl lambert8
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.6
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd lambert8.png
+
+newmtl lambert9
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.6
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd lambert9.png
+
+newmtl drak_grey
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.6
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 0.03 0.03 0.03
+Ke 0 0 0
+
+newmtl blinn1
+Tr 0.976011630127945
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pm 0.8924287602451199
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+
+newmtl lambert5
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.6
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 0.5 0.25 0.25
+Ke 0 0 0
+
+newmtl material
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.6
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 0.07 0 0
+Ke 0 0 0
+
+newmtl grey
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.6
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 0.107 0.107 0.107
+Ke 0 0 0
+
+newmtl orange
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.6
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 0.233 0.117532 0.032853
+Ke 0 0 0

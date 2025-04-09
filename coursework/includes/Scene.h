@@ -137,7 +137,7 @@ struct Scene
         cameraTicker = currentFrame;
     }
 
-    Model *t = new Model("assets/circus/tent.obj", 1);
+    Model *t = new Model("assets/fortuneTeller/fortuneTeller.obj", 0.5);
 
     void use(float deltaTime)
     {
