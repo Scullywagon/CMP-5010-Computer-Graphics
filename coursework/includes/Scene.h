@@ -50,10 +50,7 @@ struct Scene
     Skybox skybox;
     Floor floor;
     Terrain terrain;
-    Sun sun = {{0.0f, -1.0f, 0.0f},
-               {0.1f, 0.1f, 0.1f},
-               {0.4f, 0.4f, 0.4f},
-               {0.4f, 0.4f, 0.4f}};
+    Sun sun;
 
     vector<ParentCamera *> cameras;
     ParentCamera *camera;
@@ -137,7 +134,7 @@ struct Scene
         cameraTicker = currentFrame;
     }
 
-    Model *t = new Model("assets/fortuneTeller/fortuneTeller.obj", 0.5);
+    //    Model *t = new Model("assets/fortuneTeller/fortuneTeller.obj", 0.5);
 
     void use(float deltaTime)
     {
@@ -156,7 +153,6 @@ struct Scene
                                   shadowMap->lightSpaceMatrix);
         ferrisWheel->draw(shadowMap->shader, model, true);
         terrain.draw(shadowMap->shader);
-        t->Draw(shadowMap->shader);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -175,7 +171,9 @@ struct Scene
         ferrisWheel->draw(shader, model);
         terrain.draw(shader);
 
-        t->Draw(shader);
+        sun.move(deltaTime);
+        shadowMap->updateSunPos(sun.direction);
+        sun.draw(shader);
 
         if (enableRotation == true)
         {

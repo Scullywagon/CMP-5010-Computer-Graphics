@@ -9,12 +9,12 @@ class ShadowMap
   public:
     Shader shader;
     unsigned int depthMapFBO, depthMap;
-    const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+    const unsigned int SHADOW_WIDTH = 2024, SHADOW_HEIGHT = 2024;
     glm::vec3 sunPos = glm::vec3(0.2f, -0.8f, 0.2f) * -1000.0f;
     // glm::vec3 sunPos = glm::vec3(0.0f, 10.0f, 0.0f);
 
     glm::mat4 lightProjection =
-        glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, 0.01f, 2000.0f);
+        glm::ortho(-300.0f, 300.0f, -300.0f, 300.0f, 0.01f, 2000.0f);
     glm::mat4 lightView =
         glm::lookAt(sunPos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
     glm::mat4 lightSpaceMatrix = lightProjection * lightView;
@@ -51,6 +51,14 @@ class ShadowMap
         glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
         glClear(GL_DEPTH_BUFFER_BIT);
         glCullFace(GL_FRONT);
+    }
+
+    void updateSunPos(glm::vec3 sunDir)
+    {
+        sunPos = sunDir * -1000.0f;
+        lightView =
+            glm::lookAt(sunPos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
+        lightSpaceMatrix = lightProjection * lightView;
     }
 };
 
