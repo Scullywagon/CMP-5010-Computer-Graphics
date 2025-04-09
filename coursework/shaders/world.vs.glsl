@@ -14,8 +14,8 @@ uniform mat4 projection;
 uniform vec3 cameraPos;
 uniform mat4 lightSpaceMatrix; 
 
-uniform vec3 offsets[1000];
-uniform bool isInstanced = false;
+uniform vec3 offsets[1000]; // Array of offsets for instancing
+uniform bool isInstanced;
 
 void main()
 {

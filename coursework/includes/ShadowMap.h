@@ -22,6 +22,7 @@ class ShadowMap
     ShadowMap(glm::vec3 lightDir)
         : shader("shaders/Shadow.vs.glsl", "shaders/Shadow.fs.glsl")
     {
+        //sunPos = lightDir * -1000.0f;
         glGenFramebuffers(1, &depthMapFBO);
         glGenTextures(1, &depthMap);
 

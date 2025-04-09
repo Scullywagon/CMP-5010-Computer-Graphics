@@ -51,9 +51,9 @@ struct Scene
     Floor floor;
     Terrain terrain;
     Sun sun = {{0.0f, -1.0f, 0.0f},
-               {0.5f, 0.5f, 0.5f},
-               {0.5f, 0.5f, 0.5f},
-               {0.2f, 0.2f, 0.2f}};
+               {0.1f, 0.1f, 0.1f},
+               {0.4f, 0.4f, 0.4f},
+               {0.4f, 0.4f, 0.4f}};
 
     vector<ParentCamera *> cameras;
     ParentCamera *camera;
@@ -120,6 +120,7 @@ struct Scene
         shader.setVec3("sunDiffuse", sun.diffuse);
         shader.setVec3("sunSpecular", sun.specular);
         shader.setVec3("cameraPos", camera->Position);
+        shader.setBool("isInstanced", false);
     }
 
     float cameraTicker = 0.0f;
@@ -151,7 +152,6 @@ struct Scene
         shadowMap->shader.use();
         shadowMap->shader.setMat4("lightSpaceMatrix",
                                   shadowMap->lightSpaceMatrix);
-        // floor.use(shadowMap->shader, true);
         ferrisWheel->draw(shadowMap->shader, model, true);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -167,7 +167,7 @@ struct Scene
         glBindTexture(GL_TEXTURE_2D, shadowMap->depthMap);
         shader.setInt("depthMap", 9);
 
-        floor.use(shader);
+        //floor.use(shader);
         ferrisWheel->draw(shader, model);
 
         terrain.draw(shader);

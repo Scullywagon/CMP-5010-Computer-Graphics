@@ -18,9 +18,9 @@ class Skybox
     unsigned int skyboxVAO, skyboxVBO, skyboxEBO;
     Shader skyboxShader;
 
-    std::string textures[8] = {"skybox/right.jpg", "skybox/left.jpg",
-                               "skybox/top.jpg",   "skybox/bottom.jpg",
-                               "skybox/front.jpg", "skybox/back.jpg"};
+    std::string textures[8] = {"skybox2/right.jpg", "skybox2/left.jpg",
+                               "skybox2/top.jpg",   "skybox2/bottom.jpg",
+                               "skybox2/front.jpg", "skybox2/back.jpg"};
 
     float skyboxVertices[24] = {
         -1000.0f, 1000.0f,  -1000.0f, -1000.0f, -1000.0f, -1000.0f,
