@@ -2,6 +2,7 @@
 #define FLOOR_H
 
 #include "Mesh.h"
+#include "Model.h"
 #include "Shader.h"
 #include "stb_image.h"
 
@@ -13,8 +14,8 @@ class Floor
 
     Texture tex;
 
-    float textureScale = 1000.0f;
-    float floorSize = 2500.0f;
+    float textureScale = 40.0f;
+    float floorSize = 100.0f;
     // Large square floor extending to the horizon
 
     std::vector<Texture> textures;
@@ -39,11 +40,13 @@ class Floor
 
     Floor()
     {
-        textureID = loadTexture("grass.jpg");
-
+        // textureID =
+        //     loadTexture("assets/terrain/FloorTile/Terreno_TileMat_2.png");
+        textureID = TextureFromFile("Terreno_TileMat_2.png",
+                                    "assets/terrain/FloorTile/", false);
         tex.id = textureID;
         tex.type = "texture_diffuse";
-        tex.path = "grass.jpg";
+        tex.path = "assets/terrain/FloorTile/Terreno_TileMat_2.png";
 
         textures.push_back(tex);
 

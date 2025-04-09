@@ -1,0 +1,150 @@
+# MTL file - created by a modified js OBJExporter
+
+newmtl Front_Wood_Panel
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.6906657239336349
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd Front_Wood_Panel.png
+
+newmtl Wood_Stuff1
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.9344759907839719
+Pds 1
+Pl 1
+Pccns 1-1
+Prfl 0.5
+Pior 1.5
+Pshc 0 0 0
+Pshr 1
+Psi 0.18742914264119662
+Psc 1 1 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd Wood_Stuff1.png
+
+newmtl Dark_Gray
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.9207483816249483
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 0.163404 0.169633 0.204
+Ke 0 0 0
+
+newmtl Rusty_Metal_Bars
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pm 0.08380977922980336
+Pds 1
+Pl 1
+Pcc 1
+Pccr 0.04
+Pccns 1-1
+Prfl 0.5
+Pior 1.5
+Pshc 0 0 0
+Pshr 1
+Psi 0.851812119808365
+Psc 1 1 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd Rusty_Metal_Bars.png
+
+newmtl Main_Sign_and_Ticket
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.9207483816249483
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd Main_Sign_and_Ticket.png
+
+newmtl Full_Details
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.0750448001365338
+Pds 1
+Pl 1
+Pccns 1-1
+Prfl 0.5
+Pior 1.5
+Pshc 0 0 0
+Pshr 1
+Psi 0.9432409698772415
+Psc 1 1 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 1 1 1
+map_Kd Full_Details.png
+map_Ke emissiveMap6.png
+
+newmtl Brass
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.9207483816249483
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 0.249 0.121699 0
+Ke 0 0 0
+
+newmtl Ground_Base
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.4285696870695226
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd Ground_Base.png
+
+newmtl Side_Wood_Panel
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.9207483816249483
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd Side_Wood_Panel.png
+
+newmtl Drapings
+Tr 0.04456851678024165
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.6845704672623765
+Pds 1
+Pl 1
+Pccns 1-1
+Prfl 0.5
+Pior 1.5
+Pshc 0 0 0
+Pshr 1
+Psi 0.6750496763418707
+Psc 1 1 1
+Ka 1 1 1
+Kd 0.821335836452073 0.821335836452073 0.821335836452073
+Ke 0 0 0
+map_Kd Drapings.png

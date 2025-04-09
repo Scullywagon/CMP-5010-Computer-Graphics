@@ -14,17 +14,31 @@ uniform mat4 projection;
 uniform vec3 cameraPos;
 uniform mat4 lightSpaceMatrix; 
 
-uniform vec3 offsets[1000]; // Array of offsets for instancing
+uniform vec4 offsets[1000]; 
 uniform bool isInstanced;
 
 void main()
 {
+    mat4 mod = model;
     vec3 pos = aPos;
     if (isInstanced) {
-        vec3 offset = offsets[gl_InstanceID];
+        vec3 offset = offsets[gl_InstanceID].xyz;
+        float rotation = offsets[gl_InstanceID].w;
+
+        mat4 rotationMatrix = mat4(1.0); // Identity matrix
+        float cosTheta = cos(rotation);
+        float sinTheta = sin(rotation);
+
+        rotationMatrix[0][0] = cosTheta;
+        rotationMatrix[0][2] = sinTheta;
+        rotationMatrix[2][0] = -sinTheta;
+        rotationMatrix[2][2] = cosTheta;
+
+        pos = vec3(rotationMatrix * vec4(pos, 1.0));
+
         pos += offset;
     }
-    FragPos = vec3(model * vec4(pos, 1.0)); // Get the world-space position of the vertex
+    FragPos = vec3(mod * vec4(pos, 1.0)); // Get the world-space position of the vertex
     Normal = mat3(transpose(inverse(model))) * aNormal;
     TexCoords = vec2(aTexCoords.x, aTexCoords.y);
     fragPosLightSpace = lightSpaceMatrix * vec4(FragPos, 1.0); 

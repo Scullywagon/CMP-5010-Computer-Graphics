@@ -1,10 +1,9 @@
 #version 330 core
 out vec4 FragColor;
 
-
-in vec3 FragPos; 
-in vec3 Normal; 
-in vec2 TexCoords; 
+in vec3 FragPos;
+in vec3 Normal;
+in vec2 TexCoords;
 in vec4 fragPosLightSpace;
 
 struct TexturedMaterial 
@@ -51,80 +50,85 @@ uniform sampler2D depthMap;
 uniform Light lights[24];
 uniform int numLights;
 
-vec3 calculateSunlight(vec3 texColor, vec3 norm, float shininess, float shadow);
-vec3 calculateGeneralLight(Light l, vec3 texColor, vec3 norm, float shininess);
+vec4 calculateSunlight(vec4 texColor, vec3 norm, float shininess, float shadow);
+vec4 calculateGeneralLight(Light l, vec4 texColor, vec3 norm, float shininess);
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm); 
 
 void main()
 {
-    vec3 texColor;
+    vec4 texColor;
     vec3 norm;
     float shininess;
     if (isTextured)
     {
         //norm = normalize(texture(material2.normal, TexCoords).rgb * 2.0 - 1.0);
         norm = normalize(Normal);
-        texColor = texture(material2.diffuse, TexCoords).rgb;
+        texColor = texture(material2.diffuse, TexCoords);
         shininess = material2.shininess;
     }
     else
     {
         norm = normalize(Normal);
-        texColor = texture(material.diffuse, TexCoords).rgb;
+        texColor = texture(material.diffuse, TexCoords);
         shininess = material.shininess;
     }
 
+    if (texColor.a < 0.1)
+    {
+        discard;
+    }
+
     float shadow = ShadowCalculation(fragPosLightSpace, norm);
-    vec3 result = calculateSunlight(texColor, norm, shininess, shadow);
+    vec4 result = calculateSunlight(texColor, norm, shininess, shadow);
 
     for (int i = 0; i < numLights; i++)
     {
         result += calculateGeneralLight(lights[i], texColor, norm, shininess);
     }
 
-    FragColor = vec4(result, 1.0);
+    FragColor = result;
 }
 
-vec3 calculateSunlight(vec3 texColor, vec3 norm, float shininess, float shadow)
+vec4 calculateSunlight(vec4 texColor, vec3 norm, float shininess, float shadow)
 {
-    vec3 ambient = sunAmbient * texColor;
+    vec3 ambient = sunAmbient * texColor.rgb;
 
     // diffuse for sun
     vec3 lightDir = normalize(-sunDir);
     float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = sunDiffuse * diff * texColor;
+    vec3 diffuse = sunDiffuse * diff * texColor.rgb;
 
     // specular for sun
     vec3 viewDir = normalize(cameraPos - FragPos);
     vec3 reflectDir = reflect(-lightDir, norm);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
-    vec3 specular = sunSpecular * spec * texColor;
+    vec3 specular = sunSpecular * spec * texColor.rgb;
 
     vec3 result = (ambient + (1.0 - shadow) * (diffuse + specular));
-    return result;
+    return vec4(result, texColor.a); // Retain the alpha value
 }
 
-vec3 calculateGeneralLight(Light l, vec3 texColor, vec3 norm, float shininess)
+vec4 calculateGeneralLight(Light l, vec4 texColor, vec3 norm, float shininess)
 {
     float distance = length(l.position - FragPos);
     float attenuation = 1.0 / (l.constant + l.linear * distance + l.quadratic * (distance * distance));
 
     // ambient
-    vec3 ambient = l.ambient * texColor * attenuation;
+    vec3 ambient = l.ambient * texColor.rgb * attenuation;
 
     // diffuse
     vec3 lightDir = normalize(l.position - FragPos);
     float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = diff * l.diffuse * texColor * attenuation;
+    vec3 diffuse = diff * l.diffuse * texColor.rgb * attenuation;
 
     // specular lighting
     vec3 viewDir = normalize(cameraPos - FragPos);
     vec3 reflectDir = reflect(-lightDir, norm);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
-    vec3 specular = l.specular * spec * texColor * attenuation;
+    vec3 specular = l.specular * spec * texColor.rgb * attenuation;
 
     vec3 result = ambient + diffuse + specular;
-    return result;
+    return vec4(result, texColor.a); // Retain the alpha value
 }
 
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm)

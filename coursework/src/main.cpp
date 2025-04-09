@@ -129,13 +129,13 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE,
                    GLFW_OPENGL_CORE_PROFILE); // Set the OpenGL profile to core
     glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
-
     // Create windowed mode window and OpenGL context
     GLFWwindow *window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT,
                                           "LearnOpenGL", NULL, NULL);
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     if (window == NULL)
     {
+        checkOpenGLError();
         cout << "Failed to create GLFW window" << endl;
         glfwTerminate();
         return -1;

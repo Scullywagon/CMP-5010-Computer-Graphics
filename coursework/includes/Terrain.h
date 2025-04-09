@@ -7,13 +7,9 @@
 struct Terrain
 {
     Model *raisedTerrain =
-        new Model("assets/terrain/RaisedForrest/RaisedTerrain.obj", 60);
-    Model *flatTerrain =
-        new Model("assets/terrain/FloorTile/FloorTile.obj", 60);
-    glm::vec3 translations[1000];
-    glm::vec3 flatT[1000];
-    int raisedCount;
-    int flatCount;
+        new Model("assets/terrain/RaisedForrest/RaisedTerrain.obj", 45);
+    Model *trees = new Model("assets/terrain/RaisedForrest/Untitled.obj", 1.5);
+    glm::vec4 translations[1000];
 
     Terrain(Shader &shader)
     {
@@ -22,19 +18,12 @@ struct Terrain
         {
             for (int z = -700; z <= 700 && index < 1000; z += 35)
             {
-                if (glm::length(glm::vec2(x, z)) >= 70.0f)
+                if (glm::length(glm::vec2(x, z)) >= 100.0f)
                 {
-                    translations[index++] = glm::vec3(x, 0.0f, z);
+                    float randVal = (rand() % 7) - 2;
+                    float r = (rand() % 100) / 100.0f;
+                    translations[index++] = glm::vec4(x, randVal, z, r);
                 }
-            }
-        } 
-
-        index = 0;
-        for (int x = -70; x <= 70; x += 20)
-        {
-            for (int z = -70; z <= 70; z += 20)
-            {
-                flatT[index++] = glm::vec3(x, 0.0f, z);
             }
         }
     }
@@ -42,9 +31,9 @@ struct Terrain
     void draw(Shader &shader)
     {
         unsigned int offsetLoc = glGetUniformLocation(shader.ID, "offsets");
-        glUniform3fv(offsetLoc, 1000, &translations[0].x);
-        raisedTerrain->DrawInstanced(shader, 10);
-        flatTerrain->Draw(shader);
+        glUniform4fv(offsetLoc, 1000, &translations[0].x);
+        raisedTerrain->DrawInstanced(shader, 1000);
+        trees->DrawInstanced(shader, 1000);
     }
 };
 

@@ -137,6 +137,8 @@ struct Scene
         cameraTicker = currentFrame;
     }
 
+    Model *t = new Model("assets/circus/tent.obj", 1);
+
     void use(float deltaTime)
     {
         // view = shadowMap->lightView;
@@ -153,6 +155,8 @@ struct Scene
         shadowMap->shader.setMat4("lightSpaceMatrix",
                                   shadowMap->lightSpaceMatrix);
         ferrisWheel->draw(shadowMap->shader, model, true);
+        terrain.draw(shadowMap->shader);
+        t->Draw(shadowMap->shader);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -167,10 +171,11 @@ struct Scene
         glBindTexture(GL_TEXTURE_2D, shadowMap->depthMap);
         shader.setInt("depthMap", 9);
 
-        //floor.use(shader);
+        floor.use(shader);
         ferrisWheel->draw(shader, model);
-
         terrain.draw(shader);
+
+        t->Draw(shader);
 
         if (enableRotation == true)
         {
