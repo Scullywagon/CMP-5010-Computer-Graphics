@@ -51,6 +51,7 @@ struct Scene
     Floor floor;
     Terrain terrain;
     Sun sun;
+    Model *circus;
 
     vector<ParentCamera *> cameras;
     ParentCamera *camera;
@@ -69,6 +70,8 @@ struct Scene
         shadowMap = new ShadowMap(sun.direction);
         collisionManager = new CollisionManager();
         ferrisWheel = new FerrisWheel();
+        circus = new Model("assets/circus/tent.obj", 1.0f);
+        circus->translate(glm::vec3(10.0f, 0.2f, 60.0f));
 
         cameras.push_back(new Camera());
         cameras.push_back(new PersonCamera());
@@ -92,6 +95,7 @@ struct Scene
     {
         collisionManager->add(ferrisWheel->stand.boundingBox);
         collisionManager->add(ferrisWheel->wheel.boundingBox);
+        collisionManager->add(circus->boundingBox);
 
         for (auto &cart : ferrisWheel->carts)
         {
@@ -153,6 +157,8 @@ struct Scene
                                   shadowMap->lightSpaceMatrix);
         ferrisWheel->draw(shadowMap->shader, model, true);
         terrain.draw(shadowMap->shader);
+        floor.use(shadowMap->shader);
+        circus->Draw(shadowMap->shader);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -170,10 +176,14 @@ struct Scene
         floor.use(shader);
         ferrisWheel->draw(shader, model);
         terrain.draw(shader);
+        circus->Draw(shader);
 
         sun.move(deltaTime);
         shadowMap->updateSunPos(sun.direction);
+        shader.setBool("isLight", true);
+        shader.setVec3("outputColor", glm::vec3(0.6f, 0.6f, 0.6f));
         sun.draw(shader);
+        shader.setBool("isLight", false);
 
         if (enableRotation == true)
         {

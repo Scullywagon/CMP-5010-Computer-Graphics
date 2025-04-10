@@ -50,6 +50,9 @@ uniform sampler2D depthMap;
 uniform Light lights[24];
 uniform int numLights;
 
+uniform bool isLight;
+uniform vec3 outputColor;
+
 vec4 calculateSunlight(vec4 texColor, vec3 norm, float shininess, float shadow);
 vec4 calculateGeneralLight(Light l, vec4 texColor, vec3 norm, float shininess);
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm); 
@@ -84,6 +87,11 @@ void main()
     for (int i = 0; i < numLights; i++)
     {
         result += calculateGeneralLight(lights[i], texColor, norm, shininess);
+    }
+
+    if (isLight)
+    {
+        result += vec4(outputColor, 1.0);
     }
 
     FragColor = result;

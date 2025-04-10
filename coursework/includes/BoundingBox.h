@@ -16,6 +16,8 @@ struct BoundingBox
     float scaleVal = 1.0f;
 
     bool sorted = false;
+
+    bool checkSubBoxes = true;
     std::vector<BoundingBox *> subBoxes;
 
     // generates the box from those values

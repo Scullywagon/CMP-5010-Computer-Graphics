@@ -17,7 +17,7 @@ class CollisionManager
   public:
     // 1: boundingBox*  2: isMax
     std::vector<std::pair<BoundingBox *, bool>> itemsX;
-    std::vector<std::pair<BoundingBox *, bool>> itemsZ; 
+    std::vector<std::pair<BoundingBox *, bool>> itemsZ;
 
     ParentCamera *player;
 
@@ -28,8 +28,8 @@ class CollisionManager
 
         itemsX.push_back(min);
         itemsX.push_back(max);
-        itemsZ.push_back(min); 
-        itemsZ.push_back(max); 
+        itemsZ.push_back(min);
+        itemsZ.push_back(max);
     }
 
     void addPlayer(ParentCamera *player)
@@ -45,21 +45,18 @@ class CollisionManager
         float valB = b.second == false ? b.first->min.x : b.first->max.x;
         return valA < valB;
     }
-    static bool
-    compareZ(const std::pair<BoundingBox *, bool> &a,
-             const std::pair<BoundingBox *, bool> &b)
+    static bool compareZ(const std::pair<BoundingBox *, bool> &a,
+                         const std::pair<BoundingBox *, bool> &b)
     {
-        float valA = a.second == false ? a.first->min.z
-                                       : a.first->max.z;
-        float valB = b.second == false ? b.first->min.z
-                                       : b.first->max.z; 
+        float valA = a.second == false ? a.first->min.z : a.first->max.z;
+        float valB = b.second == false ? b.first->min.z : b.first->max.z;
         return valA < valB;
     }
 
     void sortItems()
     {
         std::sort(itemsX.begin(), itemsX.end(), compareX);
-        std::sort(itemsZ.begin(), itemsZ.end(), compareZ); 
+        std::sort(itemsZ.begin(), itemsZ.end(), compareZ);
     }
 
     void changePlayer(ParentCamera *player)
@@ -71,11 +68,11 @@ class CollisionManager
                 itemsX[i].first = player->boundingBox;
             }
         }
-        for (int i = 0; i < itemsZ.size(); i++) 
+        for (int i = 0; i < itemsZ.size(); i++)
         {
-            if (itemsZ[i].first == this->player->boundingBox) 
+            if (itemsZ[i].first == this->player->boundingBox)
             {
-                itemsZ[i].first = player->boundingBox; 
+                itemsZ[i].first = player->boundingBox;
             }
         }
         this->player = player;
@@ -135,8 +132,7 @@ class CollisionManager
     {
         sortItems();
         std::unordered_set<BoundingBox *> setX = genSet(itemsX);
-        std::unordered_set<BoundingBox *> setZ =
-            genSet(itemsZ); 
+        std::unordered_set<BoundingBox *> setZ = genSet(itemsZ);
 
         std::vector<BoundingBox *> subBoxes;
 
@@ -146,6 +142,11 @@ class CollisionManager
             {
                 if (checkCollision(a))
                 {
+                    if (!a->checkSubBoxes)
+                    {
+                        subBoxes.insert(subBoxes.begin(), a);
+                        continue;
+                    }
                     for (BoundingBox *x : a->subBoxes)
                     {
                         subBoxes.push_back(x);
@@ -165,12 +166,9 @@ class CollisionManager
         glm::vec3 translatedMax =
             player->boundingBox->max + player->translation;
 
-        return !(translatedMax.x < a->min.x ||
-                 translatedMin.x > a->max.x || 
-                 translatedMax.y < a->min.y ||
-                 translatedMin.y > a->max.y || 
-                 translatedMax.z < a->min.z ||
-                 translatedMin.z > a->max.z); 
+        return !(translatedMax.x < a->min.x || translatedMin.x > a->max.x ||
+                 translatedMax.y < a->min.y || translatedMin.y > a->max.y ||
+                 translatedMax.z < a->min.z || translatedMin.z > a->max.z);
     }
 
     glm::vec3 calcOverlap(BoundingBox *bb)

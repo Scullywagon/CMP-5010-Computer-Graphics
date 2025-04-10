@@ -194,6 +194,17 @@ struct FerrisWheel
             shader.setMat4("model", model);
         }
     }
+
+    void translate(glm::vec3 translation)
+    {
+        stand.translate(translation);
+        wheel.translate(translation);
+        for (auto &cart : carts)
+        {
+            cart.cart.translate(translation);
+            cart.updateCamera(translation);
+        }
+    }
 };
 
 #endif

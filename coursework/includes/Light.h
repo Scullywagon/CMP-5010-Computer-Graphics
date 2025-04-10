@@ -15,7 +15,7 @@ struct Sun
     glm::vec3 specular;
 
     glm::mat4 modelMatrix = glm::mat4(1.0f);
-    glm::vec3 translation = glm::vec3(0.0f, -1.0f, 0.0f) * -1000.0f;
+    glm::vec3 translation = glm::vec3(0.0f, 1000.0f, 0.0f);
 
     Mesh *mesh;
     float size = 20.0f;
@@ -41,16 +41,21 @@ struct Sun
         mesh = new Mesh(vertices, indices, textures);
         direction = glm::vec3(0.0f, -1.0f, 0.0f);
         ambient = glm::vec3(0.1f, 0.1f, 0.1f);
-        diffuse = glm::vec3(0.4f, 0.4f, 0.4f);
+        diffuse = glm::vec3(0.2f, 0.2f, 0.2f);
         specular = glm::vec3(0.4f, 0.4f, 0.4f);
 
         modelMatrix = glm::translate(modelMatrix, translation);
     }
 
-    float speed = 10.0f; // Speed of rotation
+    float speed = 5.0f; // Speed of rotation
+    bool positive = true;
     void move(float deltaTime)
     {
+        if (direction.y > 0.0f)
+            positive = !positive;
+
         float angle = deltaTime * speed;
+        angle = positive ? angle : -angle;
 
         // Rotate the direction around the Y-axis (the center of the orbit)
         glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), glm::radians(angle),
