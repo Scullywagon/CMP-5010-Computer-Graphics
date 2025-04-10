@@ -180,6 +180,7 @@ struct Scene
 
         sun.move(deltaTime);
         shadowMap->updateSunPos(sun.direction);
+        skybox.blendFactor = sun.direction.y * 0.5f + 0.5f;
         shader.setBool("isLight", true);
         shader.setVec3("outputColor", glm::vec3(0.6f, 0.6f, 0.6f));
         sun.draw(shader);

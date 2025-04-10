@@ -14,13 +14,19 @@
 class Skybox
 {
   public:
-    unsigned int textureID;
+    unsigned int texture1ID;
+    unsigned int texture2ID;
     unsigned int skyboxVAO, skyboxVBO, skyboxEBO;
     Shader skyboxShader;
+    float blendFactor = 0.5f;
 
-    std::string textures[8] = {"skybox2/right.jpg", "skybox2/left.jpg",
-                               "skybox2/top.jpg",   "skybox2/bottom.jpg",
-                               "skybox2/front.jpg", "skybox2/back.jpg"};
+    std::string textures1[8] = {"skybox/right.jpg", "skybox/left.jpg",
+                                "skybox/top.jpg",   "skybox/bottom.jpg",
+                                "skybox/front.jpg", "skybox/back.jpg"};
+
+    std::string textures2[8] = {"skybox2/right.jpg", "skybox2/left.jpg",
+                                "skybox2/top.jpg",   "skybox2/bottom.jpg",
+                                "skybox2/front.jpg", "skybox2/back.jpg"};
 
     float skyboxVertices[24] = {
         -1000.0f, 1000.0f,  -1000.0f, -1000.0f, -1000.0f, -1000.0f,
@@ -39,7 +45,8 @@ class Skybox
             f *= 100.0f;
             f -= 50000.0f;
         }
-        textureID = loadCubemap(textures);
+        texture1ID = loadCubemap(textures1);
+        texture2ID = loadCubemap(textures2);
         glGenVertexArrays(1, &skyboxVAO);
         glGenBuffers(1, &skyboxVBO);
         glGenBuffers(1, &skyboxEBO);
@@ -66,9 +73,17 @@ class Skybox
         view = glm::mat4(glm::mat3(view));
         skyboxShader.setMat4("projection", projection);
         skyboxShader.setMat4("view", view);
+        skyboxShader.setFloat("blendFactor", blendFactor);
 
         glBindVertexArray(skyboxVAO);
-        glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, texture1ID);
+        skyboxShader.setInt("skybox1", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, texture2ID);
+        skyboxShader.setInt("skybox2", 1);
+
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
         glDepthMask(GL_TRUE);
         glBindVertexArray(0);

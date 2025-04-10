@@ -51,8 +51,10 @@ struct Sun
     bool positive = true;
     void move(float deltaTime)
     {
+        /*
         if (direction.y > 0.0f)
             positive = !positive;
+        */
 
         float angle = deltaTime * speed;
         angle = positive ? angle : -angle;
