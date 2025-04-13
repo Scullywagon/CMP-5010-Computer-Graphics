@@ -77,11 +77,11 @@ class Model
         boundingBox->draw(shader.ID);
     }
 
-    void DrawInstanced(Shader &shader, int instanceCount)
+    void DrawInstanced(Shader &shader, int instanceCount, unsigned int instanceVBO)
     {
         shader.setMat4("model", modelMatrix);
         for (unsigned int i = 0; i < meshes.size(); i++)
-            meshes[i].drawInstanced(shader, instanceCount);
+            meshes[i].drawInstanced(shader, instanceCount, instanceVBO);
         boundingBox->draw(shader.ID);
     }
 

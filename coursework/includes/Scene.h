@@ -2,6 +2,7 @@
 #define SCENE_H
 
 #include "Camera.h"
+#include "Circus.h"
 #include "CollisionManager.h"
 #include "Cube.h"
 #include "FerrisWheel.h"
@@ -51,7 +52,9 @@ struct Scene
     Floor floor;
     Terrain terrain;
     Sun sun;
-    Model *circus;
+    Circus circus;
+
+    vector<Light *> lights;
 
     vector<ParentCamera *> cameras;
     ParentCamera *camera;
@@ -70,8 +73,8 @@ struct Scene
         shadowMap = new ShadowMap(sun.direction);
         collisionManager = new CollisionManager();
         ferrisWheel = new FerrisWheel();
-        circus = new Model("assets/circus/tent.obj", 1.0f);
-        circus->translate(glm::vec3(10.0f, 0.2f, 60.0f));
+        // circus = new Model("assets/circus/tent.obj", 1.0f);
+        // circus->translate(glm::vec3(10.0f, 0.2f, 60.0f));
 
         cameras.push_back(new Camera());
         cameras.push_back(new PersonCamera());
@@ -89,20 +92,33 @@ struct Scene
 
         worldShader();
         setupCollisions();
+        setupLights();
     }
 
     void setupCollisions()
     {
         collisionManager->add(ferrisWheel->stand.boundingBox);
         collisionManager->add(ferrisWheel->wheel.boundingBox);
-        collisionManager->add(circus->boundingBox);
-
         for (auto &cart : ferrisWheel->carts)
         {
             collisionManager->add(cart.cart.boundingBox);
         }
+
+        collisionManager->add(circus.tent->boundingBox);
+        collisionManager->add(circus.eye->boundingBox);
+        collisionManager->add(circus.stage->boundingBox);
+
         collisionManager->addPlayer(camera);
         collisionManager->sortItems();
+    }
+
+    void setupLights()
+    {
+        for (Cart &cart : ferrisWheel->carts)
+        {
+            lights.push_back(cart.light);
+        }
+        lights.push_back(circus.light);
     }
 
     void activateRotation()
@@ -122,6 +138,21 @@ struct Scene
         shader.setVec3("sunSpecular", sun.specular);
         shader.setVec3("cameraPos", camera->Position);
         shader.setBool("isInstanced", false);
+
+        int index = 0;
+        for (Light *light : lights)
+        {
+            std::string lightName = "lights[" + std::to_string(index) + "].";
+            shader.setVec3(lightName + "position", light->position);
+            shader.setVec3(lightName + "ambient", light->ambient);
+            shader.setVec3(lightName + "diffuse", light->diffuse);
+            shader.setVec3(lightName + "specular", light->specular);
+            shader.setFloat(lightName + "constant", light->constant);
+            shader.setFloat(lightName + "linear", light->linear);
+            shader.setFloat(lightName + "quadratic", light->quadratic);
+            index++;
+        }
+        shader.setInt("numLights", index);
     }
 
     float cameraTicker = 0.0f;
@@ -157,8 +188,8 @@ struct Scene
                                   shadowMap->lightSpaceMatrix);
         ferrisWheel->draw(shadowMap->shader, model, true);
         terrain.draw(shadowMap->shader);
-        floor.use(shadowMap->shader);
-        circus->Draw(shadowMap->shader);
+        // floor.use(shadowMap->shader);
+        // circus->Draw(shadowMap->shader);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -176,7 +207,7 @@ struct Scene
         floor.use(shader);
         ferrisWheel->draw(shader, model);
         terrain.draw(shader);
-        circus->Draw(shader);
+        circus.draw(shader);
 
         sun.move(deltaTime);
         shadowMap->updateSunPos(sun.direction);

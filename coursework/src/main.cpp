@@ -108,6 +108,10 @@ void input_callback(GLFWwindow *window)
     {
         scene->activateRotation();
     }
+    if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
+    {
+        scene->camera->printLocation();
+    }
 }
 
 void checkOpenGLError()
@@ -154,10 +158,12 @@ int main()
 
     // depth testing for 3D renders
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    //glEnable(GL_BLEND);
+    //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     scene = new Scene(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    int frameCount = 0;
 
     while (!glfwWindowShouldClose(window))
     {

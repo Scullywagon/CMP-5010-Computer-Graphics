@@ -2,6 +2,7 @@
 #define FERRISWHEEL_H
 
 #include "Model.h"
+#include "Light.h"
 #include "ParentCamera.h"
 #include "glm/detail/type_vec.hpp"
 #include <vector>
@@ -85,18 +86,32 @@ class FerrisWheelCam : public ParentCamera
 struct Cart
 {
     Model cart;
+    
+    Model lamp;
+    Model lampLight;
+    Light *light;
+
     glm::vec3 position;
     glm::vec3 offSet;
 
     FerrisWheelCam *camera;
 
     Cart(glm::vec3 position, glm::vec3 offset)
-        : cart(Model("assets/Cart/1.obj", 1.8f))
+        : cart(Model("assets/Cart/1.obj", 1.8f)),
+        lamp(Model("assets/oilLamp/oilLamp.obj", 5.0f)),
+        lampLight(Model("assets/oilLamp/oilLampGlass.obj", 5.0f))
     {
         this->position = position;
         this->offSet = offset;
         cart.translate(position);
         camera = new FerrisWheelCam(position);
+        lamp.translate(position - glm::vec3(0.5f, 3.5f, 0.0f));
+        lampLight.translate(position - glm::vec3(0.5f, 3.5f, 0.0f));
+        light = new Light((position - glm::vec3(0.5f, 3.5f, 0.0f)),
+                          glm::vec3(0.1f, 0.05f, 0.01f),
+                          glm::vec3(1.0f, 0.7f, 0.2f),
+                          glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.50f,
+                          0.02f);
     }
 
     void updateCamera(glm::vec3 translation)
@@ -111,12 +126,19 @@ struct Cart
         glm::vec3 translation = newPosition - position;
         position = newPosition;
         cart.translate(translation);
+        lamp.translate(translation);
+        lampLight.translate(translation);
+        light->position += translation;
         updateCamera(translation);
     }
 
     void draw(Shader &shader, bool depthOnly = false)
     {
         cart.Draw(shader, depthOnly);
+        lamp.Draw(shader, depthOnly);
+        shader.setBool("isLight", true);
+        lampLight.Draw(shader, depthOnly);
+        shader.setBool("isLight", false);
     }
 };
 

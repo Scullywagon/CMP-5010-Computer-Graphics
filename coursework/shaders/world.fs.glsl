@@ -50,8 +50,9 @@ uniform sampler2D depthMap;
 uniform Light lights[24];
 uniform int numLights;
 
-uniform bool isLight;
+uniform bool isLight; 
 uniform vec3 outputColor;
+
 
 vec4 calculateSunlight(vec4 texColor, vec3 norm, float shininess, float shadow);
 vec4 calculateGeneralLight(Light l, vec4 texColor, vec3 norm, float shininess);
@@ -76,7 +77,7 @@ void main()
         shininess = material.shininess;
     }
 
-    if (texColor.a < 0.01)
+    if (texColor.a < 0.5)
     {
         discard;
     }
@@ -91,7 +92,7 @@ void main()
 
     if (isLight)
     {
-        result += vec4(outputColor, 1.0);
+        result = result * vec4(outputColor, 1.0);
     }
 
     FragColor = result;

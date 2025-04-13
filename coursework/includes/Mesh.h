@@ -118,7 +118,8 @@ class Mesh
         }
     }
 
-    void drawInstanced(Shader &shader, int instanceCount)
+    void drawInstanced(Shader &shader, int instanceCount,
+                       unsigned int instanceVBO)
     {
         shader.setBool("isInstanced", true);
         bool useTextures = !textures.empty();
@@ -149,6 +150,17 @@ class Mesh
         }
 
         glBindVertexArray(VAO);
+        glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+        for (GLuint i = 0; i < 4; ++i)
+        {
+            glVertexAttribPointer(3 + i, 4, GL_FLOAT, GL_FALSE,
+                                  sizeof(glm::mat4),
+                                  (void *)(sizeof(glm::vec4) * i));
+            glEnableVertexAttribArray(3 + i);
+            glVertexAttribDivisor(3 + i,
+                                  1); // This makes it an instance attribute
+        }
+
         glDrawElementsInstanced(GL_TRIANGLES,
                                 static_cast<unsigned int>(indices.size()),
                                 GL_UNSIGNED_INT, 0, instanceCount);

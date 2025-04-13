@@ -49,6 +49,12 @@ class ParentCamera
     virtual void move() = 0;
     virtual glm::mat4 GetViewMatrix() = 0;
 
+    void printLocation()
+    {
+        std::cout << "Camera Position: " << Position.x << ", " << Position.y
+                  << ", " << Position.z << std::endl;
+    }
+
   private:
 };
 

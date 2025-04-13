@@ -45,19 +45,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/local/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/logan/University/CMP-5010-Computer-Graphics/coursework
+CMAKE_SOURCE_DIR = /Users/logan/University/CMP-5010-Computer-Graphics/coursework
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/logan/University/CMP-5010-Computer-Graphics/coursework/build
+CMAKE_BINARY_DIR = /Users/logan/University/CMP-5010-Computer-Graphics/coursework/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -85,14 +85,14 @@ clean: CMakeFiles/cw.dir/clean
 CMakeFiles/cw.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/coursework/build/CMakeFiles --progress-num=1,2,3 "Built target cw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/logan/University/CMP-5010-Computer-Graphics/coursework/build/CMakeFiles --progress-num=1,2,3 "Built target cw"
 .PHONY : CMakeFiles/cw.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cw.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/logan/University/CMP-5010-Computer-Graphics/coursework/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/logan/University/CMP-5010-Computer-Graphics/coursework/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cw.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/logan/University/CMP-5010-Computer-Graphics/coursework/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/logan/University/CMP-5010-Computer-Graphics/coursework/build/CMakeFiles 0
 .PHONY : CMakeFiles/cw.dir/rule
 
 # Convenience name for target.
@@ -102,7 +102,7 @@ cw: CMakeFiles/cw.dir/rule
 # codegen rule for target.
 CMakeFiles/cw.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/coursework/build/CMakeFiles --progress-num=1,2,3 "Finished codegen for target cw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/logan/University/CMP-5010-Computer-Graphics/coursework/build/CMakeFiles --progress-num=1,2,3 "Finished codegen for target cw"
 .PHONY : CMakeFiles/cw.dir/codegen
 
 # clean rule for target.

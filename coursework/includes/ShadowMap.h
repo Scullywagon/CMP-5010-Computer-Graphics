@@ -9,7 +9,7 @@ class ShadowMap
   public:
     Shader shader;
     unsigned int depthMapFBO, depthMap;
-    const unsigned int SHADOW_WIDTH = 2024, SHADOW_HEIGHT = 2024;
+    const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
     glm::vec3 sunPos = glm::vec3(0.2f, -0.8f, 0.2f) * -1000.0f;
     // glm::vec3 sunPos = glm::vec3(0.0f, 10.0f, 0.0f);
 
