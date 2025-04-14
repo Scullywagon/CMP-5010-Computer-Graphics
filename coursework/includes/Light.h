@@ -38,7 +38,7 @@ struct Sun
 
         textures.push_back(tex);
 
-        mesh = new Mesh(vertices, indices, textures);
+        mesh = new Mesh(vertices, indices, textures, false);
         direction = glm::vec3(0.0f, -1.0f, 0.0f);
         ambient = glm::vec3(0.1f, 0.1f, 0.1f);
         diffuse = glm::vec3(0.2f, 0.2f, 0.2f);
@@ -83,6 +83,7 @@ struct Sun
 
 struct Light
 {
+    int index;
 
     glm::vec3 position;
 

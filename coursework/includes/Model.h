@@ -31,6 +31,7 @@ class Model
     vector<Mesh> meshes;
     string directory;
     bool gammaCorrection;
+    bool subBoxes = true;
 
     BoundingBox *boundingBox;
 
@@ -38,11 +39,18 @@ class Model
     glm::mat4 modelMatrix = glm::mat4(1.0f);
 
     // constructor, expects a filepath to a 3D model.
-    Model(string const &path, float scale, bool gamma = false)
+    Model(string const &path, float scale, bool subBoxes, bool gamma = false)
         : gammaCorrection(gamma)
     {
+        this->subBoxes = subBoxes;
         loadModel(path, scale);
         generateBoundingBox();
+        if (!this->subBoxes)
+        {
+            boundingBox->checkSubBoxes = false;
+            return;
+        }
+
         for (Mesh mesh : meshes)
         {
             for (BoundingBox *box : mesh.boundingBoxes)
@@ -244,7 +252,7 @@ class Model
         textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
         // return a mesh object created from the extracted mesh data
-        return Mesh(vertices, indices, textures);
+        return Mesh(vertices, indices, textures, subBoxes);
     }
 
     // checks all material textures of a given type and loads the textures if

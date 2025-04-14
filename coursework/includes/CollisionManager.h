@@ -90,7 +90,7 @@ class CollisionManager
                 player->translation += calculateCorrection(x);
             }
         }
-
+        subBoxes.clear();
         // player->translation += totalCorrection;
     }
 

@@ -50,7 +50,7 @@ class Floor
 
         textures.push_back(tex);
 
-        mesh = new Mesh(vertices, indices, textures);
+        mesh = new Mesh(vertices, indices, textures, false);
     }
 
     void use(Shader &shader, bool depthOnly = false)

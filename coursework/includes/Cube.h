@@ -150,7 +150,7 @@ class Cube
                        center.z + size / 2),
              normals[5], glm::vec2(0.0f, 1.0f)} // Top-left-top
         };
-        mesh = new Mesh(vertices, indices, textures);
+        mesh = new Mesh(vertices, indices, textures, false);
     }
 
     void use(Shader &shader)

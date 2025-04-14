@@ -1,10 +1,12 @@
 #ifndef FERRISWHEEL_H
 #define FERRISWHEEL_H
 
-#include "Model.h"
 #include "Light.h"
+#include "Model.h"
+#include "OilLamp.h"
 #include "ParentCamera.h"
 #include "glm/detail/type_vec.hpp"
+#include <thread>
 #include <vector>
 
 class FerrisWheelCam : public ParentCamera
@@ -49,15 +51,12 @@ class FerrisWheelCam : public ParentCamera
 
     void ProcessMouseMovement(float xoffset, float yoffset) override
     {
-        // change in mouse position combined with sensitivity
         xoffset *= MouseSensitivity;
         yoffset *= MouseSensitivity;
 
-        // update camera yaw and pitch
         Yaw += xoffset;
         Pitch += yoffset;
 
-        // ensure the pitch is constrained to avoid flipping
         if (CONSTRAIN_PITCH)
         {
             if (Pitch > 89.0f)
@@ -86,10 +85,8 @@ class FerrisWheelCam : public ParentCamera
 struct Cart
 {
     Model cart;
-    
-    Model lamp;
-    Model lampLight;
-    Light *light;
+
+    OilLamp *lamp;
 
     glm::vec3 position;
     glm::vec3 offSet;
@@ -97,21 +94,13 @@ struct Cart
     FerrisWheelCam *camera;
 
     Cart(glm::vec3 position, glm::vec3 offset)
-        : cart(Model("assets/Cart/1.obj", 1.8f)),
-        lamp(Model("assets/oilLamp/oilLamp.obj", 5.0f)),
-        lampLight(Model("assets/oilLamp/oilLampGlass.obj", 5.0f))
+        : cart(Model("assets/Cart/1.obj", 1.8f, true))
     {
         this->position = position;
         this->offSet = offset;
         cart.translate(position);
         camera = new FerrisWheelCam(position);
-        lamp.translate(position - glm::vec3(0.5f, 3.5f, 0.0f));
-        lampLight.translate(position - glm::vec3(0.5f, 3.5f, 0.0f));
-        light = new Light((position - glm::vec3(0.5f, 3.5f, 0.0f)),
-                          glm::vec3(0.1f, 0.05f, 0.01f),
-                          glm::vec3(1.0f, 0.7f, 0.2f),
-                          glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.50f,
-                          0.02f);
+        lamp = new OilLamp(position + glm::vec3(-0.8f, -4.5f, -1.0f));
     }
 
     void updateCamera(glm::vec3 translation)
@@ -126,19 +115,32 @@ struct Cart
         glm::vec3 translation = newPosition - position;
         position = newPosition;
         cart.translate(translation);
-        lamp.translate(translation);
-        lampLight.translate(translation);
-        light->position += translation;
+        lamp->translate(translation);
         updateCamera(translation);
     }
 
     void draw(Shader &shader, bool depthOnly = false)
     {
         cart.Draw(shader, depthOnly);
-        lamp.Draw(shader, depthOnly);
-        shader.setBool("isLight", true);
-        lampLight.Draw(shader, depthOnly);
-        shader.setBool("isLight", false);
+        lamp->draw(shader);
+    }
+};
+
+struct TicketBooth
+{
+    Model *booth =
+        new Model("assets/TicketBooth/1970s_ticket_booth.obj", 40.0f, false);
+    glm::vec3 position;
+
+    TicketBooth(glm::vec3 position)
+    {
+        this->position = position;
+        booth->translate(position);
+    }
+
+    void draw(Shader &shader)
+    {
+        booth->Draw(shader);
     }
 };
 
@@ -148,6 +150,8 @@ struct FerrisWheel
     Model wheel;
     vector<Cart> carts;
 
+    TicketBooth *booth;
+
     glm::vec3 center;
     glm::mat4 rotationMatrix = glm::mat4(1.0f);
 
@@ -155,8 +159,8 @@ struct FerrisWheel
                          // time is 1 then this will be the angle)
 
     FerrisWheel()
-        : stand(Model("assets/base/base.obj", 2.0f)),
-          wheel(Model("assets/wheel2/wheel2.obj", 2.0f))
+        : stand(Model("assets/base/base.obj", 2.0f, true)),
+          wheel(Model("assets/wheel2/wheel2.obj", 2.0f, true))
     {
         stand.translate(glm::vec3(1.35f * 2.0f, 0.0f, 0.0f));
         wheel.translate(glm::vec3(0.0f, 12.48f * 2.0f, 0.0f));
@@ -188,6 +192,17 @@ struct FerrisWheel
                  glm::vec3(0.0f, -8.398f * 2.0f, 4.9735f * 2.0f)),
         };
         center = glm::vec3(0.0f, 12.48f * 2.0f, 0.0f);
+
+        stand.translate(glm::vec3(38.0f, 0.0f, 20.0f));
+        wheel.translate(glm::vec3(38.0f, 0.0f, 20.0f));
+        for (Cart &cart : carts)
+        {
+            cart.cart.translate(glm::vec3(38.0f, 0.0f, 20.0f));
+            cart.lamp->translate(glm::vec3(38.0f, 0.0f, 20.0f));
+            cart.camera->Position += glm::vec3(38.0f, 0.0f, 20.0f);
+        }
+
+        booth = new TicketBooth(glm::vec3(30.0f, 0.0f, 15.0f));
     }
 
     void rotate(float deltaTime)
@@ -206,15 +221,16 @@ struct FerrisWheel
 
     void draw(Shader &shader, glm::mat4 model, bool depthOnly = false)
     {
-        stand.Draw(shader, depthOnly);
         shader.setMat4("model", model);
         wheel.Draw(shader, depthOnly);
+        stand.Draw(shader);
         shader.setMat4("model", model);
         for (auto &cart : carts)
         {
             cart.draw(shader, depthOnly);
             shader.setMat4("model", model);
         }
+        booth->draw(shader);
     }
 
     void translate(glm::vec3 translation)

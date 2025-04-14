@@ -10,8 +10,8 @@
 struct Terrain
 {
     Model *raisedTerrain =
-        new Model("assets/terrain/RaisedForrest/RaisedTerrain.obj", 45);
-    Model *trees = new Model("assets/terrain/RaisedForrest/Untitled.obj", 1.5);
+        new Model("assets/terrain/RaisedForrest/RaisedTerrain.obj", 45, true);
+    Model *trees = new Model("assets/terrain/RaisedForrest/Untitled.obj", 1.5, true);
     int forrestCount;
     int scale = 100;
 
@@ -26,7 +26,7 @@ struct Terrain
             for (int z = -scale; z <= scale && index < 10000; z += 25)
 
             {
-                if (glm::length(glm::vec2(x, z)) >= 90.0f)
+                if (glm::length(glm::vec2(x, z)) >= 98.0f)
                 {
                     float y = (rand() % 7) - 2;
                     float r = (rand() % 100) / 100.0f;

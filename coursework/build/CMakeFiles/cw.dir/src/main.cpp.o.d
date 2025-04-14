@@ -983,6 +983,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/sstream \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/stb_image.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/FerrisWheel.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Model.h \
   /usr/local/include/assimp/Importer.hpp \
   /usr/local/include/assimp/types.h /usr/local/include/assimp/defs.h \
@@ -1007,8 +1008,9 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /usr/local/include/assimp/mesh.h /usr/local/include/assimp/aabb.h \
   /usr/local/include/assimp/light.h /usr/local/include/assimp/camera.h \
   /usr/local/include/assimp/anim.h /usr/local/include/assimp/metadata.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Light.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/glm/gtc/quaternion.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/OilLamp.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/thread \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Floor.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/PersonCamera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes/Scene.h \

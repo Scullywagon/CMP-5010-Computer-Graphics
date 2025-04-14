@@ -52,7 +52,7 @@ class Mesh
 
     // constructor
     Mesh(vector<Vertex> vertices, vector<unsigned int> indices,
-         vector<Texture> textures)
+         vector<Texture> textures, bool subBoxes)
     {
         this->vertices = vertices;
         this->indices = indices;
@@ -61,6 +61,11 @@ class Mesh
         // now that we have all the required data, set the vertex buffers and
         // its attribute pointers.
         setupMesh();
+
+        if (!subBoxes)
+        {
+            return;
+        }
 
         for (int i = 0; i < indices.size(); i += 3)
         {

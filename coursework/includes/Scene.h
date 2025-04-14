@@ -99,6 +99,7 @@ struct Scene
     {
         collisionManager->add(ferrisWheel->stand.boundingBox);
         collisionManager->add(ferrisWheel->wheel.boundingBox);
+        collisionManager->add(ferrisWheel->booth->booth->boundingBox);
         for (auto &cart : ferrisWheel->carts)
         {
             collisionManager->add(cart.cart.boundingBox);
@@ -107,6 +108,8 @@ struct Scene
         collisionManager->add(circus.tent->boundingBox);
         collisionManager->add(circus.eye->boundingBox);
         collisionManager->add(circus.stage->boundingBox);
+        collisionManager->add(circus.props->boundingBox);
+        collisionManager->add(circus.sign->boundingBox);
 
         collisionManager->addPlayer(camera);
         collisionManager->sortItems();
@@ -116,9 +119,13 @@ struct Scene
     {
         for (Cart &cart : ferrisWheel->carts)
         {
-            lights.push_back(cart.light);
+            lights.push_back(cart.lamp->light);
         }
         lights.push_back(circus.light);
+        for (OilLamp *lamp : circus.lamps)
+        {
+            lights.push_back(lamp->light);
+        }
     }
 
     void activateRotation()
@@ -150,6 +157,7 @@ struct Scene
             shader.setFloat(lightName + "constant", light->constant);
             shader.setFloat(lightName + "linear", light->linear);
             shader.setFloat(lightName + "quadratic", light->quadratic);
+            light->index = index;
             index++;
         }
         shader.setInt("numLights", index);
@@ -187,9 +195,8 @@ struct Scene
         shadowMap->shader.setMat4("lightSpaceMatrix",
                                   shadowMap->lightSpaceMatrix);
         ferrisWheel->draw(shadowMap->shader, model, true);
-        terrain.draw(shadowMap->shader);
-        // floor.use(shadowMap->shader);
-        // circus->Draw(shadowMap->shader);
+        // terrain.draw(shadowMap->shader);
+        circus.draw(shadowMap->shader);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -205,8 +212,8 @@ struct Scene
         shader.setInt("depthMap", 9);
 
         floor.use(shader);
-        ferrisWheel->draw(shader, model);
         terrain.draw(shader);
+        ferrisWheel->draw(shader, model);
         circus.draw(shader);
 
         sun.move(deltaTime);

@@ -47,7 +47,7 @@ uniform TexturedMaterial material2;
 
 uniform sampler2D depthMap;
 
-uniform Light lights[24];
+uniform Light lights[100];
 uniform int numLights;
 
 uniform bool isLight; 
@@ -77,7 +77,7 @@ void main()
         shininess = material.shininess;
     }
 
-    if (texColor.a < 0.5)
+    if (texColor.a < 0.1)
     {
         discard;
     }
@@ -92,7 +92,7 @@ void main()
 
     if (isLight)
     {
-        result = result * vec4(outputColor, 1.0);
+        result += vec4(outputColor, 1.0);
     }
 
     FragColor = result;
