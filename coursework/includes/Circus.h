@@ -82,6 +82,22 @@ struct Circus
         sign->Draw(shader);
         trailer->Draw(shader, depthOnly);
     }
+
+    void drawDepth(Shader &shader)
+    {
+        stage->drawDepth(shader);
+        tent->drawDepth(shader);
+        eye->drawDepth(shader);
+        for (auto &lamp : lamps)
+        {
+            lamp->lamp->drawDepth(shader);
+            lamp->glass->drawDepth(shader);
+        }
+        for (auto &crate : animalCrates)
+        {
+            crate->drawDepth(shader);
+        }
+    }
 };
 
 #endif

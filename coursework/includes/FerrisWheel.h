@@ -219,18 +219,25 @@ struct FerrisWheel
         }
     }
 
-    void draw(Shader &shader, glm::mat4 model, bool depthOnly = false)
+    void draw(Shader &shader, bool depthOnly = false)
     {
-        shader.setMat4("model", model);
         wheel.Draw(shader, depthOnly);
         stand.Draw(shader);
-        shader.setMat4("model", model);
         for (auto &cart : carts)
         {
             cart.draw(shader, depthOnly);
-            shader.setMat4("model", model);
         }
         booth->draw(shader);
+    }
+
+    void drawDepth(Shader &shader)
+    {
+        wheel.drawDepth(shader);
+        stand.drawDepth(shader);
+        for (auto &cart : carts)
+        {
+            cart.cart.drawDepth(shader);
+        }
     }
 
     void translate(glm::vec3 translation)

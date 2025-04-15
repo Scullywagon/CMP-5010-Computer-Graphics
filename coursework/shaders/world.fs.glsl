@@ -47,7 +47,7 @@ uniform TexturedMaterial material2;
 
 uniform sampler2D depthMap;
 
-uniform Light lights[100];
+uniform Light lights[50];
 uniform int numLights;
 
 uniform bool isLight; 

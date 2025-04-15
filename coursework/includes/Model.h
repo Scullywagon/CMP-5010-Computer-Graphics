@@ -82,7 +82,13 @@ class Model
         shader.setMat4("model", modelMatrix);
         for (unsigned int i = 0; i < meshes.size(); i++)
             meshes[i].Draw(shader, depthOnly);
-        boundingBox->draw(shader.ID);
+    }
+
+    void drawDepth(Shader &shader)
+    {
+        shader.setMat4("model", modelMatrix);
+        for (unsigned int i = 0; i < meshes.size(); i++)
+            meshes[i].drawDepth(shader);
     }
 
     void DrawInstanced(Shader &shader, int instanceCount, unsigned int instanceVBO)
@@ -198,6 +204,7 @@ class Model
                 vec.x = mesh->mTextureCoords[0][i].x;
                 vec.y = mesh->mTextureCoords[0][i].y;
                 vertex.TexCoords = vec;
+                /*
                 // tangent
                 vector.x = mesh->mTangents[i].x;
                 vector.y = mesh->mTangents[i].y;
@@ -208,6 +215,7 @@ class Model
                 vector.y = mesh->mBitangents[i].y;
                 vector.z = mesh->mBitangents[i].z;
                 vertex.Bitangent = vector;
+             */
             }
             else
                 vertex.TexCoords = glm::vec2(0.0f, 0.0f);

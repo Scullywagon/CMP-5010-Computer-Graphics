@@ -73,8 +73,6 @@ struct Scene
         shadowMap = new ShadowMap(sun.direction);
         collisionManager = new CollisionManager();
         ferrisWheel = new FerrisWheel();
-        // circus = new Model("assets/circus/tent.obj", 1.0f);
-        // circus->translate(glm::vec3(10.0f, 0.2f, 60.0f));
 
         cameras.push_back(new Camera());
         cameras.push_back(new PersonCamera());
@@ -194,9 +192,10 @@ struct Scene
         shadowMap->shader.use();
         shadowMap->shader.setMat4("lightSpaceMatrix",
                                   shadowMap->lightSpaceMatrix);
-        ferrisWheel->draw(shadowMap->shader, model, true);
-        // terrain.draw(shadowMap->shader);
-        circus.draw(shadowMap->shader);
+        ferrisWheel->drawDepth(shadowMap->shader);
+        terrain.draw(shadowMap->shader);
+
+        circus.drawDepth(shadowMap->shader);
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -213,7 +212,7 @@ struct Scene
 
         floor.use(shader);
         terrain.draw(shader);
-        ferrisWheel->draw(shader, model);
+        ferrisWheel->draw(shader);
         circus.draw(shader);
 
         sun.move(deltaTime);

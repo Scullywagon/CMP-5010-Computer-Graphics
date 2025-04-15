@@ -23,13 +23,13 @@ struct Vertex
     // texCoords
     glm::vec2 TexCoords;
     // tangent
-    glm::vec3 Tangent;
+   // glm::vec3 Tangent;
     // bitangent
-    glm::vec3 Bitangent;
+  //  glm::vec3 Bitangent;
     // bone indexes which will influence this vertex
-    int m_BoneIDs[MAX_BONE_INFLUENCE];
+ //   int m_BoneIDs[MAX_BONE_INFLUENCE];
     // weights from each bone
-    float m_Weights[MAX_BONE_INFLUENCE];
+//    float m_Weights[MAX_BONE_INFLUENCE];
 };
 
 struct Texture
@@ -121,6 +121,14 @@ class Mesh
             glActiveTexture(GL_TEXTURE0);
             shader.setBool("isTextured", false);
         }
+    }
+
+    void drawDepth(Shader &shader)
+    {
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()),
+                       GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
     }
 
     void drawInstanced(Shader &shader, int instanceCount,
@@ -216,6 +224,7 @@ class Mesh
         glEnableVertexAttribArray(2);
         glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex),
                               (void *)offsetof(Vertex, TexCoords));
+        /*
         // vertex tangent
         glEnableVertexAttribArray(3);
         glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex),
@@ -233,6 +242,7 @@ class Mesh
         glEnableVertexAttribArray(6);
         glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex),
                               (void *)offsetof(Vertex, m_Weights));
+        */
         glBindVertexArray(0);
     }
 };
