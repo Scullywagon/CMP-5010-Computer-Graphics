@@ -6,6 +6,10 @@ in vec3 Normal;
 in vec2 TexCoords;
 in vec4 fragPosLightSpace;
 
+// scrap these -- ditching normal maps due to workload and memory usage
+// let the other values get properly set though
+// two mat could be using double per material
+// check for rgba32f -- expensice
 struct TexturedMaterial 
 {
     sampler2D diffuse;
