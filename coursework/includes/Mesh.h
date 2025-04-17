@@ -23,13 +23,13 @@ struct Vertex
     // texCoords
     glm::vec2 TexCoords;
     // tangent
-   // glm::vec3 Tangent;
+    // glm::vec3 Tangent;
     // bitangent
-  //  glm::vec3 Bitangent;
+    //  glm::vec3 Bitangent;
     // bone indexes which will influence this vertex
- //   int m_BoneIDs[MAX_BONE_INFLUENCE];
+    //   int m_BoneIDs[MAX_BONE_INFLUENCE];
     // weights from each bone
-//    float m_Weights[MAX_BONE_INFLUENCE];
+    //    float m_Weights[MAX_BONE_INFLUENCE];
 };
 
 struct Texture
@@ -85,10 +85,9 @@ class Mesh
     void Draw(Shader &shader, bool depthOnly = false)
     {
         bool useTextures = !textures.empty();
-        shader.setBool("isTextured", useTextures);
+        // shader.setBool("isTextured", useTextures);
 
-        std::string materialName =
-            (textures.size() > 1) ? "material2" : "material";
+        std::string materialName = "material";
 
         for (unsigned int i = 0; i < textures.size(); i++)
         {
@@ -101,11 +100,6 @@ class Mesh
             {
                 shader.setInt(materialName + ".diffuse", i);
                 shader.setFloat(materialName + ".shininess", 3.0f);
-            }
-            else if (type == "texture_normal")
-            {
-                shader.setInt(materialName + ".normal", i);
-                shader.setFloat(materialName + ".shininess", 4.0f);
             }
 
             glBindTexture(GL_TEXTURE_2D, texID);

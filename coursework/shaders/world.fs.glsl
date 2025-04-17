@@ -10,6 +10,7 @@ in vec4 fragPosLightSpace;
 // let the other values get properly set though
 // two mat could be using double per material
 // check for rgba32f -- expensice
+/*
 struct TexturedMaterial 
 {
     sampler2D diffuse;
@@ -17,8 +18,9 @@ struct TexturedMaterial
     vec3 specular;
     float shininess;
 };
+*/
 
-struct UntexturedMaterial 
+struct Material 
 {
     sampler2D diffuse;
     vec3 specular;
@@ -45,9 +47,9 @@ uniform vec3 sunSpecular;
 
 uniform vec3 cameraPos;
 
-uniform bool isTextured = false;
-uniform UntexturedMaterial material;
-uniform TexturedMaterial material2;
+//uniform bool isTextured = false;
+//uniform UntexturedMaterial material;
+uniform Material material;
 
 uniform sampler2D depthMap;
 
@@ -67,19 +69,9 @@ void main()
     vec4 texColor;
     vec3 norm;
     float shininess;
-    if (isTextured)
-    {
-        //norm = normalize(texture(material2.normal, TexCoords).rgb * 2.0 - 1.0);
-        norm = normalize(Normal);
-        texColor = texture(material2.diffuse, TexCoords);
-        shininess = material2.shininess;
-    }
-    else
-    {
         norm = normalize(Normal);
         texColor = texture(material.diffuse, TexCoords);
         shininess = material.shininess;
-    }
 
     if (texColor.a < 0.1)
     {

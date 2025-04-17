@@ -249,6 +249,7 @@ class Model
             material, aiTextureType_SPECULAR, "texture_specular");
         textures.insert(textures.end(), specularMaps.begin(),
                         specularMaps.end());
+        /*
         // 3. normal maps
         std::vector<Texture> normalMaps = loadMaterialTextures(
             material, aiTextureType_NORMALS, "texture_normal");
@@ -257,7 +258,7 @@ class Model
         std::vector<Texture> heightMaps = loadMaterialTextures(
             material, aiTextureType_AMBIENT, "texture_height");
         textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
-
+        */
         // return a mesh object created from the extracted mesh data
         return Mesh(vertices, indices, textures, subBoxes);
     }
