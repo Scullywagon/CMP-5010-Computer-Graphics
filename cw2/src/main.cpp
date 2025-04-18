@@ -1,3 +1,7 @@
+
+#include "Constants.h"
+#include "Renderer.h"
+#include "Scene.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <assimp/Importer.hpp>
@@ -13,16 +17,19 @@
 
 using namespace std;
 
-const int SCREEN_WIDTH = 1920;
-const int SCREEN_HEIGHT = 1080;
+int SCREEN_WIDTH = Constants::SCREEN_WIDTH;
+int SCREEN_HEIGHT = Constants::SCREEN_HEIGHT;
 
-int lastX = SCREEN_WIDTH / 2;
-int lastY = SCREEN_HEIGHT / 2;
+int lastX = Constants::SCREEN_WIDTH / 2;
+int lastY = Constants::SCREEN_HEIGHT / 2;
 bool firstMouse = true;
 
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 float currentFrame = 0.0f;
+
+Scene *scene;
+Renderer *renderer;
 
 GLFWwindow *window;
 
@@ -50,6 +57,8 @@ void mouse_callback(GLFWwindow *window, double xposIn, double yposIn)
     float yoffset = lastY - ypos; // change since last frame
     lastX = xpos; // updates the last x position for the next frame
     lastY = ypos; // updates the last y position for the next frame
+
+    scene->cam.ProcessMouseMovement(xoffset, yoffset);
 }
 
 // handled by the glfw callback function
@@ -58,6 +67,14 @@ void input_callback(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     {
         glfwSetWindowShouldClose(window, true);
+    }
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    {
+        scene->cam.processInput(Camera::FORWARD, deltaTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    {
+        scene->cam.processInput(Camera::BACKWARD, deltaTime);
     }
 }
 
@@ -81,8 +98,8 @@ int initGLFW()
                    GLFW_OPENGL_CORE_PROFILE); // Set the OpenGL profile to core
     glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
     // Create windowed mode window and OpenGL context
-    window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT,
-                                          "LearnOpenGL", NULL, NULL);
+    window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "LearnOpenGL", NULL,
+                              NULL);
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     if (window == NULL)
     {
@@ -106,14 +123,24 @@ int initGLFW()
 
 int main()
 {
+    cout << "Starting GLFW" << endl;
+
     if (initGLFW() != 0)
     {
         cout << "Failed to initialize GLFW" << endl;
         return 1;
     }
 
+    scene = new Scene();
+    renderer = new Renderer(scene);
+
+    cout << "initializing" << endl;
+    // scene.init();
+    renderer->init();
+
     while (!glfwWindowShouldClose(window))
     {
+        checkOpenGLError();
         glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
         currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
@@ -122,6 +149,9 @@ int main()
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // Set the color of the window
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        // scene.update();
+        renderer->update();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

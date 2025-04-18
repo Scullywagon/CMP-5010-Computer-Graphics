@@ -84,37 +84,29 @@ class Mesh
     // render the mesh
     void Draw(Shader &shader, bool depthOnly = false)
     {
-        bool useTextures = !textures.empty();
-        // shader.setBool("isTextured", useTextures);
+        glBindVertexArray(VAO);
 
-        std::string materialName = "material";
-
-        for (unsigned int i = 0; i < textures.size(); i++)
+        if (!textures.empty())
         {
-            glActiveTexture(GL_TEXTURE0 + i);
+            const std::string &type = textures[0].type;
+            GLuint texID = textures[0].id;
+            std::string materialName = "material";
 
-            const std::string &type = textures[i].type;
-            GLuint texID = textures[i].id;
-
-            if (type == "texture_diffuse")
-            {
-                shader.setInt(materialName + ".diffuse", i);
-                shader.setFloat(materialName + ".shininess", 3.0f);
-            }
-
+            glActiveTexture(GL_TEXTURE0);
+            shader.setInt(materialName + ".diffuse", 0);
+            shader.setFloat(materialName + ".shininess", 3.0f);
             glBindTexture(GL_TEXTURE_2D, texID);
         }
+        else
+        {
+            // Set fallback values or unbind texture
+            shader.setFloat("material.shininess", 3.0f);
+            glBindTexture(GL_TEXTURE_2D, 0);
+        }
 
-        glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()),
                        GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
-
-        if (!depthOnly)
-        {
-            glActiveTexture(GL_TEXTURE0);
-            shader.setBool("isTextured", false);
-        }
     }
 
     void drawDepth(Shader &shader)

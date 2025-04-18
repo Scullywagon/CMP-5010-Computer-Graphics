@@ -1,12 +1,6 @@
 [
 {
   "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/AssetManager.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/AssetManager.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/AssetManager.cpp",
-  "output": "CMakeFiles/cw.dir/src/AssetManager.cpp.o"
-},
-{
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
   "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/CollisionManager.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/CollisionManager.cpp",
   "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/CollisionManager.cpp",
   "output": "CMakeFiles/cw.dir/src/CollisionManager.cpp.o"
@@ -34,5 +28,11 @@
   "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/main.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp",
   "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp",
   "output": "CMakeFiles/cw.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/stb_impl.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/stb_impl.cpp",
+  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/stb_impl.cpp",
+  "output": "CMakeFiles/cw.dir/src/stb_impl.cpp.o"
 }
 ]

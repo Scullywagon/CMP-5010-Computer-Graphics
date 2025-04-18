@@ -129,30 +129,6 @@ cw/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/build
 .PHONY : cw/fast
 
-src/AssetManager.o: src/AssetManager.cpp.o
-.PHONY : src/AssetManager.o
-
-# target to build an object file
-src/AssetManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/AssetManager.cpp.o
-.PHONY : src/AssetManager.cpp.o
-
-src/AssetManager.i: src/AssetManager.cpp.i
-.PHONY : src/AssetManager.i
-
-# target to preprocess a source file
-src/AssetManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/AssetManager.cpp.i
-.PHONY : src/AssetManager.cpp.i
-
-src/AssetManager.s: src/AssetManager.cpp.s
-.PHONY : src/AssetManager.s
-
-# target to generate assembly for a file
-src/AssetManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/AssetManager.cpp.s
-.PHONY : src/AssetManager.cpp.s
-
 src/CollisionManager.o: src/CollisionManager.cpp.o
 .PHONY : src/CollisionManager.o
 
@@ -273,6 +249,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/stb_impl.o: src/stb_impl.cpp.o
+.PHONY : src/stb_impl.o
+
+# target to build an object file
+src/stb_impl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/stb_impl.cpp.o
+.PHONY : src/stb_impl.cpp.o
+
+src/stb_impl.i: src/stb_impl.cpp.i
+.PHONY : src/stb_impl.i
+
+# target to preprocess a source file
+src/stb_impl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/stb_impl.cpp.i
+.PHONY : src/stb_impl.cpp.i
+
+src/stb_impl.s: src/stb_impl.cpp.s
+.PHONY : src/stb_impl.s
+
+# target to generate assembly for a file
+src/stb_impl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/stb_impl.cpp.s
+.PHONY : src/stb_impl.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -282,9 +282,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cw"
-	@echo "... src/AssetManager.o"
-	@echo "... src/AssetManager.i"
-	@echo "... src/AssetManager.s"
 	@echo "... src/CollisionManager.o"
 	@echo "... src/CollisionManager.i"
 	@echo "... src/CollisionManager.s"
@@ -300,6 +297,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/stb_impl.o"
+	@echo "... src/stb_impl.i"
+	@echo "... src/stb_impl.s"
 .PHONY : help
 
 

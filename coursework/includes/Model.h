@@ -244,12 +244,12 @@ class Model
         vector<Texture> diffuseMaps = loadMaterialTextures(
             material, aiTextureType_DIFFUSE, "texture_diffuse");
         textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+        /*
         // 2. specular maps
         vector<Texture> specularMaps = loadMaterialTextures(
             material, aiTextureType_SPECULAR, "texture_specular");
         textures.insert(textures.end(), specularMaps.begin(),
                         specularMaps.end());
-        /*
         // 3. normal maps
         std::vector<Texture> normalMaps = loadMaterialTextures(
             material, aiTextureType_NORMALS, "texture_normal");
