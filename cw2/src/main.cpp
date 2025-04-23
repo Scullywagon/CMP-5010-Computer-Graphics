@@ -1,5 +1,6 @@
 
 #include "Constants.h"
+#include "Entities/FerrisWheel.h"
 #include "Renderer.h"
 #include "Scene.h"
 #include <GL/glew.h>
@@ -131,17 +132,20 @@ int main()
         return 1;
     }
 
+    glEnable(GL_DEPTH_TEST);
+    
     scene = new Scene();
     renderer = new Renderer(scene);
 
-    cout << "initializing" << endl;
-    // scene.init();
+    scene->init();
     renderer->init();
+
 
     while (!glfwWindowShouldClose(window))
     {
         checkOpenGLError();
         glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
         currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
@@ -150,7 +154,7 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // Set the color of the window
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // scene.update();
+        scene->update();
         renderer->update();
 
         glfwSwapBuffers(window);

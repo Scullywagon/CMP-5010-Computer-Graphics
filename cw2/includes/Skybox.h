@@ -19,13 +19,9 @@ class Skybox
     Shader skyboxShader;
     float blendFactor = 0.5f;
 
-    std::string textures1[8] = {"skybox/right.jpg", "skybox/left.jpg",
-                                "skybox/top.jpg",   "skybox/bottom.jpg",
-                                "skybox/front.jpg", "skybox/back.jpg"};
-
-    std::string textures2[8] = {"skybox2/right.jpg", "skybox2/left.jpg",
-                                "skybox2/top.jpg",   "skybox2/bottom.jpg",
-                                "skybox2/front.jpg", "skybox2/back.jpg"};
+    std::string textures1[8] = {"assets/skybox/right.jpg", "assets/skybox/left.jpg",
+                                "assets/skybox/top.jpg",   "assets/skybox/bottom.jpg",
+                                "assets/skybox/front.jpg", "assets/skybox/back.jpg"};
 
     float skyboxVertices[24] = {
         -1000.0f, 1000.0f,  -1000.0f, -1000.0f, -1000.0f, -1000.0f,
@@ -45,7 +41,6 @@ class Skybox
             f -= 50000.0f;
         }
         texture1ID = loadCubemap(textures1);
-        texture2ID = loadCubemap(textures2);
         glGenVertexArrays(1, &skyboxVAO);
         glGenBuffers(1, &skyboxVBO);
         glGenBuffers(1, &skyboxEBO);
@@ -65,23 +60,18 @@ class Skybox
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 
-    void use(glm::mat4 view, glm::mat4 projection)
+    void render(glm::mat4 view, glm::mat4 projection)
     {
         glDepthMask(GL_FALSE);
         skyboxShader.use();
         view = glm::mat4(glm::mat3(view));
         skyboxShader.setMat4("projection", projection);
         skyboxShader.setMat4("view", view);
-        skyboxShader.setFloat("blendFactor", blendFactor);
 
         glBindVertexArray(skyboxVAO);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_CUBE_MAP, texture1ID);
         skyboxShader.setInt("skybox1", 0);
-
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_CUBE_MAP, texture2ID);
-        skyboxShader.setInt("skybox2", 1);
 
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
         glDepthMask(GL_TRUE);

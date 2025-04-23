@@ -5,6 +5,9 @@
 #include "glm/detail/func_trigonometric.hpp"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include <iostream>
+
+using namespace std;
 
 class Camera : public ParentCamera
 {
@@ -14,7 +17,7 @@ class Camera : public ParentCamera
     Camera()
     {
         // Initialize the base class members directly
-        Position = glm::vec3(0.0f, 0.0f, 0.0f);
+        Position = glm::vec3(-10.0f, 10.0f, 0.0f);
         Front = glm::vec3(0.0f, 0.0f, -1.0f);
         Up = glm::vec3(0.0f, 1.0f, 0.0f);
         Right = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -27,7 +30,6 @@ class Camera : public ParentCamera
         MouseSensitivity = SENSITIVITY;
 
         fov = glm::radians(FOV);
-
     }
 
     glm::mat4 GetViewMatrix() override

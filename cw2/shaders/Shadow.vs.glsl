@@ -9,11 +9,8 @@ uniform bool isInstanced;
 
 void main()
 {
-    mat4 mod = model;
+    mat4 mod = instanceModel;
     vec3 pos = aPos;
-    if (isInstanced) {
-        mod = instanceModel;
-    }
 
     gl_Position = lightSpaceMatrix * mod * vec4(pos, 1.0);
 }  

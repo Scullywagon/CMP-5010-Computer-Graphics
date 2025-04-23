@@ -153,6 +153,30 @@ src/CollisionManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/CollisionManager.cpp.s
 .PHONY : src/CollisionManager.cpp.s
 
+src/Entities/FerrisWheel.o: src/Entities/FerrisWheel.cpp.o
+.PHONY : src/Entities/FerrisWheel.o
+
+# target to build an object file
+src/Entities/FerrisWheel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o
+.PHONY : src/Entities/FerrisWheel.cpp.o
+
+src/Entities/FerrisWheel.i: src/Entities/FerrisWheel.cpp.i
+.PHONY : src/Entities/FerrisWheel.i
+
+# target to preprocess a source file
+src/Entities/FerrisWheel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.i
+.PHONY : src/Entities/FerrisWheel.cpp.i
+
+src/Entities/FerrisWheel.s: src/Entities/FerrisWheel.cpp.s
+.PHONY : src/Entities/FerrisWheel.s
+
+# target to generate assembly for a file
+src/Entities/FerrisWheel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.s
+.PHONY : src/Entities/FerrisWheel.cpp.s
+
 src/Entity.o: src/Entity.cpp.o
 .PHONY : src/Entity.o
 
@@ -225,6 +249,30 @@ src/Scene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/Scene.cpp.s
 .PHONY : src/Scene.cpp.s
 
+src/TexFormFile.o: src/TexFormFile.cpp.o
+.PHONY : src/TexFormFile.o
+
+# target to build an object file
+src/TexFormFile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/TexFormFile.cpp.o
+.PHONY : src/TexFormFile.cpp.o
+
+src/TexFormFile.i: src/TexFormFile.cpp.i
+.PHONY : src/TexFormFile.i
+
+# target to preprocess a source file
+src/TexFormFile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/TexFormFile.cpp.i
+.PHONY : src/TexFormFile.cpp.i
+
+src/TexFormFile.s: src/TexFormFile.cpp.s
+.PHONY : src/TexFormFile.s
+
+# target to generate assembly for a file
+src/TexFormFile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/TexFormFile.cpp.s
+.PHONY : src/TexFormFile.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -285,6 +333,9 @@ help:
 	@echo "... src/CollisionManager.o"
 	@echo "... src/CollisionManager.i"
 	@echo "... src/CollisionManager.s"
+	@echo "... src/Entities/FerrisWheel.o"
+	@echo "... src/Entities/FerrisWheel.i"
+	@echo "... src/Entities/FerrisWheel.s"
 	@echo "... src/Entity.o"
 	@echo "... src/Entity.i"
 	@echo "... src/Entity.s"
@@ -294,6 +345,9 @@ help:
 	@echo "... src/Scene.o"
 	@echo "... src/Scene.i"
 	@echo "... src/Scene.s"
+	@echo "... src/TexFormFile.o"
+	@echo "... src/TexFormFile.i"
+	@echo "... src/TexFormFile.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -22,6 +22,6 @@ void main()
     FragPos = vec3(mod * vec4(pos, 1.0)); // Get the world-space position of the vertex
     Normal = mat3(transpose(inverse(mod))) * aNormal;
     TexCoords = vec2(aTexCoords.x, aTexCoords.y);
-    fragPosLightSpace = lightSpaceMatrix * vec4(FragPos, 1.0); 
+    fragPosLightSpace = lightSpaceMatrix * mod * vec4(FragPos, 1.0); 
     gl_Position = projection * view * vec4(FragPos, 1.0); // Apply transformations
 }

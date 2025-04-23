@@ -262,7 +262,6 @@ class Model
         filename = directory + '/' + filename;
 
         unsigned int textureID;
-        cout << "ID: " << textureID << endl;
         glGenTextures(1, &textureID);
 
         int width, height, nrComponents;

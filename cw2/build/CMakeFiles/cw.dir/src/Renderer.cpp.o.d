@@ -1,7 +1,6 @@
 CMakeFiles/cw.dir/src/Renderer.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Renderer.cpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Renderer.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Scene.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Model.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/glm.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/_fixes.hpp \
@@ -1004,8 +1003,13 @@ CMakeFiles/cw.dir/src/Renderer.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/sstream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h \
-  /usr/local/include/GLFW/glfw3.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Scene.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Camera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/ParentCamera.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Floor.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/quaternion.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h \
+  /usr/local/include/GLFW/glfw3.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h

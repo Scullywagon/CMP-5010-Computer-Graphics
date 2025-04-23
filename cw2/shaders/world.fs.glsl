@@ -78,7 +78,6 @@ void main()
         discard;
     }
 
-    /*
     float shadow = ShadowCalculation(fragPosLightSpace, norm);
     vec4 result = calculateSunlight(texColor, norm, shininess, shadow);
 
@@ -87,12 +86,12 @@ void main()
         result += calculateGeneralLight(lights[i], texColor, norm, shininess);
     }
 
+    /*
     if (isLight)
     {
         result += vec4(outputColor, 1.0);
     }
     */
-    vec4 result = texColor;
 
     FragColor = result;
 }
@@ -112,8 +111,7 @@ vec4 calculateSunlight(vec4 texColor, vec3 norm, float shininess, float shadow)
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
     vec3 specular = sunSpecular * spec * texColor.rgb;
 
-    //vec3 result = (ambient + (1.0 - shadow) * (diffuse + specular));
-    vec3 result = ambient * (diffuse + specular);
+    vec3 result = (ambient + (1.0 - shadow) * (diffuse + specular));
     return vec4(result, texColor.a); // Retain the alpha value
 }
 
