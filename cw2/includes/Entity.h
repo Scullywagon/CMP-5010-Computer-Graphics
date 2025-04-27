@@ -1,6 +1,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include "BoundingTree.h"
 #include "Model.h"
 
 class Entity
@@ -10,7 +11,7 @@ class Entity
     glm::mat4 modelMatrix;
     glm::vec3 position;
     glm::vec3 rotation;
-    // BoundingTree bt;
+    BoundingTree *bt;
 
     // Light *light;
 
@@ -21,8 +22,6 @@ class Entity
     virtual void init();
     virtual void update();
     ~Entity() = default;
-
-  private:
 };
 
 #endif

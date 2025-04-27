@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "BoundingTree.h"
 
 Entity::Entity()
 {

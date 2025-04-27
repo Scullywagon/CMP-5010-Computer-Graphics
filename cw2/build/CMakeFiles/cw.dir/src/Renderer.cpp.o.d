@@ -1005,7 +1005,9 @@ CMakeFiles/cw.dir/src/Renderer.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Scene.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Camera.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/ParentCamera.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/CollisionManager.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Floor.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \

@@ -11,9 +11,7 @@ void Stand::init()
 {
     modelMatrix = glm::mat4(1.0f);
     modelMatrix = glm::translate(modelMatrix, this->position);
-    modelMatrix =
-        glm::rotate(modelMatrix, this->rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
-    modelMatrix = glm::scale(modelMatrix, glm::vec3(100.5f, 0.5f, 0.5f));
+    bt = new BoundingTree(*model);
 }
 
 void Stand::update()

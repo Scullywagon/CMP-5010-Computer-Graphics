@@ -129,6 +129,30 @@ cw/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/build
 .PHONY : cw/fast
 
+src/BoundingTree.o: src/BoundingTree.cpp.o
+.PHONY : src/BoundingTree.o
+
+# target to build an object file
+src/BoundingTree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/BoundingTree.cpp.o
+.PHONY : src/BoundingTree.cpp.o
+
+src/BoundingTree.i: src/BoundingTree.cpp.i
+.PHONY : src/BoundingTree.i
+
+# target to preprocess a source file
+src/BoundingTree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/BoundingTree.cpp.i
+.PHONY : src/BoundingTree.cpp.i
+
+src/BoundingTree.s: src/BoundingTree.cpp.s
+.PHONY : src/BoundingTree.s
+
+# target to generate assembly for a file
+src/BoundingTree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/BoundingTree.cpp.s
+.PHONY : src/BoundingTree.cpp.s
+
 src/CollisionManager.o: src/CollisionManager.cpp.o
 .PHONY : src/CollisionManager.o
 
@@ -330,6 +354,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cw"
+	@echo "... src/BoundingTree.o"
+	@echo "... src/BoundingTree.i"
+	@echo "... src/BoundingTree.s"
 	@echo "... src/CollisionManager.o"
 	@echo "... src/CollisionManager.i"
 	@echo "... src/CollisionManager.s"

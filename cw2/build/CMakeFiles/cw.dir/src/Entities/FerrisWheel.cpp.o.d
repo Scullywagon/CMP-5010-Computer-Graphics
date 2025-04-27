@@ -2,6 +2,7 @@ CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entities/FerrisWheel.cpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Model.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/glm.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/_fixes.hpp \

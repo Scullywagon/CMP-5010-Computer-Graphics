@@ -1,8 +1,5 @@
-CMakeFiles/cw.dir/src/main.cpp.o: \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
+CMakeFiles/cw.dir/src/BoundingTree.cpp.o: \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/BoundingTree.cpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Model.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/glm.hpp \
@@ -1005,14 +1002,4 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/sstream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/map \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Renderer.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Scene.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Camera.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/ParentCamera.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/CollisionManager.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Floor.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/quaternion.hpp \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h \
-  /usr/local/include/GLFW/glfw3.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree

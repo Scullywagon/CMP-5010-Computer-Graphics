@@ -2,6 +2,7 @@
 #define SCENE_H
 
 #include "Camera.h"
+#include "CollisionManager.h"
 #include "Entity.h"
 #include "Floor.h"
 #include "Light.h"
@@ -19,6 +20,7 @@ struct Scene
     unordered_map<Model *, vector<glm::mat4 *>> translations;
 
     vector<Entity *> entities;
+    CollisionManager *collisionManager;
 
     // World
     Skybox skybox;

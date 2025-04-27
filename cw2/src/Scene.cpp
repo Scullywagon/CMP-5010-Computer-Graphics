@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "CollisionManager.h"
 #include "Entities/FerrisWheel.h"
 #include "Light.h"
 #include "Skybox.h"
@@ -10,6 +11,7 @@ Scene::Scene()
     assets["Stand"] = new Model("assets/base/base.obj", 2.0f);
     assets["Crate"] =
         new Model("assets/animalCrate/circus_animal_crate.obj", 1.0f);
+    collisionManager = new CollisionManager(&cam);
 }
 
 void Scene::init()
@@ -22,12 +24,13 @@ void Scene::init()
         entity->init();
         Model *model = entity->model;
         translations[model].push_back(&entity->modelMatrix);
+        collisionManager->add(entity->bt);
     }
-    //translations[stand->model].push_back(new glm::mat4(2.5f));
 }
 
 void Scene::update()
 {
+    collisionManager->update();
     cam.move();
 }
 

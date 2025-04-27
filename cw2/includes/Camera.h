@@ -1,6 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#include "BoundingTree.h"
 #include "ParentCamera.h"
 #include "glm/detail/func_trigonometric.hpp"
 #include "glm/glm.hpp"
@@ -14,6 +15,7 @@ class Camera : public ParentCamera
   public:
     const float SPEED = 14.5f;
     const float FOV = 50.0f;
+    BoundingTree *bt;
     Camera()
     {
         // Initialize the base class members directly
@@ -30,6 +32,7 @@ class Camera : public ParentCamera
         MouseSensitivity = SENSITIVITY;
 
         fov = glm::radians(FOV);
+        bt = new BoundingTree(Position);
     }
 
     glm::mat4 GetViewMatrix() override
@@ -70,6 +73,7 @@ class Camera : public ParentCamera
     void move() override
     {
         this->Position += translation;
+        bt->translate(translation);
         float transY = 0.0f;
 
         if (Position.y <= (floorHeight + 0.5f))

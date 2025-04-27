@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/BoundingTree.cpp" "CMakeFiles/cw.dir/src/BoundingTree.cpp.o" "gcc" "CMakeFiles/cw.dir/src/BoundingTree.cpp.o.d"
   "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/CollisionManager.cpp" "CMakeFiles/cw.dir/src/CollisionManager.cpp.o" "gcc" "CMakeFiles/cw.dir/src/CollisionManager.cpp.o.d"
   "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entities/FerrisWheel.cpp" "CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o" "gcc" "CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o.d"
   "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entity.cpp" "CMakeFiles/cw.dir/src/Entity.cpp.o" "gcc" "CMakeFiles/cw.dir/src/Entity.cpp.o.d"
