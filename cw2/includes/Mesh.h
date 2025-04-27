@@ -56,11 +56,10 @@ class Mesh
     // render the mesh
     // check if empty (wont be)
     // only doing diffuse so grab diffuse texture and bind
-    // actve texture stuff etc 
+    // actve texture stuff etc
     // bind the spec col and shininess
     // bind vertex array
     //
-
 
   private:
     // render data

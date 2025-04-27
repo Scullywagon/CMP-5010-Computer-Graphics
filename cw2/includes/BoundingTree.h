@@ -23,6 +23,7 @@ struct BoundingNode
         indexes; // holds indexes of indecies that make a triangle
 
     bool bottom = false;
+    bool collide = false;
 
     BoundingNode(glm::vec3 center, glm::vec3 front, glm::vec3 up,
                  glm::vec3 right, int index, Model &model);

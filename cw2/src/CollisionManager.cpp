@@ -2,6 +2,7 @@
 #include "BoundingTree.h"
 #include "Model.h"
 #include "glm/detail/func_geometric.hpp"
+#include "glm/detail/type_vec.hpp"
 
 CollisionManager::CollisionManager(Camera *p)
 {
@@ -66,12 +67,28 @@ void CollisionManager::checkNodes(BoundingNode *bn, glm::mat4 *modelMatrix,
             glm::vec3 playerPos = glm::vec3(
                 inverse *
                 glm::vec4(player->Position + player->translation, 1.0f));
-            glm::vec3 vert =
-                model->meshes[id.first].vertices[id.second].Position;
-            if (isColliding(vert, playerPos))
+            Vertex &vert1 = model->meshes[id.first].vertices[id.second];
+            Vertex &vert2 = model->meshes[id.first].vertices[id.second + 1];
+            Vertex &vert3 = model->meshes[id.first].vertices[id.second + 2];
+            // Find the axis-aligned bounding box (AABB) of the triangle
+            glm::vec3 max = glm::vec3(
+                glm::max(vert1.Position.x,
+                         glm::max(vert2.Position.x, vert3.Position.x)),
+                glm::max(vert1.Position.y,
+                         glm::max(vert2.Position.y, vert3.Position.y)),
+                glm::max(vert1.Position.z,
+                         glm::max(vert2.Position.z, vert3.Position.z)));
+
+            glm::vec3 min = glm::vec3(
+                glm::min(vert1.Position.x,
+                         glm::min(vert2.Position.x, vert3.Position.x)),
+                glm::min(vert1.Position.y,
+                         glm::min(vert2.Position.y, vert3.Position.y)),
+                glm::min(vert1.Position.z,
+                         glm::min(vert2.Position.z, vert3.Position.z)));
+            if (isColliding(min, max, playerPos))
             {
-                collideWithVertex(model->meshes[id.first].vertices[id.second],
-                                  playerPos, inverse);
+                collideWithPoly(min, max, playerPos, inverse);
             }
         }
         return;
@@ -119,34 +136,69 @@ bool CollisionManager::isColliding(BoundingNode *bn)
     return true;
 }
 
-bool CollisionManager::isColliding(glm::vec3 pos, glm::vec3 playerPos)
+bool CollisionManager::isColliding(glm::vec3 min, glm::vec3 max,
+                                   glm::vec3 playerPos)
 {
-    if (glm::length(pos - playerPos) < 0.5f)
+    if (playerPos.x >= min.x && playerPos.x <= max.x && playerPos.y >= min.y &&
+        playerPos.y <= max.y && playerPos.z >= min.z && playerPos.z <= max.z)
     {
-        cout << "collided with: " << pos.x << " " << pos.y << " " << pos.z
-             << endl;
         return true;
     }
     return false;
 }
 
-void CollisionManager::collideWithVertex(Vertex v, glm::vec3 playerPos,
-                                         glm::mat4 inverse)
+void CollisionManager::collideWithPoly(glm::vec3 min, glm::vec3 max,
+                                       glm::vec3 playerPos, glm::mat4 inverse)
 {
-    glm::vec3 delta = playerPos - v.Position;
-    float distance = glm::length(delta);
+    // Fixed player radius of 0.5f
+    float playerRadius = 0.5f;
 
-    float overlap = 0.5f - distance;
-    if (overlap > 0.0f)
+    // Calculate the player's bounding box (AABB) based on the player position
+    // and radius
+    glm::vec3 playerMin = playerPos - glm::vec3(playerRadius);
+    glm::vec3 playerMax = playerPos + glm::vec3(playerRadius);
+
+    // Calculate overlap in each axis (x, y, z) for collision detection
+    glm::vec3 overlapMin = glm::max(min, playerMin);
+    glm::vec3 overlapMax = glm::min(max, playerMax);
+
+    // If there's no overlap, no correction is needed
+    if (overlapMin.x >= overlapMax.x || overlapMin.y >= overlapMax.y ||
+        overlapMin.z >= overlapMax.z)
     {
-        glm::vec3 correctionDir = glm::normalize(delta);
-        glm::vec3 correction = correctionDir * overlap;
-
-        glm::vec3 worldCorrection =
-            glm::vec3(glm::inverse(inverse) * glm::vec4(correction, 0.0f));
-
-        player->translation += worldCorrection;
+        return;
     }
+
+    // Calculate the overlap distance along each axis (x, y, z)
+    glm::vec3 overlap = overlapMax - overlapMin;
+
+    // Determine the smallest axis of overlap (to push the player out)
+    glm::vec3 correction(0.0f);
+    if (overlap.x < overlap.y && overlap.x < overlap.z)
+    {
+        correction.x =
+            overlap.x * (playerPos.x < (min.x + max.x) / 2.0f ? -1.0f : 1.0f);
+    }
+    else if (overlap.y < overlap.x && overlap.y < overlap.z)
+    {
+        correction.y =
+            overlap.y * (playerPos.y < (min.y + max.y) / 2.0f ? -1.0f : 1.0f);
+    }
+    else
+    {
+        correction.z =
+            overlap.z * (playerPos.z < (min.z + max.z) / 2.0f ? -1.0f : 1.0f);
+    }
+
+    // Apply the correction to move the player out of the AABB
+    glm::vec3 worldCorrection =
+        glm::vec3(inverse * glm::vec4(correction, 0.0f));
+
+    // Update the player's position
+    player->translation += worldCorrection;
+
+    cout << "Applied world correction: " << worldCorrection.x << ", "
+         << worldCorrection.y << ", " << worldCorrection.z << endl;
 }
 
 void CollisionManager::add(BoundingTree *bt)

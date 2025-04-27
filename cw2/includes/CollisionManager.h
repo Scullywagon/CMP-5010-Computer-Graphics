@@ -19,8 +19,9 @@ class CollisionManager
     void checkNodes(BoundingNode *bn, glm::mat4 *modelMatrix,
                     Model *model); // checks each node and calls intself
     bool isColliding(BoundingNode *bn);
-    bool isColliding(glm::vec3 pos, glm::vec3 playerPos);
-    void collideWithVertex(Vertex v, glm::vec3 playerPos, glm::mat4 inverse);
+    bool isColliding(glm::vec3 min, glm::vec3 max, glm::vec3 playerPos);
+    void collideWithPoly(glm::vec3 min, glm::vec3 max, glm::vec3 playerPos,
+                         glm::mat4 inverse);
 
   private:
     static bool compareX(const std::pair<BoundingTree *, bool> &a,

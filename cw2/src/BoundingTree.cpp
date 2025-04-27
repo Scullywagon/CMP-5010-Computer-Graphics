@@ -17,7 +17,7 @@ BoundingNode::BoundingNode(glm::vec3 center, glm::vec3 front, glm::vec3 up,
 
 void BoundingNode::generateNodes(int index, Model &model)
 {
-    if (index == 1)
+    if (index == 25)
     {
         bottom = true;
         collectIndexes(model);
@@ -29,19 +29,19 @@ void BoundingNode::generateNodes(int index, Model &model)
     glm::vec3 firstCenter = this->center;
     glm::vec3 secondCenter = this->center;
 
-    if (index == 0)
+    if (index % 3 == 0)
     {
         newFront *= 0.5f;
         firstCenter += newFront;
         secondCenter -= newFront;
     }
-    else if (index == 1)
+    else if (index % 3 == 1)
     {
         newUp *= -0.5f;
         firstCenter += newUp;
         secondCenter -= newUp;
     }
-    else if (index == 2)
+    else if (index % 3 == 2)
     {
         newRight *= 0.5f;
         firstCenter += newRight;
@@ -58,24 +58,49 @@ void BoundingNode::generateNodes(int index, Model &model)
 
 void BoundingNode::collectIndexes(Model &model)
 {
-    indexes.clear(); // If you want to clear previous data
+    indexes.clear(); // Clear previous data
 
-    // Assuming center, front, up, and right are glm::vec3
-    for (int meshIndex = 0; meshIndex < model.meshes.size(); ++meshIndex)
+    glm::vec3 min = this->center - front - up - right;
+    glm::vec3 max = this->center + front + up + right;
+
+    // Loop through all meshes in the model
+    for (int meshIndex = 0; meshIndex < model.meshes.size(); meshIndex++)
     {
         Mesh &mesh = model.meshes[meshIndex];
-        for (int v = 0; v < mesh.vertices.size(); ++v)
-        {
-            const Vertex &vertex = mesh.vertices[v];
-            const glm::vec3 &pos = vertex.Position;
 
-            // Check if the point is within the bounding box
-            if (pos.x >= (center.x - front.x) &&
-                pos.x <= (center.x + front.x) && pos.y >= (center.y - up.y) &&
-                pos.y <= (center.y + up.y) && pos.z >= (center.z - right.z) &&
-                pos.z <= (center.z + right.z))
+        // Loop through all triangle faces (indices are assumed to be in sets of
+        // 3)
+        for (int v = 0; v < mesh.indices.size(); v += 3)
+        {
+            const Vertex &vert1 = mesh.vertices[mesh.indices[v]];
+            const Vertex &vert2 = mesh.vertices[mesh.indices[v + 1]];
+            const Vertex &vert3 = mesh.vertices[mesh.indices[v + 2]];
+
+            // Find the axis-aligned bounding box (AABB) of the triangle
+            glm::vec3 max = glm::vec3(
+                glm::max(vert1.Position.x,
+                         glm::max(vert2.Position.x, vert3.Position.x)),
+                glm::max(vert1.Position.y,
+                         glm::max(vert2.Position.y, vert3.Position.y)),
+                glm::max(vert1.Position.z,
+                         glm::max(vert2.Position.z, vert3.Position.z)));
+
+            glm::vec3 min = glm::vec3(
+                glm::min(vert1.Position.x,
+                         glm::min(vert2.Position.x, vert3.Position.x)),
+                glm::min(vert1.Position.y,
+                         glm::min(vert2.Position.y, vert3.Position.y)),
+                glm::min(vert1.Position.z,
+                         glm::min(vert2.Position.z, vert3.Position.z)));
+
+            bool collision = (max.x >= min.x && min.x <= max.x) &&
+                             (max.y >= min.y && min.y <= max.y) &&
+                             (max.z >= min.z && min.z <= max.z);
+
+            // If a collision occurs, add the index to the list
+            if (collision)
             {
-                indexes.push_back({meshIndex, v});
+                collide = true;
             }
         }
     }
@@ -84,8 +109,8 @@ void BoundingNode::collectIndexes(Model &model)
 // for player mainly
 BoundingTree::BoundingTree(glm::vec3 position)
 {
-    this->max = position + glm::vec3(0.2f);
-    this->max = position + glm::vec3(-0.2f);
+    this->max = position + glm::vec3(0.5f);
+    this->max = position + glm::vec3(-0.5f);
 }
 
 BoundingTree::BoundingTree(Model &model, glm::mat4 *matrix)
