@@ -15,7 +15,7 @@ BoundingNode::BoundingNode(glm::vec3 center, glm::vec3 front, glm::vec3 up,
 
 void BoundingNode::generateNodes(int index, Model &model)
 {
-    if (index == 14)
+    if (index == 12)
     {
         bottom = true;
         return;
@@ -162,27 +162,27 @@ void BoundingTree::assignColliders()
             {
                 if (nb.node->collide)
                     continue; // already assigned, skip
+                bool intersects = true;
+                float tmin;
+                float tmax;
 
-                float tmin = (nb.min.x - p0.Position.x) / denom.x;
-                float tmax = (nb.max.x - p0.Position.x) / denom.x;
-                if (tmin > tmax)
-                    std::swap(tmin, tmax);
-                if (tmin > 1.0f || tmax < 0.0f || tmax < tmin)
-                    continue;
-                tmin = (nb.min.y - p0.Position.y) / denom.y;
-                tmax = (nb.max.y - p0.Position.y) / denom.y;
-                if (tmin > tmax)
-                    std::swap(tmin, tmax);
-                if (tmin > 1.0f || tmax < 0.0f || tmax < tmin)
-                    continue;
-                tmin = (nb.min.z - p0.Position.z) / denom.z;
-                tmax = (nb.max.z - p0.Position.z) / denom.z;
-                if (tmin > tmax)
-                    std::swap(tmin, tmax);
-                if (tmin > 1.0f || tmax < 0.0f || tmax < tmin)
-                    continue;
+                for (int axis = 0; axis < 3; axis++)
+                {
+                    tmin = (nb.min[axis] - p0.Position[axis]) / denom[axis];
+                    tmax = (nb.max[axis] - p0.Position[axis]) / denom[axis];
+                    if (tmin > tmax)
+                        std::swap(tmin, tmax);
+                    if (tmin > 1.0f || tmax < 0.0f || tmax < tmin)
+                    {
+                        intersects = false;
+                        break;
+                    }
+                }
 
-                nb.node->collide = true;
+                if (intersects)
+                {
+                    nb.node->collide = true;
+                }
             }
         }
     }

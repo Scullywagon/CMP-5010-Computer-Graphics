@@ -23,6 +23,8 @@ void CollisionManager::genChecks()
     bool x = true;
     bool z = true;
 
+    int pMaxIndex = 0;
+
 #pragma omp parallel for
     for (int i = 0; i < xList.size() - 1; i++)
     {
@@ -68,7 +70,9 @@ void CollisionManager::checkNodes(BoundingNode *bn, glm::mat4 *modelMatrix,
     {
         if (bn->collide)
         {
-            player->translation = glm::vec3(0.0f);
+            glm::vec3 min = bn->center - bn->front - bn->up - bn->right;
+            glm::vec3 max = bn->center + bn->front + bn->up + bn->right;
+            collideWithPoly(min, max, player->Position, inverse);
         }
         return;
     }
@@ -162,15 +166,10 @@ void CollisionManager::collideWithPoly(glm::vec3 min, glm::vec3 max,
             overlap.z * (playerPos.z < (min.z + max.z) / 2.0f ? -1.0f : 1.0f);
     }
 
-    // Apply the correction to move the player out of the AABB
     glm::vec3 worldCorrection =
         glm::vec3(inverse * glm::vec4(correction, 0.0f));
 
-    // Update the player's position
     player->translation += worldCorrection;
-
-    cout << "Applied world correction: " << worldCorrection.x << ", "
-         << worldCorrection.y << ", " << worldCorrection.z << endl;
 }
 
 void CollisionManager::add(BoundingTree *bt)
