@@ -1,5 +1,6 @@
 # Set the minimum required CMake version
 cmake_minimum_required(VERSION 3.16)
+
 # Set the project name
 project(cw)
 
@@ -10,9 +11,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find packages for GLEW, GLFW3, and OpenGL
 find_package(OpenGL REQUIRED)
 find_package(assimp REQUIRED)
-#set(GLEW_ROOT_DIR "/usr/local/Cellar/glew")
 find_package(GLEW REQUIRED)
 find_package(glfw3 REQUIRED)
+find_package(OpenMP)
 
 # Set output directories for executables and libraries
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/output)
@@ -32,3 +33,9 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Link the required libraries (GLEW, GLFW3, OpenGL)
 target_link_libraries(${PROJECT_NAME} OpenGL::GL GLEW::GLEW glfw assimp::assimp)
+
+# If OpenMP is found, enable it and link it
+if(OpenMP_CXX_FOUND)
+    target_compile_options(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_FLAGS})
+    target_link_libraries(${PROJECT_NAME} ${OpenMP_CXX_LIBRARIES})
+endif()

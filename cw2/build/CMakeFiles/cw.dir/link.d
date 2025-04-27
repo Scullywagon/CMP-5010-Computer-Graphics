@@ -14,6 +14,8 @@
   /usr/lib/libGLEW.so \
   /usr/lib/libglfw.so.3.4 \
   /usr/lib/libassimp.so.5.4.3 \
+  /usr/lib/libgomp.so \
+  /usr/lib/libpthread.a \
   /usr/lib/libGLX.so \
   /usr/lib/libOpenGL.so \
   /usr/lib/libz.so \
@@ -82,6 +84,10 @@ CMakeFiles/cw.dir/src/stb_impl.cpp.o:
 /usr/lib/libglfw.so.3.4:
 
 /usr/lib/libassimp.so.5.4.3:
+
+/usr/lib/libgomp.so:
+
+/usr/lib/libpthread.a:
 
 /usr/lib/libGLX.so:
 

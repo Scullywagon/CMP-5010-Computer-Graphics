@@ -27,8 +27,10 @@
   /usr/lib/libc.so.6 \
   /usr/lib/libc_nonshared.a \
   /usr/lib/libglfw.so.3.4 \
+  /usr/lib/libgomp.so \
   /usr/lib/libm.so.6 \
   /usr/lib/libmvec.so.1 \
+  /usr/lib/libpthread.a \
   /usr/lib/libxcb.so.1 \
   /usr/lib/libz.so \
   CMakeFiles/cw.dir/src/BoundingTree.cpp.o \
@@ -4448,8 +4450,6 @@ CMakeFiles/cw.dir/src/stb_impl.cpp.o: /home/logan/University/CMP-5010-Computer-G
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/syslimits.h:
 
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/func_matrix.inl:
-
 /usr/include/bits/types/time_t.h:
 
 /usr/include/bits/types/struct_timeval.h:
@@ -4524,6 +4524,10 @@ CMakeFiles/cw.dir/src/BoundingTree.cpp.o:
 
 /usr/include/wchar.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h:
+
+/usr/include/bits/mathcalls-narrow.h:
+
 /usr/include/bits/mathcalls-helper-functions.h:
 
 /usr/include/bits/math-vector.h:
@@ -4554,10 +4558,6 @@ CMakeFiles/cw.dir/src/BoundingTree.cpp.o:
 
 /usr/include/bits/flt-eval-method.h:
 
-/usr/include/bits/mathcalls-narrow.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stdint.h:
-
 /usr/include/c++/14.2.1/vector:
 
 /usr/include/c++/14.2.1/tuple:
@@ -4585,10 +4585,6 @@ CMakeFiles/cw.dir/src/BoundingTree.cpp.o:
 /usr/include/c++/14.2.1/bits/locale_facets.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cldemoteintrin.h:
-
-/usr/include/bits/types/wint_t.h:
-
-CMakeFiles/cw.dir/src/CollisionManager.cpp.o:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/quaternion.hpp:
 
@@ -4692,17 +4688,7 @@ CMakeFiles/cw.dir/src/CollisionManager.cpp.o:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/matrix_transform.hpp:
 
-/usr/include/c++/14.2.1/pstl/execution_defs.h:
-
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/_fixes.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/uintrintrin.h:
-
-/usr/include/c++/14.2.1/bits/localefwd.h:
-
-/usr/include/gnu/stubs.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fintrin.h:
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/constants.hpp:
 
 /usr/include/assimp/defs.h:
 
@@ -4733,14 +4719,6 @@ CMakeFiles/cw.dir/src/CollisionManager.cpp.o:
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/mat4x2.hpp:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/setup.hpp:
-
-/usr/include/bits/time64.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cmpccxaddintrin.h:
-
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/vec4.hpp:
-
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/type_half.hpp:
 
 CMakeFiles/cw.dir/src/Scene.cpp.o:
 
@@ -4784,6 +4762,18 @@ CMakeFiles/cw.dir/src/Entity.cpp.o:
 
 /usr/include/c++/14.2.1/sstream:
 
+/usr/include/c++/14.2.1/pstl/execution_defs.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/_fixes.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/uintrintrin.h:
+
+/usr/include/c++/14.2.1/bits/localefwd.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512fintrin.h:
+
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/quaternion.inl:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512vbmivlintrin.h:
@@ -4796,6 +4786,8 @@ CMakeFiles/cw.dir/src/Entity.cpp.o:
 
 /usr/include/locale.h:
 
+/usr/lib/libgcc_s.so:
+
 /usr/include/assimp/light.h:
 
 /usr/include/assimp/color4.h:
@@ -4807,6 +4799,8 @@ CMakeFiles/cw.dir/src/Entity.cpp.o:
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/func_geometric.hpp:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/type_mat4x3.inl:
+
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/type_vec.hpp:
 
 /usr/lib/ld-linux-x86-64.so.2:
 
@@ -4827,6 +4821,10 @@ CMakeFiles/cw.dir/src/Entity.cpp.o:
 /usr/include/c++/14.2.1/concepts:
 
 /usr/lib/libGL.so.1:
+
+/usr/include/assimp/quaternion.h:
+
+/usr/lib/libOpenGL.so:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/func_common.hpp:
 
@@ -4850,17 +4848,31 @@ CMakeFiles/cw.dir/src/Entity.cpp.o:
 
 /usr/include/assimp/Compiler/pushpack1.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mmintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Mesh.h:
+
 /usr/include/endian.h:
 
 /usr/include/stdint.h:
 
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/trigonometric.hpp:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/constants.inl:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o:
+
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/func_packing.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/vec4.hpp:
 
 /usr/lib/libc_nonshared.a:
 
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/geometric.hpp:
-
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/fwd.hpp:
+
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/geometric.hpp:
 
 /usr/include/bits/types/clock_t.h:
 
@@ -4874,21 +4886,7 @@ CMakeFiles/cw.dir/src/TexFormFile.cpp.o:
 
 /usr/lib/libm.so:
 
-/usr/lib/libOpenGL.so:
-
-/usr/include/assimp/quaternion.h:
-
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/type_vec.hpp:
-
-/usr/lib/libgcc_s.so:
-
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Mesh.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/mmintrin.h:
-
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/func_exponential.inl:
-
-/usr/include/bits/types/timer_t.h:
 
 /usr/lib/Scrt1.o:
 
@@ -4933,6 +4931,12 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/func_geometric.inl:
 
 /usr/include/c++/14.2.1/cwctype:
+
+/usr/include/bits/time64.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/cmpccxaddintrin.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/type_half.hpp:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/avx512bwintrin.h:
 
@@ -5000,6 +5004,8 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/type_mat4x4.inl:
 
+/usr/lib/libpthread.a:
+
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/func_common_simd.inl:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/mat2x3.hpp:
@@ -5007,14 +5013,6 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 /usr/include/c++/14.2.1/bits/ostream.tcc:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/amxbf16intrin.h:
-
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/trigonometric.hpp:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/crtendS.o:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/stddef.h:
-
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/constants.inl:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/type_mat2x2.hpp:
 
@@ -5037,6 +5035,12 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/type_mat4x4_simd.inl:
 
 /usr/include/bits/iscanonical.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/func_matrix.inl:
+
+CMakeFiles/cw.dir/src/CollisionManager.cpp.o:
+
+/usr/include/bits/types/wint_t.h:
 
 /usr/include/c++/14.2.1/bits/parse_numbers.h:
 
@@ -5065,8 +5069,6 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/func_trigonometric_simd.inl:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/precision.hpp:
-
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/constants.hpp:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/f16cintrin.h:
 
@@ -5097,6 +5099,8 @@ CMakeFiles/cw.dir/src/main.cpp.o:
 /usr/lib/libassimp.so.5.4.3:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/bmiintrin.h:
+
+/usr/include/bits/types/timer_t.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/type_mat3x2.inl:
 
@@ -5331,6 +5335,8 @@ CMakeFiles/cw.dir/src/stb_impl.cpp.o:
 /usr/include/c++/14.2.1/cwchar:
 
 /usr/include/c++/14.2.1/tr1/poly_laguerre.tcc:
+
+/usr/lib/libgomp.so:
 
 /usr/include/c++/14.2.1/exception:
 

@@ -227,6 +227,8 @@ cw_EXTERNAL_OBJECTS =
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: /usr/lib/libGLEW.so
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: /usr/lib/libglfw.so.3.4
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: /usr/lib/libassimp.so.5.4.3
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: /usr/lib/libgomp.so
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: /usr/lib/libpthread.a
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: /usr/lib/libGLX.so
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: /usr/lib/libOpenGL.so
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: /usr/lib/libz.so

@@ -15,7 +15,7 @@ BoundingNode::BoundingNode(glm::vec3 center, glm::vec3 front, glm::vec3 up,
 
 void BoundingNode::generateNodes(int index, Model &model)
 {
-    if (index == 13)
+    if (index == 14)
     {
         bottom = true;
         return;
@@ -120,10 +120,8 @@ pair<glm::vec3, glm::vec3> BoundingTree::genInitBox(Model &model)
 
 void BoundingTree::assignColliders()
 {
-    cout << "assigning bounding boxes" << endl;
     vector<BoundingNode *> bottomNodes;
     findBottomNodes(node, bottomNodes);
-    cout << "found bottom nodes" << endl;
 
     if (bottomNodes.empty())
         return;
@@ -150,37 +148,44 @@ void BoundingTree::assignColliders()
 
     for (const Mesh &mesh : model->meshes)
     {
+#pragma omp parallel for
         for (int i = 0; i < mesh.indices.size(); i += 3)
         {
-            const Vertex &v0 = mesh.vertices[mesh.indices[i]];
-            const Vertex &v1 = mesh.vertices[mesh.indices[i + 1]];
-            const Vertex &v2 = mesh.vertices[mesh.indices[i + 2]];
+            const Vertex &p0 = mesh.vertices[mesh.indices[i]];
+            const Vertex &p1 = mesh.vertices[mesh.indices[i + 1]];
 
-            glm::vec3 polyMin =
-                glm::min(glm::min(v0.Position, v1.Position), v2.Position);
-            glm::vec3 polyMax =
-                glm::max(glm::max(v0.Position, v1.Position), v2.Position);
+            glm::vec3 denom = p1.Position - p0.Position;
 
             // Check all active nodes against this triangle
+#pragma omp parallel for
             for (NodeBounds &nb : activeNodes)
             {
                 if (nb.node->collide)
                     continue; // already assigned, skip
 
-                bool colliding =
-                    (nb.min.x <= polyMax.x && nb.max.x >= polyMin.x) &&
-                    (nb.min.y <= polyMax.y && nb.max.y >= polyMin.y) &&
-                    (nb.min.z <= polyMax.z && nb.max.z >= polyMin.z);
+                float tmin = (nb.min.x - p0.Position.x) / denom.x;
+                float tmax = (nb.max.x - p0.Position.x) / denom.x;
+                if (tmin > tmax)
+                    std::swap(tmin, tmax);
+                if (tmin > 1.0f || tmax < 0.0f || tmax < tmin)
+                    continue;
+                tmin = (nb.min.y - p0.Position.y) / denom.y;
+                tmax = (nb.max.y - p0.Position.y) / denom.y;
+                if (tmin > tmax)
+                    std::swap(tmin, tmax);
+                if (tmin > 1.0f || tmax < 0.0f || tmax < tmin)
+                    continue;
+                tmin = (nb.min.z - p0.Position.z) / denom.z;
+                tmax = (nb.max.z - p0.Position.z) / denom.z;
+                if (tmin > tmax)
+                    std::swap(tmin, tmax);
+                if (tmin > 1.0f || tmax < 0.0f || tmax < tmin)
+                    continue;
 
-                if (colliding)
-                {
-                    nb.node->collide = true;
-                }
+                nb.node->collide = true;
             }
         }
     }
-
-    cout << "finished assigning colliders" << endl;
 }
 
 void BoundingTree::findBottomNodes(BoundingNode *node,

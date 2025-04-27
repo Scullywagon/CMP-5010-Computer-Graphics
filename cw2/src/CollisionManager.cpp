@@ -22,14 +22,18 @@ void CollisionManager::genChecks()
     unordered_set<BoundingTree *> checkZ;
     bool x = true;
     bool z = true;
+
+#pragma omp parallel for
     for (int i = 0; i < xList.size() - 1; i++)
     {
+        /*
         if (x == false && z == false)
             break;
         if (xList[i].first == player->bt)
             x = false;
         if (zList[i].first == player->bt)
             z = false;
+         */
 
         if (xList[i].second == false && xList[i].first != player->bt &&
             shouldCheck(i, xList))
@@ -43,7 +47,6 @@ void CollisionManager::genChecks()
         }
     }
 
-#pragma omp parallel for
     for (BoundingTree *b : checkX)
     {
         if (checkZ.find(b) != checkZ.end())
@@ -126,29 +129,22 @@ bool CollisionManager::isColliding(glm::vec3 min, glm::vec3 max,
 void CollisionManager::collideWithPoly(glm::vec3 min, glm::vec3 max,
                                        glm::vec3 playerPos, glm::mat4 inverse)
 {
-    // Fixed player radius of 0.5f
     float playerRadius = 0.5f;
 
-    // Calculate the player's bounding box (AABB) based on the player position
-    // and radius
     glm::vec3 playerMin = playerPos - glm::vec3(playerRadius);
     glm::vec3 playerMax = playerPos + glm::vec3(playerRadius);
 
-    // Calculate overlap in each axis (x, y, z) for collision detection
     glm::vec3 overlapMin = glm::max(min, playerMin);
     glm::vec3 overlapMax = glm::min(max, playerMax);
 
-    // If there's no overlap, no correction is needed
     if (overlapMin.x >= overlapMax.x || overlapMin.y >= overlapMax.y ||
         overlapMin.z >= overlapMax.z)
     {
         return;
     }
 
-    // Calculate the overlap distance along each axis (x, y, z)
     glm::vec3 overlap = overlapMax - overlapMin;
 
-    // Determine the smallest axis of overlap (to push the player out)
     glm::vec3 correction(0.0f);
     if (overlap.x < overlap.y && overlap.x < overlap.z)
     {
