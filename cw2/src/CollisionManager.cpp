@@ -43,7 +43,7 @@ void CollisionManager::genChecks()
         }
     }
 
-    // #pragma omp parallel for
+#pragma omp parallel for
     for (BoundingTree *b : checkX)
     {
         if (checkZ.find(b) != checkZ.end())

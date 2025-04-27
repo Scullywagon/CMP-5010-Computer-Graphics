@@ -53,59 +53,6 @@ void BoundingNode::generateNodes(int index, Model &model)
                               model);
 }
 
-void BoundingNode::collectIndexes(Model &model)
-{
-    indexes.clear(); // Clear previous data
-
-    // Calculate the bounding box of the node
-    glm::vec3 nodeMin = this->center - front - up - right;
-    glm::vec3 nodeMax = this->center + front + up + right;
-
-    // Loop through all meshes in the model
-    for (int meshIndex = 0; meshIndex < model.meshes.size(); meshIndex++)
-    {
-        Mesh &mesh = model.meshes[meshIndex];
-
-        // Loop through all triangle faces (indices are assumed to be in sets of
-        // 3)
-        for (int v = 0; v < mesh.indices.size(); v += 3)
-        {
-            const Vertex &vert1 = mesh.vertices[mesh.indices[v]];
-            const Vertex &vert2 = mesh.vertices[mesh.indices[v + 1]];
-            const Vertex &vert3 = mesh.vertices[mesh.indices[v + 2]];
-
-            // Find the axis-aligned bounding box (AABB) of the triangle
-            glm::vec3 triMin = glm::vec3(
-                glm::min(vert1.Position.x,
-                         glm::min(vert2.Position.x, vert3.Position.x)),
-                glm::min(vert1.Position.y,
-                         glm::min(vert2.Position.y, vert3.Position.y)),
-                glm::min(vert1.Position.z,
-                         glm::min(vert2.Position.z, vert3.Position.z)));
-
-            glm::vec3 triMax = glm::vec3(
-                glm::max(vert1.Position.x,
-                         glm::max(vert2.Position.x, vert3.Position.x)),
-                glm::max(vert1.Position.y,
-                         glm::max(vert2.Position.y, vert3.Position.y)),
-                glm::max(vert1.Position.z,
-                         glm::max(vert2.Position.z, vert3.Position.z)));
-
-            // Check if the node's AABB intersects the triangle's AABB
-            bool collision = (nodeMax.x >= triMin.x && nodeMin.x <= triMax.x) &&
-                             (nodeMax.y >= triMin.y && nodeMin.y <= triMax.y) &&
-                             (nodeMax.z >= triMin.z && nodeMin.z <= triMax.z);
-
-            // If a collision occurs, add the index to the list
-            if (collision)
-            {
-                collide = true;
-                indexes.push_back(std::make_pair(meshIndex, mesh.indices[v]));
-            }
-        }
-    }
-}
-
 // for player mainly
 BoundingTree::BoundingTree(glm::vec3 position)
 {
@@ -173,72 +120,67 @@ pair<glm::vec3, glm::vec3> BoundingTree::genInitBox(Model &model)
 
 void BoundingTree::assignColliders()
 {
+    cout << "assigning bounding boxes" << endl;
     vector<BoundingNode *> bottomNodes;
     findBottomNodes(node, bottomNodes);
-    bool empty = false;
+    cout << "found bottom nodes" << endl;
 
-    for (int meshIndex = 0; meshIndex < model->meshes.size(); meshIndex++)
+    if (bottomNodes.empty())
+        return;
+
+    glm::vec3 valVec =
+        bottomNodes[0]->front + bottomNodes[0]->up + bottomNodes[0]->right;
+    struct NodeBounds
     {
-        Mesh &mesh = model->meshes[meshIndex];
+        BoundingNode *node;
+        glm::vec3 min;
+        glm::vec3 max;
+    };
 
-        // Loop through all triangle faces (indices are assumed to be in sets of
-        // 3)
-        for (int v = 0; v < mesh.indices.size(); v += 3)
+    vector<NodeBounds> activeNodes;
+    activeNodes.reserve(bottomNodes.size());
+    for (BoundingNode *node : bottomNodes)
+    {
+        NodeBounds nb;
+        nb.node = node;
+        nb.min = node->center - valVec;
+        nb.max = node->center + valVec;
+        activeNodes.push_back(nb);
+    }
+
+    for (const Mesh &mesh : model->meshes)
+    {
+        for (int i = 0; i < mesh.indices.size(); i += 3)
         {
-            const Vertex &vert1 = mesh.vertices[mesh.indices[v]];
-            const Vertex &vert2 = mesh.vertices[mesh.indices[v + 1]];
-            const Vertex &vert3 = mesh.vertices[mesh.indices[v + 2]];
+            const Vertex &v0 = mesh.vertices[mesh.indices[i]];
+            const Vertex &v1 = mesh.vertices[mesh.indices[i + 1]];
+            const Vertex &v2 = mesh.vertices[mesh.indices[i + 2]];
 
-            // Find the axis-aligned bounding box (AABB) of the triangle
-            glm::vec3 triMin = glm::vec3(
-                glm::min(vert1.Position.x,
-                         glm::min(vert2.Position.x, vert3.Position.x)),
-                glm::min(vert1.Position.y,
-                         glm::min(vert2.Position.y, vert3.Position.y)),
-                glm::min(vert1.Position.z,
-                         glm::min(vert2.Position.z, vert3.Position.z)));
+            glm::vec3 polyMin =
+                glm::min(glm::min(v0.Position, v1.Position), v2.Position);
+            glm::vec3 polyMax =
+                glm::max(glm::max(v0.Position, v1.Position), v2.Position);
 
-            glm::vec3 triMax = glm::vec3(
-                glm::max(vert1.Position.x,
-                         glm::max(vert2.Position.x, vert3.Position.x)),
-                glm::max(vert1.Position.y,
-                         glm::max(vert2.Position.y, vert3.Position.y)),
-                glm::max(vert1.Position.z,
-                         glm::max(vert2.Position.z, vert3.Position.z)));
-
-            for (auto it = bottomNodes.rbegin(); it != bottomNodes.rend(); ++it)
+            // Check all active nodes against this triangle
+            for (NodeBounds &nb : activeNodes)
             {
-                BoundingNode *bn = *it;
+                if (nb.node->collide)
+                    continue; // already assigned, skip
 
-                // Assuming bn->center is the center of the BoundingNode
-                glm::vec3 nodeMin = bn->center - bn->front - bn->up - bn->right;
-                glm::vec3 nodeMax = bn->center + bn->front + bn->up + bn->right;
+                bool colliding =
+                    (nb.min.x <= polyMax.x && nb.max.x >= polyMin.x) &&
+                    (nb.min.y <= polyMax.y && nb.max.y >= polyMin.y) &&
+                    (nb.min.z <= polyMax.z && nb.max.z >= polyMin.z);
 
-                bool collision =
-                    (nodeMax.x >= triMin.x && nodeMin.x <= triMax.x) &&
-                    (nodeMax.y >= triMin.y && nodeMin.y <= triMax.y) &&
-                    (nodeMax.z >= triMin.z && nodeMin.z <= triMax.z);
-
-                // If a collision occurs, mark the node as collided and remove
-                // it from bottomNodes
-                if (collision)
+                if (colliding)
                 {
-                    bn->collide = true;
-                    it = decltype(it)(bottomNodes.erase(
-                        std::next(it).base())); // Remove the element
+                    nb.node->collide = true;
                 }
             }
-            if (bottomNodes.empty())
-            {
-                empty = true;
-                break;
-            }
-        }
-        if (empty)
-        {
-            break;
         }
     }
+
+    cout << "finished assigning colliders" << endl;
 }
 
 void BoundingTree::findBottomNodes(BoundingNode *node,
