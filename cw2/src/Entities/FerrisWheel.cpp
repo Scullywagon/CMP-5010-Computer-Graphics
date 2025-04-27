@@ -11,7 +11,7 @@ void Stand::init()
 {
     modelMatrix = glm::mat4(1.0f);
     modelMatrix = glm::translate(modelMatrix, this->position);
-    bt = new BoundingTree(*model);
+    bt = new BoundingTree(*model, &modelMatrix);
 }
 
 void Stand::update()

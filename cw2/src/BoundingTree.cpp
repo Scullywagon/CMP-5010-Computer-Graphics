@@ -1,101 +1,100 @@
 #include "BoundingTree.h"
+#include "glm/detail/func_geometric.hpp"
 #include "glm/detail/type_vec.hpp"
 
 BoundingNode::BoundingNode(glm::vec3 center, glm::vec3 front, glm::vec3 up,
                            glm::vec3 right, int index, Model &model)
 {
+    this->center = center;
     this->front = front;
     this->up = up;
     this->right = right;
+    cout << "init center: " << center.x << " " << center.y << " " << center.z
+         << endl;
 
     this->generateNodes(index, model);
 }
 
 void BoundingNode::generateNodes(int index, Model &model)
 {
-    if (index == 3)
+    if (index == 1)
     {
         bottom = true;
         collectIndexes(model);
         return;
     }
+    glm::vec3 newFront = this->front;
+    glm::vec3 newUp = this->up;
+    glm::vec3 newRight = this->right;
+    glm::vec3 firstCenter = this->center;
+    glm::vec3 secondCenter = this->center;
 
-    index++;
-
-    float frontLen = glm::length(front);
-    float upLen = glm::length(up);
-    float rightLen = glm::length(right);
-
-    glm::vec3 splitAxis;
-    glm::vec3 newFront = front;
-    glm::vec3 newUp = up;
-    glm::vec3 newRight = right;
-
-    if (frontLen >= upLen && frontLen >= rightLen)
+    if (index == 0)
     {
-        splitAxis = front;
-        newFront = 0.5f * front; // halve the split axis
+        newFront *= 0.5f;
+        firstCenter += newFront;
+        secondCenter -= newFront;
     }
-    else if (upLen >= frontLen && upLen >= rightLen)
+    else if (index == 1)
     {
-        splitAxis = up;
-        newUp = 0.5f * up;
+        newUp *= -0.5f;
+        firstCenter += newUp;
+        secondCenter -= newUp;
     }
-    else
+    else if (index == 2)
     {
-        splitAxis = right;
-        newRight = 0.5f * right;
+        newRight *= 0.5f;
+        firstCenter += newRight;
+        secondCenter -= newRight;
     }
 
-    glm::vec3 halfVec = 0.5f * splitAxis;
+    int newIndex = index + 1;
 
-    glm::vec3 newCenter = center + halfVec;
-    first =
-        new BoundingNode(newCenter, newFront, newUp, newRight, index, model);
-
-    newCenter = center - halfVec;
-    second =
-        new BoundingNode(newCenter, newFront, newUp, newRight, index, model);
+    first = new BoundingNode(firstCenter, newFront, newUp, newRight, newIndex,
+                             model);
+    second = new BoundingNode(secondCenter, newFront, newUp, newRight, newIndex,
+                              model);
 }
 
-void BoundingNode::collectIndexes(Model& model)
+void BoundingNode::collectIndexes(Model &model)
 {
-    indexes.clear();
+    indexes.clear(); // If you want to clear previous data
 
+    // Assuming center, front, up, and right are glm::vec3
     for (int meshIndex = 0; meshIndex < model.meshes.size(); ++meshIndex)
     {
-        Mesh& mesh = model.meshes[meshIndex];
+        Mesh &mesh = model.meshes[meshIndex];
         for (int v = 0; v < mesh.vertices.size(); ++v)
         {
-            glm::vec3 pos = mesh.vertices[v].Position - center; // Move to node's local space
+            const Vertex &vertex = mesh.vertices[v];
+            const glm::vec3 &pos = vertex.Position;
 
-            // Project onto the node's axes
-            float frontDist = glm::dot(pos, front);
-            float upDist = glm::dot(pos, up);
-            float rightDist = glm::dot(pos, right);
-
-            if (std::abs(frontDist) <= 1.0f &&
-                std::abs(upDist) <= 1.0f &&
-                std::abs(rightDist) <= 1.0f)
+            // Check if the point is within the bounding box
+            if (pos.x >= (center.x - front.x) &&
+                pos.x <= (center.x + front.x) && pos.y >= (center.y - up.y) &&
+                pos.y <= (center.y + up.y) && pos.z >= (center.z - right.z) &&
+                pos.z <= (center.z + right.z))
             {
-                indexes.emplace_back(meshIndex, v);
+                indexes.push_back({meshIndex, v});
             }
         }
     }
 }
 
-//for player mainly
+// for player mainly
 BoundingTree::BoundingTree(glm::vec3 position)
 {
     this->max = position + glm::vec3(0.2f);
     this->max = position + glm::vec3(-0.2f);
 }
 
-BoundingTree::BoundingTree(Model &model)
+BoundingTree::BoundingTree(Model &model, glm::mat4 *matrix)
 {
     pair<glm::vec3, glm::vec3> box = genInitBox(model);
     min = box.first;
     max = box.second;
+    this->modelMatrix = matrix;
+    this->model = &model;
 
     glm::vec3 center = (min + max) / 2.0f;
     glm::vec3 front(max.x - center.x, 0.0f, 0.0f);

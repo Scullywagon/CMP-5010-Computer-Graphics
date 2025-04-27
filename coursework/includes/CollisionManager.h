@@ -160,7 +160,7 @@ class CollisionManager
   private:
     bool checkCollision(BoundingBox *a)
     {
-        //std::cout << "Checking collision" << std::endl;
+        // std::cout << "Checking collision" << std::endl;
         glm::vec3 translatedMin =
             player->boundingBox->min + player->translation;
         glm::vec3 translatedMax =

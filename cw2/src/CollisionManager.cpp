@@ -1,5 +1,7 @@
 #include "CollisionManager.h"
 #include "BoundingTree.h"
+#include "Model.h"
+#include "glm/detail/func_geometric.hpp"
 
 CollisionManager::CollisionManager(Camera *p)
 {
@@ -40,31 +42,111 @@ void CollisionManager::genChecks()
         }
     }
 
-    #pragma omp parallel for
+    // #pragma omp parallel for
     for (BoundingTree *b : checkX)
     {
         if (checkZ.find(b) != checkZ.end())
         {
-            checkNodes(b->node);
+            checkNodes(b->node, b->modelMatrix, b->model);
         }
     }
 }
 
-void CollisionManager::checkNodes(BoundingNode *bn)
+void CollisionManager::checkNodes(BoundingNode *bn, glm::mat4 *modelMatrix,
+                                  Model *model)
 {
+    if (!isColliding(bn))
+        return;
+
+    glm::mat4 inverse = glm::inverse(*modelMatrix);
     if (bn->bottom)
     {
         for (pair<int, int> id : bn->indexes)
         {
+            glm::vec3 playerPos = glm::vec3(
+                inverse *
+                glm::vec4(player->Position + player->translation, 1.0f));
+            glm::vec3 vert =
+                model->meshes[id.first].vertices[id.second].Position;
+            if (isColliding(vert, playerPos))
+            {
+                collideWithVertex(model->meshes[id.first].vertices[id.second],
+                                  playerPos, inverse);
+            }
         }
         return;
     }
-    checkNodes(bn->first);
-    checkNodes(bn->second);
+    checkNodes(bn->first, modelMatrix, model);
+    checkNodes(bn->second, modelMatrix, model);
 }
 
-void CollisionManager::isColliding(glm::vec3 pos)
+bool CollisionManager::isColliding(BoundingNode *bn)
 {
+    float playerRadius = 0.5f;
+
+    glm::vec3 pos = player->Position + player->translation;
+
+    float playerProjF = glm::dot(pos - bn->center, glm::normalize(bn->front));
+
+    float halfExtentFront = glm::length(bn->front);
+
+    if (playerProjF < -(halfExtentFront + playerRadius) ||
+        playerProjF > (halfExtentFront + playerRadius))
+    {
+        return false;
+    }
+
+    float playerProjU = glm::dot(pos - bn->center, glm::normalize(bn->up));
+
+    float halfExtentUp = glm::length(bn->up);
+
+    if (playerProjU < -(halfExtentUp + playerRadius) ||
+        playerProjU > (halfExtentUp + playerRadius))
+    {
+        return false;
+    }
+
+    float playerProjR = glm::dot(pos - bn->center, glm::normalize(bn->right));
+
+    float halfExtentRight = glm::length(bn->right);
+
+    if (playerProjR < -(halfExtentRight + playerRadius) ||
+        playerProjR > (halfExtentRight + playerRadius))
+    {
+        return false;
+    }
+
+    return true;
+}
+
+bool CollisionManager::isColliding(glm::vec3 pos, glm::vec3 playerPos)
+{
+    if (glm::length(pos - playerPos) < 0.5f)
+    {
+        cout << "collided with: " << pos.x << " " << pos.y << " " << pos.z
+             << endl;
+        return true;
+    }
+    return false;
+}
+
+void CollisionManager::collideWithVertex(Vertex v, glm::vec3 playerPos,
+                                         glm::mat4 inverse)
+{
+    glm::vec3 delta = playerPos - v.Position;
+    float distance = glm::length(delta);
+
+    float overlap = 0.5f - distance;
+    if (overlap > 0.0f)
+    {
+        glm::vec3 correctionDir = glm::normalize(delta);
+        glm::vec3 correction = correctionDir * overlap;
+
+        glm::vec3 worldCorrection =
+            glm::vec3(glm::inverse(inverse) * glm::vec4(correction, 0.0f));
+
+        player->translation += worldCorrection;
+    }
 }
 
 void CollisionManager::add(BoundingTree *bt)

@@ -2,10 +2,10 @@
 #define BOUNDINGTREE_H
 
 #include "Model.h"
-#include <utility>
-#include <limits>
 #include "glm/detail/type_vec.hpp"
 #include <glm/glm.hpp>
+#include <limits>
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -19,7 +19,8 @@ struct BoundingNode
 
     BoundingNode *first;
     BoundingNode *second;
-    vector<pair<int, int>> indexes; // holds indexes of indecies that make a triangle
+    vector<pair<int, int>>
+        indexes; // holds indexes of indecies that make a triangle
 
     bool bottom = false;
 
@@ -33,10 +34,12 @@ class BoundingTree
 {
   public:
     BoundingNode *node;
+    glm::mat4 *modelMatrix;
     glm::vec3 min;
     glm::vec3 max;
+    Model *model;
 
-    BoundingTree(Model &model);
+    BoundingTree(Model &model, glm::mat4 *matrix);
     BoundingTree(glm::vec3 position);
     void generateAABB();
     void translate(glm::vec3 trans);

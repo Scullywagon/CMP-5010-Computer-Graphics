@@ -15,10 +15,12 @@ class CollisionManager
     CollisionManager(Camera *p);
     void update();
     void genChecks();
-    void add(BoundingTree *bt);    // for additions or reinsertions
-    void checkNodes(BoundingNode *bn);  // checks each node and calls intself
-    void isColliding(glm::vec3 pos);
-    void collideWithVertex(glm::vec3 vert);
+    void add(BoundingTree *bt); // for additions or reinsertions
+    void checkNodes(BoundingNode *bn, glm::mat4 *modelMatrix,
+                    Model *model); // checks each node and calls intself
+    bool isColliding(BoundingNode *bn);
+    bool isColliding(glm::vec3 pos, glm::vec3 playerPos);
+    void collideWithVertex(Vertex v, glm::vec3 playerPos, glm::mat4 inverse);
 
   private:
     static bool compareX(const std::pair<BoundingTree *, bool> &a,
