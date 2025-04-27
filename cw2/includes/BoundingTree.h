@@ -47,6 +47,9 @@ class BoundingTree
 
   private:
     pair<glm::vec3, glm::vec3> genInitBox(Model &model);
+    void assignColliders();
+    void findBottomNodes(BoundingNode *node,
+                         std::vector<BoundingNode *> &bottomNodes);
 };
 
 #endif
