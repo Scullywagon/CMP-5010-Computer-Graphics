@@ -9,15 +9,13 @@ BoundingNode::BoundingNode(glm::vec3 center, glm::vec3 front, glm::vec3 up,
     this->front = front;
     this->up = up;
     this->right = right;
-    cout << "init center: " << center.x << " " << center.y << " " << center.z
-         << endl;
 
     this->generateNodes(index, model);
 }
 
 void BoundingNode::generateNodes(int index, Model &model)
 {
-    if (index == 25)
+    if (index == 12)
     {
         bottom = true;
         collectIndexes(model);
@@ -60,8 +58,9 @@ void BoundingNode::collectIndexes(Model &model)
 {
     indexes.clear(); // Clear previous data
 
-    glm::vec3 min = this->center - front - up - right;
-    glm::vec3 max = this->center + front + up + right;
+    // Calculate the bounding box of the node
+    glm::vec3 nodeMin = this->center - front - up - right;
+    glm::vec3 nodeMax = this->center + front + up + right;
 
     // Loop through all meshes in the model
     for (int meshIndex = 0; meshIndex < model.meshes.size(); meshIndex++)
@@ -77,15 +76,7 @@ void BoundingNode::collectIndexes(Model &model)
             const Vertex &vert3 = mesh.vertices[mesh.indices[v + 2]];
 
             // Find the axis-aligned bounding box (AABB) of the triangle
-            glm::vec3 max = glm::vec3(
-                glm::max(vert1.Position.x,
-                         glm::max(vert2.Position.x, vert3.Position.x)),
-                glm::max(vert1.Position.y,
-                         glm::max(vert2.Position.y, vert3.Position.y)),
-                glm::max(vert1.Position.z,
-                         glm::max(vert2.Position.z, vert3.Position.z)));
-
-            glm::vec3 min = glm::vec3(
+            glm::vec3 triMin = glm::vec3(
                 glm::min(vert1.Position.x,
                          glm::min(vert2.Position.x, vert3.Position.x)),
                 glm::min(vert1.Position.y,
@@ -93,14 +84,24 @@ void BoundingNode::collectIndexes(Model &model)
                 glm::min(vert1.Position.z,
                          glm::min(vert2.Position.z, vert3.Position.z)));
 
-            bool collision = (max.x >= min.x && min.x <= max.x) &&
-                             (max.y >= min.y && min.y <= max.y) &&
-                             (max.z >= min.z && min.z <= max.z);
+            glm::vec3 triMax = glm::vec3(
+                glm::max(vert1.Position.x,
+                         glm::max(vert2.Position.x, vert3.Position.x)),
+                glm::max(vert1.Position.y,
+                         glm::max(vert2.Position.y, vert3.Position.y)),
+                glm::max(vert1.Position.z,
+                         glm::max(vert2.Position.z, vert3.Position.z)));
+
+            // Check if the node's AABB intersects the triangle's AABB
+            bool collision = (nodeMax.x >= triMin.x && nodeMin.x <= triMax.x) &&
+                             (nodeMax.y >= triMin.y && nodeMin.y <= triMax.y) &&
+                             (nodeMax.z >= triMin.z && nodeMin.z <= triMax.z);
 
             // If a collision occurs, add the index to the list
             if (collision)
             {
                 collide = true;
+                indexes.push_back(std::make_pair(meshIndex, mesh.indices[v]));
             }
         }
     }

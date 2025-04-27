@@ -56,40 +56,16 @@ void CollisionManager::genChecks()
 void CollisionManager::checkNodes(BoundingNode *bn, glm::mat4 *modelMatrix,
                                   Model *model)
 {
-    if (!isColliding(bn))
+    bool colliding = isColliding(bn);
+    if (!colliding)
         return;
 
     glm::mat4 inverse = glm::inverse(*modelMatrix);
     if (bn->bottom)
     {
-        for (pair<int, int> id : bn->indexes)
+        if (bn->collide)
         {
-            glm::vec3 playerPos = glm::vec3(
-                inverse *
-                glm::vec4(player->Position + player->translation, 1.0f));
-            Vertex &vert1 = model->meshes[id.first].vertices[id.second];
-            Vertex &vert2 = model->meshes[id.first].vertices[id.second + 1];
-            Vertex &vert3 = model->meshes[id.first].vertices[id.second + 2];
-            // Find the axis-aligned bounding box (AABB) of the triangle
-            glm::vec3 max = glm::vec3(
-                glm::max(vert1.Position.x,
-                         glm::max(vert2.Position.x, vert3.Position.x)),
-                glm::max(vert1.Position.y,
-                         glm::max(vert2.Position.y, vert3.Position.y)),
-                glm::max(vert1.Position.z,
-                         glm::max(vert2.Position.z, vert3.Position.z)));
-
-            glm::vec3 min = glm::vec3(
-                glm::min(vert1.Position.x,
-                         glm::min(vert2.Position.x, vert3.Position.x)),
-                glm::min(vert1.Position.y,
-                         glm::min(vert2.Position.y, vert3.Position.y)),
-                glm::min(vert1.Position.z,
-                         glm::min(vert2.Position.z, vert3.Position.z)));
-            if (isColliding(min, max, playerPos))
-            {
-                collideWithPoly(min, max, playerPos, inverse);
-            }
+            player->translation = glm::vec3(0.0f);
         }
         return;
     }
