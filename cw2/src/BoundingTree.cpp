@@ -15,7 +15,7 @@ BoundingNode::BoundingNode(glm::vec3 center, glm::vec3 front, glm::vec3 up,
 
 void BoundingNode::generateNodes(int index, Model &model)
 {
-    if (index == 12)
+    if (index == 15)
     {
         bottom = true;
         return;
@@ -53,6 +53,30 @@ void BoundingNode::generateNodes(int index, Model &model)
                               model);
 }
 
+void BoundingNode::updatePos(glm::mat4 &modelMatrix)
+{
+    glm::vec4 newCenter = modelMatrix * glm::vec4(center, 1.0f);
+    center = glm::vec3(newCenter.x, newCenter.y, newCenter.z);
+
+    glm::vec4 newFront = modelMatrix * glm::vec4(front, 0.0f);
+    front = glm::vec3(newFront.x, newFront.y, newFront.z);
+
+    glm::vec4 newUp = modelMatrix * glm::vec4(up, 0.0f);
+    up = glm::vec3(newUp.x, newUp.y, newUp.z);
+
+    glm::vec4 newRight = modelMatrix * glm::vec4(right, 0.0f);
+    right = glm::vec3(newRight.x, newRight.y, newRight.z);
+
+    if (first != nullptr)
+    {
+        first->updatePos(modelMatrix);
+    }
+    if (second != nullptr)
+    {
+        second->updatePos(modelMatrix);
+    }
+}
+
 // for player mainly
 BoundingTree::BoundingTree(glm::vec3 position)
 {
@@ -65,7 +89,6 @@ BoundingTree::BoundingTree(Model &model, glm::mat4 *matrix)
     pair<glm::vec3, glm::vec3> box = genInitBox(model);
     min = box.first;
     max = box.second;
-    this->modelMatrix = matrix;
     this->model = &model;
 
     glm::vec3 center = (min + max) / 2.0f;
@@ -75,6 +98,7 @@ BoundingTree::BoundingTree(Model &model, glm::mat4 *matrix)
 
     node = new BoundingNode(center, front, up, right, 0, model);
     assignColliders();
+    updatePos(*matrix);
     generateAABB();
 }
 
@@ -98,8 +122,15 @@ void BoundingTree::translate(glm::vec3 trans)
 
     if (node != nullptr)
     {
-        // translate the nodes
     }
+}
+
+void BoundingTree::updatePos(glm::mat4 &modelMatrix)
+{
+    this->modelMatrix = &modelMatrix;
+    if (node != nullptr)
+        node->updatePos(modelMatrix);
+    generateAABB();
 }
 
 pair<glm::vec3, glm::vec3> BoundingTree::genInitBox(Model &model)

@@ -65,14 +65,13 @@ void CollisionManager::checkNodes(BoundingNode *bn, glm::mat4 *modelMatrix,
     if (!colliding)
         return;
 
-    glm::mat4 inverse = glm::inverse(*modelMatrix);
     if (bn->bottom)
     {
         if (bn->collide)
         {
             glm::vec3 min = bn->center - bn->front - bn->up - bn->right;
             glm::vec3 max = bn->center + bn->front + bn->up + bn->right;
-            collideWithPoly(min, max, player->Position, inverse);
+            collideWithPoly(min, max, player->Position);
         }
         return;
     }
@@ -131,7 +130,7 @@ bool CollisionManager::isColliding(glm::vec3 min, glm::vec3 max,
 }
 
 void CollisionManager::collideWithPoly(glm::vec3 min, glm::vec3 max,
-                                       glm::vec3 playerPos, glm::mat4 inverse)
+                                       glm::vec3 playerPos)
 {
     float playerRadius = 0.5f;
 
@@ -166,10 +165,7 @@ void CollisionManager::collideWithPoly(glm::vec3 min, glm::vec3 max,
             overlap.z * (playerPos.z < (min.z + max.z) / 2.0f ? -1.0f : 1.0f);
     }
 
-    glm::vec3 worldCorrection =
-        glm::vec3(inverse * glm::vec4(correction, 0.0f));
-
-    player->translation += worldCorrection;
+    player->translation += correction;
 }
 
 void CollisionManager::add(BoundingTree *bt)
