@@ -13,4 +13,14 @@ class Stand : public Entity
   private:
 };
 
+class Wheel : public Entity
+{
+  public:
+    Wheel(Model *model);
+    void init() override;
+    void update() override;
+
+  private:
+};
+
 #endif

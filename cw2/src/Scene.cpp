@@ -11,13 +11,16 @@ Scene::Scene()
     assets["Stand"] = new Model("assets/base/base.obj", 2.0f);
     assets["Crate"] =
         new Model("assets/animalCrate/circus_animal_crate.obj", 1.0f);
+    assets["Wheel"] = new Model("assets/wheel2/wheel2.obj", 2.0f);
     collisionManager = new CollisionManager(&cam);
 }
 
 void Scene::init()
 {
     Stand *stand = new Stand(assets["Stand"]);
+    Wheel *wheel = new Wheel(assets["Wheel"]);
     entities.push_back(stand);
+    entities.push_back(wheel);
 
     for (auto &entity : entities)
     {
