@@ -37,6 +37,7 @@ struct Scene
 
   private:
     void testModels(string name);
+    void addEntities(Entity &e);
 };
 
 #endif

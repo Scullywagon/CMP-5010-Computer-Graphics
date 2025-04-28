@@ -7,8 +7,8 @@
 class Entity
 {
   public:
-    Model *model; 
-    glm::mat4 modelMatrix;
+    string model;
+    glm::mat4 modelMatrix = glm::mat4(1.0f);
     glm::vec3 position;
     glm::vec3 rotation;
     BoundingTree *bt;
@@ -21,7 +21,17 @@ class Entity
     Entity();
     virtual void init();
     virtual void update();
+    void genBoundingTree(Model &model);
     ~Entity() = default;
+
+  protected:
+    void childUpdate()
+    {
+        for (Entity *child : children)
+        {
+            child->parent = this;
+        }
+    }
 };
 
 #endif

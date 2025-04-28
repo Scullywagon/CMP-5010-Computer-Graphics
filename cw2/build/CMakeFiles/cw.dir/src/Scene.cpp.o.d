@@ -438,6 +438,7 @@ CMakeFiles/cw.dir/src/Scene.cpp.o: \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h \
  /usr/include/GLFW/glfw3.h /usr/include/c++/14.2.1/unordered_map \
  /usr/include/c++/14.2.1/bits/unordered_map.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/CollisionManager.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \

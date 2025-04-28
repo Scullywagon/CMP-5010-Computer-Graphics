@@ -7,7 +7,7 @@ Entity::Entity()
     position = glm::vec3(0.0f, 0.0f, 0.0f);
     rotation = glm::vec3(0.0f, 0.0f, 0.0f);
     parent = nullptr;
-    model = nullptr;
+    model = "";
 }
 
 void Entity::init()
@@ -16,4 +16,9 @@ void Entity::init()
 
 void Entity::update()
 {
+}
+
+void Entity::genBoundingTree(Model &model)
+{
+    this->bt = new BoundingTree(model, &this->modelMatrix);
 }

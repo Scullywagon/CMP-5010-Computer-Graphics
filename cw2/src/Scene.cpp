@@ -1,6 +1,8 @@
 #include "Scene.h"
+#include "BoundingTree.h"
 #include "CollisionManager.h"
 #include "Entities/FerrisWheel.h"
+#include "Entity.h"
 #include "Light.h"
 #include "Skybox.h"
 
@@ -12,22 +14,18 @@ Scene::Scene()
     assets["Crate"] =
         new Model("assets/animalCrate/circus_animal_crate.obj", 1.0f);
     assets["Wheel"] = new Model("assets/wheel2/wheel2.obj", 2.0f);
+    assets["Cart"] = new Model("assets/Cart/1.obj", 2.0f);
     collisionManager = new CollisionManager(&cam);
 }
 
 void Scene::init()
 {
-    Stand *stand = new Stand(assets["Stand"]);
-    Wheel *wheel = new Wheel(assets["Wheel"]);
+    Stand *stand = new Stand();
     entities.push_back(stand);
-    entities.push_back(wheel);
 
     for (auto &entity : entities)
     {
-        entity->init();
-        Model *model = entity->model;
-        translations[model].push_back(&entity->modelMatrix);
-        collisionManager->add(entity->bt);
+        addEntities(*entity);
     }
 }
 
@@ -60,5 +58,19 @@ void Scene::testModels(string name)
                 index++;
             }
         }
+    }
+}
+
+void Scene::addEntities(Entity &entity)
+{
+    entity.init();
+    cout << entity.model << endl;
+    Model *model = assets[entity.model];
+    entity.genBoundingTree(*model);
+    translations[model].push_back(&entity.modelMatrix);
+    // collisionManager->add(entity.bt);
+    for (Entity *child : entity.children)
+    {
+        addEntities(*child);
     }
 }

@@ -6,7 +6,7 @@
 class Stand : public Entity
 {
   public:
-    Stand(Model *model);
+    Stand();
     void init() override;
     void update() override;
 
@@ -16,7 +16,21 @@ class Stand : public Entity
 class Wheel : public Entity
 {
   public:
-    Wheel(Model *model);
+    bool enableRotation = false;
+    glm::mat4 rotationMatrix = glm::mat4(1.0f);
+    Wheel(glm::vec3 parent);
+    void init() override;
+    void update() override;
+
+  private:
+    void createCarts();
+};
+
+class Cart : public Entity
+{
+  public:
+    glm::mat4 *rotationMatrix;
+    Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat);
     void init() override;
     void update() override;
 

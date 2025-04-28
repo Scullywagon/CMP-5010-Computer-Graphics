@@ -15,7 +15,7 @@ BoundingNode::BoundingNode(glm::vec3 center, glm::vec3 front, glm::vec3 up,
 
 void BoundingNode::generateNodes(int index, Model &model)
 {
-    if (index == 15)
+    if (index == 12)
     {
         bottom = true;
         return;

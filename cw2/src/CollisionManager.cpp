@@ -164,7 +164,6 @@ void CollisionManager::collideWithPoly(glm::vec3 min, glm::vec3 max,
         correction.z =
             overlap.z * (playerPos.z < (min.z + max.z) / 2.0f ? -1.0f : 1.0f);
     }
-
     player->translation += correction;
 }
 
