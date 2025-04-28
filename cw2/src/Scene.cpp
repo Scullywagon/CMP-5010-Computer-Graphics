@@ -27,6 +27,8 @@ void Scene::init()
     {
         addEntities(*entity);
     }
+    cout << collisionManager->xList.size() << endl;
+    collisionManager->init();
 }
 
 void Scene::update()
@@ -66,9 +68,13 @@ void Scene::addEntities(Entity &entity)
     entity.init();
     cout << entity.model << endl;
     Model *model = assets[entity.model];
-    entity.genBoundingTree(*model);
     translations[model].push_back(&entity.modelMatrix);
-    // collisionManager->add(entity.bt);
+    /*
+    if (entity.model == "Cart")
+        return;
+    */
+    entity.genBoundingTree(*model);
+    collisionManager->add(entity.bt);
     for (Entity *child : entity.children)
     {
         addEntities(*child);

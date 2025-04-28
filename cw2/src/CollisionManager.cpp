@@ -10,6 +10,11 @@ CollisionManager::CollisionManager(Camera *p)
     add(p->bt);
 }
 
+void CollisionManager::init()
+{
+    sortItems();
+}
+
 void CollisionManager::update()
 {
     sortItems();

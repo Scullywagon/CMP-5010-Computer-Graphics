@@ -13,6 +13,7 @@ class CollisionManager
     Camera *player;
 
     CollisionManager(Camera *p);
+    void init();
     void update();
     void genChecks();
     void add(BoundingTree *bt); // for additions or reinsertions

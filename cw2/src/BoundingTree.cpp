@@ -47,6 +47,13 @@ void BoundingNode::generateNodes(int index, Model &model)
 
     int newIndex = index + 1;
 
+    if (newUp.length() < 0.5f && newRight.length() < 0.5f &&
+        newFront.length() < 0.5f)
+    {
+        bottom = true;
+        return;
+    }
+
     first = new BoundingNode(firstCenter, newFront, newUp, newRight, newIndex,
                              model);
     second = new BoundingNode(secondCenter, newFront, newUp, newRight, newIndex,
