@@ -1,3 +1,0 @@
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/cw.dir
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/edit_cache.dir
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/rebuild_cache.dir

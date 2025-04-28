@@ -1,0 +1,755 @@
+# MTL file - created by a modified js OBJExporter
+
+newmtl tree-bark-03.001
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-mix-diffuse.001
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-mix-diffuse.001.png
+norm normalMap2.png
+
+newmtl tree-04.001
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-04.001.png
+norm normalMap3.png
+
+newmtl tree-branches-mix-diffuse.001
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-mix-diffuse.001.png
+norm normalMap4.png
+
+newmtl tree-bark-03.002
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.001
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-yellow-mix-diffuse.001.png
+norm normalMap6.png
+
+newmtl tree-bark-03.003
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-mix-diffuse.002
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-mix-diffuse.001.png
+norm normalMap2.png
+
+newmtl tree-bark-03.004
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-mix-diffuse.003
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-mix-diffuse.001.png
+norm normalMap2.png
+
+newmtl tree-bark-03.005
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-mix-diffuse.004
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-mix-diffuse.001.png
+norm normalMap2.png
+
+newmtl tree-bark-03.006
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-mix-diffuse.005
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-mix-diffuse.001.png
+norm normalMap2.png
+
+newmtl tree-bark-03.007
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-mix-diffuse.006
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-mix-diffuse.001.png
+norm normalMap2.png
+
+newmtl tree-bark-03.008
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-mix-diffuse.007
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-mix-diffuse.001.png
+norm normalMap2.png
+
+newmtl tree-bark-03.009
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-mix-diffuse.008
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-mix-diffuse.001.png
+norm normalMap2.png
+
+newmtl tree-bark-03.010
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-mix-diffuse.009
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-mix-diffuse.001.png
+norm normalMap2.png
+
+newmtl tree-bark-03.011
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-mix-diffuse.010
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-mix-diffuse.001.png
+norm normalMap2.png
+
+newmtl tree-04.002
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-04.001.png
+norm normalMap3.png
+
+newmtl tree-branches-mix-diffuse.002
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-mix-diffuse.001.png
+norm normalMap4.png
+
+newmtl tree-04.003
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-04.001.png
+norm normalMap3.png
+
+newmtl tree-branches-mix-diffuse.003
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-mix-diffuse.001.png
+norm normalMap4.png
+
+newmtl tree-04.004
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-04.001.png
+norm normalMap3.png
+
+newmtl tree-branches-mix-diffuse.004
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-mix-diffuse.001.png
+norm normalMap4.png
+
+newmtl tree-04.005
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-04.001.png
+norm normalMap3.png
+
+newmtl tree-branches-mix-diffuse.005
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-mix-diffuse.001.png
+norm normalMap4.png
+
+newmtl tree-04.006
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-04.001.png
+norm normalMap3.png
+
+newmtl tree-branches-mix-diffuse.006
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-mix-diffuse.001.png
+norm normalMap4.png
+
+newmtl tree-04.007
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-04.001.png
+norm normalMap3.png
+
+newmtl tree-branches-mix-diffuse.007
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-mix-diffuse.001.png
+norm normalMap4.png
+
+newmtl tree-04.008
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-04.001.png
+norm normalMap3.png
+
+newmtl tree-branches-mix-diffuse.008
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-mix-diffuse.001.png
+norm normalMap4.png
+
+newmtl tree-04.009
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-04.001.png
+norm normalMap3.png
+
+newmtl tree-branches-mix-diffuse.009
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-mix-diffuse.001.png
+norm normalMap4.png
+
+newmtl tree-bark-03.012
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.002
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-yellow-mix-diffuse.001.png
+norm normalMap6.png
+
+newmtl tree-bark-03.013
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.003
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-yellow-mix-diffuse.001.png
+norm normalMap6.png
+
+newmtl tree-bark-03.014
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.004
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-yellow-mix-diffuse.001.png
+norm normalMap6.png
+
+newmtl tree-bark-03.015
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.005
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-yellow-mix-diffuse.001.png
+norm normalMap6.png
+
+newmtl tree-bark-03.016
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.006
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-yellow-mix-diffuse.001.png
+norm normalMap6.png
+
+newmtl tree-bark-03.017
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.007
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-yellow-mix-diffuse.001.png
+norm normalMap6.png
+
+newmtl tree-bark-03.018
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.008
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-yellow-mix-diffuse.001.png
+norm normalMap6.png
+
+newmtl tree-bark-03.019
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.009
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-yellow-mix-diffuse.001.png
+norm normalMap6.png
+
+newmtl tree-bark-03.020
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-bark-03.001.png
+norm normalMap1.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.010
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.8211145401000977
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd tree-branches-autumn-yellow-mix-diffuse.001.png
+norm normalMap6.png

@@ -7,35 +7,35 @@
 
 struct Circus
 {
-    Model *tent = new Model("assets/circus/tent.obj", 1.0f, false);
-    Model *eye = new Model("assets/circus/eye.obj", 1.0f, false);
-    Model *stage = new Model("assets/stage/stage.obj", 0.03f, false);
-    Model *props = new Model("assets/props/props.obj", 2.0f, false);
-    Model *sign = new Model("assets/sign1/sign1.obj", 1.5f, false);
-    Model *trailer =
-        new Model("assets/circusWagons/circus_wagons.obj", 80.0f, false);
+    Model tent = Model("assets/circus/tent.obj", 1.0f, false);
+    Model eye = Model("assets/circus/eye.obj", 1.0f, false);
+    Model stage = Model("assets/stage/stage.obj", 0.03f, false);
+    Model props = Model("assets/props/props.obj", 2.0f, false);
+    Model sign = Model("assets/sign1/sign1.obj", 1.5f, false);
+    Model trailer =
+        Model("assets/circusWagons/circus_wagons.obj", 80.0f, false);
 
-    vector<Model *> animalCrates;
-    vector<OilLamp *> lamps;
+    vector<Model> animalCrates;
+    vector<OilLamp> lamps;
 
     glm::vec3 position = glm::vec3(25.0f, 0.3f, -35.0f);
 
-    Light *light =
-        new Light(position + glm::vec3(-3.0f, 21.5f, 16.0f),
+    Light light =
+        Light(position + glm::vec3(-3.0f, 21.5f, 16.0f),
                   glm::vec3(0.1f, 0.10f, 0.20f), glm::vec3(0.3f, 0.4f, 0.7f),
                   glm::vec3(1.0f, 1.0f, 1.0f), 1.0f, 0.20f, 0.05f);
 
     Circus()
     {
-        tent->translate(position);
-        tent->boundingBox->checkSubBoxes = false;
-        eye->translate(position);
-        eye->boundingBox->checkSubBoxes = false;
-        stage->translate(position + glm::vec3(0.0f, 0.3f, -2.0f));
-        tent->boundingBox->checkSubBoxes = false;
-        props->translate(position + glm::vec3(5.0f, -0.3f, 22.0f));
-        sign->translate(position + glm::vec3(-5.0f, -0.3f, 22.0f));
-        trailer->translate(position + glm::vec3(-35.0f, -0.3f, -25.0f));
+        tent.translate(position);
+        tent.boundingBox->checkSubBoxes = false;
+        eye.translate(position);
+        eye.boundingBox->checkSubBoxes = false;
+        stage.translate(position + glm::vec3(0.0f, 0.3f, -2.0f));
+        tent.boundingBox->checkSubBoxes = false;
+        props.translate(position + glm::vec3(5.0f, -0.3f, 22.0f));
+        sign.translate(position + glm::vec3(-5.0f, -0.3f, 22.0f));
+        trailer.translate(position + glm::vec3(-35.0f, -0.3f, -25.0f));
 
         animalCrates = {new Model("assets/animalCrate/circus_animal_crate.obj",
                                   0.01f, false),

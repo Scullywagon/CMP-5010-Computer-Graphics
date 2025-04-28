@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/coursework/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/Scene.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/coursework/src/Scene.cpp",
+  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/coursework/src/Scene.cpp",
+  "output": "CMakeFiles/cw.dir/src/Scene.cpp.o"
+},
+{
+  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/coursework/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/logan/University/CMP-5010-Computer-Graphics/coursework/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/main.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/coursework/src/main.cpp",
+  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/coursework/src/main.cpp",
+  "output": "CMakeFiles/cw.dir/src/main.cpp.o"
+}
+]

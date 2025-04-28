@@ -1,0 +1,15 @@
+# ninja log v6
+6	3683	1745852958315931475	CMakeFiles/cw.dir/src/Entity.cpp.o	35cce976b797ba91
+5	3771	1745852958315552952	CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o	3825e7f149372004
+5	3937	1745852958314743325	CMakeFiles/cw.dir/src/BoundingTree.cpp.o	5fbac72c94d4d94a
+5	4055	1745852958315205672	CMakeFiles/cw.dir/src/CollisionManager.cpp.o	c7c566fc7d607a7c
+7	4186	1745852958316686534	CMakeFiles/cw.dir/src/Renderer.cpp.o	47dbb7d3bf822181
+3938	4718	1745852962247766733	CMakeFiles/cw.dir/src/stb_impl.cpp.o	653594a88804dcab
+8	4831	1745852958318013026	CMakeFiles/cw.dir/src/Scene.cpp.o	a9563f499e2aa62d
+3699	5828	1745852962009118333	CMakeFiles/cw.dir/src/TexFormFile.cpp.o	d9fe92e73d6124ab
+3772	6365	1745852962082025677	CMakeFiles/cw.dir/src/main.cpp.o	c7f38c0b7c1867b0
+6366	6525	1745852964676013220	/Users/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw	32639edd9e20f5fc
+20	2829	1745853223145328620	CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o	3825e7f149372004
+2830	3022	1745853225955669953	/Users/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw	32639edd9e20f5fc
+20	3704	1745854714245424775	CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o	3825e7f149372004
+3705	3911	1745854717930726257	/Users/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw	32639edd9e20f5fc

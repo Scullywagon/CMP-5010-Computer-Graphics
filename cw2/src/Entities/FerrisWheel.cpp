@@ -54,7 +54,6 @@ void Wheel::createCarts()
     glm::vec3 vec12(0.0f, -16.796f, 9.947f);
 
     children.push_back(new Cart(this->position, vec1, &this->rotationMatrix));
-    /*
     children.push_back(new Cart(this->position, vec2, &this->rotationMatrix));
     children.push_back(new Cart(this->position, vec3, &this->rotationMatrix));
     children.push_back(new Cart(this->position, vec4, &this->rotationMatrix));
@@ -66,13 +65,14 @@ void Wheel::createCarts()
     children.push_back(new Cart(this->position, vec10, &this->rotationMatrix));
     children.push_back(new Cart(this->position, vec11, &this->rotationMatrix));
     children.push_back(new Cart(this->position, vec12, &this->rotationMatrix));
-    */
+
 }
 
 Cart::Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat)
 {
     model = "Cart";
     position = localPos;
+    position += parent;
     this->rotationMatrix = rotationMat;
 }
 

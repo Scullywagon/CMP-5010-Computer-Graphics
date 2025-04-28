@@ -179,12 +179,10 @@ struct Scene
 
     void use(float deltaTime)
     {
-        view = shadowMap->lightView;
-        projection = shadowMap->lightProjection;
-        //view = camera->GetViewMatrix();
-        //projection = glm::perspective(
-         //   camera->fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
-          //  10000.0f);
+        view = camera->GetViewMatrix();
+        projection = glm::perspective(
+            camera->fov, (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f,
+            10000.0f);
 
         shadowMap->bind();
         glClear(GL_DEPTH_BUFFER_BIT);

@@ -1,0 +1,55 @@
+# MTL file - created by a modified js OBJExporter
+
+newmtl Wagen
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pm 1
+Pr 0.9788361486621849
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd Wagen.png
+map_Pm metalnessMap1.png
+map_Pr metalnessMap1.png
+norm normalMap1.png
+
+newmtl glas
+Tr 0.9497760313307747
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.2578689168262166
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+
+newmtl DETAILS
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pm 1
+Pr 1
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 1 1 1
+Ke 0 0 0
+map_Kd DETAILS.png
+map_Pm metalnessMap3.png
+map_Pr metalnessMap3.png
+norm normalMap3.png
+
+newmtl POPCORN
+Tr 0.0000
+Tf 1.0000 1.0000 1.0000
+illum 1
+Pr 0.10484821455116414
+Pds 1
+Pl 1
+Ka 1 1 1
+Kd 0.7944353138703726 0.650366142989184 0.38221816834057365
+Ke 0 0 0
