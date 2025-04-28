@@ -20,7 +20,7 @@ class Entity
 
     Entity();
     virtual void init();
-    virtual void update();
+    virtual void update(float dt);
     void genBoundingTree(Model &model);
     ~Entity() = default;
 

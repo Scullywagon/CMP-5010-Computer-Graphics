@@ -133,13 +133,12 @@ int main()
     }
 
     glEnable(GL_DEPTH_TEST);
-    
+
     scene = new Scene();
     renderer = new Renderer(scene);
 
     scene->init();
     renderer->init();
-
 
     while (!glfwWindowShouldClose(window))
     {
@@ -154,7 +153,7 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // Set the color of the window
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        scene->update();
+        scene->update(deltaTime);
         renderer->update();
 
         glfwSwapBuffers(window);

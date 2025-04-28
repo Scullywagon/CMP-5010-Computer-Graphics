@@ -31,9 +31,13 @@ void Scene::init()
     collisionManager->init();
 }
 
-void Scene::update()
+void Scene::update(float dt)
 {
     collisionManager->update();
+    for (auto &entity : entities)
+    {
+        entity->update(dt);
+    }
     cam.move();
 }
 
@@ -69,10 +73,6 @@ void Scene::addEntities(Entity &entity)
     cout << entity.model << endl;
     Model *model = assets[entity.model];
     translations[model].push_back(&entity.modelMatrix);
-    /*
-    if (entity.model == "Cart")
-        return;
-    */
     entity.genBoundingTree(*model);
     collisionManager->add(entity.bt);
     for (Entity *child : entity.children)

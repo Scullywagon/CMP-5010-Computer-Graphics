@@ -17,8 +17,12 @@ void Stand::init()
     children.push_back(new Wheel(this->position));
 }
 
-void Stand::update()
+void Stand::update(float dt)
 {
+    for (Entity *child : children)
+    {
+        child->update(dt);
+    }
 }
 
 Wheel::Wheel(glm::vec3 parent)
@@ -34,8 +38,26 @@ void Wheel::init()
     createCarts();
 }
 
-void Wheel::update()
+void Wheel::update(float dt)
 {
+    if (enableRotation)
+    {
+        rotate(dt);
+    }
+    for (Entity *child : children)
+    {
+        child->update(dt);
+    }
+    bt->updatePos(modelMatrix);
+}
+
+void Wheel::rotate(float dt)
+{
+    float rotation = dt * speed;
+    modelMatrix = glm::rotate(modelMatrix, radians(rotation),
+                              glm::vec3(1.0f, 0.0f, 0.0f));
+    rotationMatrix = glm::rotate(rotationMatrix, radians(rotation),
+                                 glm::vec3(1.0f, 0.0f, 0.0f));
 }
 
 void Wheel::createCarts()
@@ -65,14 +87,14 @@ void Wheel::createCarts()
     children.push_back(new Cart(this->position, vec10, &this->rotationMatrix));
     children.push_back(new Cart(this->position, vec11, &this->rotationMatrix));
     children.push_back(new Cart(this->position, vec12, &this->rotationMatrix));
-
 }
 
 Cart::Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat)
 {
     model = "Cart";
-    position = localPos;
-    position += parent;
+    position = parent + localPos;
+    this->center = parent;
+    this->localPos = localPos;
     this->rotationMatrix = rotationMat;
 }
 
@@ -81,6 +103,15 @@ void Cart::init()
     modelMatrix = glm::translate(modelMatrix, this->position);
 }
 
-void Cart::update()
+void Cart::update(float dt)
 {
+    if (enableRotation)
+    {
+        glm::vec3 newPos =
+            glm::vec3((*rotationMatrix) * glm::vec4(localPos, 0.0f)) + center;
+        glm::vec3 translation = newPos - position;
+        position = newPos;
+        this->modelMatrix = glm::translate(modelMatrix, translation);
+    }
+    bt->updatePos(modelMatrix);
 }

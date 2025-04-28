@@ -33,7 +33,7 @@ struct Scene
 
     Scene();
     void init();
-    void update();
+    void update(float dt);
 
   private:
     void testModels(string name);

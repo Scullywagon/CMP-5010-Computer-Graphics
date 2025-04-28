@@ -30,7 +30,6 @@ void CollisionManager::genChecks()
 
     int pMaxIndex = 0;
 
-#pragma omp parallel for
     for (int i = 0; i < xList.size() - 1; i++)
     {
         /*
@@ -43,12 +42,12 @@ void CollisionManager::genChecks()
          */
 
         if (xList[i].second == false && xList[i].first != player->bt &&
-            shouldCheck(i, xList))
+            xList[i].first != nullptr && shouldCheck(i, xList))
         {
             checkX.insert(xList[i].first);
         }
         if (zList[i].second == false && zList[i].first != player->bt &&
-            shouldCheck(i, zList))
+            zList[i].first != nullptr && shouldCheck(i, zList))
         {
             checkZ.insert(zList[i].first);
         }
