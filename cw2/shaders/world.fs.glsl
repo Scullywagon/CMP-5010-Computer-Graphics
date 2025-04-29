@@ -53,7 +53,7 @@ uniform Material material;
 
 uniform sampler2D depthMap;
 
-uniform Light lights[50];
+uniform Light lights[20];
 uniform int numLights;
 
 uniform bool isLight; 
@@ -69,9 +69,9 @@ void main()
     vec4 texColor;
     vec3 norm;
     float shininess;
-        norm = normalize(Normal);
-        texColor = texture(material.diffuse, TexCoords);
-        shininess = material.shininess;
+    norm = normalize(Normal);
+    texColor = texture(material.diffuse, TexCoords);
+    shininess = material.shininess;
 
     if (texColor.a < 0.1)
     {
@@ -153,15 +153,6 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm)
  
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(depthMap, 0);
-    for(int x = -1; x <= 1; ++x)
-    {
-    for(int y = -1; y <= 1; ++y)
-    {
-            float pcfDepth = texture(depthMap, projCoords.xy + vec2(x, y) * texelSize).r; 
-            shadow += currentDepth - bias > pcfDepth ? 1.0 : 0.0;        
-        }
-    }
-    shadow /= 9.0;   // Is fragment in shadow?
 
     if (projCoords.z > 1)
         shadow = 0.0;

@@ -55,7 +55,7 @@ void Renderer::generateDepthMap()
         glm::lookAt(lightPos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
     lightSpaceMatrix = lightProjection * lightView;
 }
-
+int ticks = 0;
 void Renderer::update()
 {
     renderDepth();
@@ -63,6 +63,7 @@ void Renderer::update()
     projection = scene->cam.GetProjectionMatrix();
     scene->skybox.render(view, projection);
     renderScene();
+    ticks++;
 }
 
 void Renderer::renderScene()

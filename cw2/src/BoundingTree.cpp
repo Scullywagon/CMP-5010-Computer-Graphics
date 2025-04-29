@@ -84,6 +84,19 @@ void BoundingNode::updatePos(glm::mat4 &modelMatrix)
     }
 }
 
+void BoundingNode::translate(glm::vec3 &translation)
+{
+    center += translation;
+    if (first != nullptr)
+    {
+        first->translate(translation);
+    }
+    if (second != nullptr)
+    {
+        second->translate(translation);
+    }
+}
+
 // for player mainly
 BoundingTree::BoundingTree(glm::vec3 position)
 {

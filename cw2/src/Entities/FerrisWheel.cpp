@@ -119,6 +119,6 @@ void Cart::update(float dt)
         glm::vec3 translation = newPos - position;
         position = newPos;
         this->modelMatrix = glm::translate(modelMatrix, translation);
+        bt->translate(translation);
     }
-    // bt->updatePos(modelMatrix);
 }

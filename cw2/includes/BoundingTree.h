@@ -30,6 +30,7 @@ struct BoundingNode
     void generateNodes(int index, Model &model);
     void collectIndexes(Model &model);
     void updatePos(glm::mat4 &modelMatrix);
+    void translate(glm::vec3 &translation);
 };
 
 class BoundingTree

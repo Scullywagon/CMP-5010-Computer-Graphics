@@ -101,6 +101,11 @@ void input_callback(GLFWwindow *window)
         scene->cam.flight = !scene->cam.flight;
         flightToggleTime = currentFrame;
     }
+    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS &&
+        currentFrame - rotationToggleTime > 0.5)
+    {
+        rotationToggleTime = currentFrame;
+    }
 }
 
 void checkOpenGLError()

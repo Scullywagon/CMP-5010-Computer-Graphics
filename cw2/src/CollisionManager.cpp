@@ -17,7 +17,7 @@ void CollisionManager::init()
 
 void CollisionManager::update()
 {
-    sortItems();
+    //sortItems();
     genChecks();
 }
 
