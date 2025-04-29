@@ -2876,6 +2876,7 @@ CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o: /Users/logan/University/CMP-50
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Mesh.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Model.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Shader.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/common.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/precision.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/setup.hpp \
@@ -5937,6 +5938,7 @@ CMakeFiles/cw.dir/src/Scene.cpp.o: /Users/logan/University/CMP-5010-Computer-Gra
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Scene.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Shader.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/common.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/precision.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/setup.hpp \
@@ -7936,6 +7938,7 @@ CMakeFiles/cw.dir/src/main.cpp.o: /Users/logan/University/CMP-5010-Computer-Grap
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Scene.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Shader.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/common.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/precision.hpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/setup.hpp \
@@ -8337,6 +8340,8 @@ CMakeFiles/cw.dir/src/stb_impl.cpp.o: /Users/logan/University/CMP-5010-Computer-
 /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/OrthographicCamera.h:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Renderer.cpp:
+
+/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h:
 
 /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h:
 

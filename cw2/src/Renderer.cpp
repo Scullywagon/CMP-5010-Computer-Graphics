@@ -84,8 +84,6 @@ void Renderer::renderScene()
     {
         string element = "lights[" + std::to_string(lightCount) + "]";
         shader->setVec3(element + ".position", light->position);
-        cout << "light pos: " << light->position.x << " " << light->position.y
-             << " " << light->position.z << endl;
         shader->setVec3(element + ".ambient", light->ambient);
         shader->setVec3(element + ".diffuse", light->diffuse);
         shader->setVec3(element + ".specular", light->specular);

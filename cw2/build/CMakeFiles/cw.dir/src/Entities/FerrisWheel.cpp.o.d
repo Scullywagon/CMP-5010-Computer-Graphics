@@ -1007,4 +1007,5 @@ CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__tree \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/quaternion.hpp
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/gtc/quaternion.hpp \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h

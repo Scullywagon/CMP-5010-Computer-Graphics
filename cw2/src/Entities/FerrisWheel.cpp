@@ -40,7 +40,7 @@ void Wheel::init()
 
 void Wheel::update(float dt)
 {
-    if (enableRotation)
+    if (vars::enableRotation)
     {
         rotate(dt);
     }
@@ -112,13 +112,13 @@ void Cart::init()
 
 void Cart::update(float dt)
 {
-    if (enableRotation)
+    if (vars::enableRotation)
     {
         glm::vec3 newPos =
             glm::vec3((*rotationMatrix) * glm::vec4(localPos, 0.0f)) + center;
         glm::vec3 translation = newPos - position;
         position = newPos;
         this->modelMatrix = glm::translate(modelMatrix, translation);
-        bt->translate(translation);
+//        bt->translate(translation);
     }
 }

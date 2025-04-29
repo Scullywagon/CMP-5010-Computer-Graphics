@@ -1015,4 +1015,5 @@ CMakeFiles/cw.dir/src/Scene.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/OrthographicCamera.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h \
   /usr/local/include/GLFW/glfw3.h \
-  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h

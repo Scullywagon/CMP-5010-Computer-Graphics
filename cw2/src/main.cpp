@@ -1,5 +1,6 @@
 
 #include "Constants.h"
+#include "VarName.h"
 #include "Entities/FerrisWheel.h"
 #include "Renderer.h"
 #include "Scene.h"
@@ -18,6 +19,11 @@
 
 using namespace std;
 
+namespace vars
+{
+bool enableRotation = false;
+}
+
 int SCREEN_WIDTH = Constants::SCREEN_WIDTH;
 int SCREEN_HEIGHT = Constants::SCREEN_HEIGHT;
 
@@ -30,6 +36,7 @@ float lastFrame = 0.0f;
 float currentFrame = 0.0f;
 float flightToggleTime = 0.0f;
 float rotationToggleTime = 0.0f;
+bool isRotate = false;
 
 Scene *scene;
 Renderer *renderer;
@@ -104,6 +111,7 @@ void input_callback(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS &&
         currentFrame - rotationToggleTime > 0.5)
     {
+        vars::enableRotation = !vars::enableRotation;
         rotationToggleTime = currentFrame;
     }
 }

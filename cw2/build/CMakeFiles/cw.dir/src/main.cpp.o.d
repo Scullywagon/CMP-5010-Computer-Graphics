@@ -1,6 +1,7 @@
 CMakeFiles/cw.dir/src/main.cpp.o: \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
+  /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
   /Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \

@@ -15,7 +15,7 @@ BoundingNode::BoundingNode(glm::vec3 center, glm::vec3 front, glm::vec3 up,
 
 void BoundingNode::generateNodes(int index, Model &model)
 {
-    if (index == 12)
+    if (index == 0)
     {
         bottom = true;
         return;
@@ -135,13 +135,15 @@ void BoundingTree::generateAABB()
     max = node->center + glm::vec3(xMax, yMax, zMax);
 }
 
-void BoundingTree::translate(glm::vec3 trans)
+void BoundingTree::translate(glm::vec3 &trans)
 {
     min += trans;
     max += trans;
 
     if (node != nullptr)
     {
+        node->translate(trans);
+        generateAABB();
     }
 }
 
