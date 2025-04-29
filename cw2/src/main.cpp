@@ -28,6 +28,8 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 float currentFrame = 0.0f;
+float flightToggleTime = 0.0f;
+float rotationToggleTime = 0.0f;
 
 Scene *scene;
 Renderer *renderer;
@@ -76,6 +78,28 @@ void input_callback(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
         scene->cam.processInput(Camera::BACKWARD, deltaTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+    {
+        scene->cam.processInput(Camera::LEFT, deltaTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+    {
+        scene->cam.processInput(Camera::RIGHT, deltaTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+    {
+        scene->cam.processInput(Camera::UP, deltaTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+    {
+        scene->cam.processInput(Camera::DOWN, deltaTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS &&
+        currentFrame - flightToggleTime > 0.5)
+    {
+        scene->cam.flight = !scene->cam.flight;
+        flightToggleTime = currentFrame;
     }
 }
 

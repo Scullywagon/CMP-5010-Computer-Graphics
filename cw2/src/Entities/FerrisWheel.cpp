@@ -101,6 +101,13 @@ Cart::Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat)
 void Cart::init()
 {
     modelMatrix = glm::translate(modelMatrix, this->position);
+    children.push_back(new Entity(this->position - glm::vec3(1.0f, 4.5f, 0.0f),
+                                  glm::vec3(0.0f), "OilLamp"));
+    children.push_back(new Entity(this->position - glm::vec3(1.0f, 4.5f, 0.0f),
+                                  glm::vec3(0.0f), "OilLampGlass"));
+    children[1]->light = new Light(
+        children[1]->position, glm::vec3(0.1f, 0.05f, 0.01f),
+        glm::vec3(1.0f, 0.7f, 0.2f), glm::vec3(1.0f), 1.0f, 0.1f, 0.02f);
 }
 
 void Cart::update(float dt)

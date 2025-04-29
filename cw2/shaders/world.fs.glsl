@@ -86,12 +86,10 @@ void main()
         result += calculateGeneralLight(lights[i], texColor, norm, shininess);
     }
 
-    /*
     if (isLight)
     {
         result += vec4(outputColor, 1.0);
     }
-    */
 
     FragColor = result;
 }

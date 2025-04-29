@@ -15,10 +15,7 @@ void Renderer::init()
         new Shader("./shaders/world.vs.glsl", "./shaders/world.fs.glsl");
     this->depthShader =
         new Shader("./shaders/Shadow.vs.glsl", "./shaders/Shadow.fs.glsl");
-    projection = glm::perspective(glm::radians(90.0f),
-                                  (float)Constants::SCREEN_WIDTH /
-                                      (float)Constants::SCREEN_HEIGHT,
-                                  Constants::NEAR_PLANE, Constants::FAR_PLANE);
+    projection = this->scene->cam.GetProjectionMatrix();
     // view = scene->player->camera->getViewMatrix();
     cout << "Renderer initialized" << endl;
 }
@@ -62,17 +59,15 @@ void Renderer::generateDepthMap()
 void Renderer::update()
 {
     renderDepth();
-    renderScene();
+    view = scene->cam.GetViewMatrix();
+    projection = scene->cam.GetProjectionMatrix();
     scene->skybox.render(view, projection);
+    renderScene();
 }
 
 void Renderer::renderScene()
 {
-    view = this->scene->cam.GetViewMatrix(); ////////////
-    // view = lightView;
-    // projection = lightProjection;
     this->shader->use();
-    shader->setInt("numLights", 0);
     shader->setMat4("projection", projection);
     shader->setMat4("view", view);
     shader->setVec3("cameraPos", scene->cam.Position);
@@ -83,6 +78,23 @@ void Renderer::renderScene()
     shader->setVec3("sunSpecular", scene->worldLight.specular);
     shader->setMat4("lightSpaceMatrix", lightSpaceMatrix);
     shader->setBool("isLight", false);
+    int lightCount = 0;
+    for (Light *light : scene->lights)
+    {
+        string element = "lights[" + std::to_string(lightCount) + "]";
+        shader->setVec3(element + ".position", light->position);
+        cout << "light pos: " << light->position.x << " " << light->position.y
+             << " " << light->position.z << endl;
+        shader->setVec3(element + ".ambient", light->ambient);
+        shader->setVec3(element + ".diffuse", light->diffuse);
+        shader->setVec3(element + ".specular", light->specular);
+        shader->setFloat(element + ".constant", light->constant);
+        shader->setFloat(element + ".linear", light->linear);
+        shader->setFloat(element + ".quadratic", light->quadratic);
+        lightCount++;
+    }
+    shader->setInt("numLights", lightCount);
+
     glActiveTexture(GL_TEXTURE9);
     glBindTexture(GL_TEXTURE_2D, depthMap);
     shader->setInt("depthMap", 9);
@@ -91,8 +103,14 @@ void Renderer::renderScene()
     for (auto &pair : scene->translations)
     {
         Model *model = pair.first;
+        if (model->isLight == true)
+        {
+            shader->setBool("isLight", true);
+            shader->setVec3("outputColor", model->outColor);
+        }
         vector<glm::mat4 *> &translations = pair.second;
         drawModel(model, translations);
+        shader->setBool("isLight", false);
     }
     drawFloor();
 }

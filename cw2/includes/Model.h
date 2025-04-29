@@ -20,7 +20,6 @@
 #include <vector>
 using namespace std;
 
-
 class Model
 {
   public:
@@ -28,6 +27,8 @@ class Model
     vector<Mesh> meshes;
     string directory;
     bool subBoxes = true;
+    bool isLight = false;
+    glm::vec3 outColor = glm::vec3(0.0f);
 
     // constructor, expects a filepath to a 3D model.
     Model(string const &path, float scale)
@@ -293,7 +294,8 @@ class Model
         }
         else
         {
-            std::cout << "Texture failed to load at path: " << path << std::endl;
+            std::cout << "Texture failed to load at path: " << path
+                      << std::endl;
             stbi_image_free(data);
         }
 

@@ -2,6 +2,7 @@
 #define ENTITY_H
 
 #include "BoundingTree.h"
+#include "Light.h"
 #include "Model.h"
 
 class Entity
@@ -13,7 +14,7 @@ class Entity
     glm::vec3 rotation;
     BoundingTree *bt;
 
-    // Light *light;
+    Light *light;
 
     vector<Entity *> children;
     Entity *parent;

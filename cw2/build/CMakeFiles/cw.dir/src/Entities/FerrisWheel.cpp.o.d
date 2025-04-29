@@ -429,4 +429,5 @@ CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o: \
  /usr/include/c++/14.2.1/bits/stl_map.h \
  /usr/include/c++/14.2.1/bits/stl_multimap.h \
  /usr/include/c++/14.2.1/utility \
- /usr/include/c++/14.2.1/bits/stl_relops.h
+ /usr/include/c++/14.2.1/bits/stl_relops.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h

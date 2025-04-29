@@ -2,6 +2,7 @@
 #define CAMERA_H
 
 #include "BoundingTree.h"
+#include "Constants.h"
 #include "ParentCamera.h"
 #include "glm/detail/func_trigonometric.hpp"
 #include "glm/glm.hpp"
@@ -10,12 +11,14 @@
 
 using namespace std;
 
+// for players
 class Camera : public ParentCamera
 {
   public:
     const float SPEED = 14.5f;
     const float FOV = 50.0f;
     BoundingTree *bt;
+
     Camera()
     {
         // Initialize the base class members directly
@@ -40,6 +43,14 @@ class Camera : public ParentCamera
         return glm::lookAt(Position, Position + Front, Up);
     }
 
+    glm::mat4 GetProjectionMatrix() const override
+    {
+        return glm::perspective(fov,
+                                (float)Constants::SCREEN_WIDTH /
+                                    (float)Constants::SCREEN_HEIGHT,
+                                0.1f, 100.0f);
+    }
+
     void processInput(movement_dir dir, float deltaTime) override
     {
         float velocity = MovementSpeed * deltaTime;
@@ -60,13 +71,16 @@ class Camera : public ParentCamera
         {
             this->translation += Right * velocity;
         }
-        if (dir == UP)
+        if (flight)
         {
-            this->translation += WorldUp * velocity;
-        }
-        if (dir == DOWN)
-        {
-            this->translation += -WorldUp * velocity;
+            if (dir == UP)
+            {
+                this->translation += Up * velocity;
+            }
+            if (dir == DOWN)
+            {
+                this->translation += -Up * velocity;
+            }
         }
     }
 
@@ -80,6 +94,11 @@ class Camera : public ParentCamera
         {
             transY = floorHeight + 0.5f - Position.y;
             Position.y = floorHeight + 0.5f;
+        }
+        else if (!flight)
+        {
+            transY = 0.0f;
+            Position.y = floorHeight + 1.8f;
         }
         translation = glm::vec3(0.0f);
     }

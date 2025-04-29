@@ -39,12 +39,15 @@ class ParentCamera
 
     float fov; // in radians
 
+    bool flight = false;
+
     glm::vec3 translation = glm::vec3(0.0f);
 
     virtual void processInput(movement_dir dir, float deltaTime) = 0;
     virtual void ProcessMouseMovement(float xoffset, float yoffset) = 0;
     virtual void move() = 0;
     virtual glm::mat4 GetViewMatrix() = 0;
+    virtual glm::mat4 GetProjectionMatrix() const = 0;
 
   private:
 };

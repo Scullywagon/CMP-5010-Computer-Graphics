@@ -7,6 +7,7 @@
 #include "Floor.h"
 #include "Light.h"
 #include "Model.h"
+#include "OrthographicCamera.h"
 #include "Skybox.h"
 #include <iostream>
 #include <unordered_map>
@@ -20,6 +21,7 @@ struct Scene
     unordered_map<Model *, vector<glm::mat4 *>> translations;
 
     vector<Entity *> entities;
+    vector<Light *> lights;
     CollisionManager *collisionManager;
 
     // World
@@ -29,7 +31,9 @@ struct Scene
 
     // Player
 
-    Camera cam;
+    Camera Player;
+    OrthographicCamera overview;
+    ParentCamera &cam = Player;
 
     Scene();
     void init();

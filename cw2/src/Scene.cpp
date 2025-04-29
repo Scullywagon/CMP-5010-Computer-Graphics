@@ -7,8 +7,8 @@
 #include "Skybox.h"
 
 Scene::Scene()
-    : worldLight(glm::vec3(0.2, -0.8, 0.2), glm::vec3(0.4, 0.4, 0.4),
-                 glm::vec3(0.6, 0.6, 0.6), glm::vec3(1.0, 1.0, 1.0))
+    : worldLight(glm::vec3(0.2, -0.8, 0.2), glm::vec3(0.1, 0.1, 0.2),
+                 glm::vec3(0.3, 0.3, 0.4), glm::vec3(1.0, 1.0, 1.0))
 {
     assets["Stand"] = new Model("assets/base/base.obj", 2.0f);
     assets["Crate"] =
@@ -19,7 +19,11 @@ Scene::Scene()
         new Model("assets/terrain/RaisedForrest/RaisedTerrain.obj", 45.0f);
     assets["Tree"] =
         new Model("assets/terrain/RaisedForrest/Untitled2.obj", 1.5f);
-    collisionManager = new CollisionManager(&cam);
+    assets["OilLamp"] = new Model("assets/oilLamp/oilLamp.obj", 8.0f);
+    assets["OilLampGlass"] = new Model("assets/oilLamp/oilLampGlass.obj", 8.0f);
+    assets["OilLampGlass"]->isLight = true;
+    assets["OilLampGlass"]->outColor = glm::vec3(0.8f, 0.8f, 0.2f);
+    collisionManager = new CollisionManager(&Player);
     generateTerrain();
 }
 
@@ -77,6 +81,10 @@ void Scene::addEntities(Entity &entity)
     entity.init();
     Model *model = assets[entity.model];
     translations[model].push_back(&entity.modelMatrix);
+    if (entity.light != nullptr)
+    {
+        lights.push_back(entity.light);
+    }
     if (entity.model != "Tree")
     {
         entity.genBoundingTree(*model);
@@ -90,14 +98,14 @@ void Scene::addEntities(Entity &entity)
 
 void Scene::generateTerrain()
 {
-    int scale = 100;
+    int scale = 80;
     int index = 0;
     for (int x = -scale; x <= scale && index < 10000; x += 25)
     {
         for (int z = -scale; z <= scale && index < 10000; z += 25)
 
         {
-            if (glm::length(glm::vec2(x, z)) >= 75.0f)
+            if (glm::length(glm::vec2(x, z)) >= 70.0f)
             {
                 float y = (rand() % 7) - 2;
                 float r = (rand() % 100) / 100.0f;

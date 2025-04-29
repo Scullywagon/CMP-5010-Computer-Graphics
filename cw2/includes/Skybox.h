@@ -19,15 +19,15 @@ class Skybox
     Shader skyboxShader;
     float blendFactor = 0.5f;
 
-    std::string textures1[8] = {"assets/skybox/right.jpg", "assets/skybox/left.jpg",
-                                "assets/skybox/top.jpg",   "assets/skybox/bottom.jpg",
-                                "assets/skybox/front.jpg", "assets/skybox/back.jpg"};
+    std::string textures1[8] = {
+        "assets/skybox/right.jpg", "assets/skybox/left.jpg",
+        "assets/skybox/top.jpg",   "assets/skybox/bottom.jpg",
+        "assets/skybox/front.jpg", "assets/skybox/back.jpg"};
 
-    float skyboxVertices[24] = {
-        -1000.0f, 1000.0f,  -1000.0f, -1000.0f, -1000.0f, -1000.0f,
-        1000.0f,  -1000.0f, -1000.0f, 1000.0f,  1000.0f,  -1000.0f,
-        -1000.0f, 1000.0f,  1000.0f,  -1000.0f, -1000.0f, 1000.0f,
-        1000.0f,  -1000.0f, 1000.0f,  1000.0f,  1000.0f,  1000.0f};
+    float skyboxVertices[24] = {-50.0f, 50.0f,  -50.0f, -50.0f, -50.0f, -50.0f,
+                                50.0f,  -50.0f, -50.0f, 50.0f,  50.0f,  -50.0f,
+                                -50.0f, 50.0f,  50.0f,  -50.0f, -50.0f, 50.0f,
+                                50.0f,  -50.0f, 50.0f,  50.0f,  50.0f,  50.0f};
 
     unsigned int skyboxIndices[72] = {0, 1, 2, 2, 3, 0, 4, 5, 6, 6, 7, 4,
                                       0, 1, 5, 5, 4, 0, 3, 2, 6, 6, 7, 3,
@@ -35,11 +35,6 @@ class Skybox
 
     Skybox() : skyboxShader("shaders/skybox.vs", "shaders/skybox.fs")
     {
-        for (float f : skyboxVertices)
-        {
-            f *= 100.0f;
-            f -= 50000.0f;
-        }
         texture1ID = loadCubemap(textures1);
         glGenVertexArrays(1, &skyboxVAO);
         glGenBuffers(1, &skyboxVBO);
@@ -63,6 +58,7 @@ class Skybox
     void render(glm::mat4 view, glm::mat4 projection)
     {
         glDepthMask(GL_FALSE);
+        glDepthFunc(GL_LEQUAL);
         skyboxShader.use();
         view = glm::mat4(glm::mat3(view));
         skyboxShader.setMat4("projection", projection);
@@ -75,6 +71,7 @@ class Skybox
 
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
         glDepthMask(GL_TRUE);
+        glDepthFunc(GL_LESS);
         glBindVertexArray(0);
         // glUseProgram(0);
     }
