@@ -3,15 +3,28 @@
 
 Entity::Entity()
 {
-    modelMatrix = glm::mat4(1.0f);
     position = glm::vec3(0.0f, 0.0f, 0.0f);
     rotation = glm::vec3(0.0f, 0.0f, 0.0f);
     parent = nullptr;
     model = "";
 }
+Entity::Entity(glm::vec3 position, glm::vec3 rotation, string model)
+{
+    this->position = position;
+    this->rotation = rotation;
+    this->model = model;
+}
 
 void Entity::init()
 {
+    modelMatrix = glm::translate(modelMatrix, position);
+
+    /*
+    for (int i = 0; i < 3; i++)
+    {
+        modelMatrix = glm::rotate(modelMatrix, rotation[i], glm::vec3(1.0f));
+    }
+    */
 }
 
 void Entity::update(float dt)

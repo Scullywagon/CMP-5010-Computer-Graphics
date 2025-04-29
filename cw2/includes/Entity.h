@@ -19,6 +19,7 @@ class Entity
     Entity *parent;
 
     Entity();
+    Entity(glm::vec3 position, glm::vec3 rotation, string model);
     virtual void init();
     virtual void update(float dt);
     void genBoundingTree(Model &model);

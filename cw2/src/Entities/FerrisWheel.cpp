@@ -48,7 +48,7 @@ void Wheel::update(float dt)
     {
         child->update(dt);
     }
-    bt->updatePos(modelMatrix);
+    // bt->updatePos(modelMatrix);
 }
 
 void Wheel::rotate(float dt)
@@ -113,5 +113,5 @@ void Cart::update(float dt)
         position = newPos;
         this->modelMatrix = glm::translate(modelMatrix, translation);
     }
-    bt->updatePos(modelMatrix);
+    // bt->updatePos(modelMatrix);
 }

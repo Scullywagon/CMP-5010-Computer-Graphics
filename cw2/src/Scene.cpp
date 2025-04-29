@@ -15,7 +15,12 @@ Scene::Scene()
         new Model("assets/animalCrate/circus_animal_crate.obj", 1.0f);
     assets["Wheel"] = new Model("assets/wheel2/wheel2.obj", 2.0f);
     assets["Cart"] = new Model("assets/Cart/1.obj", 2.0f);
+    assets["Terrain"] =
+        new Model("assets/terrain/RaisedForrest/RaisedTerrain.obj", 45.0f);
+    assets["Tree"] =
+        new Model("assets/terrain/RaisedForrest/Untitled.obj", 1.5f);
     collisionManager = new CollisionManager(&cam);
+    generateTerrain();
 }
 
 void Scene::init()
@@ -78,5 +83,29 @@ void Scene::addEntities(Entity &entity)
     for (Entity *child : entity.children)
     {
         addEntities(*child);
+    }
+}
+
+void Scene::generateTerrain()
+{
+    int scale = 100;
+    int index = 0;
+    for (int x = -scale; x <= scale && index < 10000; x += 25)
+    {
+        for (int z = -scale; z <= scale && index < 10000; z += 25)
+
+        {
+            if (glm::length(glm::vec2(x, z)) >= 98.0f)
+            {
+                float y = (rand() % 7) - 2;
+                float r = (rand() % 100) / 100.0f;
+                glm::vec3 translation = glm::vec3(x, y, z);
+                entities.push_back(
+                    new Entity(translation, glm::vec3(0.0f), "Terrain"));
+                entities.push_back(
+                    new Entity(translation, glm::vec3(0.0f), "Tree"));
+                index++;
+            }
+        }
     }
 }

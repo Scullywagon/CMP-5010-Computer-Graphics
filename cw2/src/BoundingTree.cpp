@@ -189,8 +189,10 @@ void BoundingTree::assignColliders()
 #pragma omp parallel for
         for (int i = 0; i < mesh.indices.size(); i += 3)
         {
+
             const Vertex &p0 = mesh.vertices[mesh.indices[i]];
             const Vertex &p1 = mesh.vertices[mesh.indices[i + 1]];
+            const Vertex &p2 = mesh.vertices[mesh.indices[i + 2]];
 
             glm::vec3 denom = p1.Position - p0.Position;
 
@@ -198,11 +200,26 @@ void BoundingTree::assignColliders()
 #pragma omp parallel for
             for (NodeBounds &nb : activeNodes)
             {
+
                 if (nb.node->collide)
                     continue; // already assigned, skip
                 bool intersects = true;
                 float tmin;
                 float tmax;
+
+                for (const glm::vec3 &pt :
+                     {p0.Position, p1.Position, p2.Position})
+                {
+                    if (pt.x < nb.min.x && pt.x > nb.max.x && pt.y < nb.min.y &&
+                        pt.y > nb.max.y && pt.z < nb.min.z && pt.z > nb.max.z)
+                    {
+                        nb.node->collide = true;
+                        break;
+                    }
+                }
+
+                if (nb.node->collide)
+                    continue;
 
                 for (int axis = 0; axis < 3; axis++)
                 {

@@ -16,7 +16,7 @@ class Stand : public Entity
 class Wheel : public Entity
 {
   public:
-    bool enableRotation = true;
+    bool enableRotation = false;
     glm::mat4 rotationMatrix = glm::mat4(1.0f);
     Wheel(glm::vec3 parent);
     void init() override;
@@ -35,7 +35,7 @@ class Cart : public Entity
   public:
     glm::vec3 center;
     glm::vec3 localPos;
-    bool enableRotation = true;
+    bool enableRotation = false;
     glm::mat4 *rotationMatrix;
     Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat);
     void init() override;
