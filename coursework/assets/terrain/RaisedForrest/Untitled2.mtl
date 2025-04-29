@@ -1,0 +1,282 @@
+# Blender 4.4.0 MTL File: 'None'
+# www.blender.org
+
+newmtl tree-bark-03.012
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.022
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.023
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.024
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.025
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.026
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.027
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.028
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.029
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.030
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.031
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.032
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.033
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-bark-03.034
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-bark-03.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.002
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.013
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.014
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.015
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.016
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.017
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.018
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.019
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.020
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.021
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.022
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.023
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.024
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png
+
+newmtl tree-branches-autumn-yellow-mix-diffuse.025
+Ns 32.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/logan/University/CMP-5010-Computer-Graphics/cw2/assets/terrain/RaisedForrest/tree-branches-autumn-yellow-mix-diffuse.001.png

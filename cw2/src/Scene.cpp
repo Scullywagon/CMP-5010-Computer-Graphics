@@ -18,7 +18,7 @@ Scene::Scene()
     assets["Terrain"] =
         new Model("assets/terrain/RaisedForrest/RaisedTerrain.obj", 45.0f);
     assets["Tree"] =
-        new Model("assets/terrain/RaisedForrest/Untitled.obj", 1.5f);
+        new Model("assets/terrain/RaisedForrest/Untitled2.obj", 1.5f);
     collisionManager = new CollisionManager(&cam);
     generateTerrain();
 }
@@ -75,11 +75,13 @@ void Scene::testModels(string name)
 void Scene::addEntities(Entity &entity)
 {
     entity.init();
-    cout << entity.model << endl;
     Model *model = assets[entity.model];
     translations[model].push_back(&entity.modelMatrix);
-    entity.genBoundingTree(*model);
-    collisionManager->add(entity.bt);
+    if (entity.model != "Tree")
+    {
+        entity.genBoundingTree(*model);
+        collisionManager->add(entity.bt);
+    }
     for (Entity *child : entity.children)
     {
         addEntities(*child);
@@ -95,7 +97,7 @@ void Scene::generateTerrain()
         for (int z = -scale; z <= scale && index < 10000; z += 25)
 
         {
-            if (glm::length(glm::vec2(x, z)) >= 98.0f)
+            if (glm::length(glm::vec2(x, z)) >= 75.0f)
             {
                 float y = (rand() % 7) - 2;
                 float r = (rand() % 100) / 100.0f;
