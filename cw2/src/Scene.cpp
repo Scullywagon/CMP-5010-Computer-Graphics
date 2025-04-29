@@ -85,7 +85,8 @@ void Scene::addEntities(Entity &entity)
     {
         lights.push_back(entity.light);
     }
-    if (entity.model != "Tree" && entity.model != "OilLamp" && entity.model != "OilLampGlass")
+    if (entity.model != "Tree" && entity.model != "OilLamp" &&
+        entity.model != "OilLampGlass")
     {
 
         cout << entity.model << endl;

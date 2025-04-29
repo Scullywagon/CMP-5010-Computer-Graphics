@@ -54,10 +54,10 @@ void Wheel::update(float dt)
 void Wheel::rotate(float dt)
 {
     float rotation = dt * speed;
-    modelMatrix = glm::rotate(modelMatrix, radians(rotation),
-                              glm::vec3(1.0f, 0.0f, 0.0f));
-    rotationMatrix = glm::rotate(rotationMatrix, radians(rotation),
-                                 glm::vec3(1.0f, 0.0f, 0.0f));
+    this->modelMatrix = glm::rotate(modelMatrix, radians(rotation),
+                                    glm::vec3(1.0f, 0.0f, 0.0f));
+    this->rotationMatrix = glm::rotate(rotationMatrix, radians(rotation),
+                                       glm::vec3(1.0f, 0.0f, 0.0f));
 }
 
 void Wheel::createCarts()
@@ -92,7 +92,7 @@ void Wheel::createCarts()
 Cart::Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat)
 {
     model = "Cart";
-    position = parent + localPos;
+    this->position = parent + localPos;
     this->center = parent;
     this->localPos = localPos;
     this->rotationMatrix = rotationMat;
@@ -112,6 +112,7 @@ void Cart::init()
 
 void Cart::update(float dt)
 {
+    /*
     if (vars::enableRotation)
     {
         glm::vec3 newPos =
@@ -119,6 +120,7 @@ void Cart::update(float dt)
         glm::vec3 translation = newPos - position;
         position = newPos;
         this->modelMatrix = glm::translate(modelMatrix, translation);
-//        bt->translate(translation);
+        bt->translate(translation);
     }
+    */
 }

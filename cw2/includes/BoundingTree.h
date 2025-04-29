@@ -36,7 +36,7 @@ struct BoundingNode
 class BoundingTree
 {
   public:
-    BoundingNode *node;
+    BoundingNode *node = nullptr;
     glm::mat4 *modelMatrix;
     glm::vec3 min;
     glm::vec3 max;
@@ -45,7 +45,7 @@ class BoundingTree
     BoundingTree(Model &model, glm::mat4 *matrix);
     BoundingTree(glm::vec3 position);
     void generateAABB();
-    void translate(glm::vec3 &trans);
+    void translate(glm::vec3 trans);
     void updatePos(glm::mat4 &modelMatrix);
 
   private:

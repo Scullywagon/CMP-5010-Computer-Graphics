@@ -1,56 +1,56 @@
 [
 {
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/BoundingTree.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/BoundingTree.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/BoundingTree.cpp",
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/BoundingTree.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/BoundingTree.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/BoundingTree.cpp",
   "output": "CMakeFiles/cw.dir/src/BoundingTree.cpp.o"
 },
 {
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/CollisionManager.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/CollisionManager.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/CollisionManager.cpp",
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/CollisionManager.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/CollisionManager.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/CollisionManager.cpp",
   "output": "CMakeFiles/cw.dir/src/CollisionManager.cpp.o"
 },
 {
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entities/FerrisWheel.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entities/FerrisWheel.cpp",
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entities/FerrisWheel.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entities/FerrisWheel.cpp",
   "output": "CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o"
 },
 {
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/Entity.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entity.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entity.cpp",
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/Entity.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entity.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entity.cpp",
   "output": "CMakeFiles/cw.dir/src/Entity.cpp.o"
 },
 {
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/Renderer.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Renderer.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Renderer.cpp",
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/Renderer.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Renderer.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Renderer.cpp",
   "output": "CMakeFiles/cw.dir/src/Renderer.cpp.o"
 },
 {
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/Scene.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Scene.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/Scene.cpp",
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/Scene.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Scene.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Scene.cpp",
   "output": "CMakeFiles/cw.dir/src/Scene.cpp.o"
 },
 {
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/TexFormFile.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/TexFormFile.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/TexFormFile.cpp",
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/TexFormFile.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/TexFormFile.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/TexFormFile.cpp",
   "output": "CMakeFiles/cw.dir/src/TexFormFile.cpp.o"
 },
 {
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/main.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp",
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/main.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp",
   "output": "CMakeFiles/cw.dir/src/main.cpp.o"
 },
 {
-  "directory": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/logan/University/CMP-5010-Computer-Graphics/cw2/includes -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks -isystem /usr/local/include -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -o CMakeFiles/cw.dir/src/stb_impl.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/stb_impl.cpp",
-  "file": "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/src/stb_impl.cpp",
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/stb_impl.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/stb_impl.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/stb_impl.cpp",
   "output": "CMakeFiles/cw.dir/src/stb_impl.cpp.o"
 }
 ]
