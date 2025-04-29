@@ -225,6 +225,30 @@ src/Entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/Entity.cpp.s
 .PHONY : src/Entity.cpp.s
 
+src/Octree.o: src/Octree.cpp.o
+.PHONY : src/Octree.o
+
+# target to build an object file
+src/Octree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/Octree.cpp.o
+.PHONY : src/Octree.cpp.o
+
+src/Octree.i: src/Octree.cpp.i
+.PHONY : src/Octree.i
+
+# target to preprocess a source file
+src/Octree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/Octree.cpp.i
+.PHONY : src/Octree.cpp.i
+
+src/Octree.s: src/Octree.cpp.s
+.PHONY : src/Octree.s
+
+# target to generate assembly for a file
+src/Octree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw.dir/build.make CMakeFiles/cw.dir/src/Octree.cpp.s
+.PHONY : src/Octree.cpp.s
+
 src/Renderer.o: src/Renderer.cpp.o
 .PHONY : src/Renderer.o
 
@@ -366,6 +390,9 @@ help:
 	@echo "... src/Entity.o"
 	@echo "... src/Entity.i"
 	@echo "... src/Entity.s"
+	@echo "... src/Octree.o"
+	@echo "... src/Octree.i"
+	@echo "... src/Octree.s"
 	@echo "... src/Renderer.o"
 	@echo "... src/Renderer.i"
 	@echo "... src/Renderer.s"

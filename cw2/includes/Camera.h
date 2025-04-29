@@ -22,7 +22,7 @@ class Camera : public ParentCamera
     Camera()
     {
         // Initialize the base class members directly
-        Position = glm::vec3(-10.0f, 10.0f, 0.0f);
+        Position = glm::vec3(-50.0f, 10.0f, 0.0f);
         Front = glm::vec3(0.0f, 0.0f, -1.0f);
         Up = glm::vec3(0.0f, 1.0f, 0.0f);
         Right = glm::vec3(1.0f, 0.0f, 0.0f);

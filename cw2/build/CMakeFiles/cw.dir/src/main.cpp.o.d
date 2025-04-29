@@ -2,7 +2,6 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp \
  /usr/include/stdc-predef.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \
@@ -433,6 +432,8 @@ CMakeFiles/cw.dir/src/main.cpp.o: \
  /usr/include/c++/14.2.1/utility \
  /usr/include/c++/14.2.1/bits/stl_relops.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Octree.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Renderer.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Scene.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Camera.h \

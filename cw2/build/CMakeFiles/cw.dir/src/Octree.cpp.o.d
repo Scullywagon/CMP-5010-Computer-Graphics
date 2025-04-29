@@ -1,9 +1,7 @@
-CMakeFiles/cw.dir/src/Scene.cpp.o: \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Scene.cpp \
+CMakeFiles/cw.dir/src/Octree.cpp.o: \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Octree.cpp \
  /usr/include/stdc-predef.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Scene.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Camera.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Octree.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Model.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/glm.hpp \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/detail/_fixes.hpp \
@@ -427,25 +425,4 @@ CMakeFiles/cw.dir/src/Scene.cpp.o: \
  /usr/include/c++/14.2.1/bits/vector.tcc /usr/include/c++/14.2.1/map \
  /usr/include/c++/14.2.1/bits/stl_tree.h \
  /usr/include/c++/14.2.1/bits/stl_map.h \
- /usr/include/c++/14.2.1/bits/stl_multimap.h \
- /usr/include/c++/14.2.1/utility \
- /usr/include/c++/14.2.1/bits/stl_relops.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/ParentCamera.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/CollisionManager.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Octree.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Floor.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/OrthographicCamera.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h \
- /usr/include/GLFW/glfw3.h /usr/include/c++/14.2.1/unordered_map \
- /usr/include/c++/14.2.1/bits/unordered_map.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/CollisionManager.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h
+ /usr/include/c++/14.2.1/bits/stl_multimap.h

@@ -25,6 +25,12 @@
 },
 {
   "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
+  "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/Octree.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Octree.cpp",
+  "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Octree.cpp",
+  "output": "CMakeFiles/cw.dir/src/Octree.cpp.o"
+},
+{
+  "directory": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/build",
   "command": "/usr/bin/c++  -I/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes -g -std=gnu++17 -fopenmp -o CMakeFiles/cw.dir/src/Renderer.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Renderer.cpp",
   "file": "/home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Renderer.cpp",
   "output": "CMakeFiles/cw.dir/src/Renderer.cpp.o"

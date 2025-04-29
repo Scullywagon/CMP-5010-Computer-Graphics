@@ -3,21 +3,28 @@
 Octree::Octree(Model *model, glm::mat4 modelMatrix)
 {
     vector<glm::vec3> positions = getPositions(model);
-    glm::vec3 min(std::numeric_limits<float>::max());
-    glm::vec3 max(std::numeric_limits<float>::lowest());
+    sort(positions.begin(), positions.end(),
+         [](const glm::vec3 &a, const glm::vec3 &b) { return a.x < b.x; });
+    glm::vec3 m(std::numeric_limits<float>::max());
+    glm::vec3 a(std::numeric_limits<float>::lowest());
 
     for (glm::vec3 &position : positions)
     {
-        this->min = glm::min(min, position);
-        this->max = glm::max(max, position);
+        m = glm::min(m, position);
+        a = glm::max(a, position);
     }
-    center = (min + max) / 2.0f;
-
-    this->front = glm::length(max - center);
-    this->up = glm::length(max - center);
-    this->right = glm::length(max - center);
-
-    radius = glm::length(max - min) / 2.0f;
+    this->min = m;
+    this->max = a;
+    this->front = (max.x - min.x) / 2.0f;
+    this->up = (max.y - min.y) / 2.0f;
+    this->right = (max.z - min.z) / 2.0f;
+    this->radius = glm::length(max - min) / 2.0f;
+    this->center = (min + max) / 2.0f;
+    cout << "radius: " << radius << endl;
+    cout << "min: " << min.x << " " << min.y << " " << min.z << endl;
+    cout << "max: " << max.x << " " << max.y << " " << max.z << endl;
+    cout << "front: " << front << endl;
+    cout << "up: " << up << endl;
 
     int size = positions.size();
     int amountPerNode = (int)size / 8;
@@ -41,6 +48,7 @@ Octree::Octree(Model *model, glm::mat4 modelMatrix)
         }
         node[i].generate(nodePositions);
     }
+    updatePos(modelMatrix);
 }
 
 vector<glm::vec3> Octree::getPositions(Model *model)
@@ -54,6 +62,20 @@ vector<glm::vec3> Octree::getPositions(Model *model)
         }
     }
     return positions;
+}
+
+void Octree::updatePos(glm::mat4 modelMatrix)
+{
+    center = glm::vec3(modelMatrix * glm::vec4(center, 1.0f));
+    f = glm::vec3(modelMatrix * glm::vec4(f, 0.0f));
+    u = glm::vec3(modelMatrix * glm::vec4(u, 0.0f));
+    r = glm::vec3(modelMatrix * glm::vec4(r, 0.0f));
+
+    for (int i = 0; i < 8; i++)
+    {
+        node[i].center =
+            glm::vec3(modelMatrix * glm::vec4(node[i].center, 1.0f));
+    }
 }
 
 void OctNode::generate(vector<glm::vec3> &positions)

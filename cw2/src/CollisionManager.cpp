@@ -1,6 +1,7 @@
 #include "CollisionManager.h"
 #include "BoundingTree.h"
 #include "Model.h"
+#include "Octree.h"
 #include "glm/detail/func_geometric.hpp"
 #include "glm/detail/type_vec.hpp"
 
@@ -22,8 +23,8 @@ void CollisionManager::update()
 
 void CollisionManager::genChecks()
 {
-    unordered_set<BoundingTree *> checkX;
-    unordered_set<BoundingTree *> checkZ;
+    unordered_set<Octree *> checkX;
+    unordered_set<Octree *> checkZ;
     bool x = true;
     bool z = true;
 
@@ -31,159 +32,136 @@ void CollisionManager::genChecks()
 
     for (int i = 0; i < xList.size() - 1; i++)
     {
-        if (xList[i].second == false && xList[i].first != player->bt &&
-            xList[i].first != nullptr && shouldCheck(i, xList))
+        if (!xList[i].second && xList[i].first != nullptr &&
+            std::abs(xList[i].first->center.x - player->Position.x) <
+                (xList[i].first->radius + 0.5))
         {
             checkX.insert(xList[i].first);
         }
-        if (zList[i].second == false && zList[i].first != player->bt &&
-            zList[i].first != nullptr && shouldCheck(i, zList))
+        if (!zList[i].second && zList[i].first != nullptr &&
+            std::abs(zList[i].first->center.z - player->Position.z) <
+                (zList[i].first->radius + 0.5))
         {
             checkZ.insert(zList[i].first);
         }
     }
 
-    for (BoundingTree *b : checkX)
+    for (Octree *o : checkX)
     {
-        if (checkZ.find(b) != checkZ.end())
+        if (checkZ.find(o) != checkZ.end())
         {
-            checkNodes(b->node, b->modelMatrix, b->model);
+            checkNodes(o);
         }
     }
 }
 
-void CollisionManager::checkNodes(BoundingNode *bn, glm::mat4 *modelMatrix,
-                                  Model *model)
+void CollisionManager::checkNodes(Octree *o)
 {
-    bool colliding = isColliding(bn);
-    if (!colliding)
+    if (!isColliding(o))
         return;
 
-    if (bn->bottom)
+    for (int i = 0; i < 8; i++)
     {
-        if (bn->collide)
-        {
-            glm::vec3 min = bn->center - bn->front - bn->up - bn->right;
-            glm::vec3 max = bn->center + bn->front + bn->up + bn->right;
-            collideWithPoly(min, max, player->Position);
-        }
-        return;
+        bool colliding = isColliding(&o->node[i]);
+        if (!colliding)
+            continue;
+        collideWithNode(&o->node[i]);
     }
-    checkNodes(bn->first, modelMatrix, model);
-    checkNodes(bn->second, modelMatrix, model);
 }
 
-bool CollisionManager::isColliding(BoundingNode *bn)
+bool CollisionManager::isColliding(Octree *o)
+{
+    float playerRadius = 0.5f;
+    glm::vec3 pos = player->Position + player->translation;
+    glm::vec3 rel = pos - o->center;
+
+    float projF = glm::dot(rel, o->f);
+    float projU = glm::dot(rel, o->u);
+    float projR = glm::dot(rel, o->r);
+
+    if (std::abs(projF) > o->front + playerRadius)
+        return false;
+    if (std::abs(projU) > o->up + playerRadius)
+        return false;
+    if (std::abs(projR) > o->right + playerRadius)
+        return false;
+    return true;
+}
+
+bool CollisionManager::isColliding(OctNode *n)
 {
     float playerRadius = 0.5f;
 
     glm::vec3 pos = player->Position + player->translation;
 
-    float playerProjF = glm::dot(pos - bn->center, glm::normalize(bn->front));
+    float playerProjF = glm::dot(pos - n->center, n->parent->f);
 
-    float halfExtentFront = glm::length(bn->front);
-
-    if (playerProjF < -(halfExtentFront + playerRadius) ||
-        playerProjF > (halfExtentFront + playerRadius))
+    if (playerProjF < -(n->front + playerRadius) ||
+        playerProjF > (n->front + playerRadius))
     {
         return false;
     }
 
-    float playerProjU = glm::dot(pos - bn->center, glm::normalize(bn->up));
-
-    float halfExtentUp = glm::length(bn->up);
-
-    if (playerProjU < -(halfExtentUp + playerRadius) ||
-        playerProjU > (halfExtentUp + playerRadius))
+    float playerProjU = glm::dot(pos - n->center, n->parent->u);
+    if (playerProjU < -(n->up + playerRadius) ||
+        playerProjU > (n->up + playerRadius))
     {
         return false;
     }
 
-    float playerProjR = glm::dot(pos - bn->center, glm::normalize(bn->right));
-
-    float halfExtentRight = glm::length(bn->right);
-
-    if (playerProjR < -(halfExtentRight + playerRadius) ||
-        playerProjR > (halfExtentRight + playerRadius))
+    float playerProjR = glm::dot(pos - n->center, n->parent->r);
+    if (playerProjR < -(n->right + playerRadius) ||
+        playerProjR > (n->right + playerRadius))
     {
         return false;
     }
 
     return true;
 }
-
-bool CollisionManager::isColliding(glm::vec3 min, glm::vec3 max,
-                                   glm::vec3 playerPos)
-{
-    if (playerPos.x >= min.x && playerPos.x <= max.x && playerPos.y >= min.y &&
-        playerPos.y <= max.y && playerPos.z >= min.z && playerPos.z <= max.z)
-    {
-        return true;
-    }
-    return false;
-}
-
-void CollisionManager::collideWithPoly(glm::vec3 min, glm::vec3 max,
-                                       glm::vec3 playerPos)
+// change
+void CollisionManager::collideWithNode(OctNode *n)
 {
     float playerRadius = 0.5f;
+    glm::vec3 pos = player->Position + player->translation;
 
-    glm::vec3 playerMin = playerPos - glm::vec3(playerRadius);
-    glm::vec3 playerMax = playerPos + glm::vec3(playerRadius);
+    glm::vec3 diff = pos - n->center;
 
-    glm::vec3 overlapMin = glm::max(min, playerMin);
-    glm::vec3 overlapMax = glm::min(max, playerMax);
-
-    if (overlapMin.x >= overlapMax.x || overlapMin.y >= overlapMax.y ||
-        overlapMin.z >= overlapMax.z)
-    {
+    float playerProjF = glm::dot(diff, n->parent->f);
+    float overlapF = (n->front + playerRadius) - std::abs(playerProjF);
+    if (overlapF <= 0)
         return;
-    }
 
-    glm::vec3 overlap = overlapMax - overlapMin;
+    float playerProjU = glm::dot(diff, n->parent->u);
+    float overlapU = (n->up + playerRadius) - std::abs(playerProjU);
+    if (overlapU <= 0)
+        return;
 
-    glm::vec3 correction(0.0f);
-    if (overlap.x < overlap.y && overlap.x < overlap.z)
-    {
-        correction.x =
-            overlap.x * (playerPos.x < (min.x + max.x) / 2.0f ? -1.0f : 1.0f);
-    }
-    else if (overlap.y < overlap.x && overlap.y < overlap.z)
-    {
-        correction.y =
-            overlap.y * (playerPos.y < (min.y + max.y) / 2.0f ? -1.0f : 1.0f);
-    }
+    float playerProjR = glm::dot(diff, n->parent->r);
+    float overlapR = (n->right + playerRadius) - std::abs(playerProjR);
+    if (overlapR <= 0)
+        return;
+
+    // Find the axis with the minimum penetration
+    float minOverlap = std::min({overlapF, overlapU, overlapR});
+    glm::vec3 pushDir;
+
+    if (minOverlap == overlapF)
+        pushDir = n->parent->f * (playerProjF < 0 ? 1.0f : -1.0f) * overlapF;
+    else if (minOverlap == overlapU)
+        pushDir = n->parent->u * (playerProjU < 0 ? 1.0f : -1.0f) * overlapU;
     else
-    {
-        correction.z =
-            overlap.z * (playerPos.z < (min.z + max.z) / 2.0f ? -1.0f : 1.0f);
-    }
-    player->translation += correction;
+        pushDir = n->parent->r * (playerProjR < 0 ? 1.0f : -1.0f) * overlapR;
+
+    player->translation += pushDir;
 }
 
-void CollisionManager::add(BoundingTree *bt)
+void CollisionManager::add(Octree *o)
 {
-    std::pair<BoundingTree *, bool> min(bt, false);
-    std::pair<BoundingTree *, bool> max(bt, true);
+    std::pair<Octree *, bool> min(o, false);
+    std::pair<Octree *, bool> max(o, true);
 
     xList.push_back(min);
     xList.push_back(max);
     zList.push_back(min);
     zList.push_back(max);
-}
-
-bool CollisionManager::shouldCheck(int i,
-                                   vector<pair<BoundingTree *, bool>> &list)
-{
-    BoundingTree *bt = list[i].first;
-    i++;
-    while (list[i].first != bt && i < list.size())
-    {
-        if (list[i].first == player->bt)
-        {
-            return true;
-        }
-        i++;
-    }
-    return false;
 }

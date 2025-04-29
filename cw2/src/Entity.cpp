@@ -1,5 +1,6 @@
 #include "Entity.h"
 #include "BoundingTree.h"
+#include "Octree.h"
 
 Entity::Entity()
 {
@@ -36,5 +37,5 @@ void Entity::update(float dt)
 
 void Entity::genBoundingTree(Model &model)
 {
-    this->bt = new BoundingTree(model, &this->modelMatrix);
+    this->ot = new Octree(&model, this->modelMatrix);
 }

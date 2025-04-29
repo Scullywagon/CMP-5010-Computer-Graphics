@@ -4,6 +4,7 @@
 #include "BoundingTree.h"
 #include "Light.h"
 #include "Model.h"
+#include "Octree.h"
 
 class Entity
 {
@@ -12,7 +13,7 @@ class Entity
     glm::mat4 modelMatrix = glm::mat4(1.0f);
     glm::vec3 position;
     glm::vec3 rotation;
-    BoundingTree *bt;
+    Octree *ot;
 
     Light *light;
 

@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o.d"
   "CMakeFiles/cw.dir/src/Entity.cpp.o"
   "CMakeFiles/cw.dir/src/Entity.cpp.o.d"
+  "CMakeFiles/cw.dir/src/Octree.cpp.o"
+  "CMakeFiles/cw.dir/src/Octree.cpp.o.d"
   "CMakeFiles/cw.dir/src/Renderer.cpp.o"
   "CMakeFiles/cw.dir/src/Renderer.cpp.o.d"
   "CMakeFiles/cw.dir/src/Scene.cpp.o"

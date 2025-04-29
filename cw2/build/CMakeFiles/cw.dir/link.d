@@ -6,6 +6,7 @@
   CMakeFiles/cw.dir/src/CollisionManager.cpp.o \
   CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o \
   CMakeFiles/cw.dir/src/Entity.cpp.o \
+  CMakeFiles/cw.dir/src/Octree.cpp.o \
   CMakeFiles/cw.dir/src/Renderer.cpp.o \
   CMakeFiles/cw.dir/src/Scene.cpp.o \
   CMakeFiles/cw.dir/src/TexFormFile.cpp.o \
@@ -68,6 +69,8 @@ CMakeFiles/cw.dir/src/CollisionManager.cpp.o:
 CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o:
 
 CMakeFiles/cw.dir/src/Entity.cpp.o:
+
+CMakeFiles/cw.dir/src/Octree.cpp.o:
 
 CMakeFiles/cw.dir/src/Renderer.cpp.o:
 

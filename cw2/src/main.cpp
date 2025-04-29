@@ -1,9 +1,9 @@
 
 #include "Constants.h"
-#include "VarName.h"
 #include "Entities/FerrisWheel.h"
 #include "Renderer.h"
 #include "Scene.h"
+#include "VarName.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <assimp/Importer.hpp>
@@ -113,6 +113,11 @@ void input_callback(GLFWwindow *window)
     {
         vars::enableRotation = !vars::enableRotation;
         rotationToggleTime = currentFrame;
+    }
+    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+    {
+        cout << "position: " << scene->cam.Position.x << " "
+             << scene->cam.Position.y << " " << scene->cam.Position.z << endl;
     }
 }
 

@@ -128,10 +128,24 @@ CMakeFiles/cw.dir/src/Entity.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cw.dir/src/Entity.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entity.cpp -o CMakeFiles/cw.dir/src/Entity.cpp.s
 
+CMakeFiles/cw.dir/src/Octree.cpp.o: CMakeFiles/cw.dir/flags.make
+CMakeFiles/cw.dir/src/Octree.cpp.o: /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Octree.cpp
+CMakeFiles/cw.dir/src/Octree.cpp.o: CMakeFiles/cw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cw.dir/src/Octree.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cw.dir/src/Octree.cpp.o -MF CMakeFiles/cw.dir/src/Octree.cpp.o.d -o CMakeFiles/cw.dir/src/Octree.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Octree.cpp
+
+CMakeFiles/cw.dir/src/Octree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cw.dir/src/Octree.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Octree.cpp > CMakeFiles/cw.dir/src/Octree.cpp.i
+
+CMakeFiles/cw.dir/src/Octree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cw.dir/src/Octree.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Octree.cpp -o CMakeFiles/cw.dir/src/Octree.cpp.s
+
 CMakeFiles/cw.dir/src/Renderer.cpp.o: CMakeFiles/cw.dir/flags.make
 CMakeFiles/cw.dir/src/Renderer.cpp.o: /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Renderer.cpp
 CMakeFiles/cw.dir/src/Renderer.cpp.o: CMakeFiles/cw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cw.dir/src/Renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cw.dir/src/Renderer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cw.dir/src/Renderer.cpp.o -MF CMakeFiles/cw.dir/src/Renderer.cpp.o.d -o CMakeFiles/cw.dir/src/Renderer.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Renderer.cpp
 
 CMakeFiles/cw.dir/src/Renderer.cpp.i: cmake_force
@@ -145,7 +159,7 @@ CMakeFiles/cw.dir/src/Renderer.cpp.s: cmake_force
 CMakeFiles/cw.dir/src/Scene.cpp.o: CMakeFiles/cw.dir/flags.make
 CMakeFiles/cw.dir/src/Scene.cpp.o: /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Scene.cpp
 CMakeFiles/cw.dir/src/Scene.cpp.o: CMakeFiles/cw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cw.dir/src/Scene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cw.dir/src/Scene.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cw.dir/src/Scene.cpp.o -MF CMakeFiles/cw.dir/src/Scene.cpp.o.d -o CMakeFiles/cw.dir/src/Scene.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Scene.cpp
 
 CMakeFiles/cw.dir/src/Scene.cpp.i: cmake_force
@@ -159,7 +173,7 @@ CMakeFiles/cw.dir/src/Scene.cpp.s: cmake_force
 CMakeFiles/cw.dir/src/TexFormFile.cpp.o: CMakeFiles/cw.dir/flags.make
 CMakeFiles/cw.dir/src/TexFormFile.cpp.o: /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/TexFormFile.cpp
 CMakeFiles/cw.dir/src/TexFormFile.cpp.o: CMakeFiles/cw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cw.dir/src/TexFormFile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/cw.dir/src/TexFormFile.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cw.dir/src/TexFormFile.cpp.o -MF CMakeFiles/cw.dir/src/TexFormFile.cpp.o.d -o CMakeFiles/cw.dir/src/TexFormFile.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/TexFormFile.cpp
 
 CMakeFiles/cw.dir/src/TexFormFile.cpp.i: cmake_force
@@ -173,7 +187,7 @@ CMakeFiles/cw.dir/src/TexFormFile.cpp.s: cmake_force
 CMakeFiles/cw.dir/src/main.cpp.o: CMakeFiles/cw.dir/flags.make
 CMakeFiles/cw.dir/src/main.cpp.o: /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp
 CMakeFiles/cw.dir/src/main.cpp.o: CMakeFiles/cw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/cw.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/cw.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cw.dir/src/main.cpp.o -MF CMakeFiles/cw.dir/src/main.cpp.o.d -o CMakeFiles/cw.dir/src/main.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/main.cpp
 
 CMakeFiles/cw.dir/src/main.cpp.i: cmake_force
@@ -187,7 +201,7 @@ CMakeFiles/cw.dir/src/main.cpp.s: cmake_force
 CMakeFiles/cw.dir/src/stb_impl.cpp.o: CMakeFiles/cw.dir/flags.make
 CMakeFiles/cw.dir/src/stb_impl.cpp.o: /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/stb_impl.cpp
 CMakeFiles/cw.dir/src/stb_impl.cpp.o: CMakeFiles/cw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/cw.dir/src/stb_impl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/cw.dir/src/stb_impl.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cw.dir/src/stb_impl.cpp.o -MF CMakeFiles/cw.dir/src/stb_impl.cpp.o.d -o CMakeFiles/cw.dir/src/stb_impl.cpp.o -c /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/stb_impl.cpp
 
 CMakeFiles/cw.dir/src/stb_impl.cpp.i: cmake_force
@@ -204,6 +218,7 @@ cw_OBJECTS = \
 "CMakeFiles/cw.dir/src/CollisionManager.cpp.o" \
 "CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o" \
 "CMakeFiles/cw.dir/src/Entity.cpp.o" \
+"CMakeFiles/cw.dir/src/Octree.cpp.o" \
 "CMakeFiles/cw.dir/src/Renderer.cpp.o" \
 "CMakeFiles/cw.dir/src/Scene.cpp.o" \
 "CMakeFiles/cw.dir/src/TexFormFile.cpp.o" \
@@ -217,6 +232,7 @@ cw_EXTERNAL_OBJECTS =
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: CMakeFiles/cw.dir/src/CollisionManager.cpp.o
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: CMakeFiles/cw.dir/src/Entity.cpp.o
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: CMakeFiles/cw.dir/src/Octree.cpp.o
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: CMakeFiles/cw.dir/src/Renderer.cpp.o
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: CMakeFiles/cw.dir/src/Scene.cpp.o
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: CMakeFiles/cw.dir/src/TexFormFile.cpp.o
@@ -233,7 +249,7 @@ cw_EXTERNAL_OBJECTS =
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: /usr/lib/libOpenGL.so
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: /usr/lib/libz.so
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw: CMakeFiles/cw.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable /home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cw.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
