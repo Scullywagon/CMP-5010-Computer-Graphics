@@ -88,8 +88,6 @@ void Scene::addEntities(Entity &entity)
     if (entity.model != "Tree" && entity.model != "OilLamp" &&
         entity.model != "OilLampGlass")
     {
-
-        cout << entity.model << endl;
         entity.genBoundingTree(*model);
         entity.bt->updatePos(entity.modelMatrix);
         collisionManager->add(entity.bt);

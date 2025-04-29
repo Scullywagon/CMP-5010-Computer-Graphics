@@ -7,7 +7,6 @@
 CollisionManager::CollisionManager(Camera *p)
 {
     this->player = p;
-    add(p->bt);
 }
 
 void CollisionManager::init()
@@ -32,15 +31,6 @@ void CollisionManager::genChecks()
 
     for (int i = 0; i < xList.size() - 1; i++)
     {
-        /*
-        if (x == false && z == false)
-            break;
-        if (xList[i].first == player->bt)
-            x = false;
-        if (zList[i].first == player->bt)
-            z = false;
-         */
-
         if (xList[i].second == false && xList[i].first != player->bt &&
             xList[i].first != nullptr && shouldCheck(i, xList))
         {
