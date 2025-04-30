@@ -86,6 +86,8 @@ class Camera : public ParentCamera
 
     void move() override
     {
+        if (!flight)
+            this->translation.y = 0.0f;
         this->Position += translation;
         bt->translate(translation);
         float transY = 0.0f;

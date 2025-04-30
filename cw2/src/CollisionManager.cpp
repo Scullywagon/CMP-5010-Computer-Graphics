@@ -60,11 +60,12 @@ void CollisionManager::checkNodes(Octree *o)
     if (!isColliding(o))
         return;
 
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < o->node.size(); i++)
     {
         bool colliding = isColliding(&o->node[i]);
         if (!colliding)
             continue;
+        cout << "colliding with node :" << i << endl;
         collideWithNode(&o->node[i]);
     }
 }
@@ -93,68 +94,55 @@ bool CollisionManager::isColliding(OctNode *n)
     float playerRadius = 0.5f;
 
     glm::vec3 pos = player->Position + player->translation;
+    glm::vec3 rel = pos - n->center;
 
-    float playerProjF = glm::dot(pos - n->center, n->parent->f);
+    float projF = glm::dot(rel, n->parent->f);
+    float projU = glm::dot(rel, n->parent->u);
+    float projR = glm::dot(rel, n->parent->r);
 
-    if (playerProjF < -(n->front + playerRadius) ||
-        playerProjF > (n->front + playerRadius))
-    {
+    if (std::abs(projF) > n->front + playerRadius)
         return false;
-    }
-
-    float playerProjU = glm::dot(pos - n->center, n->parent->u);
-    if (playerProjU < -(n->up + playerRadius) ||
-        playerProjU > (n->up + playerRadius))
-    {
+    if (std::abs(projU) > n->up + playerRadius)
         return false;
-    }
-
-    float playerProjR = glm::dot(pos - n->center, n->parent->r);
-    if (playerProjR < -(n->right + playerRadius) ||
-        playerProjR > (n->right + playerRadius))
-    {
+    if (std::abs(projR) > n->right + playerRadius)
         return false;
-    }
-
     return true;
 }
 // change
+
 void CollisionManager::collideWithNode(OctNode *n)
 {
     float playerRadius = 0.5f;
     glm::vec3 pos = player->Position + player->translation;
+    glm::vec3 rel = pos - n->center;
 
-    glm::vec3 diff = pos - n->center;
+    float projF = glm::dot(rel, n->parent->f);
+    float projU = glm::dot(rel, n->parent->u);
+    float projR = glm::dot(rel, n->parent->r);
 
-    float playerProjF = glm::dot(diff, n->parent->f);
-    float overlapF = (n->front + playerRadius) - std::abs(playerProjF);
-    if (overlapF <= 0)
-        return;
+    float distF = std::abs(projF) - (n->front + playerRadius);
+    float distU = std::abs(projU) - (n->up + playerRadius);
+    float distR = std::abs(projR) - (n->right + playerRadius);
 
-    float playerProjU = glm::dot(diff, n->parent->u);
-    float overlapU = (n->up + playerRadius) - std::abs(playerProjU);
-    if (overlapU <= 0)
-        return;
-
-    float playerProjR = glm::dot(diff, n->parent->r);
-    float overlapR = (n->right + playerRadius) - std::abs(playerProjR);
-    if (overlapR <= 0)
-        return;
-
-    // Find the axis with the minimum penetration
-    float minOverlap = std::min({overlapF, overlapU, overlapR});
-    glm::vec3 pushDir;
-
-    if (minOverlap == overlapF)
-        pushDir = n->parent->f * (playerProjF < 0 ? 1.0f : -1.0f) * overlapF;
-    else if (minOverlap == overlapU)
-        pushDir = n->parent->u * (playerProjU < 0 ? 1.0f : -1.0f) * overlapU;
-    else
-        pushDir = n->parent->r * (playerProjR < 0 ? 1.0f : -1.0f) * overlapR;
-
-    player->translation += pushDir;
+    if (distF < 0.0f && distU < 0.0f && distR < 0.0f)
+    {
+        if (distF > distU && distF > distR)
+        {
+            float overlap = -distF;
+            player->translation += glm::sign(projF) * n->parent->f * overlap;
+        }
+        else if (distU > distR)
+        {
+            float overlap = -distU;
+            player->translation += glm::sign(projU) * n->parent->u * overlap;
+        }
+        else
+        {
+            float overlap = -distR;
+            player->translation += glm::sign(projR) * n->parent->r * overlap;
+        }
+    }
 }
-
 void CollisionManager::add(Octree *o)
 {
     std::pair<Octree *, bool> min(o, false);

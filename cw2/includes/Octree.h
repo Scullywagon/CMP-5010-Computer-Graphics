@@ -18,7 +18,7 @@ struct OctNode
 class Octree
 {
   public:
-    OctNode node[8];
+    vector<OctNode> node;
     glm::vec3 min, max, center;
     float front, up, right, radius;
     glm::vec3 f = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -26,9 +26,12 @@ class Octree
     glm::vec3 r = glm::vec3(0.0f, 0.0f, 1.0f);
     Octree(Model *model, glm::mat4 modelMatrix);
     void updatePos(glm::mat4 modelMatrix);
+    void translate(glm::vec3 translation);
+    void rotate(float rotation, glm::vec3 axis);
 
   private:
-    vector<glm::vec3> getPositions(Model *model);
+    vector<pair<int, int>> getTriangles(Model *model);
+    void splitTriangles(vector<pair<int, int>> &triangles, Model *model);
 };
 
 #endif

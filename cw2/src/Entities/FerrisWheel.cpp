@@ -48,7 +48,6 @@ void Wheel::update(float dt)
     {
         child->update(dt);
     }
-    // bt->updatePos(modelMatrix);
 }
 
 void Wheel::rotate(float dt)
@@ -58,6 +57,7 @@ void Wheel::rotate(float dt)
                                     glm::vec3(1.0f, 0.0f, 0.0f));
     this->rotationMatrix = glm::rotate(rotationMatrix, radians(rotation),
                                        glm::vec3(1.0f, 0.0f, 0.0f));
+    ot->rotate(rotation, glm::vec3(1.0f, 0.0f, 0.0f));
 }
 
 void Wheel::createCarts()
@@ -112,7 +112,6 @@ void Cart::init()
 
 void Cart::update(float dt)
 {
-    /*
     if (vars::enableRotation)
     {
         glm::vec3 newPos =
@@ -120,7 +119,11 @@ void Cart::update(float dt)
         glm::vec3 translation = newPos - position;
         position = newPos;
         this->modelMatrix = glm::translate(modelMatrix, translation);
-        bt->translate(translation);
+        ot->translate(translation);
+        for (Entity *child : children)
+        {
+            child->modelMatrix =
+                glm::translate(child->modelMatrix, translation);
+        }
     }
-    */
 }
