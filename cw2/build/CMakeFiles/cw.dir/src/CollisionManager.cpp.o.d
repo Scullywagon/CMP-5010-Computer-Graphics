@@ -431,8 +431,10 @@ CMakeFiles/cw.dir/src/CollisionManager.cpp.o: \
  /usr/include/c++/14.2.1/bits/stl_relops.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Camera.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/ParentCamera.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Octree.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/ParentCamera.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Model.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Octree.h

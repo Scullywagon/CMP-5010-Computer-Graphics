@@ -53,13 +53,18 @@ void CollisionManager::genChecks()
             checkNodes(o);
         }
     }
+    checkX.clear();
+    checkZ.clear();
 }
 
 void CollisionManager::checkNodes(Octree *o)
 {
     if (!isColliding(o))
+    {
+        o->colliding = false;
         return;
-
+    }
+    o->colliding = true;
     for (int i = 0; i < o->node.size(); i++)
     {
         bool colliding = isColliding(&o->node[i]);

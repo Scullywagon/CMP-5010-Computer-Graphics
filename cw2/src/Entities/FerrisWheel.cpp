@@ -9,6 +9,7 @@ Stand::Stand()
     model = "Stand";
     this->position = glm::vec3(0.0f, 0.0f, 0.0f);
     this->rotation = glm::vec3(0.0f, 5.0f, 0.0f);
+    this->levels = 1;
 }
 
 void Stand::init()
@@ -28,6 +29,7 @@ void Stand::update(float dt)
 Wheel::Wheel(glm::vec3 parent)
 {
     model = "Wheel";
+    this->levels = 1;
     this->position = glm::vec3(-2.7f, 24.96f, 0.0f);
     this->position += parent;
 }
@@ -92,6 +94,7 @@ void Wheel::createCarts()
 Cart::Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat)
 {
     model = "Cart";
+    this->levels = 4;
     this->position = parent + localPos;
     this->center = parent;
     this->localPos = localPos;

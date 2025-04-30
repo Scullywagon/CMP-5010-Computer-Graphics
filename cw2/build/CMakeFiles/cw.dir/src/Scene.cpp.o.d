@@ -431,11 +431,16 @@ CMakeFiles/cw.dir/src/Scene.cpp.o: \
  /usr/include/c++/14.2.1/utility \
  /usr/include/c++/14.2.1/bits/stl_relops.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/ParentCamera.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/CollisionManager.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Octree.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Octree.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/ParentCamera.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/CollisionManager.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Camera.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
+ /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Floor.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/OrthographicCamera.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h \
@@ -444,8 +449,5 @@ CMakeFiles/cw.dir/src/Scene.cpp.o: \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/CollisionManager.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
- /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h

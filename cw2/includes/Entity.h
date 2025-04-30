@@ -10,6 +10,7 @@ class Entity
 {
   public:
     string model;
+    int levels = 1;
     glm::mat4 modelMatrix = glm::mat4(1.0f);
     glm::vec3 position;
     glm::vec3 rotation;

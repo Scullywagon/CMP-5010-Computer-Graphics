@@ -571,6 +571,8 @@ CMakeFiles/cw.dir/src/CollisionManager.cpp.o: /home/logan/University/CMP-5010-Co
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Camera.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/CollisionManager.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Mesh.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Model.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Octree.h \
@@ -1095,6 +1097,7 @@ CMakeFiles/cw.dir/src/CollisionManager.cpp.o: /home/logan/University/CMP-5010-Co
 
 CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o: /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entities/FerrisWheel.cpp \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/BoundingTree.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Camera.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
@@ -1102,6 +1105,7 @@ CMakeFiles/cw.dir/src/Entities/FerrisWheel.cpp.o: /home/logan/University/CMP-501
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Mesh.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Model.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Octree.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/ParentCamera.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Shader.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/common.hpp \
@@ -2671,6 +2675,7 @@ CMakeFiles/cw.dir/src/Renderer.cpp.o: /home/logan/University/CMP-5010-Computer-G
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Camera.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/CollisionManager.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Floor.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h \
@@ -2683,6 +2688,7 @@ CMakeFiles/cw.dir/src/Renderer.cpp.o: /home/logan/University/CMP-5010-Computer-G
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Scene.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Shader.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Skybox.h \
+  /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/VarName.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/common.hpp \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/simd/common.h \
   /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/glm/simd/exponential.h \
@@ -4948,10 +4954,6 @@ CMakeFiles/cw.dir/src/stb_impl.cpp.o: /home/logan/University/CMP-5010-Computer-G
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Floor.h:
 
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h:
-
-/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h:
-
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entities/FerrisWheel.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/src/Entities/FerrisWheel.cpp:
@@ -4959,6 +4961,10 @@ CMakeFiles/cw.dir/src/stb_impl.cpp.o: /home/logan/University/CMP-5010-Computer-G
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/ParentCamera.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Octree.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Light.h:
+
+/home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Entity.h:
 
 /home/logan/University/CMP-5010-Computer-Graphics/cw2/includes/Constants.h:
 

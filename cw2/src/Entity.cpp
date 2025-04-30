@@ -37,5 +37,5 @@ void Entity::update(float dt)
 
 void Entity::genBoundingTree(Model &model)
 {
-    this->ot = new Octree(&model, this->modelMatrix);
+    this->ot = new Octree(&model, this->modelMatrix, this->levels);
 }

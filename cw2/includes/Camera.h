@@ -3,6 +3,7 @@
 
 #include "BoundingTree.h"
 #include "Constants.h"
+#include "Entity.h"
 #include "ParentCamera.h"
 #include "glm/detail/func_trigonometric.hpp"
 #include "glm/glm.hpp"
@@ -18,6 +19,9 @@ class Camera : public ParentCamera
     const float SPEED = 14.5f;
     const float FOV = 50.0f;
     BoundingTree *bt;
+    glm::vec3 oldPos;
+    bool inFerrisWheel = false;
+    Entity *cart = nullptr;
 
     Camera()
     {
@@ -86,6 +90,16 @@ class Camera : public ParentCamera
 
     void move() override
     {
+        if (inFerrisWheel)
+        {
+            glm::vec3 newPos = cart->position + glm::vec3(1.0f, -2.7f, 1.0f);
+            glm::vec3 translation = newPos - Position;
+            this->translation = translation;
+            oldPos = Position;
+            translation = glm::vec3(0.0f);
+            return;
+        }
+
         if (!flight)
             this->translation.y = 0.0f;
         this->Position += translation;
@@ -125,6 +139,25 @@ class Camera : public ParentCamera
         }
 
         updateCameraVectors();
+    }
+
+    void enterFerrisWheel(Entity *cart)
+    {
+        glm::vec3 newPos = cart->position + glm::vec3(1.0f, -2.7f, 1.0f);
+        glm::vec3 translation = newPos - Position;
+        this->translation = translation;
+        inFerrisWheel = true;
+        this->cart = cart;
+        move();
+    }
+
+    void exitFerrisWheel()
+    {
+        glm::vec3 translation = oldPos - Position;
+        this->translation = translation;
+        inFerrisWheel = false;
+        this->cart = nullptr;
+        move();
     }
 
   private:

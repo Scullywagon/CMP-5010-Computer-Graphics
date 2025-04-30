@@ -1,6 +1,6 @@
 #include "Octree.h"
 
-Octree::Octree(Model *model, glm::mat4 modelMatrix)
+Octree::Octree(Model *model, glm::mat4 modelMatrix, int scale)
 {
     vector<pair<int, int>> triangles = getTriangles(model);
     glm::vec3 m(std::numeric_limits<float>::max());
@@ -22,8 +22,9 @@ Octree::Octree(Model *model, glm::mat4 modelMatrix)
     this->radius = glm::length(max - min) / 2.0f;
     this->center = (min + max) / 2.0f;
 
-    splitTriangles(triangles, model);
+    splitTriangles(triangles, model, scale);
     updatePos(modelMatrix);
+    triangles.clear();
 }
 
 vector<pair<int, int>> Octree::getTriangles(Model *model)
@@ -96,7 +97,8 @@ void OctNode::generate(vector<glm::vec3> &positions)
     this->right = glm::length(max - center);
 }
 
-void Octree::splitTriangles(vector<pair<int, int>> &triangles, Model *model)
+void Octree::splitTriangles(vector<pair<int, int>> &triangles, Model *model,
+                            int scale)
 {
     struct IntermediaryNode
     {
@@ -173,7 +175,7 @@ void Octree::splitTriangles(vector<pair<int, int>> &triangles, Model *model)
 
     std::vector<IntermediaryNode> nodes = {rootNode};
 
-    for (int level = 0; level < 5; ++level)
+    for (int level = 0; level < scale; ++level)
     {
         std::vector<IntermediaryNode> nextLevel;
         for (auto &node : nodes)
@@ -185,19 +187,16 @@ void Octree::splitTriangles(vector<pair<int, int>> &triangles, Model *model)
         nodes = std::move(nextLevel);
     }
 
-    IntermediaryNode finalNodes[32];
-    std::copy(nodes.begin(), nodes.end(), finalNodes);
-
-    for (int i = 0; i < 32; i++)
+    for (int i = 0; i < nodes.size(); i++)
     {
         OctNode n;
-        if (finalNodes[i].triangles.empty())
+        if (nodes[i].triangles.empty())
             continue;
         n.parent = this;
-        n.center = finalNodes[i].center;
-        n.front = (finalNodes[i].max.x - finalNodes[i].min.x) / 2.0f;
-        n.up = (finalNodes[i].max.y - finalNodes[i].min.y) / 2.0f;
-        n.right = (finalNodes[i].max.z - finalNodes[i].min.z) / 2.0f;
+        n.center = nodes[i].center;
+        n.front = (nodes[i].max.x - nodes[i].min.x) / 2.0f;
+        n.up = (nodes[i].max.y - nodes[i].min.y) / 2.0f;
+        n.right = (nodes[i].max.z - nodes[i].min.z) / 2.0f;
 
         node.push_back(n);
 
@@ -209,4 +208,5 @@ void Octree::splitTriangles(vector<pair<int, int>> &triangles, Model *model)
     cout << "node size: " << node.size() << endl;
 
     triangles.clear();
+    nodes.clear();
 }

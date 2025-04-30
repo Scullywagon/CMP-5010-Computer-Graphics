@@ -3,6 +3,7 @@
 
 #include "Camera.h"
 #include "CollisionManager.h"
+#include "Entities/FerrisWheel.h"
 #include "Entity.h"
 #include "Floor.h"
 #include "Light.h"
@@ -28,9 +29,9 @@ struct Scene
     Skybox skybox;
     Floor floor;
     WorldLight worldLight;
+    Stand *stand;
 
     // Player
-
     Camera Player;
     OrthographicCamera overview;
     ParentCamera &cam = Player;
@@ -38,6 +39,7 @@ struct Scene
     Scene();
     void init();
     void update(float dt);
+    void playerActivate();
 
   private:
     void testModels(string name);

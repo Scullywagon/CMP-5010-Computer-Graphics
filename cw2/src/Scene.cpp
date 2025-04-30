@@ -29,8 +29,8 @@ Scene::Scene()
 
 void Scene::init()
 {
-    Stand *stand = new Stand();
-    entities.push_back(stand);
+    this->stand = new Stand();
+    entities.push_back(this->stand);
 
     for (auto &entity : entities)
     {
@@ -42,12 +42,28 @@ void Scene::init()
 
 void Scene::update(float dt)
 {
-    collisionManager->update();
+    if (!Player.inFerrisWheel)
+        collisionManager->update();
     for (auto &entity : entities)
     {
         entity->update(dt);
     }
     cam.move();
+}
+
+void Scene::playerActivate()
+{
+    if (stand->ot->colliding)
+    {
+        if (Player.inFerrisWheel)
+        {
+            Player.exitFerrisWheel();
+        }
+        else
+        {
+            Player.enterFerrisWheel(stand->children[0]);
+        }
+    }
 }
 
 void Scene::testModels(string name)
@@ -85,8 +101,15 @@ void Scene::addEntities(Entity &entity)
     {
         lights.push_back(entity.light);
     }
+    /*
     if (entity.model != "Tree" && entity.model != "OilLamp" &&
         entity.model != "OilLampGlass")
+    {
+        entity.genBoundingTree(*model);
+        collisionManager->add(entity.ot);
+    }
+    */
+    if (entity.model == "Stand")
     {
         entity.genBoundingTree(*model);
         collisionManager->add(entity.ot);

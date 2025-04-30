@@ -1,6 +1,7 @@
 #ifndef FERRISWHEEL_H
 #define FERRISWHEEL_H
 
+#include "Camera.h"
 #include "Constants.h"
 #include "Entity.h"
 #include "VarName.h"

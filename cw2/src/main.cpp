@@ -35,6 +35,7 @@ float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 float currentFrame = 0.0f;
 float flightToggleTime = 0.0f;
+float activateToggleTime = 0.0f;
 float rotationToggleTime = 0.0f;
 bool isRotate = false;
 
@@ -118,6 +119,12 @@ void input_callback(GLFWwindow *window)
     {
         cout << "position: " << scene->cam.Position.x << " "
              << scene->cam.Position.y << " " << scene->cam.Position.z << endl;
+    }
+    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS &&
+        currentFrame - activateToggleTime > 0.5)
+    {
+        scene->playerActivate();
+        activateToggleTime = currentFrame;
     }
 }
 
