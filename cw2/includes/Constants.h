@@ -9,8 +9,8 @@ const int SCREEN_HEIGHT = 1080;
 const float NEAR_PLANE = 0.1f;
 const float FAR_PLANE = 10000.0f;
 
-const int SHADOW_WIDTH = 2024;
-const int SHADOW_HEIGHT = 2024;
+const int SHADOW_WIDTH = 1920;
+const int SHADOW_HEIGHT = 1080;
 }; // namespace Constants
 
 #endif

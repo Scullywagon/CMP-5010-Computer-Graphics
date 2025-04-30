@@ -101,15 +101,8 @@ void Scene::addEntities(Entity &entity)
     {
         lights.push_back(entity.light);
     }
-    /*
     if (entity.model != "Tree" && entity.model != "OilLamp" &&
         entity.model != "OilLampGlass")
-    {
-        entity.genBoundingTree(*model);
-        collisionManager->add(entity.ot);
-    }
-    */
-    if (entity.model == "Stand")
     {
         entity.genBoundingTree(*model);
         collisionManager->add(entity.ot);
