@@ -23,6 +23,7 @@ Scene::Scene()
     assets["OilLampGlass"] = new Model("assets/oilLamp/oilLampGlass.obj", 8.0f);
     assets["OilLampGlass"]->isLight = true;
     assets["OilLampGlass"]->outColor = glm::vec3(0.8f, 0.8f, 0.2f);
+    assets["CircusTent"] = new Model("assets/circus/tent.obj", 1.4f);
     collisionManager = new CollisionManager(&Player);
     generateTerrain();
 }
@@ -31,6 +32,8 @@ void Scene::init()
 {
     this->stand = new Stand();
     entities.push_back(this->stand);
+    Entity *e = new Entity(glm::vec3(15.0f, 0.8f, 15.0f), glm::vec3(0.0f),
+                           "CircusTent");
 
     for (auto &entity : entities)
     {
@@ -48,7 +51,7 @@ void Scene::update(float dt)
     {
         entity->update(dt);
     }
-    cam.move();
+    cam->move();
 }
 
 void Scene::playerActivate()

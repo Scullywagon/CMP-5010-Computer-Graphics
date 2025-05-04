@@ -79,11 +79,11 @@ class Camera : public ParentCamera
         {
             if (dir == UP)
             {
-                this->translation += Up * velocity;
+                this->translation += WorldUp * velocity;
             }
             if (dir == DOWN)
             {
-                this->translation += -Up * velocity;
+                this->translation += -WorldUp * velocity;
             }
         }
     }

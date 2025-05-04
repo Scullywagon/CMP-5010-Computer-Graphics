@@ -15,7 +15,7 @@ void Renderer::init()
         new Shader("./shaders/world.vs.glsl", "./shaders/world.fs.glsl");
     this->depthShader =
         new Shader("./shaders/Shadow.vs.glsl", "./shaders/Shadow.fs.glsl");
-    projection = this->scene->cam.GetProjectionMatrix();
+    projection = this->scene->cam->GetProjectionMatrix();
     // view = scene->player->camera->getViewMatrix();
     cout << "Renderer initialized" << endl;
 }
@@ -59,8 +59,8 @@ int ticks = 0;
 void Renderer::update()
 {
     renderDepth();
-    view = scene->cam.GetViewMatrix();
-    projection = scene->cam.GetProjectionMatrix();
+    view = scene->cam->GetViewMatrix();
+    projection = scene->cam->GetProjectionMatrix();
     scene->skybox.render(view, projection);
     renderScene();
     ticks++;
@@ -71,7 +71,7 @@ void Renderer::renderScene()
     this->shader->use();
     shader->setMat4("projection", projection);
     shader->setMat4("view", view);
-    shader->setVec3("cameraPos", scene->cam.Position);
+    shader->setVec3("cameraPos", scene->cam->Position);
     shader->setMat4("model", glm::mat4(1.0f));
     shader->setVec3("sunDir", scene->worldLight.direction);
     shader->setVec3("sunAmbient", scene->worldLight.ambient);

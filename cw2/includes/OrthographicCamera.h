@@ -13,10 +13,10 @@ class OrthographicCamera : public ParentCamera
     const float SPEED = 14.5f;
     const float FOV = 50.0f;
 
-    float Left = -50.0f;
-    float RightBound = 50.0f;
-    float Bottom = -50.0f;
-    float Top = 50.0f;
+    float Left = -40.0f;
+    float RightBound = 40.0f;
+    float Bottom = -40.0f;
+    float Top = 40.0f;
     float Near = -0.1f;
     float Far = 2000.0f;
 
@@ -50,12 +50,53 @@ class OrthographicCamera : public ParentCamera
         float velocity = MovementSpeed * deltaTime;
         if (dir == LEFT)
         {
+            glm::vec3 angle = glm::radians(glm::vec3(0.0f, -velocity, 0.0f));
+
+            glm::quat rotation = glm::quat(angle);
+
+            glm::vec3 rotatedPosition = rotation * Position;
+            this->translation += rotatedPosition - Position;
+        }
+        if (dir == RIGHT)
+        {
             glm::vec3 angle = glm::radians(glm::vec3(0.0f, velocity, 0.0f));
 
             glm::quat rotation = glm::quat(angle);
 
             glm::vec3 rotatedPosition = rotation * Position;
             this->translation += rotatedPosition - Position;
+        }
+        if (dir == UP)
+        {
+            float scale = 0.5f * velocity;
+
+            if (Left <= -45.0f)
+                return;
+
+            Left -= scale;
+            RightBound += scale;
+            Bottom -= scale;
+            Top += scale;
+        }
+        if (dir == DOWN)
+        {
+            float scale = -0.5f * velocity;
+
+            if (Left >= -10.0f)
+                return;
+
+            Left -= scale;
+            RightBound += scale;
+            Bottom -= scale;
+            Top += scale;
+        }
+        if (dir == BACKWARD)
+        {
+            translation += -WorldUp * velocity;
+        }
+        if (dir == FORWARD)
+        {
+            translation += WorldUp * velocity;
         }
     }
 
@@ -70,6 +111,5 @@ class OrthographicCamera : public ParentCamera
     }
 
   private:
-    // Add internal logic like UpdateCameraVectors() if needed
 };
 #endif

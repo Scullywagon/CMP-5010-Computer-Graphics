@@ -7,7 +7,7 @@ using glm::radians;
 Stand::Stand()
 {
     model = "Stand";
-    this->position = glm::vec3(0.0f, 0.0f, 0.0f);
+    this->position = glm::vec3(40.0f, 0.0f, 0.0f);
     this->rotation = glm::vec3(0.0f, 5.0f, 0.0f);
     this->levels = 12;
 }
@@ -108,9 +108,10 @@ void Cart::init()
                                   glm::vec3(0.0f), "OilLamp"));
     children.push_back(new Entity(this->position - glm::vec3(1.0f, 4.5f, 0.0f),
                                   glm::vec3(0.0f), "OilLampGlass"));
-    children[1]->light = new Light(
-        children[1]->position, glm::vec3(0.1f, 0.05f, 0.01f),
-        glm::vec3(1.0f, 0.7f, 0.2f), glm::vec3(1.0f), 1.0f, 0.1f, 0.02f);
+    children[1]->light =
+        new Light(children[1]->position + glm::vec3(0.0f, 0.4f, 0.0f),
+                  glm::vec3(0.1f, 0.05f, 0.01f), glm::vec3(1.0f, 0.7f, 0.2f),
+                  glm::vec3(1.0f), 1.0f, 0.1f, 0.02f);
 }
 
 void Cart::update(float dt)
@@ -127,6 +128,10 @@ void Cart::update(float dt)
         {
             child->modelMatrix =
                 glm::translate(child->modelMatrix, translation);
+            if (child->light != nullptr)
+            {
+                child->light->position += translation;
+            }
         }
     }
 }

@@ -34,7 +34,7 @@ struct Scene
     // Player
     Camera Player;
     OrthographicCamera overview;
-    ParentCamera &cam = Player;
+    ParentCamera *cam = &Player;
 
     Scene();
     void init();

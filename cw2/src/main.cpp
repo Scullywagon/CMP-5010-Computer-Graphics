@@ -69,7 +69,7 @@ void mouse_callback(GLFWwindow *window, double xposIn, double yposIn)
     lastX = xpos; // updates the last x position for the next frame
     lastY = ypos; // updates the last y position for the next frame
 
-    scene->cam.ProcessMouseMovement(xoffset, yoffset);
+    scene->cam->ProcessMouseMovement(xoffset, yoffset);
 }
 
 // handled by the glfw callback function
@@ -81,32 +81,32 @@ void input_callback(GLFWwindow *window)
     }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        scene->cam.processInput(Camera::FORWARD, deltaTime);
+        scene->cam->processInput(Camera::FORWARD, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
-        scene->cam.processInput(Camera::BACKWARD, deltaTime);
+        scene->cam->processInput(Camera::BACKWARD, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
     {
-        scene->cam.processInput(Camera::LEFT, deltaTime);
+        scene->cam->processInput(Camera::LEFT, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {
-        scene->cam.processInput(Camera::RIGHT, deltaTime);
+        scene->cam->processInput(Camera::RIGHT, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
     {
-        scene->cam.processInput(Camera::UP, deltaTime);
+        scene->cam->processInput(Camera::UP, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
     {
-        scene->cam.processInput(Camera::DOWN, deltaTime);
+        scene->cam->processInput(Camera::DOWN, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS &&
         currentFrame - flightToggleTime > 0.5)
     {
-        scene->cam.flight = !scene->cam.flight;
+        scene->Player.flight = !scene->Player.flight;
         flightToggleTime = currentFrame;
     }
     if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS &&
@@ -117,14 +117,25 @@ void input_callback(GLFWwindow *window)
     }
     if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
     {
-        cout << "position: " << scene->cam.Position.x << " "
-             << scene->cam.Position.y << " " << scene->cam.Position.z << endl;
+        cout << "position: " << scene->cam->Position.x << " "
+             << scene->cam->Position.y << " " << scene->cam->Position.z << endl;
     }
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS &&
         currentFrame - activateToggleTime > 0.5)
     {
         scene->playerActivate();
         activateToggleTime = currentFrame;
+    }
+    if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
+    {
+        if (scene->cam != &scene->Player)
+        {
+            scene->cam = &scene->Player;
+        }
+        else
+        {
+            scene->cam = &scene->overview;
+        }
     }
 }
 
