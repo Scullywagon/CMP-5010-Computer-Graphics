@@ -93,10 +93,9 @@ class Camera : public ParentCamera
         if (inFerrisWheel)
         {
             glm::vec3 newPos = cart->position + glm::vec3(1.0f, -2.7f, 1.0f);
-            glm::vec3 translation = newPos - Position;
-            this->translation = translation;
+            this->translation = newPos - Position;
+            this->Position += translation;
             oldPos = Position;
-            translation = glm::vec3(0.0f);
             return;
         }
 
@@ -143,9 +142,6 @@ class Camera : public ParentCamera
 
     void enterFerrisWheel(Entity *cart)
     {
-        glm::vec3 newPos = cart->position + glm::vec3(1.0f, -2.7f, 1.0f);
-        glm::vec3 translation = newPos - Position;
-        this->translation = translation;
         inFerrisWheel = true;
         this->cart = cart;
         move();

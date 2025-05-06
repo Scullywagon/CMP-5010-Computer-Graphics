@@ -4,6 +4,7 @@
 namespace vars
 {
 extern bool enableRotation;
+extern bool startingRotation;
 };
 
 #endif

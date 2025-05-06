@@ -22,6 +22,7 @@ using namespace std;
 namespace vars
 {
 bool enableRotation = false;
+bool startingRotation = false;
 }
 
 int SCREEN_WIDTH = Constants::SCREEN_WIDTH;
@@ -193,7 +194,7 @@ int main()
     }
 
     glEnable(GL_DEPTH_TEST);
-
+    glEnable(GL_CULL_FACE);
     scene = new Scene();
     renderer = new Renderer(scene);
 

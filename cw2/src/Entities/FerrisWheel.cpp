@@ -46,6 +46,10 @@ void Wheel::update(float dt)
     {
         rotate(dt);
     }
+    else if (currentSpeed > 0.0f)
+    {
+        rotate(-dt);
+    }
     for (Entity *child : children)
     {
         child->update(dt);
@@ -54,12 +58,21 @@ void Wheel::update(float dt)
 
 void Wheel::rotate(float dt)
 {
-    float rotation = dt * speed;
+    float rotation = abs(dt) * currentSpeed;
     this->modelMatrix = glm::rotate(modelMatrix, radians(rotation),
                                     glm::vec3(1.0f, 0.0f, 0.0f));
     this->rotationMatrix = glm::rotate(rotationMatrix, radians(rotation),
                                        glm::vec3(1.0f, 0.0f, 0.0f));
     ot->rotate(rotation, glm::vec3(1.0f, 0.0f, 0.0f));
+
+    if (currentSpeed <= speed && currentSpeed > -0.1f)
+    {
+        currentSpeed += speed * dt * 0.5f;
+    }
+    else
+    {
+        currentSpeed = speed;
+    }
 }
 
 void Wheel::createCarts()
@@ -116,22 +129,18 @@ void Cart::init()
 
 void Cart::update(float dt)
 {
-    if (vars::enableRotation)
+    glm::vec3 newPos =
+        glm::vec3((*rotationMatrix) * glm::vec4(localPos, 0.0f)) + center;
+    glm::vec3 translation = newPos - position;
+    position = newPos;
+    this->modelMatrix = glm::translate(modelMatrix, translation);
+    ot->translate(translation);
+    for (Entity *child : children)
     {
-        glm::vec3 newPos =
-            glm::vec3((*rotationMatrix) * glm::vec4(localPos, 0.0f)) + center;
-        glm::vec3 translation = newPos - position;
-        position = newPos;
-        this->modelMatrix = glm::translate(modelMatrix, translation);
-        ot->translate(translation);
-        for (Entity *child : children)
+        child->modelMatrix = glm::translate(child->modelMatrix, translation);
+        if (child->light != nullptr)
         {
-            child->modelMatrix =
-                glm::translate(child->modelMatrix, translation);
-            if (child->light != nullptr)
-            {
-                child->light->position += translation;
-            }
+            child->light->position += translation;
         }
     }
 }

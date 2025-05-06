@@ -28,8 +28,9 @@ class Wheel : public Entity
   private:
     void createCarts();
     void rotate(float dt);
+    void beginRotation(float dt);
     float currentSpeed = 0.0f;
-    const float speed = 2.1f;
+    const float speed = 4.1f;
 };
 
 class Cart : public Entity
@@ -38,6 +39,7 @@ class Cart : public Entity
     glm::vec3 center;
     glm::vec3 localPos;
     glm::mat4 *rotationMatrix;
+    Camera *cam; // should be null
     Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat);
     void init() override;
     void update(float dt) override;

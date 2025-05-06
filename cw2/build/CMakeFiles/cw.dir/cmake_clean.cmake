@@ -1,7 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/cw.dir/link.d"
-  "/home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw"
-  "/home/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw.pdb"
+  "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw"
+  "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/output/cw.pdb"
   "CMakeFiles/cw.dir/src/BoundingTree.cpp.o"
   "CMakeFiles/cw.dir/src/BoundingTree.cpp.o.d"
   "CMakeFiles/cw.dir/src/CollisionManager.cpp.o"

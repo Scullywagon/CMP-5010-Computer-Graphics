@@ -32,10 +32,9 @@ class Floor
          {0.0f, 1.0f, 0.0f},
          {0.0f, textureScale}}};
 
-    // Create a vector of indices
     std::vector<unsigned int> indices = {
-        0, 1, 2, // First triangle
-        2, 3, 0  // Second triangle
+        0, 1, 2,
+        2, 3, 0 
     };
 
     Floor()

@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include "Constants.h"
+#include "Shader.h"
 
 Renderer::Renderer(Scene *scene)
 {
@@ -59,9 +60,11 @@ int ticks = 0;
 void Renderer::update()
 {
     renderDepth();
+    glDisable(GL_CULL_FACE);
     view = scene->cam->GetViewMatrix();
     projection = scene->cam->GetProjectionMatrix();
     scene->skybox.render(view, projection);
+    glEnable(GL_CULL_FACE);
     renderScene();
     ticks++;
 }
@@ -111,7 +114,9 @@ void Renderer::renderScene()
         drawModel(model, translations);
         shader->setBool("isLight", false);
     }
+    glDisable(GL_CULL_FACE);
     drawFloor();
+    glEnable(GL_CULL_FACE);
 }
 
 void Renderer::renderDepth()

@@ -73,7 +73,7 @@ void Scene::playerActivate()
         }
         else
         {
-            Player.enterFerrisWheel(stand->children[0]);
+            Player.enterFerrisWheel(stand->children[0]->children[0]);
         }
     }
 }
@@ -141,8 +141,10 @@ void Scene::generateTerrain()
                 glm::vec3 translation = glm::vec3(x, y, z);
                 entities.push_back(
                     new Entity(translation, glm::vec3(0.0f), "Terrain"));
+                /*
                 entities.push_back(
                     new Entity(translation, glm::vec3(0.0f), "Tree"));
+             */
                 index++;
             }
         }
