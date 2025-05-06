@@ -10,10 +10,20 @@ Entity::Entity()
     light = nullptr;
     model = "";
 }
+
 Entity::Entity(glm::vec3 position, glm::vec3 rotation, string model)
 {
     this->position = position;
     this->rotation = rotation;
+    this->model = model;
+    parent = nullptr;
+    light = nullptr;
+}
+
+Entity::Entity(Entity *e, string model)
+{
+    this->position = e->position;
+    this->rotation = e->rotation;
     this->model = model;
     parent = nullptr;
     light = nullptr;

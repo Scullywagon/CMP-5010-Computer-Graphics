@@ -7,8 +7,8 @@
 #include "Skybox.h"
 
 Scene::Scene()
-    : worldLight(glm::vec3(0.2, -0.8, 0.2), glm::vec3(0.1, 0.1, 0.2),
-                 glm::vec3(0.3, 0.3, 0.4), glm::vec3(1.0, 1.0, 1.0))
+    : worldLight(glm::vec3(0.2, -0.8, 0.2), glm::vec3(0.1, 0.1, 0.1),
+                 glm::vec3(0.1, 0.1, 0.2), glm::vec3(0.4, 0.4, 0.4))
 {
     assets["Stand"] = new Model("assets/base/base.obj", 2.0f);
     assets["Crate"] =
@@ -23,7 +23,10 @@ Scene::Scene()
     assets["OilLampGlass"] = new Model("assets/oilLamp/oilLampGlass.obj", 8.0f);
     assets["OilLampGlass"]->isLight = true;
     assets["OilLampGlass"]->outColor = glm::vec3(0.8f, 0.8f, 0.2f);
-    assets["CircusTent"] = new Model("assets/circus/tent.obj", 1.4f);
+    assets["CircusTent"] = new Model("assets/circus/tent.obj", 1.0f);
+    assets["CircusEye"] = new Model("assets/circus/eye.obj", 1.0f);
+    assets["CircusEye"]->isLight = true;
+    assets["CircusEye"]->outColor = glm::vec3(0.5f, 0.8f, 0.9f);
     collisionManager = new CollisionManager(&Player);
     generateTerrain();
 }
@@ -32,8 +35,14 @@ void Scene::init()
 {
     this->stand = new Stand();
     entities.push_back(this->stand);
-    Entity *e = new Entity(glm::vec3(15.0f, 0.8f, 15.0f), glm::vec3(0.0f),
+    Entity *e = new Entity(glm::vec3(-20.0f, 0.8f, -30.0f), glm::vec3(0.0f),
                            "CircusTent");
+    e->children.push_back(new Entity(e, "CircusEye"));
+    e->children[0]->light =
+        new Light(glm::vec3(-23.0f, 24.0f, -7.0f), glm::vec3(0.0f, 0.0f, 0.5f),
+                  glm::vec3(0.6f, 0.7f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f),
+                  1.0f, 0.1f, 0.01f);
+    entities.push_back(e);
 
     for (auto &entity : entities)
     {

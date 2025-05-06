@@ -15,8 +15,8 @@ class OrthographicCamera : public ParentCamera
 
     float Left = -40.0f;
     float RightBound = 40.0f;
-    float Bottom = -40.0f;
-    float Top = 40.0f;
+    float Bottom = -22.5f;
+    float Top = 22.5f;
     float Near = -0.1f;
     float Far = 2000.0f;
 
