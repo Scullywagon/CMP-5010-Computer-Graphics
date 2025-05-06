@@ -102,6 +102,7 @@ void Renderer::renderScene()
     shader->setInt("depthMap", 9);
 
     // Floor.render()
+    #pragma omp parallel
     for (auto &pair : scene->translations)
     {
         Model *model = pair.first;

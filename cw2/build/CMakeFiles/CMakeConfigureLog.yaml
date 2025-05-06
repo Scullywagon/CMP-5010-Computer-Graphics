@@ -558,3 +558,77 @@ events:
         
       exitCode: 2
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/FindOpenMP.cmake:252 (try_compile)"
+      - "/usr/local/share/cmake/Modules/FindOpenMP.cmake:522 (_OPENMP_GET_FLAGS)"
+      - "CMakeLists.txt:17 (find_package)"
+    description: "Detecting C OpenMP compiler info"
+    directories:
+      source: "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/CMakeScratch/TryCompile-NbxOeO"
+      binary: "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/CMakeScratch/TryCompile-NbxOeO"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: "/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk"
+    buildResult:
+      variable: "OpenMP_COMPILE_RESULT_C_Xclang fopenmp"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/CMakeScratch/TryCompile-NbxOeO'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_0a870/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_0a870.dir/build.make CMakeFiles/cmTC_0a870.dir/build
+        Building C object CMakeFiles/cmTC_0a870.dir/OpenMPTryFlag.c.o
+        /Library/Developer/CommandLineTools/usr/bin/cc   -Xclang -fopenmp -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -MD -MT CMakeFiles/cmTC_0a870.dir/OpenMPTryFlag.c.o -MF CMakeFiles/cmTC_0a870.dir/OpenMPTryFlag.c.o.d -o CMakeFiles/cmTC_0a870.dir/OpenMPTryFlag.c.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/CMakeScratch/TryCompile-NbxOeO/OpenMPTryFlag.c
+        /Users/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/CMakeScratch/TryCompile-NbxOeO/OpenMPTryFlag.c:2:10: fatal error: 'omp.h' file not found
+        #include <omp.h>
+                 ^~~~~~~
+        1 error generated.
+        make[2]: *** [CMakeFiles/cmTC_0a870.dir/OpenMPTryFlag.c.o] Error 1
+        make[1]: *** [cmTC_0a870/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/FindOpenMP.cmake:252 (try_compile)"
+      - "/usr/local/share/cmake/Modules/FindOpenMP.cmake:522 (_OPENMP_GET_FLAGS)"
+      - "CMakeLists.txt:17 (find_package)"
+    description: "Detecting CXX OpenMP compiler info"
+    directories:
+      source: "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/CMakeScratch/TryCompile-lhLfQ8"
+      binary: "/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/CMakeScratch/TryCompile-lhLfQ8"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: "/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk"
+    buildResult:
+      variable: "OpenMP_COMPILE_RESULT_CXX_Xclang fopenmp"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/CMakeScratch/TryCompile-lhLfQ8'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_e93cf/fast
+        /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_e93cf.dir/build.make CMakeFiles/cmTC_e93cf.dir/build
+        Building CXX object CMakeFiles/cmTC_e93cf.dir/OpenMPTryFlag.cpp.o
+        /Library/Developer/CommandLineTools/usr/bin/c++   -Xclang -fopenmp -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -MD -MT CMakeFiles/cmTC_e93cf.dir/OpenMPTryFlag.cpp.o -MF CMakeFiles/cmTC_e93cf.dir/OpenMPTryFlag.cpp.o.d -o CMakeFiles/cmTC_e93cf.dir/OpenMPTryFlag.cpp.o -c /Users/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/CMakeScratch/TryCompile-lhLfQ8/OpenMPTryFlag.cpp
+        /Users/logan/University/CMP-5010-Computer-Graphics/cw2/build/CMakeFiles/CMakeScratch/TryCompile-lhLfQ8/OpenMPTryFlag.cpp:2:10: fatal error: 'omp.h' file not found
+        #include <omp.h>
+                 ^~~~~~~
+        1 error generated.
+        make[2]: *** [CMakeFiles/cmTC_e93cf.dir/OpenMPTryFlag.cpp.o] Error 1
+        make[1]: *** [cmTC_e93cf/fast] Error 2
+        
+      exitCode: 2
+...

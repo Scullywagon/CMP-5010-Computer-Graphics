@@ -56,6 +56,7 @@ void Scene::update(float dt)
 {
     if (!Player.inFerrisWheel)
         collisionManager->update();
+    #pragma omp parallel
     for (auto &entity : entities)
     {
         entity->update(dt);
