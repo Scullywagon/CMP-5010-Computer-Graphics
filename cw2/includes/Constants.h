@@ -3,14 +3,16 @@
 
 namespace Constants
 {
-const int SCREEN_WIDTH = 1920;
-const int SCREEN_HEIGHT = 1080;
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGHT = 720;
 
 const float NEAR_PLANE = 0.1f;
-const float FAR_PLANE = 10000.0f;
+const float FAR_PLANE = 900.0f;
 
-const int SHADOW_WIDTH = 1920;
-const int SHADOW_HEIGHT = 1080;
+const int SHADOW_WIDTH = 2000;
+const int SHADOW_HEIGHT = 2000;
+
+const float SHADOW_UPDATE_INTERVAL = 0.3f; 
 }; 
 
 #endif

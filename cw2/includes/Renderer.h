@@ -23,6 +23,7 @@ class Renderer
 
     unsigned int depthMapFBO, depthMap;
     unsigned int instanceVBO;
+    float shadowUpdateTimer = 0.0f;
 
     bool depthMode = false;
 
@@ -31,7 +32,7 @@ class Renderer
     // dont know if this is needed
     void init();
     // render the scene each update
-    void update();
+    void update(float deltaTime);
 
   private:
     void generateDepthMap();

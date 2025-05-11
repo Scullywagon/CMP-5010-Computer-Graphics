@@ -57,9 +57,14 @@ void Renderer::generateDepthMap()
     lightSpaceMatrix = lightProjection * lightView;
 }
 int ticks = 0;
-void Renderer::update()
+void Renderer::update(float deltaTime)
 {
-    renderDepth();
+    shadowUpdateTimer += deltaTime;
+    
+    if (shadowUpdateTimer >= Constants::SHADOW_UPDATE_INTERVAL) {
+        renderDepth();
+        shadowUpdateTimer = 0.0f;
+    }
     glDisable(GL_CULL_FACE);
     view = scene->cam->GetViewMatrix();
     projection = scene->cam->GetProjectionMatrix();
@@ -101,11 +106,16 @@ void Renderer::renderScene()
     glBindTexture(GL_TEXTURE_2D, depthMap);
     shader->setInt("depthMap", 9);
 
-    // Floor.render()
-    #pragma omp parallel
     for (auto &pair : scene->translations)
     {
+        if (pair.second.empty())
+            continue;
         Model *model = pair.first;
+        if (model == scene->assets["Tree"] && !vars::betterVisuals)
+        {
+            continue;
+        }
+
         if (model->isLight == true)
         {
             shader->setBool("isLight", true);
@@ -136,7 +146,13 @@ void Renderer::renderDepth()
 
     for (auto &pair : scene->translations)
     {
+        if (pair.second.empty())
+            continue;
         Model *model = pair.first;
+        if (model == scene->assets["Tree"] && !vars::betterVisuals)
+        {
+            continue;
+        }
         vector<glm::mat4 *> &translations = pair.second;
         drawModel(model, translations);
     }
@@ -199,6 +215,7 @@ void Renderer::drawMesh(Mesh &mesh, int amount)
     glBindVertexArray(mesh.VAO);
     glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
 
+    #pragma omp parallel for
     for (GLuint i = 0; i < 4; ++i)
     {
         glEnableVertexAttribArray(3 + i);
@@ -207,7 +224,12 @@ void Renderer::drawMesh(Mesh &mesh, int amount)
         glVertexAttribDivisor(3 + i, 1);
     }
 
-    // Draw instanced
+    if (amount == 1)
+    {
+        glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(mesh.indices.size()),
+                       GL_UNSIGNED_INT, 0);
+    }
+    else
     glDrawElementsInstanced(GL_TRIANGLES,
                             static_cast<GLsizei>(mesh.indices.size()),
                             GL_UNSIGNED_INT, 0, amount);

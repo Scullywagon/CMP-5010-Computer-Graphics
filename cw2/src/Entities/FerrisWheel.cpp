@@ -142,7 +142,16 @@ void Cart::update(float dt)
     ot->translate(translation);
     for (Entity *child : children)
     {
-        child->modelMatrix = glm::translate(child->modelMatrix, translation);
+        glm::vec3 childOffset = child->position - position;
+
+        glm::mat4 rot=
+            glm::translate(glm::mat4(1.0f), -childOffset);
+        rot = glm::rotate()
+        glm::mat4 childTranslationBack =
+            glm::translate(glm::mat4(1.0f), childOffset);
+
+        child->position += translation;
+        child->modelMatrix = glm::translate(glm::mat4(1.0f), child->position);
         if (child->light != nullptr)
         {
             child->light->position += translation;

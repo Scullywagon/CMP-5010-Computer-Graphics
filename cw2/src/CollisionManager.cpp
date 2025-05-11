@@ -70,7 +70,6 @@ void CollisionManager::checkNodes(Octree *o)
         bool colliding = isColliding(&o->node[i]);
         if (!colliding)
             continue;
-        cout << "colliding with node :" << i << endl;
         collideWithNode(&o->node[i]);
     }
 }

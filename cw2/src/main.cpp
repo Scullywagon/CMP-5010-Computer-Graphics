@@ -23,7 +23,8 @@ namespace vars
 {
 bool enableRotation = false;
 bool startingRotation = false;
-}
+bool betterVisuals = false;
+} // namespace vars
 
 int SCREEN_WIDTH = Constants::SCREEN_WIDTH;
 int SCREEN_HEIGHT = Constants::SCREEN_HEIGHT;
@@ -38,6 +39,8 @@ float currentFrame = 0.0f;
 float flightToggleTime = 0.0f;
 float activateToggleTime = 0.0f;
 float rotationToggleTime = 0.0f;
+float visualsToggleTime = 0.0f;
+float cameraToggleTime = 0.0f;
 bool isRotate = false;
 
 Scene *scene;
@@ -127,7 +130,8 @@ void input_callback(GLFWwindow *window)
         scene->playerActivate();
         activateToggleTime = currentFrame;
     }
-    if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS &&
+        currentFrame - cameraToggleTime > 0.5)
     {
         if (scene->cam != &scene->Player)
         {
@@ -137,6 +141,12 @@ void input_callback(GLFWwindow *window)
         {
             scene->cam = &scene->overview;
         }
+    }
+    if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS &&
+        currentFrame - visualsToggleTime > 0.5)
+    {
+        vars::betterVisuals = !vars::betterVisuals;
+        visualsToggleTime = currentFrame;
     }
 }
 
@@ -215,7 +225,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         scene->update(deltaTime);
-        renderer->update();
+        renderer->update(deltaTime);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
