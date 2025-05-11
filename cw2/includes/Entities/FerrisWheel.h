@@ -39,12 +39,18 @@ class Cart : public Entity
     glm::vec3 center;
     glm::vec3 localPos;
     glm::mat4 *rotationMatrix;
+    glm::quat targetRotation;
     Camera *cam; // should be null
     Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat);
     void init() override;
     void update(float dt) override;
+    float wabbleTime = 0.0f;
+    float wabbleAmplitude = 10.0f;
 
   private:
+    void wind(float dt);
+    void wabble(float dt);
+    void targetWabble();
 };
 
 #endif

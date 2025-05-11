@@ -13,7 +13,7 @@ class Entity
     int levels = 1;
     glm::mat4 modelMatrix = glm::mat4(1.0f);
     glm::vec3 position;
-    glm::vec3 rotation;
+    glm::mat4 localRotation;
     Octree *ot;
 
     Light *light;
@@ -22,7 +22,7 @@ class Entity
     Entity *parent;
 
     Entity();
-    Entity(glm::vec3 position, glm::vec3 rotation, string model);
+    Entity(glm::vec3 position, glm::mat4 rotation, string model);
     Entity(Entity *e, string model);
     virtual void init();
     virtual void update(float dt);

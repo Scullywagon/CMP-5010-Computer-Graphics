@@ -35,7 +35,7 @@ void Scene::init()
 {
     this->stand = new Stand();
     entities.push_back(this->stand);
-    Entity *e = new Entity(glm::vec3(-20.0f, 0.8f, -30.0f), glm::vec3(0.0f),
+    Entity *e = new Entity(glm::vec3(-20.0f, 0.8f, -30.0f), glm::mat4(0.0f),
                            "CircusTent");
     e->children.push_back(new Entity(e, "CircusEye"));
     e->children[0]->light =
@@ -141,9 +141,9 @@ void Scene::generateTerrain()
                 float r = (rand() % 100) / 100.0f;
                 glm::vec3 translation = glm::vec3(x, y, z);
                 entities.push_back(
-                    new Entity(translation, glm::vec3(0.0f), "Terrain"));
+                    new Entity(translation, glm::mat4(0.0f), "Terrain"));
                 entities.push_back(
-                    new Entity(translation, glm::vec3(0.0f), "Tree"));
+                    new Entity(translation, glm::mat4(0.0f), "Tree"));
                 index++;
             }
         }

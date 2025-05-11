@@ -1,6 +1,8 @@
 #include "Entities/FerrisWheel.h"
 #include "Entity.h"
+#include "glm/detail/type_mat.hpp"
 #include "glm/detail/type_vec.hpp"
+#include <random>
 
 using glm::radians;
 
@@ -8,7 +10,7 @@ Stand::Stand()
 {
     model = "Stand";
     this->position = glm::vec3(40.0f, 0.0f, 0.0f);
-    this->rotation = glm::vec3(0.0f, 5.0f, 0.0f);
+    this->localRotation = glm::mat4(1.0f);
     this->levels = 12;
 }
 
@@ -112,19 +114,21 @@ Cart::Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat)
     this->center = parent;
     this->localPos = localPos;
     this->rotationMatrix = rotationMat;
+    this->localRotation = glm::mat4(1.0f);
 }
 
 void Cart::init()
 {
     modelMatrix = glm::translate(modelMatrix, this->position);
     children.push_back(new Entity(this->position - glm::vec3(1.0f, 4.5f, 0.0f),
-                                  glm::vec3(0.0f), "OilLamp"));
+                                  glm::mat4(0.0f), "OilLamp"));
     children.push_back(new Entity(this->position - glm::vec3(1.0f, 4.5f, 0.0f),
-                                  glm::vec3(0.0f), "OilLampGlass"));
+                                  glm::mat4(0.0f), "OilLampGlass"));
     children[1]->light =
         new Light(children[1]->position + glm::vec3(0.0f, 0.4f, 0.0f),
                   glm::vec3(0.1f, 0.05f, 0.01f), glm::vec3(1.0f, 0.7f, 0.2f),
                   glm::vec3(1.0f), 1.0f, 0.1f, 0.02f);
+    targetWabble();
 }
 
 void Cart::update(float dt)
@@ -133,7 +137,8 @@ void Cart::update(float dt)
         glm::vec3((*rotationMatrix) * glm::vec4(localPos, 0.0f)) + center;
     glm::vec3 translation = newPos - position;
     position = newPos;
-    this->modelMatrix = glm::translate(modelMatrix, translation);
+    wabble(dt);
+    this->modelMatrix = glm::translate(glm::mat4(1.0f), newPos) * localRotation;
     ot->translate(translation);
     for (Entity *child : children)
     {
@@ -143,4 +148,33 @@ void Cart::update(float dt)
             child->light->position += translation;
         }
     }
+}
+
+void Cart::wabble(float dt)
+{
+    float wabbleSpeed = 3.0f;
+    wabbleTime += dt * wabbleSpeed;
+    float oscillation = wabbleAmplitude * sin(wabbleTime * wabbleAmplitude);
+
+    if (vars::enableRotation)
+    {
+        oscillation *= 1.5;
+    }
+
+    glm::mat4 identity(1.0f);
+
+    localRotation = glm::rotate(glm::mat4(1.0f), glm::radians(oscillation),
+                                glm::vec3(1.0f, 0.0f, 0.0f));
+}
+
+void Cart::wind(float dt)
+{
+}
+
+void Cart::targetWabble()
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(0.50f, 1.0f);
+    wabbleAmplitude = dis(gen);
 }
