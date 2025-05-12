@@ -37,7 +37,7 @@ class OrthographicCamera : public ParentCamera
 
     glm::mat4 GetViewMatrix() override
     {
-        return glm::lookAt(Position, glm::vec3(0.0f), Up);
+        return glm::lookAt(Position, glm::vec3(0.0f, 10.0f, 0.0f), Up);
     }
 
     glm::mat4 GetProjectionMatrix() const
@@ -69,26 +69,28 @@ class OrthographicCamera : public ParentCamera
         if (dir == UP)
         {
             float scale = 0.5f * velocity;
+            float upScale = 0.23f * velocity;
 
-            if (Left <= -45.0f)
+            if (Left <= -55.0f)
                 return;
 
             Left -= scale;
             RightBound += scale;
-            Bottom -= scale;
-            Top += scale;
+            Bottom -= upScale;
+            Top += upScale;
         }
         if (dir == DOWN)
         {
             float scale = -0.5f * velocity;
+            float upScale = -0.23f * velocity;
 
-            if (Left >= -10.0f)
+            if (Left >= -30.0f)
                 return;
 
             Left -= scale;
             RightBound += scale;
-            Bottom -= scale;
-            Top += scale;
+            Bottom -= upScale;
+            Top += upScale;
         }
         if (dir == BACKWARD)
         {

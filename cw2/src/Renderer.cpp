@@ -51,19 +51,38 @@ void Renderer::generateDepthMap()
     lightPos = scene->worldLight.direction * -1000.0f;
     cout << lightPos.x << " " << lightPos.y << endl;
     lightProjection =
-        glm::ortho(-300.0f, 300.0f, -300.0f, 300.0f, 0.01f, 2000.0f);
+        glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, 0.01f, 2000.0f);
     lightView =
         glm::lookAt(lightPos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
     lightSpaceMatrix = lightProjection * lightView;
 }
-int ticks = 0;
+
+void Renderer::regenLightView()
+{
+    lightPos = scene->worldLight.direction * -1000.0f;
+    lightView = glm::lookAt(lightPos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
+    lightSpaceMatrix = lightProjection * lightView;
+}
+
 void Renderer::update(float deltaTime)
 {
     shadowUpdateTimer += deltaTime;
     
-    if (shadowUpdateTimer >= Constants::SHADOW_UPDATE_INTERVAL) {
-        renderDepth();
-        shadowUpdateTimer = 0.0f;
+    if (!vars::betterVisuals)
+    {
+        if (shadowUpdateTimer >= Constants::SLOW_SHADOW_UPDATE_INTERVAL)
+        {
+            renderDepth();
+            shadowUpdateTimer = 0.0f;
+        }
+    }
+    else
+    {
+        if (shadowUpdateTimer >= Constants::SHADOW_UPDATE_INTERVAL)
+        {
+            renderDepth();
+            shadowUpdateTimer = 0.0f;
+        }
     }
     glDisable(GL_CULL_FACE);
     view = scene->cam->GetViewMatrix();
@@ -71,7 +90,6 @@ void Renderer::update(float deltaTime)
     scene->skybox.render(view, projection);
     glEnable(GL_CULL_FACE);
     renderScene();
-    ticks++;
 }
 
 void Renderer::renderScene()
@@ -215,7 +233,6 @@ void Renderer::drawMesh(Mesh &mesh, int amount)
     glBindVertexArray(mesh.VAO);
     glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
 
-    #pragma omp parallel for
     for (GLuint i = 0; i < 4; ++i)
     {
         glEnableVertexAttribArray(3 + i);

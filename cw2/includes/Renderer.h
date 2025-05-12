@@ -34,6 +34,8 @@ class Renderer
     // render the scene each update
     void update(float deltaTime);
 
+    void regenLightView();
+
   private:
     void generateDepthMap();
     void renderScene();

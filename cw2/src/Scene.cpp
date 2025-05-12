@@ -27,6 +27,7 @@ Scene::Scene()
     assets["CircusEye"] = new Model("assets/circus/eye.obj", 1.0f);
     assets["CircusEye"]->isLight = true;
     assets["CircusEye"]->outColor = glm::vec3(0.5f, 0.8f, 0.9f);
+    assets["TicketBooth"] = new Model("assets/TicketBooth/1970s_ticket_booth.obj", 10.0f);
     collisionManager = new CollisionManager(&Player);
     generateTerrain();
 }
@@ -43,6 +44,7 @@ void Scene::init()
                   glm::vec3(0.6f, 0.7f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f),
                   1.0f, 0.1f, 0.01f);
     entities.push_back(e);
+    entities.push_back(new Entity (glm::vec3(0.0f), glm::mat4(0.0f), "TicketBooth"));
 
     for (auto &entity : entities)
     {
@@ -74,6 +76,7 @@ void Scene::playerActivate()
         }
         else
         {
+            Player.oldPos = Player.Position;
             Player.enterFerrisWheel(stand->children[0]->children[0]);
         }
     }

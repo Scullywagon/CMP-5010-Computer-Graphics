@@ -18,6 +18,7 @@ class Camera : public ParentCamera
   public:
     const float SPEED = 14.5f;
     const float FOV = 50.0f;
+    float wabbleTime = 0.0f;
     BoundingTree *bt;
     glm::vec3 oldPos;
     bool inFerrisWheel = false;
@@ -27,6 +28,7 @@ class Camera : public ParentCamera
     {
         // Initialize the base class members directly
         Position = glm::vec3(-50.0f, 10.0f, 0.0f);
+        oldPos = Position;
         Front = glm::vec3(0.0f, 0.0f, -1.0f);
         Up = glm::vec3(0.0f, 1.0f, 0.0f);
         Right = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -95,12 +97,12 @@ class Camera : public ParentCamera
             glm::vec3 newPos = cart->position + glm::vec3(1.0f, -2.7f, 1.0f);
             this->translation = newPos - Position;
             this->Position += translation;
-            oldPos = Position;
             return;
         }
 
-        if (!flight)
-            this->translation.y = 0.0f;
+        if (translation == glm::vec3(0.0f))
+            wabbleTime = 0.0f;
+
         this->Position += translation;
         bt->translate(translation);
         float transY = 0.0f;
@@ -113,7 +115,8 @@ class Camera : public ParentCamera
         else if (!flight)
         {
             transY = 0.0f;
-            Position.y = floorHeight + 1.8f;
+            Position.y = floorHeight + (1.8f + (sin(wabbleTime) * 0.08f));
+            wabbleTime += 0.1f;
         }
         translation = glm::vec3(0.0f);
     }

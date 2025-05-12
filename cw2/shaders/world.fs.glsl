@@ -73,7 +73,7 @@ void main()
         texColor = texture(material.diffuse, TexCoords);
         shininess = material.shininess;
 
-    if (texColor.a < 0.5)
+    if (texColor.a < 0.4 && !isLight)
     {
         discard;
     }
@@ -128,7 +128,7 @@ vec4 calculateGeneralLight(Light l, vec4 texColor, vec3 norm, float shininess)
 
     vec3 lightDir = normalize(l.position - FragPos);
     float diff = max(dot(norm, lightDir), 0.0);
-    if (diff < 0.1)
+    if (diff == 0.0)
         return vec4(ambient, texColor.a);
     vec3 diffuse = diff * l.diffuse * texColor.rgb * attenuation;
 
@@ -155,11 +155,11 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 norm)
     float closestDepth = texture(depthMap, projCoords.xy).r; 
     float currentDepth = projCoords.z;
 
-    float bias = max(0.0005 * (1.0 - dot(norm, sunDir)), 0.0005);  
+    float bias = max(0.0003 * (1.0 - dot(norm, sunDir)), 0.0003);  
  
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(depthMap, 0);
-int sampleRadius = 1; // Can be adjusted based on performance needs
+    int sampleRadius = 0; 
     
     for(int x = -sampleRadius; x <= sampleRadius; x += 1) {
         for(int y = -sampleRadius; y <= sampleRadius; y += 1) {

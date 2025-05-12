@@ -123,6 +123,12 @@ void input_callback(GLFWwindow *window)
     {
         cout << "position: " << scene->cam->Position.x << " "
              << scene->cam->Position.y << " " << scene->cam->Position.z << endl;
+        if (scene->cam == &scene->overview)
+        {
+            glm::vec3 dir = glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f) - scene->cam->Position );
+            scene->worldLight.direction = dir;
+            renderer->regenLightView();
+        }
     }
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS &&
         currentFrame - activateToggleTime > 0.5)
@@ -141,6 +147,7 @@ void input_callback(GLFWwindow *window)
         {
             scene->cam = &scene->overview;
         }
+        cameraToggleTime = currentFrame;
     }
     if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS &&
         currentFrame - visualsToggleTime > 0.5)
