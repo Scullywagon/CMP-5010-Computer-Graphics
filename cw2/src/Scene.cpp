@@ -20,13 +20,15 @@ Scene::Scene()
     assets["Tree"] =
         new Model("assets/terrain/RaisedForrest/Untitled2.obj", 1.5f);
     assets["OilLamp"] = new Model("assets/oilLamp/oilLamp.obj", 12.0f);
-    assets["OilLampGlass"] = new Model("assets/oilLamp/oilLampGlass.obj", 12.0f);
+    assets["OilLampGlass"] =
+        new Model("assets/oilLamp/oilLampGlass.obj", 12.0f);
     assets["OilLampGlass"]->isLight = true;
     assets["OilLampGlass"]->outColor = glm::vec3(0.8f, 0.8f, 0.2f);
     assets["CircusTent"] = new Model("assets/circus/tent.obj", 1.0f);
     assets["CircusEye"] = new Model("assets/circus/eye.obj", 1.0f);
     assets["CircusEye"]->isLight = true;
     assets["CircusEye"]->outColor = glm::vec3(0.5f, 0.8f, 0.9f);
+    assets["Popcorn"] = new Model("assets/popcorn/popcorn.obj", 0.2f);
     collisionManager = new CollisionManager(&Player);
     generateTerrain();
 }
@@ -42,6 +44,7 @@ void Scene::init()
         new Light(glm::vec3(-23.0f, 24.0f, -7.0f), glm::vec3(0.0f, 0.0f, 0.5f),
                   glm::vec3(0.6f, 0.7f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f),
                   1.0f, 0.1f, 0.01f);
+    entities.push_back(new Entity(glm::vec3(0.0f), glm::mat4(0.0f), "Popcorn"));
     entities.push_back(e);
 
     for (auto &entity : entities)
@@ -60,93 +63,107 @@ void Scene::update(float dt)
     for (auto &entity : entities)
     {
         entity->update(dt);
+        if (entity->model == "Popcorn")
+        {
+            entity->modelMatrix = glm::translate(
+                glm::mat4(1.0f),
+                Player.Position +
+                    (glm::vec3(Player.Front.x, 0.0, Player.Front.z) * 0.3f) -
+                    glm::vec3(0.0, 0.5, 0.0) +
+                    glm::vec3(Player.translation.x, 0.0, Player.translation.z));
+
+            float angle = atan2(Player.Front.x, Player.Front.z);
+            entity->modelMatrix = glm::rotate(entity->modelMatrix, angle,
+                                              glm::vec3(0.0f, 1.0f, 0.0f));
+        }
     }
     cam->move();
 }
 
-void Scene::playerActivate()
-{
-    if (stand->ot->colliding)
+    void Scene::playerActivate()
     {
-        if (Player.inFerrisWheel)
+        if (stand->ot->colliding)
         {
-            Player.exitFerrisWheel();
-        }
-        else
-        {
-            Player.oldPos = Player.Position;
-            Player.enterFerrisWheel(stand->children[0]->children[0]);
-        }
-    }
-}
-
-void Scene::testModels(string name)
-{
-    translations[assets[name]].push_back(new glm::mat4(1.0f));
-    int scale = 90;
-    int index = 0;
-    for (int x = -scale; x <= scale && index < 10000; x += 25)
-    {
-        for (int z = -scale; z <= scale && index < 10000; z += 25)
-
-        {
-            if (glm::length(glm::vec2(x, z)) >= 98.0f)
+            if (Player.inFerrisWheel)
             {
-                float y = (rand() % 7) - 2;
-                float r = (rand() % 100) / 100.0f;
-                glm::mat4 instanceMat = glm::mat4(1.0);
-                instanceMat = glm::translate(instanceMat, glm::vec3(x, y, z));
-                instanceMat =
-                    glm::rotate(instanceMat, r, glm::vec3(0.0f, 1.0f, 0.0f));
-                translations[assets[name]].push_back(
-                    new glm::mat4(instanceMat));
-                index++;
+                Player.exitFerrisWheel();
+            }
+            else
+            {
+                Player.oldPos = Player.Position;
+                Player.enterFerrisWheel(stand->children[0]->children[0]);
             }
         }
     }
-}
 
-void Scene::addEntities(Entity &entity)
-{
-    entity.init();
-    Model *model = assets[entity.model];
-    translations[model].push_back(&entity.modelMatrix);
-    if (entity.light != nullptr)
+    void Scene::testModels(string name)
     {
-        lights.push_back(entity.light);
-    }
-    if (entity.model != "Tree" && entity.model != "OilLamp" &&
-        entity.model != "OilLampGlass")
-    {
-        entity.genBoundingTree(*model);
-        collisionManager->add(entity.ot);
-    }
-    for (Entity *child : entity.children)
-    {
-        addEntities(*child);
-    }
-}
-
-void Scene::generateTerrain()
-{
-    int scale = 80;
-    int index = 0;
-    for (int x = -scale; x <= scale && index < 10000; x += 25)
-    {
-        for (int z = -scale; z <= scale && index < 10000; z += 25)
-
+        translations[assets[name]].push_back(new glm::mat4(1.0f));
+        int scale = 90;
+        int index = 0;
+        for (int x = -scale; x <= scale && index < 10000; x += 25)
         {
-            if (glm::length(glm::vec2(x, z)) >= 70.0f)
+            for (int z = -scale; z <= scale && index < 10000; z += 25)
+
             {
-                float y = (rand() % 7) - 2;
-                float r = (rand() % 100) / 100.0f;
-                glm::vec3 translation = glm::vec3(x, y, z);
-                entities.push_back(
-                    new Entity(translation, glm::mat4(0.0f), "Terrain"));
-                entities.push_back(
-                    new Entity(translation, glm::mat4(0.0f), "Tree"));
-                index++;
+                if (glm::length(glm::vec2(x, z)) >= 98.0f)
+                {
+                    float y = (rand() % 7) - 2;
+                    float r = (rand() % 100) / 100.0f;
+                    glm::mat4 instanceMat = glm::mat4(1.0);
+                    instanceMat =
+                        glm::translate(instanceMat, glm::vec3(x, y, z));
+                    instanceMat = glm::rotate(instanceMat, r,
+                                              glm::vec3(0.0f, 1.0f, 0.0f));
+                    translations[assets[name]].push_back(
+                        new glm::mat4(instanceMat));
+                    index++;
+                }
             }
         }
     }
-}
+
+    void Scene::addEntities(Entity & entity)
+    {
+        entity.init();
+        Model *model = assets[entity.model];
+        translations[model].push_back(&entity.modelMatrix);
+        if (entity.light != nullptr)
+        {
+            lights.push_back(entity.light);
+        }
+        if (entity.model != "Tree" && entity.model != "OilLamp" &&
+            entity.model != "OilLampGlass")
+        {
+            entity.genBoundingTree(*model);
+            collisionManager->add(entity.ot);
+        }
+        for (Entity *child : entity.children)
+        {
+            addEntities(*child);
+        }
+    }
+
+    void Scene::generateTerrain()
+    {
+        int scale = 80;
+        int index = 0;
+        for (int x = -scale; x <= scale && index < 10000; x += 25)
+        {
+            for (int z = -scale; z <= scale && index < 10000; z += 25)
+
+            {
+                if (glm::length(glm::vec2(x, z)) >= 70.0f)
+                {
+                    float y = (rand() % 7) - 2;
+                    float r = (rand() % 100) / 100.0f;
+                    glm::vec3 translation = glm::vec3(x, y, z);
+                    entities.push_back(
+                        new Entity(translation, glm::mat4(0.0f), "Terrain"));
+                    entities.push_back(
+                        new Entity(translation, glm::mat4(0.0f), "Tree"));
+                    index++;
+                }
+            }
+        }
+    }

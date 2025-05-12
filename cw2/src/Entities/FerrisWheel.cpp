@@ -70,26 +70,33 @@ void Wheel::rotate(float dt)
     bool childInRange = false;
     for (auto &child : children)
     {
-        if (child->position.x > -0.5f && child->position.x < 0.5f)
+        if (child->position.z > -0.4f && child->position.z < 0.8f)
         {
             childInRange = true;
             break;
         }
     }
 
-    if (currentSpeed <= speed && currentSpeed > 0.3f)
-    {
-        currentSpeed += speed * dt * 0.5f;
-    }
-    else if (dt > 0.0f)
-    {
-        currentSpeed = speed;
-    }
-    else if (dt < 0.0f)
+    if (dt < 0.0)
     {
         if (childInRange)
         {
+            currentSpeed += speed * dt * 0.5f;
+        }
+        if (currentSpeed < 0.0f)
+        {
             currentSpeed = 0.0f;
+        }
+    }
+    else
+    {
+        if (currentSpeed <= speed && currentSpeed >= 0.0f)
+        {
+            currentSpeed += speed * dt * 0.5f;
+        }
+        else
+        {
+            currentSpeed = speed;
         }
     }
 }
@@ -192,8 +199,10 @@ void Cart::wabble(float dt)
     localRotation = glm::rotate(glm::mat4(1.0f), glm::radians(oscillation),
                                 glm::vec3(1.0f, 0.0f, 0.0f));
 
-    if (oscillation > 1 && oscillation > -1)
+    /*
+    if (oscillation > 0.2 && oscillation > -0.2)
         this->targetWabble();
+    */
 }
 
 void Cart::wind(float dt)

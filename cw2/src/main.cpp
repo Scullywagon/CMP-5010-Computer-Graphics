@@ -116,6 +116,7 @@ void input_callback(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS &&
         currentFrame - rotationToggleTime > 0.5)
     {
+        cout << "Rotation: " << vars::enableRotation << endl;
         vars::enableRotation = !vars::enableRotation;
         rotationToggleTime = currentFrame;
     }
