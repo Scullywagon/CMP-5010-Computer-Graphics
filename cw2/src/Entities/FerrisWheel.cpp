@@ -140,21 +140,25 @@ void Cart::update(float dt)
     wabble(dt);
     this->modelMatrix = glm::translate(glm::mat4(1.0f), newPos) * localRotation;
     ot->translate(translation);
+
     for (Entity *child : children)
     {
-        glm::vec3 childOffset = child->position - position;
+        glm::vec3 childOffset = glm::vec3(
+            1.0f, 4.69f, 0.0f); 
 
-        glm::mat4 rot=
-            glm::translate(glm::mat4(1.0f), -childOffset);
-        rot = glm::rotate()
-        glm::mat4 childTranslationBack =
-            glm::translate(glm::mat4(1.0f), childOffset);
+        glm::vec3 rotatedOffset =
+            glm::vec3(localRotation * glm::vec4(-childOffset, -1.0f));
 
-        child->position += translation;
-        child->modelMatrix = glm::translate(glm::mat4(1.0f), child->position);
+        child->position = position + rotatedOffset;
+
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, rotatedOffset);
+        child->modelMatrix =
+            modelMatrix * model; 
+
         if (child->light != nullptr)
         {
-            child->light->position += translation;
+            child->light->position = child->position;
         }
     }
 }
@@ -174,6 +178,8 @@ void Cart::wabble(float dt)
 
     localRotation = glm::rotate(glm::mat4(1.0f), glm::radians(oscillation),
                                 glm::vec3(1.0f, 0.0f, 0.0f));
+
+    if (oscillation > 1 && oscillation > -1) this->targetWabble();
 }
 
 void Cart::wind(float dt)

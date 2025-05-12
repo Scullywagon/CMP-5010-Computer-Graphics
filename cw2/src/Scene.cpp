@@ -19,8 +19,8 @@ Scene::Scene()
         new Model("assets/terrain/RaisedForrest/RaisedTerrain.obj", 45.0f);
     assets["Tree"] =
         new Model("assets/terrain/RaisedForrest/Untitled2.obj", 1.5f);
-    assets["OilLamp"] = new Model("assets/oilLamp/oilLamp.obj", 8.0f);
-    assets["OilLampGlass"] = new Model("assets/oilLamp/oilLampGlass.obj", 8.0f);
+    assets["OilLamp"] = new Model("assets/oilLamp/oilLamp.obj", 12.0f);
+    assets["OilLampGlass"] = new Model("assets/oilLamp/oilLampGlass.obj", 12.0f);
     assets["OilLampGlass"]->isLight = true;
     assets["OilLampGlass"]->outColor = glm::vec3(0.8f, 0.8f, 0.2f);
     assets["CircusTent"] = new Model("assets/circus/tent.obj", 1.0f);
