@@ -94,7 +94,7 @@ class Camera : public ParentCamera
     {
         if (inFerrisWheel)
         {
-            glm::vec3 newPos = cart->position + glm::vec3(1.0f, -2.7f, 1.0f);
+            glm::vec3 newPos = cart->position + glm::vec3(cart->localRotation * glm::vec4(1.0f, -2.7f, 1.0f, 1.0));
             this->translation = newPos - Position;
             this->Position += translation;
             return;
@@ -115,7 +115,7 @@ class Camera : public ParentCamera
         else if (!flight)
         {
             transY = 0.0f;
-            Position.y = floorHeight + (1.8f + (sin(wabbleTime) * 0.08f));
+            Position.y = floorHeight + (1.8f + (sin(wabbleTime) * 0.1f));
             wabbleTime += 0.1f;
         }
         translation = glm::vec3(0.0f);

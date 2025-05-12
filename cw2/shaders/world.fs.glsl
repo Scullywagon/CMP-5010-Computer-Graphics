@@ -120,7 +120,7 @@ vec4 calculateSunlight(vec4 texColor, vec3 norm, float shininess, float shadow)
 vec4 calculateGeneralLight(Light l, vec4 texColor, vec3 norm, float shininess)
 {
     float distance = length(l.position - FragPos);
-    if (distance < 0.1 || distance > 50.0)
+    if (distance < 0.1 || distance > 60.0)
         return vec4(0.0, 0.0, 0.0, texColor.a); 
     float attenuation = 1.0 / (l.constant + l.linear * distance + l.quadratic * (distance * distance));
 
@@ -133,7 +133,7 @@ vec4 calculateGeneralLight(Light l, vec4 texColor, vec3 norm, float shininess)
     vec3 diffuse = diff * l.diffuse * texColor.rgb * attenuation;
 
     vec3 specular = vec3(0.0);
-    if (attenuation > 0.3)
+    if (attenuation > 0.1)
     {
         vec3 viewDir = normalize(cameraPos - FragPos);
         vec3 reflectDir = reflect(-lightDir, norm);

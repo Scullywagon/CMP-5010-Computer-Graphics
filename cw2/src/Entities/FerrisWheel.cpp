@@ -67,13 +67,30 @@ void Wheel::rotate(float dt)
                                        glm::vec3(1.0f, 0.0f, 0.0f));
     ot->rotate(rotation, glm::vec3(1.0f, 0.0f, 0.0f));
 
-    if (currentSpeed <= speed && currentSpeed > -0.1f)
+    bool childInRange = false;
+    for (auto &child : children)
+    {
+        if (child->position.x > -0.5f && child->position.x < 0.5f)
+        {
+            childInRange = true;
+            break;
+        }
+    }
+
+    if (currentSpeed <= speed && currentSpeed > 0.3f)
     {
         currentSpeed += speed * dt * 0.5f;
     }
-    else
+    else if (dt > 0.0f)
     {
         currentSpeed = speed;
+    }
+    else if (dt < 0.0f)
+    {
+        if (childInRange)
+        {
+            currentSpeed = 0.0f;
+        }
     }
 }
 
@@ -120,9 +137,9 @@ Cart::Cart(glm::vec3 parent, glm::vec3 localPos, glm::mat4 *rotationMat)
 void Cart::init()
 {
     modelMatrix = glm::translate(modelMatrix, this->position);
-    children.push_back(new Entity(this->position - glm::vec3(1.0f, 4.5f, 0.0f),
+    children.push_back(new Entity(this->position - glm::vec3(1.0f, 4.6f, 0.0f),
                                   glm::mat4(0.0f), "OilLamp"));
-    children.push_back(new Entity(this->position - glm::vec3(1.0f, 4.5f, 0.0f),
+    children.push_back(new Entity(this->position - glm::vec3(1.0f, 4.6f, 0.0f),
                                   glm::mat4(0.0f), "OilLampGlass"));
     children[1]->light =
         new Light(children[1]->position + glm::vec3(0.0f, 0.4f, 0.0f),
@@ -143,18 +160,14 @@ void Cart::update(float dt)
 
     for (Entity *child : children)
     {
-        glm::vec3 childOffset = glm::vec3(
-            1.0f, 4.69f, 0.0f); 
+        glm::vec3 childOffset = glm::vec3(1.0f, 4.62f, 0.0f);
 
         glm::vec3 rotatedOffset =
-            glm::vec3(localRotation * glm::vec4(-childOffset, -1.0f));
+            glm::vec3(localRotation * glm::vec4(-childOffset, 0.0f));
 
         child->position = position + rotatedOffset;
 
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, rotatedOffset);
-        child->modelMatrix =
-            modelMatrix * model; 
+        child->modelMatrix = glm::translate(modelMatrix, -childOffset);
 
         if (child->light != nullptr)
         {
@@ -179,7 +192,8 @@ void Cart::wabble(float dt)
     localRotation = glm::rotate(glm::mat4(1.0f), glm::radians(oscillation),
                                 glm::vec3(1.0f, 0.0f, 0.0f));
 
-    if (oscillation > 1 && oscillation > -1) this->targetWabble();
+    if (oscillation > 1 && oscillation > -1)
+        this->targetWabble();
 }
 
 void Cart::wind(float dt)
