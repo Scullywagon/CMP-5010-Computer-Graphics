@@ -6,6 +6,7 @@ namespace vars
 extern bool enableRotation;
 extern bool startingRotation;
 extern bool betterVisuals;
+extern bool showPopcorn;
 };
 
 #endif

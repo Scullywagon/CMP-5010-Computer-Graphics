@@ -5,6 +5,7 @@
 #include "Entity.h"
 #include "Light.h"
 #include "Skybox.h"
+#include "VarName.h"
 
 Scene::Scene()
     : worldLight(glm::vec3(0.2, -0.8, 0.2), glm::vec3(0.1, 0.1, 0.1),
@@ -63,107 +64,111 @@ void Scene::update(float dt)
     for (auto &entity : entities)
     {
         entity->update(dt);
-        if (entity->model == "Popcorn")
+        if (entity->model == "Popcorn" && !Player.flight &&
+            !Player.inFerrisWheel && vars::showPopcorn)
         {
             entity->modelMatrix = glm::translate(
                 glm::mat4(1.0f),
                 Player.Position +
-                    (glm::vec3(Player.Front.x, 0.0, Player.Front.z) * 0.3f) -
-                    glm::vec3(0.0, 0.5, 0.0) +
+                    (glm::vec3(Player.Front.x, 0.0, Player.Front.z) * 0.8f) -
+                    glm::vec3(0.0, 0.4, 0.0) +
                     glm::vec3(Player.translation.x, 0.0, Player.translation.z));
 
             float angle = atan2(Player.Front.x, Player.Front.z);
             entity->modelMatrix = glm::rotate(entity->modelMatrix, angle,
                                               glm::vec3(0.0f, 1.0f, 0.0f));
         }
+        else if (entity->model == "Popcorn")
+        {
+            entity->modelMatrix = glm::mat4(0.0f);
+        }
     }
     cam->move();
 }
 
-    void Scene::playerActivate()
+void Scene::playerActivate()
+{
+    if (stand->ot->colliding)
     {
-        if (stand->ot->colliding)
+        if (Player.inFerrisWheel)
         {
-            if (Player.inFerrisWheel)
-            {
-                Player.exitFerrisWheel();
-            }
-            else
-            {
-                Player.oldPos = Player.Position;
-                Player.enterFerrisWheel(stand->children[0]->children[0]);
-            }
+            Player.exitFerrisWheel();
+        }
+        else
+        {
+            Player.oldPos = Player.Position;
+            Player.enterFerrisWheel(stand->children[0]->children[0]);
         }
     }
+}
 
-    void Scene::testModels(string name)
+void Scene::testModels(string name)
+{
+    translations[assets[name]].push_back(new glm::mat4(1.0f));
+    int scale = 90;
+    int index = 0;
+    for (int x = -scale; x <= scale && index < 10000; x += 25)
     {
-        translations[assets[name]].push_back(new glm::mat4(1.0f));
-        int scale = 90;
-        int index = 0;
-        for (int x = -scale; x <= scale && index < 10000; x += 25)
-        {
-            for (int z = -scale; z <= scale && index < 10000; z += 25)
+        for (int z = -scale; z <= scale && index < 10000; z += 25)
 
+        {
+            if (glm::length(glm::vec2(x, z)) >= 98.0f)
             {
-                if (glm::length(glm::vec2(x, z)) >= 98.0f)
-                {
-                    float y = (rand() % 7) - 2;
-                    float r = (rand() % 100) / 100.0f;
-                    glm::mat4 instanceMat = glm::mat4(1.0);
-                    instanceMat =
-                        glm::translate(instanceMat, glm::vec3(x, y, z));
-                    instanceMat = glm::rotate(instanceMat, r,
-                                              glm::vec3(0.0f, 1.0f, 0.0f));
-                    translations[assets[name]].push_back(
-                        new glm::mat4(instanceMat));
-                    index++;
-                }
+                float y = (rand() % 7) - 2;
+                float r = (rand() % 100) / 100.0f;
+                glm::mat4 instanceMat = glm::mat4(1.0);
+                instanceMat = glm::translate(instanceMat, glm::vec3(x, y, z));
+                instanceMat =
+                    glm::rotate(instanceMat, r, glm::vec3(0.0f, 1.0f, 0.0f));
+                translations[assets[name]].push_back(
+                    new glm::mat4(instanceMat));
+                index++;
             }
         }
     }
+}
 
-    void Scene::addEntities(Entity & entity)
+void Scene::addEntities(Entity &entity)
+{
+    entity.init();
+    Model *model = assets[entity.model];
+    translations[model].push_back(&entity.modelMatrix);
+    if (entity.light != nullptr)
     {
-        entity.init();
-        Model *model = assets[entity.model];
-        translations[model].push_back(&entity.modelMatrix);
-        if (entity.light != nullptr)
-        {
-            lights.push_back(entity.light);
-        }
-        if (entity.model != "Tree" && entity.model != "OilLamp" &&
-            entity.model != "OilLampGlass")
-        {
-            entity.genBoundingTree(*model);
-            collisionManager->add(entity.ot);
-        }
-        for (Entity *child : entity.children)
-        {
-            addEntities(*child);
-        }
+        lights.push_back(entity.light);
     }
-
-    void Scene::generateTerrain()
+    if (entity.model != "Tree" && entity.model != "OilLamp" &&
+        entity.model != "OilLampGlass")
     {
-        int scale = 80;
-        int index = 0;
-        for (int x = -scale; x <= scale && index < 10000; x += 25)
-        {
-            for (int z = -scale; z <= scale && index < 10000; z += 25)
+        entity.genBoundingTree(*model);
+        collisionManager->add(entity.ot);
+    }
+    for (Entity *child : entity.children)
+    {
+        addEntities(*child);
+    }
+}
 
+void Scene::generateTerrain()
+{
+    int scale = 80;
+    int index = 0;
+    for (int x = -scale; x <= scale && index < 10000; x += 25)
+    {
+        for (int z = -scale; z <= scale && index < 10000; z += 25)
+
+        {
+            if (glm::length(glm::vec2(x, z)) >= 70.0f)
             {
-                if (glm::length(glm::vec2(x, z)) >= 70.0f)
-                {
-                    float y = (rand() % 7) - 2;
-                    float r = (rand() % 100) / 100.0f;
-                    glm::vec3 translation = glm::vec3(x, y, z);
-                    entities.push_back(
-                        new Entity(translation, glm::mat4(0.0f), "Terrain"));
-                    entities.push_back(
-                        new Entity(translation, glm::mat4(0.0f), "Tree"));
-                    index++;
-                }
+                float y = (rand() % 7) - 2;
+                float r = (rand() % 100) / 100.0f;
+                glm::vec3 translation = glm::vec3(x, y, z);
+                entities.push_back(
+                    new Entity(translation, glm::mat4(0.0f), "Terrain"));
+                entities.push_back(
+                    new Entity(translation, glm::mat4(0.0f), "Tree"));
+                index++;
             }
         }
     }
+}

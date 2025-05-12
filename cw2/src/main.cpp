@@ -24,6 +24,7 @@ namespace vars
 bool enableRotation = false;
 bool startingRotation = false;
 bool betterVisuals = false;
+bool showPopcorn = false;
 } // namespace vars
 
 int SCREEN_WIDTH = Constants::SCREEN_WIDTH;
@@ -41,6 +42,7 @@ float activateToggleTime = 0.0f;
 float rotationToggleTime = 0.0f;
 float visualsToggleTime = 0.0f;
 float cameraToggleTime = 0.0f;
+float popcornToggleTime = 0.0f;
 bool isRotate = false;
 
 Scene *scene;
@@ -76,7 +78,6 @@ void mouse_callback(GLFWwindow *window, double xposIn, double yposIn)
     scene->cam->ProcessMouseMovement(xoffset, yoffset);
 }
 
-// handled by the glfw callback function
 void input_callback(GLFWwindow *window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -155,6 +156,12 @@ void input_callback(GLFWwindow *window)
     {
         vars::betterVisuals = !vars::betterVisuals;
         visualsToggleTime = currentFrame;
+    }
+    if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS &&
+        currentFrame - popcornToggleTime > 0.5)
+    {
+        vars::showPopcorn = !vars::showPopcorn;
+        popcornToggleTime = currentFrame;
     }
 }
 
